@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pandas as pd
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 import math 
 
 import plotly.graph_objects as go
@@ -101,7 +101,8 @@ df_deaths = pd.DataFrame({'Date':DateList,
                           'Other locations':OtherList})
 
 # Save numbers into variables to use in the app
-latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d %Y %H:%M EST')
+# Change from EST to Sydney time plus 16 hours
+latestDate=datetime.strftime(df_confirmed['Date'][0] + timedelta(hours=16), '%b %d %Y %H:%M AEDT')
 daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
 #############################################################################################
