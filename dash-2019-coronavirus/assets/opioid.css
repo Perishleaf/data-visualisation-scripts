@@ -39,8 +39,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
     position: relative;
-    width: 100vh;
-    height: 100vh;
+    width: 100%;
     max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
@@ -286,7 +285,7 @@ h3 {
 
 h4 {
     font-family: "Playfair Display", sans-serif;
-    font-size: 4rem;
+    font-size: 5rem;
     line-height: 1.35;
     letter-spacing: -.08rem;
     margin-bottom: 1.2rem;
@@ -294,6 +293,7 @@ h4 {
 }
 
 h5 {
+    font-family: "Playfair Display", sans-serif;
     font-size: 2.2rem;
     line-height: 1.5;
     letter-spacing: -.05rem;
@@ -310,7 +310,7 @@ h6 {
 }
 
 p {
-    margin-top: 0;
+    margin-top: 1.2rem;
 }
 
 #heatmap-title {
@@ -327,8 +327,10 @@ p {
 }
 
 #logo {
-    height: 5rem;
+    height: 4rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+    margin-right: 1.5%;
 }
 
 #slider-text, #chart-selector {
