@@ -289,7 +289,7 @@ h4 {
     line-height: 1.35;
     letter-spacing: -.08rem;
     margin-bottom: 1.2rem;
-    margin-top: 1.2rem;
+    padding-top: 1rem;
 }
 
 h5 {
@@ -329,7 +329,7 @@ p {
 #logo {
     height: 4rem;
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     margin-right: 1.5%;
 }
 

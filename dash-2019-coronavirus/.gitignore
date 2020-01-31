@@ -1,0 +1,4 @@
+dash_coronavirus
+*.pyc
+.DS_Store
+.env
