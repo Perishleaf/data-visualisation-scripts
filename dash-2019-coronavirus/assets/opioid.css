@@ -39,7 +39,8 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
     position: relative;
-    width: 100%;
+    width: 100vh;
+    height: 100vh;
     max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
@@ -319,7 +320,7 @@ p {
 
 #description {
     font-size: 1.5rem;
-    border-left: #2cfec1 solid 1rem;
+    border-left: #ff1414 solid 1rem;
     padding-left: 1rem;
     max-width: 100rem;
     margin: 2rem 0 3rem 0;
