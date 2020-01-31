@@ -389,13 +389,7 @@ app.layout = html.Div(style={'backgroundColor':'#151920'},
     children=[
         html.Div(
             id="header",
-            children=[
-                html.P(id="logo", children=["Data source from ", 
-                                            html.A('JHU CSSE', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
-                                            RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
-                                            html.P("🙏 Praise for China 🙏"),
-                                            "Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"
-                                           ]),                          
+            children=[                          
                 html.H4(children="Wuhan Coronavirus (2019-nCoV) Outbreak Monitor"),
                 html.P(
                     id="description",
@@ -414,28 +408,28 @@ app.layout = html.Div(style={'backgroundColor':'#151920'},
                  children=[
                      html.Div(
                          children=[
-                             html.Div(style={'width':'24.6%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
+                             html.Div(style={'width':'24.5%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
                                  children=[html.P(style={'textAlign':'center','fontSize':'3rem',
                                                          'fontWeight':'bold','color':'#ffffbf','padding':'1rem'},
                                                   children="Days Since Outbreak"),
                                            html.H3(style={'textAlign':'center','fontSize':'6rem',
                                                           'fontWeight':'bold','color':'#ffffbf'},
                                                   children='{}'.format(daysOutbreak))]),
-                             html.Div(style={'width':'24.6%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
+                             html.Div(style={'width':'24.5%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
                                  children=[html.P(style={'textAlign':'center','fontSize':'3rem',
                                                          'fontWeight':'bold','color':'#d7191c','padding':'1rem'},
                                                   children="Confirmed Cases"),
                                            html.H3(style={'textAlign':'center','fontSize':'6rem',
                                                           'fontWeight':'bold','color':'#d7191c'},
                                                   children='{}'.format(confirmedCases))]),
-                             html.Div(style={'width':'24.6%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
+                             html.Div(style={'width':'24.5%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
                                  children=[html.P(style={'textAlign':'center','fontSize':'3rem',
                                                          'fontWeight':'bold','color':'#1a9641','padding':'1rem'},
                                                   children="Recovered Cases"),
                                            html.H3(style={'textAlign':'center','fontSize':'6rem',
                                                           'fontWeight':'bold','color':'#1a9641'},
                                                    children='{}'.format(recoveredCases))]),
-                             html.Div(style={'width':'24.6%','backgroundColor':'#272e3e','display':'inline-block','marginTop':'10px'},
+                             html.Div(style={'width':'24.6%','backgroundColor':'#272e3e','display':'inline-block','marginTop':'10px','marginRight':'6px'},
                                   children=[html.P(style={'textAlign':'center','fontSize':'3rem',
                                                           'fontWeight':'bold','color':'#fdae61','padding':'1rem'},
                                                   children="Death Cases"),
@@ -448,8 +442,15 @@ app.layout = html.Div(style={'backgroundColor':'#151920'},
                                   children=[dcc.Graph(figure=fig_recovered)]),
                              html.Div(style={'width':'32.9%','display':'inline-block','marginTop':'10px'},
                                   children=[dcc.Graph(figure=fig_deaths)]),
-                             html.Div(style={'width':'100%','display':'inline-block','marginTop':'10px','marginBottom':'1.5%'},
+                             html.Div(style={'width':'100%','display':'inline-block','marginTop':'0.25%','marginBottom':'1.5%'},
                                  children=[dcc.Graph(figure=fig2)]),
+                             html.P(style={'textAlign':'center','margin':'auto'},
+                                 children=["Data source from ", 
+                                            html.A('JHU CSSE', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
+                                            RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
+                                            " | 🙏 Praise for China 🙏 |",
+                                            " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"
+                                           ]),
 
                          ])
                  ]),
