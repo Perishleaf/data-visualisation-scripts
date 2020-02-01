@@ -140,7 +140,7 @@ fig_confirmed.update_layout(
     title=dict(
         text="<b>Confirmed Cases Timeline<b>",
         y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#7fafdf", family="Playfair Display")
+        font=dict(size=20, color="#ffffff", family="Playfair Display")
     ),
     margin=go.layout.Margin(
         l=5,
@@ -172,7 +172,7 @@ fig_confirmed.update_layout(
     legend_orientation="h",
     plot_bgcolor='#151920',
     paper_bgcolor='#272e3e',
-    font=dict(color='#7fafdf')
+    font=dict(color='#ffffff')
 )
 
 # Line plot for recovered cases
@@ -207,7 +207,7 @@ fig_recovered.update_layout(
     title=dict(
         text="<b>Recovered Cases Timeline<b>",
         y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#7fafdf", family="Playfair Display")
+        font=dict(size=20, color="#ffffff", family="Playfair Display")
     ),
     margin=go.layout.Margin(
         l=5,
@@ -239,7 +239,7 @@ fig_recovered.update_layout(
     legend_orientation="h",
     plot_bgcolor='#151920',
     paper_bgcolor='#272e3e',
-    font=dict(color='#7fafdf')
+    font=dict(color='#ffffff')
 )
 
 # Line plot for deaths cases
@@ -274,7 +274,7 @@ fig_deaths.update_layout(
     title=dict(
         text="<b>Death Cases Timeline<b>",
         y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#7fafdf", family="Playfair Display")
+        font=dict(size=20, color="#ffffff", family="Playfair Display")
     ),
     margin=go.layout.Margin(
         l=5,
@@ -306,7 +306,7 @@ fig_deaths.update_layout(
     legend_orientation="h",
     plot_bgcolor='#151920',
     paper_bgcolor='#272e3e',
-    font=dict(color='#7fafdf')
+    font=dict(color='#ffffff')
 )
 
 #############################
@@ -351,7 +351,7 @@ fig2.update_layout(
     title=dict(
         text="<b>Latest Coronavirus Outbreak Map<b>",
         y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#7fafdf", family="Playfair Display")
+        font=dict(size=20, color="#ffffff", family="Playfair Display")
     ),
     plot_bgcolor='#151920',
     paper_bgcolor='#272e3e',
