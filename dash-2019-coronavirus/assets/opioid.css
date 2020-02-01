@@ -733,6 +733,14 @@ hr {
         text-align: center;
     }
 
+    #number-plate p {
+        font-size: 1.5rem;
+    }
+
+    #number-plate h3 {
+        font-size: 3rem;
+    }
+
     #graph-container {
         margin-top: 5rem;
     }
@@ -751,6 +759,14 @@ hr {
 
     #header p {
         font-size: 1.5rem;
+    }
+
+    #number-plate p {
+        font-size: 3rem;
+    }
+
+    #number-plate h3 {
+        font-size: 6rem;
     }
 
     #graph-container {
