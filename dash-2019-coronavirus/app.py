@@ -185,7 +185,7 @@ fig_recovered = go.Figure()
 fig_recovered.add_trace(go.Scatter(x=df_recovered['Date']+timedelta(hours=16), y=df_recovered['Mainland China'],
                          mode='lines+markers',
                          name='Mainland China',
-                         line=dict(color='#0f5525', width=2),
+                         line=dict(color='#168038', width=2),
                          marker=dict(size=8),
                          text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_recovered['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
