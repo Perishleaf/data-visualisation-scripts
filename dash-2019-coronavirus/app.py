@@ -115,7 +115,7 @@ tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 1000))
 # Create empty figure canvas
 fig_confirmed = go.Figure()
 # Add trace to the figure
-fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainland China'],
+fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date']+timedelta(hours=16), y=df_confirmed['Mainland China'],
                          mode='lines+markers',
                          name='Mainland China',
                          line=dict(color='#921113', width=2),
@@ -125,7 +125,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainl
                                        'Mainland China confirmed<br>'+
                                        '%{y} cases<br>'+
                                        '<extra></extra>'))
-fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Other locations'],
+fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date']+timedelta(hours=16), y=df_confirmed['Other locations'],
                          mode='lines+markers',
                          name='Other Region',
                          line=dict(color='#eb5254', width=2),
@@ -182,7 +182,7 @@ tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 20))
 # Create empty figure canvas
 fig_recovered = go.Figure()
 # Add trace to the figure
-fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Mainland China'],
+fig_recovered.add_trace(go.Scatter(x=df_recovered['Date']+timedelta(hours=16), y=df_recovered['Mainland China'],
                          mode='lines+markers',
                          name='Mainland China',
                          line=dict(color='#0f5525', width=2),
@@ -192,7 +192,7 @@ fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Mainl
                                        'Mainland China recovered<br>'+
                                        '%{y} cases<br>'+
                                        '<extra></extra>'))
-fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Other locations'],
+fig_recovered.add_trace(go.Scatter(x=df_recovered['Date']+timedelta(hours=16), y=df_recovered['Other locations'],
                          mode='lines+markers',
                          name='Other Region',
                          line=dict(color='#25d75d', width=2),
@@ -249,7 +249,7 @@ tickList = list(np.arange(0, df_deaths['Mainland China'].max()+100, 20))
 # Create empty figure canvas
 fig_deaths = go.Figure()
 # Add trace to the figure
-fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China'],
+fig_deaths.add_trace(go.Scatter(x=df_deaths['Date']+timedelta(hours=16), y=df_deaths['Mainland China'],
                          mode='lines+markers',
                          name='Mainland China',
                          line=dict(color='#fc8715', width=2),
@@ -259,7 +259,7 @@ fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China
                                        'Mainland China death<br>'+
                                        '%{y} cases<br>'+
                                        '<extra></extra>'))
-fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations'],
+fig_deaths.add_trace(go.Scatter(x=df_deaths['Date']+timedelta(hours=16), y=df_deaths['Other locations'],
                          mode='lines+markers',
                          name='Other Region',
                          line=dict(color='#fed5ad', width=2),
