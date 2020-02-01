@@ -101,9 +101,9 @@ df_deaths = pd.DataFrame({'Date':DateList,
                           'Other locations':OtherList})
 
 # Save numbers into variables to use in the app
-# Change from EST to Sydney time plus 16 hours
+# Change to Sydney time
 latestDate=datetime.strftime(df_confirmed['Date'][0] + timedelta(hours=16), '%b %d %Y %H:%M AEDT')
-daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
+daysOutbreak=(df_confirmed['Date'][0] + timedelta(hours=16) - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
 #############################################################################################
 #### Start to make plots
@@ -449,7 +449,7 @@ app.layout = html.Div(style={'backgroundColor':'#151920'},
                                  children=["Data source from ", 
                                             html.A('JHU CSSE', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
                                             RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
-                                            " | 🙏 Praise for China 🙏 |",
+                                            " | 🙏 Pray for China, Pray for the World 🙏 |",
                                             " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"
                                            ]),
 
