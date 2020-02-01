@@ -120,7 +120,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainl
                          name='Mainland China',
                          line=dict(color='#921113', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y %H:%M EST') for d in df_confirmed['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_confirmed['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Mainland China confirmed<br>'+
                                        '%{y} cases<br>'+
@@ -130,7 +130,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Other
                          name='Other Region',
                          line=dict(color='#eb5254', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y %H:%M EST') for d in df_confirmed['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_confirmed['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Other region confirmed<br>'+
                                        '%{y} cases<br>'+
@@ -187,7 +187,7 @@ fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Mainl
                          name='Mainland China',
                          line=dict(color='#0f5525', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y %H:%M EST') for d in df_recovered['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_recovered['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Mainland China recovered<br>'+
                                        '%{y} cases<br>'+
@@ -197,7 +197,7 @@ fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Other
                          name='Other Region',
                          line=dict(color='#25d75d', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y %H:%M EST') for d in df_recovered['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_recovered['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Other region recovered<br>'+
                                        '%{y} cases<br>'+
@@ -254,7 +254,7 @@ fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China
                          name='Mainland China',
                          line=dict(color='#fc8715', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y %H:%M EST') for d in df_deaths['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_deaths['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Mainland China death<br>'+
                                        '%{y} cases<br>'+
@@ -264,7 +264,7 @@ fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other location
                          name='Other Region',
                          line=dict(color='#fed5ad', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y %H:%M EST') for d in df_deaths['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_deaths['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Other region death<br>'+
                                        '%{y} cases<br>'+
