@@ -405,57 +405,68 @@ app.layout = html.Div(style={'backgroundColor':'#151920'},
                     children="Last updated on {}.".format(latestDate))
             ]        
         ),
+        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
+                 children=[
+                     html.Div(style={'width':'24.4%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'.8%'},
+                              children=[html.P(style={'textAlign':'center','fontSize':'3rem',
+                                                      'fontWeight':'bold','color':'#ffffbf','padding':'1rem'},
+                                               children="Days Since Outbreak"),
+                                        html.H3(style={'textAlign':'center','fontSize':'6rem',
+                                                       'fontWeight':'bold','color':'#ffffbf'},
+                                               children='{}'.format(daysOutbreak))]),
+                     html.Div(style={'width':'24.4%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'.8%'},
+                              children=[html.P(style={'textAlign':'center','fontSize':'3rem',
+                                                      'fontWeight':'bold','color':'#d7191c','padding':'1rem'},
+                                               children="Confirmed Cases"),
+                                        html.H3(style={'textAlign':'center','fontSize':'6rem',
+                                                       'fontWeight':'bold','color':'#d7191c'},
+                                                children='{}'.format(confirmedCases))]),
+                     html.Div(style={'width':'24.4%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'.8%'},
+                              children=[html.P(style={'textAlign':'center','fontSize':'3rem',
+                                                      'fontWeight':'bold','color':'#1a9641','padding':'1rem'},
+                                               children="Recovered Cases"),
+                                        html.H3(style={'textAlign':'center','fontSize':'6rem',
+                                                       'fontWeight':'bold','color':'#1a9641'},
+                                               children='{}'.format(recoveredCases))]),
+                     html.Div(style={'width':'24.4%','backgroundColor':'#272e3e','display':'inline-block','marginTop':'.5%'},
+                              children=[html.P(style={'textAlign':'center','fontSize':'3rem',
+                                                      'fontWeight':'bold','color':'#fdae61','padding':'1rem'},
+                                               children="Death Cases"),
+                                        html.H3(style={'textAlign':'center','fontSize':'6rem',
+                                                       'fontWeight':'bold','color':'#fdae61'},
+                                                children='{}'.format(deathsCases))])
+                ]
+        ),
+        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.35%','marginTop':'.5%'},
+                 children=[
+                     html.Div(style={'width':'32.79%','display':'inline-block','marginRight':'.8%'},
+                              children=[dcc.Graph(figure=fig_confirmed)]),
+                     html.Div(style={'width':'32.79%','display':'inline-block','marginRight':'.8%'},
+                              children=[dcc.Graph(figure=fig_recovered)]),
+                     html.Div(style={'width':'32.79%','display':'inline-block'},
+                              children=[dcc.Graph(figure=fig_deaths)])
+                ]
+        ),
+        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
+                 children=[
+                     html.Div(style={'width':'100%','display':'inline-block'},
+                              children=[dcc.Graph(figure=fig2)])
+                 ]
+        ),
         html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%'},
                  children=[
-                     html.Div(
-                         children=[
-                             html.Div(style={'width':'24.5%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
-                                 children=[html.P(style={'textAlign':'center','fontSize':'3rem',
-                                                         'fontWeight':'bold','color':'#ffffbf','padding':'1rem'},
-                                                  children="Days Since Outbreak"),
-                                           html.H3(style={'textAlign':'center','fontSize':'6rem',
-                                                          'fontWeight':'bold','color':'#ffffbf'},
-                                                  children='{}'.format(daysOutbreak))]),
-                             html.Div(style={'width':'24.5%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
-                                 children=[html.P(style={'textAlign':'center','fontSize':'3rem',
-                                                         'fontWeight':'bold','color':'#d7191c','padding':'1rem'},
-                                                  children="Confirmed Cases"),
-                                           html.H3(style={'textAlign':'center','fontSize':'6rem',
-                                                          'fontWeight':'bold','color':'#d7191c'},
-                                                  children='{}'.format(confirmedCases))]),
-                             html.Div(style={'width':'24.5%','backgroundColor':'#272e3e','display':'inline-block','marginRight':'10px'},
-                                 children=[html.P(style={'textAlign':'center','fontSize':'3rem',
-                                                         'fontWeight':'bold','color':'#1a9641','padding':'1rem'},
-                                                  children="Recovered Cases"),
-                                           html.H3(style={'textAlign':'center','fontSize':'6rem',
-                                                          'fontWeight':'bold','color':'#1a9641'},
-                                                   children='{}'.format(recoveredCases))]),
-                             html.Div(style={'width':'24.6%','backgroundColor':'#272e3e','display':'inline-block','marginTop':'10px','marginRight':'6px'},
-                                  children=[html.P(style={'textAlign':'center','fontSize':'3rem',
-                                                          'fontWeight':'bold','color':'#fdae61','padding':'1rem'},
-                                                  children="Death Cases"),
-                                            html.H3(style={'textAlign':'center','fontSize':'6rem',
-                                                           'fontWeight':'bold','color':'#fdae61'},
-                                                children='{}'.format(deathsCases))]),
-                             html.Div(style={'width':'33%','display':'inline-block','marginTop':'10px','marginRight':'10px'},
-                                  children=[dcc.Graph(figure=fig_confirmed)]),
-                             html.Div(style={'width':'33%','display':'inline-block','marginTop':'10px','marginRight':'10px'},
-                                  children=[dcc.Graph(figure=fig_recovered)]),
-                             html.Div(style={'width':'32.9%','display':'inline-block','marginTop':'10px'},
-                                  children=[dcc.Graph(figure=fig_deaths)]),
-                             html.Div(style={'width':'100%','display':'inline-block','marginTop':'0.25%','marginBottom':'1.5%'},
-                                 children=[dcc.Graph(figure=fig2)]),
-                             html.P(style={'textAlign':'center','margin':'auto'},
-                                 children=["Data source from ", 
-                                            html.A('JHU CSSE', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
-                                            RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
-                                            " | 🙏 Pray for China, Pray for the World 🙏 |",
-                                            " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"
-                                           ]),
-
-                         ])
-                 ]),
+                     html.P(style={'textAlign':'center','margin':'auto'},
+                            children=["Data source from ", 
+                                      html.A('JHU CSSE,', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
+                                      RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
+                                      html.A(' Dingxiangyuan', href='https://ncov.dxy.cn/ncovh5/view/pneumonia?sce\
+                                      ne=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0'),
+                                      " | 🙏 Pray for China, Pray for the World 🙏 |",
+                                      " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"])
+                 ]
+        )
 ])
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
