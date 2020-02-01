@@ -1,10 +1,10 @@
 pandas
+xlrd
 numpy
 datetime
-math
 plotly
 dash
-dash_bootstrap_component
+dash_bootstrap_components
 dash_core_components
 dash_html_components
 gunicorn
