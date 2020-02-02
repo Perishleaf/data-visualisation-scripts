@@ -177,7 +177,7 @@ fig_confirmed.update_layout(
 
 # Line plot for recovered cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 20))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 50))
 
 # Create empty figure canvas
 fig_recovered = go.Figure()
@@ -244,7 +244,7 @@ fig_recovered.update_layout(
 
 # Line plot for deaths cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_deaths['Mainland China'].max()+100, 20))
+tickList = list(np.arange(0, df_deaths['Mainland China'].max()+100, 50))
 
 # Create empty figure canvas
 fig_deaths = go.Figure()
