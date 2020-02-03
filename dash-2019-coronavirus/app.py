@@ -65,6 +65,10 @@ for key, df in dfs.items():
 df_confirmed = pd.DataFrame({'Date':DateList,
                              'Mainland China':ChinaList,
                              'Other locations':OtherList})
+# Select the latest data from a given date
+df_confirmed['date_day']=[d.date() for d in df_confirmed['Date']]
+df_confirmed=df_confirmed.groupby(by=df_confirmed['date_day'], sort=False).transform(max).drop_duplicates(['Mainland China'])
+
 
 # Construct recovered cases dataframe for line plot
 DateList = []
@@ -82,6 +86,9 @@ for key, df in dfs.items():
 df_recovered = pd.DataFrame({'Date':DateList,
                              'Mainland China':ChinaList,
                              'Other locations':OtherList}) 
+# Select the latest data from a given date
+df_recovered['date_day']=[d.date() for d in df_recovered['Date']]
+df_recovered=df_recovered.groupby(by=df_recovered['date_day'], sort=False).transform(max).drop_duplicates(['Mainland China'])
 
 # Construct death case dataframe for line plot
 DateList = []
@@ -99,6 +106,9 @@ for key, df in dfs.items():
 df_deaths = pd.DataFrame({'Date':DateList,
                           'Mainland China':ChinaList,
                           'Other locations':OtherList})
+# Select the latest data from a given date
+df_deaths['date_day']=[d.date() for d in df_deaths['Date']]
+df_deaths=df_deaths.groupby(by=df_deaths['date_day'], sort=False).transform(max).drop_duplicates(['Mainland China'])
 
 # Save numbers into variables to use in the app
 # Change to Sydney time
@@ -110,7 +120,7 @@ daysOutbreak=(df_confirmed['Date'][0] + timedelta(hours=16) - datetime.strptime(
 #############################################################################################
 # Line plot for confirmed cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 1000))
+tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 2000))
 
 # Create empty figure canvas
 fig_confirmed = go.Figure()
@@ -120,7 +130,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date']+timedelta(hours=16), y
                          name='Mainland China',
                          line=dict(color='#921113', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_confirmed['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y AEDT') for d in df_confirmed['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Mainland China confirmed<br>'+
                                        '%{y} cases<br>'+
@@ -130,7 +140,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date']+timedelta(hours=16), y
                          name='Other Region',
                          line=dict(color='#eb5254', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_confirmed['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y AEDT') for d in df_confirmed['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Other region confirmed<br>'+
                                        '%{y} cases<br>'+
@@ -177,7 +187,7 @@ fig_confirmed.update_layout(
 
 # Line plot for recovered cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 50))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 100))
 
 # Create empty figure canvas
 fig_recovered = go.Figure()
@@ -187,7 +197,7 @@ fig_recovered.add_trace(go.Scatter(x=df_recovered['Date']+timedelta(hours=16), y
                          name='Mainland China',
                          line=dict(color='#168038', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_recovered['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y AEDT') for d in df_recovered['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Mainland China recovered<br>'+
                                        '%{y} cases<br>'+
@@ -197,7 +207,7 @@ fig_recovered.add_trace(go.Scatter(x=df_recovered['Date']+timedelta(hours=16), y
                          name='Other Region',
                          line=dict(color='#25d75d', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_recovered['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y AEDT') for d in df_recovered['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Other region recovered<br>'+
                                        '%{y} cases<br>'+
@@ -254,7 +264,7 @@ fig_deaths.add_trace(go.Scatter(x=df_deaths['Date']+timedelta(hours=16), y=df_de
                          name='Mainland China',
                          line=dict(color='#626262', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_deaths['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y AEDT') for d in df_deaths['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Mainland China death<br>'+
                                        '%{y} cases<br>'+
@@ -264,7 +274,7 @@ fig_deaths.add_trace(go.Scatter(x=df_deaths['Date']+timedelta(hours=16), y=df_de
                          name='Other Region',
                          line=dict(color='#a7a7a7', width=2),
                          marker=dict(size=8),
-                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y %H:%M AEDT') for d in df_deaths['Date']],
+                         text=[datetime.strftime(d+timedelta(hours=16), '%b %d %Y AEDT') for d in df_deaths['Date']],
                          hovertemplate='<b>%{text}</b><br></br>'+
                                        'Other region death<br>'+
                                        '%{y} cases<br>'+
