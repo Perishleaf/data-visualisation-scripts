@@ -728,7 +728,7 @@ hr {
 }
 
 @media (max-width: 1250px) {
-    /*For mobile and smaller screens*/
+    /*For smaller screens*/
     #header h4 {
         text-align: center;
     }
@@ -739,6 +739,16 @@ hr {
 
     #number-plate h3 {
         font-size: 3rem;
+    }
+
+    #dcc-plot h5 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #dcc-map h5 {
+        font-size: 2rem;
+        font-weight: bold;
     }
 
     #graph-container {
@@ -769,6 +779,16 @@ hr {
         font-size: 6rem;
     }
 
+    #dcc-plot h5 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    #dcc-map h5 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
     #graph-container {
         flex: 4 40%;
         margin: 0;
@@ -784,8 +804,31 @@ hr {
 }
 
 @media (max-width: 550px) {
+    /*For mobile screens*/
     #graph-container {
         padding: 2.5rem;
+    }
+
+    #header h4 {
+        font-size: 3rem;
+    }
+
+    #number-plate p {
+        font-size: 0.7rem;
+    }
+
+    #number-plate h3 {
+        font-size: 1.5rem;
+    }
+
+    #dcc-plot h5 {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    #dcc-map h5 {
+        font-size: 1rem;
+        font-weight: bold;
     }
 
     #selected-data .xtick text{

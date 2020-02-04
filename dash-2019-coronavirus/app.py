@@ -69,7 +69,7 @@ df_confirmed = pd.DataFrame({'Date':DateList,
                              'Other locations':OtherList})
 # Select the latest data from a given date
 df_confirmed['date_day']=[d.date() for d in df_confirmed['Date']]
-df_confirmed=df_confirmed.groupby(by=df_confirmed['date_day'], sort=False).transform(max).drop_duplicates(['Mainland China'])
+df_confirmed=df_confirmed.groupby(by=df_confirmed['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
 
 
 # Construct recovered cases dataframe for line plot
@@ -90,7 +90,7 @@ df_recovered = pd.DataFrame({'Date':DateList,
                              'Other locations':OtherList}) 
 # Select the latest data from a given date
 df_recovered['date_day']=[d.date() for d in df_recovered['Date']]
-df_recovered=df_recovered.groupby(by=df_recovered['date_day'], sort=False).transform(max).drop_duplicates(['Mainland China'])
+df_recovered=df_recovered.groupby(by=df_recovered['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
 
 # Construct death case dataframe for line plot
 DateList = []
@@ -110,7 +110,7 @@ df_deaths = pd.DataFrame({'Date':DateList,
                           'Other locations':OtherList})
 # Select the latest data from a given date
 df_deaths['date_day']=[d.date() for d in df_deaths['Date']]
-df_deaths=df_deaths.groupby(by=df_deaths['date_day'], sort=False).transform(max).drop_duplicates(['Mainland China'])
+df_deaths=df_deaths.groupby(by=df_deaths['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
 
 # Save numbers into variables to use in the app
 latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d %Y %H:%M AEDT')
@@ -127,37 +127,39 @@ tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 2000))
 fig_confirmed = go.Figure()
 # Add trace to the figure
 fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainland China'],
-                         mode='lines+markers',
-                         name='Mainland China',
-                         line=dict(color='#921113', width=3),
-                         marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
-                         hovertemplate='<b>%{text}</b><br></br>'+
-                                       'Mainland China confirmed<br>'+
-                                       '%{y} cases<br>'+
-                                       '<extra></extra>'))
+                                   mode='lines+markers',
+                                   name='Mainland China',
+                                   line=dict(color='#921113', width=3),
+                                   marker=dict(size=8, color='#f4f4f2',
+                                               line=dict(width=1,color='#921113')),
+                                   text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
+                                   hovertext=['Mainland China confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Mainland China']],
+                                   hovertemplate='<b>%{text}</b><br></br>'+
+                                                 '%{hovertext}'+
+                                                 '<extra></extra>'))
 fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Other locations'],
-                         mode='lines+markers',
-                         name='Other Region',
-                         line=dict(color='#eb5254', width=3),
-                         marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
-                         hovertemplate='<b>%{text}</b><br></br>'+
-                                       'Other region confirmed<br>'+
-                                       '%{y} cases<br>'+
-                                       '<extra></extra>'))
+                                   mode='lines+markers',
+                                   name='Other Region',
+                                   line=dict(color='#eb5254', width=3),
+                                   marker=dict(size=8, color='#f4f4f2',
+                                               line=dict(width=1,color='#eb5254')),
+                                   text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
+                                   hovertext=['Other locations confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Other locations']],
+                                   hovertemplate='<b>%{text}</b><br></br>'+
+                                                 '%{hovertext}'+
+                                                 '<extra></extra>'))
 # Customise layout
 fig_confirmed.update_layout(
-    title=dict(
-        text="<b>Confirmed Cases Timeline<b>",
-        y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#292929", family="Playfair Display")
-    ),
+#    title=dict(
+#    text="<b>Confirmed Cases Timeline<b>",
+#    y=0.96, x=0.5, xanchor='center', yanchor='top',
+#    font=dict(size=20, color="#292929", family="Playfair Display")
+#   ),
     margin=go.layout.Margin(
-        l=5,
+        l=10,
         r=10,
         b=10,
-        t=50,
+        t=5,
         pad=0
     ),
     yaxis=dict(
@@ -171,7 +173,7 @@ fig_confirmed.update_layout(
         # Set tick label accordingly
         ticktext=["{:.0f}k".format(i/1000) for i in tickList]
     ),
-    yaxis_title="Total Confirmed Case Number",
+#    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
         showline=True, linecolor='#272e3e',
         gridcolor='#cbd2d3',
@@ -181,11 +183,11 @@ fig_confirmed.update_layout(
     xaxis_tickformat='%b %d',
     hovermode = 'x',
     legend_orientation="h",
+#    legend=dict(x=.35, y=-.05),
     plot_bgcolor='#f4f4f2',
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
 )
-
 
 # Line plot for recovered cases
 # Set up tick scale based on confirmed case number
@@ -195,37 +197,39 @@ tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 100))
 fig_recovered = go.Figure()
 # Add trace to the figure
 fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Mainland China'],
-                         mode='lines+markers',
-                         name='Mainland China',
-                         line=dict(color='#168038', width=3),
-                         marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
-                         hovertemplate='<b>%{text}</b><br></br>'+
-                                       'Mainland China recovered<br>'+
-                                       '%{y} cases<br>'+
-                                       '<extra></extra>'))
+                                   mode='lines+markers',
+                                   name='Mainland China',
+                                   line=dict(color='#168038', width=3),
+                                   marker=dict(size=8, color='#f4f4f2',
+                                               line=dict(width=1,color='#168038')),
+                                   text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
+                                   hovertext=['Mainland China recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Mainland China']],
+                                   hovertemplate='<b>%{text}</b><br></br>'+
+                                                 '%{hovertext}'+
+                                                 '<extra></extra>'))
 fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Other locations'],
-                         mode='lines+markers',
-                         name='Other Region',
-                         line=dict(color='#25d75d', width=3),
-                         marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
-                         hovertemplate='<b>%{text}</b><br></br>'+
-                                       'Other region recovered<br>'+
-                                       '%{y} cases<br>'+
-                                       '<extra></extra>'))
+                                   mode='lines+markers',
+                                   name='Other Region',
+                                   line=dict(color='#25d75d', width=3),
+                                   marker=dict(size=8, color='#f4f4f2',
+                                               line=dict(width=1,color='#25d75d')),
+                                   text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
+                                   hovertext=['Other locations recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Other locations']],
+                                   hovertemplate='<b>%{text}</b><br></br>'+
+                                                 '%{hovertext}'+
+                                                 '<extra></extra>'))
 # Customise layout
 fig_recovered.update_layout(
-    title=dict(
-        text="<b>Recovered Cases Timeline<b>",
-        y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#292929", family="Playfair Display")
-    ),
+    #title=dict(
+    #    text="<b>Recovered Cases Timeline<b>",
+    #    y=0.96, x=0.5, xanchor='center', yanchor='top',
+    #    font=dict(size=20, color="#292929", family="Playfair Display")
+    #),
     margin=go.layout.Margin(
-        l=5,
+        l=10,
         r=10,
         b=10,
-        t=50,
+        t=5,
         pad=0
     ),
     yaxis=dict(
@@ -239,7 +243,7 @@ fig_recovered.update_layout(
         # Set tick label accordingly
         ticktext=['{:.0f}'.format(i) for i in tickList]
     ),
-    yaxis_title="Total Recovered Case Number",
+#    yaxis_title="Total Recovered Case Number",
     xaxis=dict(
         showline=True, linecolor='#272e3e',
         gridcolor='#cbd2d3',
@@ -249,6 +253,7 @@ fig_recovered.update_layout(
     xaxis_tickformat='%b %d',
     hovermode = 'x',
     legend_orientation="h",
+#    legend=dict(x=.35, y=-.05),
     plot_bgcolor='#f4f4f2',
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
@@ -256,43 +261,45 @@ fig_recovered.update_layout(
 
 # Line plot for deaths cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_deaths['Mainland China'].max()+100, 50))
+tickList = list(np.arange(0, df_deaths['Mainland China'].max()+100, 100))
 
 # Create empty figure canvas
 fig_deaths = go.Figure()
 # Add trace to the figure
 fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China'],
-                         mode='lines+markers',
-                         name='Mainland China',
-                         line=dict(color='#626262', width=3),
-                         marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
-                         hovertemplate='<b>%{text}</b><br></br>'+
-                                       'Mainland China death<br>'+
-                                       '%{y} cases<br>'+
-                                       '<extra></extra>'))
+                                mode='lines+markers',
+                                name='Mainland China',
+                                line=dict(color='#626262', width=3),
+                                marker=dict(size=8, color='#f4f4f2',
+                                            line=dict(width=1,color='#626262')),
+                                text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
+                                hovertext=['Mainland China death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Mainland China']],
+                                hovertemplate='<b>%{text}</b><br></br>'+
+                                              '%{hovertext}'+
+                                              '<extra></extra>'))
 fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations'],
-                         mode='lines+markers',
-                         name='Other Region',
-                         line=dict(color='#a7a7a7', width=3),
-                         marker=dict(size=8),
-                         text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
-                         hovertemplate='<b>%{text}</b><br></br>'+
-                                       'Other region death<br>'+
-                                       '%{y} cases<br>'+
-                                       '<extra></extra>'))
+                                mode='lines+markers',
+                                name='Other Region',
+                                line=dict(color='#a7a7a7', width=3),
+                                marker=dict(size=8, color='#f4f4f2',
+                                            line=dict(width=1,color='#a7a7a7')),
+                                text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
+                                hovertext=['Other locations death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Other locations']],
+                                hovertemplate='<b>%{text}</b><br></br>'+
+                                              '%{hovertext}'+
+                                              '<extra></extra>'))
 # Customise layout
 fig_deaths.update_layout(
-    title=dict(
-        text="<b>Death Cases Timeline<b>",
-        y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#292929", family="Playfair Display")
-    ),
+#    title=dict(
+#        text="<b>Death Cases Timeline<b>",
+#        y=0.96, x=0.5, xanchor='center', yanchor='top',
+#        font=dict(size=20, color="#292929", family="Playfair Display")
+#    ),
     margin=go.layout.Margin(
-        l=5,
+        l=10,
         r=10,
         b=10,
-        t=50,
+        t=5,
         pad=0
     ),
     yaxis=dict(
@@ -306,7 +313,7 @@ fig_deaths.update_layout(
         # Set tick label accordingly
         ticktext=['{:.0f}'.format(i) for i in tickList]
     ),
-    yaxis_title="Total Death Case Number",
+#    yaxis_title="Total Death Case Number",
     xaxis=dict(
         showline=True, linecolor='#272e3e',
         gridcolor='#cbd2d3',
@@ -316,17 +323,18 @@ fig_deaths.update_layout(
     xaxis_tickformat='%b %d',
     hovermode = 'x',
     legend_orientation="h",
+#    legend=dict(x=.35, y=-.05),
     plot_bgcolor='#f4f4f2',
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
 )
-
 
 #############################
 #### Plot map
 #############################
 mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
 
+# Generate a list for hover text display
 textList=[]
 for area, region in zip(dfs[keyList[0]]['Province/State'], dfs[keyList[0]]['Country/Region']):
     
@@ -361,18 +369,18 @@ fig2 = go.Figure(go.Scattermapbox(
         )
 
 fig2.update_layout(
-    title=dict(
-        text="<b>Latest Coronavirus Outbreak Map<b>",
-        y=0.96, x=0.5, xanchor='center', yanchor='top',
-        font=dict(size=20, color="#292929", family="Playfair Display")
-    ),
+#    title=dict(
+#        text="<b>Latest Coronavirus Outbreak Map<b>",
+#        y=0.96, x=0.5, xanchor='center', yanchor='top',
+#        font=dict(size=20, color="#292929", family="Playfair Display")
+#    ),
     plot_bgcolor='#151920',
     paper_bgcolor='#cbd2d3',
     margin=go.layout.Margin(
         l=10,
         r=10,
         b=10,
-        t=50,
+        t=0,
         pad=40
     ),
     hovermode='closest',
@@ -423,49 +431,85 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
             style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
                  children=[
                      html.Div(
-                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block','marginRight':'.8%'},
-                              children=[html.P(style={'textAlign':'center',
-                                                      'fontWeight':'bold','color':'#ffffbf','padding':'1rem'},
-                                               children="Days Since Outbreak"),
-                                        html.H3(style={'textAlign':'center',
+                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block',
+                                'marginRight':'.8%','verticalAlign':'top'},
+                              children=[
+                                  html.H3(style={'textAlign':'center',
                                                        'fontWeight':'bold','color':'#ffffbf'},
-                                               children='{}'.format(daysOutbreak))]),
+                                               children='{}'.format(daysOutbreak)),
+                                  html.P(style={'textAlign':'center',
+                                                      'fontWeight':'bold','color':'#ffffbf','padding':'.1rem'},
+                                               children="Days Since Outbreak")                                        
+                                       ]),
                      html.Div(
-                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block','marginRight':'.8%'},
-                              children=[html.P(style={'textAlign':'center',
-                                                      'fontWeight':'bold','color':'#d7191c','padding':'1rem'},
-                                               children="Confirmed Cases"),
-                                        html.H3(style={'textAlign':'center',
+                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block',
+                                'marginRight':'.8%','verticalAlign':'top'},
+                              children=[
+                                  html.H3(style={'textAlign':'center',
                                                        'fontWeight':'bold','color':'#d7191c'},
-                                                children='{}'.format(confirmedCases))]),
+                                                children='{:,d}'.format(confirmedCases)),
+                                  html.P(style={'textAlign':'center',
+                                                      'fontWeight':'bold','color':'#d7191c','padding':'.1rem'},
+                                               children="Confirmed Cases")                                        
+                                       ]),
                      html.Div(
-                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block','marginRight':'.8%'},
-                              children=[html.P(style={'textAlign':'center',
-                                                      'fontWeight':'bold','color':'#1a9622','padding':'1rem'},
-                                               children="Recovered Cases"),
-                                        html.H3(style={'textAlign':'center',
+                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block',
+                                'marginRight':'.8%','verticalAlign':'top'},
+                              children=[
+                                  html.H3(style={'textAlign':'center',
                                                        'fontWeight':'bold','color':'#1a9622'},
-                                               children='{}'.format(recoveredCases))]),
+                                               children='{:,d}'.format(recoveredCases)),
+                                  html.P(style={'textAlign':'center',
+                                                      'fontWeight':'bold','color':'#1a9622','padding':'.1rem'},
+                                               children="Recovered Cases")                                        
+                                       ]),
                      html.Div(
-                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block','marginTop':'.5%'},
-                              children=[html.P(style={'textAlign':'center',
-                                                      'fontWeight':'bold','color':'#6c6c6c','padding':'1rem'},
-                                               children="Death Cases"),
-                                        html.H3(style={'textAlign':'center',
+                         style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block',
+                                'verticalAlign':'top'},
+                              children=[
+                                  html.H3(style={'textAlign':'center',
                                                        'fontWeight':'bold','color':'#6c6c6c'},
-                                                children='{}'.format(deathsCases))])]),
-        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.35%','marginTop':'.5%'},
+                                                children='{:,d}'.format(deathsCases)),
+                                  html.P(style={'textAlign':'center',
+                                                      'fontWeight':'bold','color':'#6c6c6c','padding':'.1rem'},
+                                               children="Death Cases")                                        
+                                       ])
+                          ]),
+        html.Div(
+            id='dcc-plot',
+            style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.35%','marginTop':'.5%'},
                  children=[
-                     html.Div(style={'width':'32.79%','display':'inline-block','marginRight':'.8%'},
-                              children=[dcc.Graph(figure=fig_confirmed)]),
-                     html.Div(style={'width':'32.79%','display':'inline-block','marginRight':'.8%'},
-                              children=[dcc.Graph(figure=fig_recovered)]),
-                     html.Div(style={'width':'32.79%','display':'inline-block'},
-                              children=[dcc.Graph(figure=fig_deaths)])]),
-        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
+                     html.Div(
+                         style={'width':'32.79%','display':'inline-block','marginRight':'.8%','verticalAlign':'top'},
+                              children=[
+                                  html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
+                                                 'color':'#292929','padding':'1rem','marginBottom':'0'},
+                                               children='Confirmed Case Timeline'),
+                                  dcc.Graph(figure=fig_confirmed)]),
+                     html.Div(
+                         style={'width':'32.79%','display':'inline-block','marginRight':'.8%','verticalAlign':'top'},
+                              children=[
+                                  html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
+                                                 'color':'#292929','padding':'1rem','marginBottom':'0'},
+                                               children='Recovered Case Timeline'),
+                                  dcc.Graph(figure=fig_recovered)]),
+                     html.Div(
+                         style={'width':'32.79%','display':'inline-block','verticalAlign':'top'},
+                              children=[
+                                  html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
+                                                 'color':'#292929','padding':'1rem','marginBottom':'0'},
+                                               children='Death Case Timeline'),
+                                  dcc.Graph(figure=fig_deaths)])]),
+        html.Div(
+            id='dcc-map',
+            style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
                  children=[
-                     html.Div(style={'width':'100%','display':'inline-block'},
-                              children=[dcc.Graph(figure=fig2)]),]),
+                     html.Div(style={'width':'100%','display':'inline-block','verticalAlign':'top'},
+                              children=[
+                                  html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
+                                                 'color':'#292929','padding':'1rem','marginBottom':'0'},
+                                               children='Latest Coronavirus Outbreak Map'),
+                                  dcc.Graph(figure=fig2)]),]),
         html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%'},
                  children=[
                      html.P(style={'textAlign':'center','margin':'auto'},
@@ -476,8 +520,8 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                       ne=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0'),
                                       " | 🙏 Pray for China, Pray for the World 🙏 |",
                                       " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"])])
-        ])
 
+            ])
 
 
 if __name__ == "__main__":
