@@ -733,12 +733,19 @@ hr {
         text-align: center;
     }
 
+    #number-plate h3 {
+        font-family: Impact;
+        font-size: 6rem;
+    }
+
     #number-plate p {
+        font-family: Arial;
         font-size: 1.5rem;
     }
 
-    #number-plate h3 {
-        font-size: 3rem;
+    #number-plate h5{
+        font-family: Arial;
+        font-size: 2rem;
     }
 
     #dcc-plot h5 {
@@ -771,12 +778,19 @@ hr {
         font-size: 1.5rem;
     }
 
-    #number-plate p {
-        font-size: 3rem;
+    #number-plate h3 {
+        font-family: Impact;
+        font-size: 6rem;
     }
 
-    #number-plate h3 {
-        font-size: 6rem;
+    #number-plate p {
+        font-family: Arial;
+        font-size: 2rem;
+    }
+
+    #number-plate h5{
+        font-family: Arial;
+        font-size: 2.5rem;
     }
 
     #dcc-plot h5 {
@@ -803,7 +817,7 @@ hr {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
     /*For mobile screens*/
     #graph-container {
         padding: 2.5rem;
@@ -813,12 +827,21 @@ hr {
         font-size: 3rem;
     }
 
+    #header p {
+        font-size: 1rem;
+    }
+
     #number-plate p {
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
     #number-plate h3 {
-        font-size: 1.5rem;
+        font-size: 4rem;
+    }
+
+    #number-plate h5{
+        font-family: Arial;
+        font-size: 1rem;
     }
 
     #dcc-plot h5 {
