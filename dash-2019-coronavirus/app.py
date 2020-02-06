@@ -139,6 +139,8 @@ dfGPS = dfGPS[['Country/Region','lat','lon']]
 # Merge two dataframes
 dfSum = pd.merge(dfCase, dfGPS, how='inner', on='Country/Region')
 dfSum = dfSum.replace({'Country/Region':'China'}, 'Mainland China')
+# Rearrange columns to correspond to the number plate order
+dfSum = dfSum[['Country/Region','Confirmed','Recovered','Deaths','lat','lon']]
 
 # Save numbers into variables to use in the app
 latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d %Y %H:%M AEDT')
@@ -150,7 +152,7 @@ daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%
 #############################################################################################
 # Line plot for confirmed cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 2000))
+tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 5000))
 
 # Create empty figure canvas
 fig_confirmed = go.Figure()
@@ -220,7 +222,7 @@ fig_confirmed.update_layout(
 
 # Line plot for recovered cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 100))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 250))
 
 # Create empty figure canvas
 fig_recovered = go.Figure()
@@ -399,13 +401,13 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                 'marginRight':'.8%','verticalAlign':'top'},
                               children=[
                                   html.H3(style={'textAlign':'center',
-                                                 'fontWeight':'bold','color':'#ffffbf'},
+                                                 'fontWeight':'bold','color':'#2674f6'},
                                                children=[
                                                    html.P(style={'color':'#cbd2d3','padding':'.5rem'},
                                                               children='x'),
                                                    '{}'.format(daysOutbreak),
                                                ]),
-                                  html.H5(style={'textAlign':'center','color':'#ffffbf','padding':'.1rem'},
+                                  html.H5(style={'textAlign':'center','color':'#2674f6','padding':'.1rem'},
                                                children="Days Since Outbreak")                                        
                                        ]),
                      html.Div(
@@ -536,11 +538,13 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
         html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%'},
                  children=[
                      html.P(style={'textAlign':'center','margin':'auto'},
-                            children=["Data source from ", 
-                                      html.A('JHU CSSE,', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
-                                      RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
-                                      html.A(' Dingxiangyuan', href='https://ncov.dxy.cn/ncovh5/view/pneumonia?sce\
+                            children=["Data source from ",
+                                      html.A('Dingxiangyuan, ', href='https://ncov.dxy.cn/ncovh5/view/pneumonia?sce\
                                       ne=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0'),
+                                      html.A('Tencent News, ', href='https://news.qq.com//zt2020/page/feiyan.htm#charts'),
+                                      'and ', 
+                                      html.A('JHU CSSE', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
+                                      RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
                                       " | 🙏 Pray for China, Pray for the World 🙏 |",
                                       " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️"])])
 
@@ -612,11 +616,11 @@ def update_figures(rows, derived_virtual_selected_rows):
             # The direction you're facing, measured clockwise as an angle from true north on a compass
             bearing=0,
             center=go.layout.mapbox.Center(
-                lat=dff['lat'][0] if len(derived_virtual_selected_rows)==0 else dff['lat'][derived_virtual_selected_rows[0]], 
-                lon=dff['lon'][0] if len(derived_virtual_selected_rows)==0 else dff['lon'][derived_virtual_selected_rows[0]]
+                lat=3.684188 if len(derived_virtual_selected_rows)==0 else dff['lat'][derived_virtual_selected_rows[0]], 
+                lon=148.374024 if len(derived_virtual_selected_rows)==0 else dff['lon'][derived_virtual_selected_rows[0]]
             ),
             pitch=0,
-            zoom=1 if len(derived_virtual_selected_rows)==0 else 4
+            zoom=1.2 if len(derived_virtual_selected_rows)==0 else 4
         )
     )
 
