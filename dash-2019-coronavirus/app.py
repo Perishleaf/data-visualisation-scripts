@@ -371,6 +371,34 @@ app = dash.Dash(__name__,
                 ]
       )
 
+# Section for Google annlytic #
+app.index_string = """<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154901818-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-154901818-2');
+        </script>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>"""
+
 server = app.server
 
 app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
@@ -378,7 +406,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
         html.Div(
             id="header",
             children=[                          
-                html.H4(children="Wuhan Coronavirus (2019-nCoV) Outbreak Monitor"),
+                html.H4(children="Coronavirus (2019-nCoV) Outbreak Global Cases Monitor"),
                 html.P(
                     id="description",
                     children="On Dec 31, 2019, the World Health Organization (WHO) was informed of \
@@ -482,7 +510,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
             id='dcc-map',
             style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
                  children=[
-                     html.Div(style={'width':'69.6%','marginRight':'.8%','display':'inline-block','verticalAlign':'top'},
+                     html.Div(style={'width':'66.41%','marginRight':'.8%','display':'inline-block','verticalAlign':'top'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
@@ -492,7 +520,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                       style={'height':'500px'},
                                   )
                               ]),
-                     html.Div(style={'width':'29.6%','display':'inline-block','verticalAlign':'top'},
+                     html.Div(style={'width':'32.79%','display':'inline-block','verticalAlign':'top'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
@@ -519,7 +547,6 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                         'fontWeight':'bold'},
                                       style_table={
                                           'maxHeight':'500px',
-                                          'overflowY':'scroll',
                                           'overflowX':'scroll',
                                       },
                                       style_cell_conditional=[
