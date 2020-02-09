@@ -159,6 +159,7 @@ fig_confirmed = go.Figure()
 # Add trace to the figure
 fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainland China'],
                                    mode='lines+markers',
+                                   line_shape='spline',
                                    name='Mainland China',
                                    line=dict(color='#921113', width=3),
                                    marker=dict(size=8, color='#f4f4f2',
@@ -170,12 +171,13 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainl
                                                  '<extra></extra>'))
 fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Other locations'],
                                    mode='lines+markers',
+                                   line_shape='spline',
                                    name='Other Region',
                                    line=dict(color='#eb5254', width=3),
                                    marker=dict(size=8, color='#f4f4f2',
                                                line=dict(width=1,color='#eb5254')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
-                                   hovertext=['Other locations confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Other locations']],
+                                   hovertext=['Other region confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Other locations']],
                                    hovertemplate='<b>%{text}</b><br></br>'+
                                                  '%{hovertext}'+
                                                  '<extra></extra>'))
@@ -196,7 +198,7 @@ fig_confirmed.update_layout(
     yaxis=dict(
         showline=True, linecolor='#272e3e',
         zeroline=False,
-        gridcolor='#cbd2d3',
+        gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         tickmode='array',
         # Set tick range based on the maximum number
@@ -207,7 +209,7 @@ fig_confirmed.update_layout(
 #    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
         showline=True, linecolor='#272e3e',
-        gridcolor='#cbd2d3',
+        gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         zeroline=False
     ),
@@ -220,37 +222,39 @@ fig_confirmed.update_layout(
     font=dict(color='#292929')
 )
 
-# Line plot for recovered cases
+# Line plot for combine cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+100, 500))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+200, 500))
 
 # Create empty figure canvas
-fig_recovered = go.Figure()
+fig_combine = go.Figure()
 # Add trace to the figure
-fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Mainland China'],
+fig_combine.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Total'],
                                    mode='lines+markers',
-                                   name='Mainland China',
+                                   line_shape='spline',
+                                   name='Total Recovered Cases',
                                    line=dict(color='#168038', width=3),
                                    marker=dict(size=8, color='#f4f4f2',
                                                line=dict(width=1,color='#168038')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
-                                   hovertext=['Mainland China recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Mainland China']],
+                                   hovertext=['Total recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Total']],
                                    hovertemplate='<b>%{text}</b><br></br>'+
                                                  '%{hovertext}'+
                                                  '<extra></extra>'))
-fig_recovered.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Other locations'],
-                                   mode='lines+markers',
-                                   name='Other Region',
-                                   line=dict(color='#25d75d', width=3),
-                                   marker=dict(size=8, color='#f4f4f2',
-                                               line=dict(width=1,color='#25d75d')),
-                                   text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
-                                   hovertext=['Other locations recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Other locations']],
-                                   hovertemplate='<b>%{text}</b><br></br>'+
-                                                 '%{hovertext}'+
-                                                 '<extra></extra>'))
+fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
+                                mode='lines+markers',
+                                line_shape='spline',
+                                name='Total Death Cases',
+                                line=dict(color='#626262', width=3),
+                                marker=dict(size=8, color='#f4f4f2',
+                                            line=dict(width=1,color='#626262')),
+                                text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
+                                hovertext=['Total death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Total']],
+                                hovertemplate='<b>%{text}</b><br></br>'+
+                                              '%{hovertext}'+
+                                              '<extra></extra>'))
 # Customise layout
-fig_recovered.update_layout(
+fig_combine.update_layout(
     #title=dict(
     #    text="<b>Recovered Cases Timeline<b>",
     #    y=0.96, x=0.5, xanchor='center', yanchor='top',
@@ -266,7 +270,7 @@ fig_recovered.update_layout(
     yaxis=dict(
         showline=True, linecolor='#272e3e',
         zeroline=False,
-        gridcolor='#cbd2d3',
+        gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         tickmode='array',
         # Set tick range based on the maximum number
@@ -277,7 +281,7 @@ fig_recovered.update_layout(
 #    yaxis_title="Total Recovered Case Number",
     xaxis=dict(
         showline=True, linecolor='#272e3e',
-        gridcolor='#cbd2d3',
+        gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         zeroline=False
     ),
@@ -290,42 +294,40 @@ fig_recovered.update_layout(
     font=dict(color='#292929')
 )
 
-# Line plot for deaths cases
+# Line plot for death rate cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_deaths['Mainland China'].max()+100, 200))
+tickList = list(np.arange(0, (df_deaths['Mainland China']/df_confirmed['Mainland China']*100).max(), 0.5))
 
 # Create empty figure canvas
-fig_deaths = go.Figure()
+fig_rate = go.Figure()
 # Add trace to the figure
-fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China'],
+fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China']/df_confirmed['Mainland China']*100,
                                 mode='lines+markers',
+                                line_shape='spline',
                                 name='Mainland China',
                                 line=dict(color='#626262', width=3),
                                 marker=dict(size=8, color='#f4f4f2',
                                             line=dict(width=1,color='#626262')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
-                                hovertext=['Mainland China death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Mainland China']],
+                                hovertext=['Mainland China death rate<br>{:.2f}%'.format(i) for i in df_deaths['Mainland China']/df_confirmed['Mainland China']*100],
                                 hovertemplate='<b>%{text}</b><br></br>'+
                                               '%{hovertext}'+
                                               '<extra></extra>'))
-fig_deaths.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations'],
+fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations']/df_confirmed['Other locations']*100,
                                 mode='lines+markers',
-                                name='Other Region',
+                                line_shape='spline',
+                                name='Other region',
                                 line=dict(color='#a7a7a7', width=3),
                                 marker=dict(size=8, color='#f4f4f2',
                                             line=dict(width=1,color='#a7a7a7')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
-                                hovertext=['Other locations death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Other locations']],
+                                hovertext=['Other region death rate<br>{:.2f}%'.format(i) for i in df_deaths['Other locations']/df_confirmed['Other locations']*100],
                                 hovertemplate='<b>%{text}</b><br></br>'+
                                               '%{hovertext}'+
                                               '<extra></extra>'))
+
 # Customise layout
-fig_deaths.update_layout(
-#    title=dict(
-#        text="<b>Death Cases Timeline<b>",
-#        y=0.96, x=0.5, xanchor='center', yanchor='top',
-#        font=dict(size=20, color="#292929", family="Playfair Display")
-#    ),
+fig_rate.update_layout(
     margin=go.layout.Margin(
         l=10,
         r=10,
@@ -336,18 +338,18 @@ fig_deaths.update_layout(
     yaxis=dict(
         showline=True, linecolor='#272e3e',
         zeroline=False,
-        gridcolor='#cbd2d3',
+        gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         tickmode='array',
         # Set tick range based on the maximum number
         tickvals=tickList,
         # Set tick label accordingly
-        ticktext=['{:.0f}'.format(i) for i in tickList]
+        ticktext=['{:.1f}'.format(i) for i in tickList]
     ),
 #    yaxis_title="Total Death Case Number",
     xaxis=dict(
         showline=True, linecolor='#272e3e',
-        gridcolor='#cbd2d3',
+        gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         zeroline=False
     ),
@@ -497,15 +499,15 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
-                                               children='Recovered Case Timeline'),
-                                  dcc.Graph(style={'height':'300px'},figure=fig_recovered)]),
+                                               children='Recovered/Death Case Timeline'),
+                                  dcc.Graph(style={'height':'300px'},figure=fig_combine)]),
                      html.Div(
                          style={'width':'32.79%','display':'inline-block','verticalAlign':'top'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
-                                               children='Death Case Timeline'),
-                                  dcc.Graph(style={'height':'300px'},figure=fig_deaths)])]),
+                                               children='Death Rate Timeline'),
+                                  dcc.Graph(style={'height':'300px'},figure=fig_rate)])]),
         html.Div(
             id='dcc-map',
             style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
@@ -539,16 +541,17 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                           'font_family':'Arial',
                                           'font_size':'1.5rem',
                                           'padding':'.1rem',
-                                          'backgroundColor':'#f4f4f2'
+                                          'backgroundColor':'#f4f4f2',
                                       },
                                       fixed_rows={'headers':True,'data':0},
+                                      style_table={
+                                          'maxHeight':'500px',
+                                          #'overflowY':'scroll',
+                                          'overflowX':'scroll',
+                                      },
                                       style_header={
                                         'backgroundColor':'#f4f4f2',
                                         'fontWeight':'bold'},
-                                      style_table={
-                                          'maxHeight':'500px',
-                                          'overflowX':'scroll',
-                                      },
                                       style_cell_conditional=[
                                           {'if': {'column_id':'Country/Regions'},'width':'40%'},
                                           {'if': {'column_id':'Confirmed'},'width':'20%'},
@@ -583,10 +586,15 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
 )
 
 def update_figures(derived_virtual_selected_rows):
-    # When the table is first rendered, `derived_virtual_selected_rows` will
-    # be `None`. This is due to an idiosyncracy in Dash (unsupplied properties 
-    # are always None and Dash calls the dependent callbacks when the component is first rendered).
-    
+    # When the table is first rendered, `derived_virtual_data` and
+    # `derived_virtual_selected_rows` will be `None`. This is due to an
+    # idiosyncracy in Dash (unsupplied properties are always None and Dash
+    # calls the dependent callbacks when the component is first rendered).
+    # So, if `rows` is `None`, then the component was just rendered
+    # and its value will be the same as the component's dataframe.
+    # Instead of setting `None` in here, you could also set
+    # `derived_virtual_data=df.to_rows('dict')` when you initialize
+    # the component.
     if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
         
