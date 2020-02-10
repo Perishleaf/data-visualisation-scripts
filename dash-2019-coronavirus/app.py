@@ -316,7 +316,7 @@ fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China']
 fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations']/df_confirmed['Other locations']*100,
                                 mode='lines+markers',
                                 line_shape='spline',
-                                name='Other region',
+                                name='Other Region',
                                 line=dict(color='#a7a7a7', width=3),
                                 marker=dict(size=8, color='#f4f4f2',
                                             line=dict(width=1,color='#a7a7a7')),
