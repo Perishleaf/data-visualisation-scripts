@@ -13,6 +13,8 @@ Data sourced from
 
 Dashboard is deployed on Heroku and can be accessed from https://dash-coronavirus-2020.herokuapp.com/
 
+Additional details about how to build this dashboard can be accessed from [here](https://towardsdatascience.com/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash-90364f016764) and [here](https://towardsdatascience.com/elevate-your-dashboard-interactivity-in-dash-b655a0f45067)
+
 ![App screenshot](./app_screenshot.gif)
 
 
