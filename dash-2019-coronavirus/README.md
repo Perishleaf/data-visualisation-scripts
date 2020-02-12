@@ -1,6 +1,8 @@
 # 2019 Novel Coronavirus (COVID-19) Dashboard Monitor and Data Repository
 
-This public repository achives data and source code for building a dashboard using Dash and Plotly.
+This public repository achives data and source code for building a dashboard for tracking spread of COVID-19 globally.
+
+Tools used include python, dash, and plotly.
 
 Data is sourced from 
 * [丁香园](https://ncov.dxy.cn/ncovh5/view/pneumonia?scene=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0)
@@ -9,6 +11,6 @@ Data is sourced from
 
 Dashboard is deployed on Heroku and can be accessed from https://dash-coronavirus-2020.herokuapp.com/
 
-![App screenshot](./app_screenshot.png)
+![App screenshot](./app_screenshot.gif)
 
 
