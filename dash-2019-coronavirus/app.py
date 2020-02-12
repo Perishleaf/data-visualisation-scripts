@@ -74,8 +74,38 @@ df_confirmed['date_day']=[d.date() for d in df_confirmed['Date']]
 df_confirmed=df_confirmed.groupby(by=df_confirmed['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
 df_confirmed['Total']=df_confirmed['Mainland China']+df_confirmed['Other locations']
 df_confirmed=df_confirmed.reset_index(drop=True)
-plusConfirmedNum = df_confirmed['Total'][0] - df_confirmed['Total'][1]
-plusPercentNum1 = (df_confirmed['Total'][0] - df_confirmed['Total'][1])/df_confirmed['Total'][1]
+
+# Construct new dataframe for 24-hour window case difference
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Confirmed'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Confirmed':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Confirmed', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Confirmed'][0])
+    OtherList.append(dfTpm['Confirmed'][1:].sum())
+    
+df_confirmed_diff = pd.DataFrame({'Date':DateList,
+                                  'Mainland China':ChinaList,
+                                  'Other locations':OtherList}) 
+df_confirmed_diff['Total']=df_confirmed_diff['Mainland China']+df_confirmed_diff['Other locations']
+
+# Calculate differenec in a 24-hour window
+for index, _ in df_confirmed_diff.iterrows():
+    # Calculate the time differnece in hour
+    diff=(df_confirmed_diff['Date'][0] - df_confirmed_diff['Date'][index]).total_seconds()/3600
+    # find out the latest time after 24-hour
+    if diff >= 24:
+        break
+if diff > 24:
+    plusConfirmedNum = df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index]
+    plusPercentNum1 = (df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index])/df_confirmed_diff['Total'][index]
+else:
+    plusConfirmedNum = df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index+1]
+    plusPercentNum1 = (df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index+1])/df_confirmed_diff['Total'][index]
 
 # Construct recovered cases dataframe for line plot
 DateList = []
@@ -98,8 +128,38 @@ df_recovered['date_day']=[d.date() for d in df_recovered['Date']]
 df_recovered=df_recovered.groupby(by=df_recovered['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
 df_recovered['Total']=df_recovered['Mainland China']+df_recovered['Other locations']
 df_recovered=df_recovered.reset_index(drop=True)
-plusRecoveredNum = df_recovered['Total'][0] - df_recovered['Total'][1]
-plusPercentNum2 = (df_recovered['Total'][0] - df_recovered['Total'][1])/df_recovered['Total'][1]
+
+# Construct new dataframe for 24-hour window case difference
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Recovered'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Recovered':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Recovered', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Recovered'][0])
+    OtherList.append(dfTpm['Recovered'][1:].sum())
+    
+df_recovered_diff = pd.DataFrame({'Date':DateList,
+                                  'Mainland China':ChinaList,
+                                  'Other locations':OtherList}) 
+df_recovered_diff['Total']=df_recovered_diff['Mainland China']+df_confirmed_diff['Other locations']
+
+# Calculate differenec in a 24-hour window
+for index, _ in df_recovered_diff.iterrows():
+    # Calculate the time differnece in hour
+    diff=(df_recovered_diff['Date'][0] - df_recovered_diff['Date'][index]).total_seconds()/3600
+    # find out the latest time after 24-hour
+    if diff >= 24:
+        break
+if diff > 24:
+    plusRecoveredNum = df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index]
+    plusPercentNum2 = (df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index])/df_recovered_diff['Total'][index]
+else:
+    plusRecoveredNum = df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index+1]
+    plusPercentNum2 = (df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index+1])/df_recovered_diff['Total'][index]
 
 # Construct death case dataframe for line plot
 DateList = []
@@ -122,8 +182,38 @@ df_deaths['date_day']=[d.date() for d in df_deaths['Date']]
 df_deaths=df_deaths.groupby(by='date_day', sort=False).transform(max).drop_duplicates(['Date'])
 df_deaths['Total']=df_deaths['Mainland China']+df_deaths['Other locations']
 df_deaths=df_deaths.reset_index(drop=True)
-plusDeathNum = df_deaths['Total'][0] - df_deaths['Total'][1]
-plusPercentNum3 = (df_deaths['Total'][0] - df_deaths['Total'][1])/df_deaths['Total'][1]
+
+# Construct new dataframe for 24-hour window case difference
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Deaths'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Deaths':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Deaths', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Deaths'][0])
+    OtherList.append(dfTpm['Deaths'][1:].sum())
+    
+df_deaths_diff = pd.DataFrame({'Date':DateList,
+                                  'Mainland China':ChinaList,
+                                  'Other locations':OtherList}) 
+df_deaths_diff['Total']=df_deaths_diff['Mainland China']+df_deaths_diff['Other locations']
+
+# Calculate differenec in a 24-hour window
+for index, _ in df_deaths_diff.iterrows():
+    # Calculate the time differnece in hour
+    diff=(df_deaths_diff['Date'][0] - df_deaths_diff['Date'][index]).total_seconds()/3600
+    # find out the latest time after 24-hour
+    if diff >= 24:
+        break
+if diff > 24:
+    plusDeathNum = df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index]
+    plusPercentNum3 = (df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index])/df_deaths_diff['Total'][index]
+else:
+    plusDeathNum = df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index+1]
+    plusPercentNum3 = (df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index+1])/df_deaths_diff['Total'][index]
 
 # Create data table to show in app
 # Generate sum values for Country/Region level
@@ -408,13 +498,13 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
         html.Div(
             id="header",
             children=[                          
-                html.H4(children="Coronavirus (2019-nCoV) Outbreak Global Cases Monitor"),
+                html.H4(children="Coronavirus (COVID-19) Outbreak Global Cases Monitor"),
                 html.P(
                     id="description",
                     children="On Dec 31, 2019, the World Health Organization (WHO) was informed of \
                     an outbreak of “pneumonia of unknown cause” detected in Wuhan City, Hubei Province, China – the \
                     seventh-largest city in China with 11 million residents. As of {}, there are over {:,d} cases \
-                    of 2019-nCoV confirmed globally.\
+                    of COVID-19 confirmed globally.\
                     This dash board is developed to visualise and track the recent reported \
                     cases on a daily timescale.".format(latestDate, confirmedCases),
                 ),
@@ -434,7 +524,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                  'fontWeight':'bold','color':'#2674f6'},
                                                children=[
                                                    html.P(style={'color':'#cbd2d3','padding':'.5rem'},
-                                                              children='xxxx xxxx xxxxxxxxx xxxxx'),
+                                                              children='xxxx xxxx xxxx xxx xxxxx'),
                                                    '{}'.format(daysOutbreak),
                                                ]),
                                   html.H5(style={'textAlign':'center','color':'#2674f6','padding':'.1rem'},
@@ -448,7 +538,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                  'fontWeight':'bold','color':'#d7191c'},
                                                 children=[
                                                     html.P(style={'padding':'.5rem'},
-                                                              children='+ {:,d} from yesterday ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)),
+                                                              children='+ {:,d} from past 24h ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)),
                                                     '{:,d}'.format(confirmedCases)
                                                          ]),
                                   html.H5(style={'textAlign':'center','color':'#d7191c','padding':'.1rem'},
@@ -462,7 +552,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                        'fontWeight':'bold','color':'#1a9622'},
                                                children=[
                                                    html.P(style={'padding':'.5rem'},
-                                                              children='+ {:,d} from yesterday ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)),
+                                                              children='+ {:,d} from past 24h ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)),
                                                    '{:,d}'.format(recoveredCases),
                                                ]),
                                   html.H5(style={'textAlign':'center','color':'#1a9622','padding':'.1rem'},
@@ -476,7 +566,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                        'fontWeight':'bold','color':'#6c6c6c'},
                                                 children=[
                                                     html.P(style={'padding':'.5rem'},
-                                                              children='+ {:,d} from yesterday ({:.1%})'.format(plusDeathNum, plusPercentNum3)),
+                                                              children='+ {:,d} from past 24h ({:.1%})'.format(plusDeathNum, plusPercentNum3)),
                                                     '{:,d}'.format(deathsCases)
                                                 ]),
                                   html.H5(style={'textAlign':'center','color':'#6c6c6c','padding':'.1rem'},
