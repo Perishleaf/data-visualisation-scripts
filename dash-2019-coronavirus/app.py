@@ -242,7 +242,7 @@ daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%
 #############################################################################################
 # Line plot for confirmed cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 5000))
+tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 10000))
 
 # Create empty figure canvas
 fig_confirmed = go.Figure()
@@ -252,7 +252,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainl
                                    line_shape='spline',
                                    name='Mainland China',
                                    line=dict(color='#921113', width=3),
-                                   marker=dict(size=8, color='#f4f4f2',
+                                   marker=dict(size=6, color='#f4f4f2',
                                                line=dict(width=1,color='#921113')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
                                    hovertext=['Mainland China confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Mainland China']],
@@ -264,7 +264,7 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Other
                                    line_shape='spline',
                                    name='Other Region',
                                    line=dict(color='#eb5254', width=3),
-                                   marker=dict(size=8, color='#f4f4f2',
+                                   marker=dict(size=6, color='#f4f4f2',
                                                line=dict(width=1,color='#eb5254')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
                                    hovertext=['Other region confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Other locations']],
@@ -314,7 +314,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+200, 500))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+200, 1000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -324,7 +324,7 @@ fig_combine.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Total']
                                    line_shape='spline',
                                    name='Total Recovered Cases',
                                    line=dict(color='#168038', width=3),
-                                   marker=dict(size=8, color='#f4f4f2',
+                                   marker=dict(size=6, color='#f4f4f2',
                                                line=dict(width=1,color='#168038')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
                                    hovertext=['Total recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Total']],
@@ -336,7 +336,7 @@ fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
                                 line_shape='spline',
                                 name='Total Death Cases',
                                 line=dict(color='#626262', width=3),
-                                marker=dict(size=8, color='#f4f4f2',
+                                marker=dict(size=6, color='#f4f4f2',
                                             line=dict(width=1,color='#626262')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Total death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Total']],
@@ -366,7 +366,7 @@ fig_combine.update_layout(
         # Set tick range based on the maximum number
         tickvals=tickList,
         # Set tick label accordingly
-        ticktext=['{:.0f}'.format(i) for i in tickList]
+        ticktext=["{:.0f}k".format(i/1000) for i in tickList]
     ),
 #    yaxis_title="Total Recovered Case Number",
     xaxis=dict(
@@ -396,7 +396,7 @@ fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China']
                                 line_shape='spline',
                                 name='Mainland China',
                                 line=dict(color='#626262', width=3),
-                                marker=dict(size=8, color='#f4f4f2',
+                                marker=dict(size=6, color='#f4f4f2',
                                             line=dict(width=1,color='#626262')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Mainland China death rate<br>{:.2f}%'.format(i) for i in df_deaths['Mainland China']/df_confirmed['Mainland China']*100],
@@ -408,7 +408,7 @@ fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations'
                                 line_shape='spline',
                                 name='Other Region',
                                 line=dict(color='#a7a7a7', width=3),
-                                marker=dict(size=8, color='#f4f4f2',
+                                marker=dict(size=6, color='#f4f4f2',
                                             line=dict(width=1,color='#a7a7a7')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Other region death rate<br>{:.2f}%'.format(i) for i in df_deaths['Other locations']/df_confirmed['Other locations']*100],
@@ -508,6 +508,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                     This dash board is developed to visualise and track the recent reported \
                     cases on a daily timescale.".format(latestDate, confirmedCases),
                 ),
+                html.P(
+                	id="note",
+                	children='⚠️ Surge in number of comfirmed cases and deaths due to the adoption of a new diagnosis classification.\
+                              In conformity with other provinces, starting Feb 13, 2020, Hubei Province will include the number of clinically \
+                              diagnosed cases into the number of confirmed cases.'
+                ),
                 html.P(style={'fontWeight':'bold'},
                     children="Last updated on {}.".format(latestDate))
             ]        
@@ -524,7 +530,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                  'fontWeight':'bold','color':'#2674f6'},
                                                children=[
                                                    html.P(style={'color':'#cbd2d3','padding':'.5rem'},
-                                                              children='xxxx xxxx xxxx xxx xxxxx'),
+                                                              children='xxxx xx xxx xxxx xxx xxxxx'),
                                                    '{}'.format(daysOutbreak),
                                                ]),
                                   html.H5(style={'textAlign':'center','color':'#2674f6','padding':'.1rem'},
@@ -538,7 +544,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                  'fontWeight':'bold','color':'#d7191c'},
                                                 children=[
                                                     html.P(style={'padding':'.5rem'},
-                                                              children='+ {:,d} from past 24h ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)),
+                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)),
                                                     '{:,d}'.format(confirmedCases)
                                                          ]),
                                   html.H5(style={'textAlign':'center','color':'#d7191c','padding':'.1rem'},
@@ -552,7 +558,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                        'fontWeight':'bold','color':'#1a9622'},
                                                children=[
                                                    html.P(style={'padding':'.5rem'},
-                                                              children='+ {:,d} from past 24h ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)),
+                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)),
                                                    '{:,d}'.format(recoveredCases),
                                                ]),
                                   html.H5(style={'textAlign':'center','color':'#1a9622','padding':'.1rem'},
@@ -566,7 +572,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                        'fontWeight':'bold','color':'#6c6c6c'},
                                                 children=[
                                                     html.P(style={'padding':'.5rem'},
-                                                              children='+ {:,d} from past 24h ({:.1%})'.format(plusDeathNum, plusPercentNum3)),
+                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusDeathNum, plusPercentNum3)),
                                                     '{:,d}'.format(deathsCases)
                                                 ]),
                                   html.H5(style={'textAlign':'center','color':'#6c6c6c','padding':'.1rem'},
@@ -596,7 +602,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
-                                               children='Death Rate Timeline'),
+                                               children='Death Rate (%) Timeline'),
                                   dcc.Graph(style={'height':'300px'},figure=fig_rate)])]),
         html.Div(
             id='dcc-map',

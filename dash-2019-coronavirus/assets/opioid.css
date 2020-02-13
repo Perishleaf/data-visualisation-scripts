@@ -320,6 +320,14 @@ p {
 
 #description {
     font-size: 1.5rem;
+    border-left: #2674f6 solid 1rem;
+    padding-left: 1rem;
+    max-width: 100rem;
+    margin: 2rem 0 3rem 0;
+}
+
+#note {
+    font-size: 1.5rem;
     border-left: #ff1414 solid 1rem;
     padding-left: 1rem;
     max-width: 100rem;
