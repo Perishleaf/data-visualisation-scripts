@@ -508,13 +508,19 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                     This dash board is developed to visualise and track the recent reported \
                     cases on a daily timescale.".format(latestDate, confirmedCases),
                 ),
+ #               html.P(
+ #               	id="note",
+ #               	children=['⚠️ Source from ', 
+ #               	html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
+ #               	': in its February 14 official report, deducted \
+ #                 108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
+ #               	Data have been corrected for these changes.']
+ #               ),
                 html.P(
-                	id="note",
-                	children=['⚠️ Source from', 
-                	html.A(' The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
-                	': in its February 14 official report, deducted \
-                  108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
-                	Data have been corrected for these changes.']
+                 id="note",
+                 children=['⚠️ Source from ', 
+                 html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
+                 ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
                 ),
                 html.P(style={'fontWeight':'bold'},
                     children="Last updated on {}.".format(latestDate))
@@ -624,7 +630,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
-                                               children='Cases by Country/Regions'),
+                                               children='Cases by Country/Region'),
                                   dash_table.DataTable(
                                       id='datatable-interact-location',
                                       # Don't show coordinates
