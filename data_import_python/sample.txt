@@ -1,4 +1,18 @@
-Province/State Country/Region Last Update Confirmed Deaths Recovered City Date_last_updated_AEDT lat lon
-Hubei China 02/15/2020 23:00 56249 1596 5623  2020-02-16 15:00:00 31.1517252 112.8783222
-Guangdong China 02/15/2020 23:00 1316 2 442  2020-02-16 15:00:00 23.1357694 113.1982688
-Henan China 02/15/2020 23:00 1231 13 415  2020-02-16 15:00:00 34.0000001 113.9999999
+Country/Region
+Mainland China
+Japan
+Singapore
+Hong Kong
+Japan
+Thailand
+South Korea
+Malaysia
+Taiwan
+Germany
+Vietnam
+France
+Macau
+UK
+United Arab Emirates
+US
+Australia
