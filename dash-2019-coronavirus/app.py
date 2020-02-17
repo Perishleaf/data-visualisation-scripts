@@ -516,12 +516,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                 108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
  #               	Data have been corrected for these changes.']
  #               ),
-                html.P(
-                 id="note",
-                 children=['⚠️ Source from ', 
-                 html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
-                 ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
-                ),
+ #               html.P(
+ #                id="note",
+ #                children=['⚠️ Source from ', 
+ #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
+ #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
+ #               ),
                 html.P(style={'fontWeight':'bold'},
                     children="Last updated on {}.".format(latestDate))
             ]        
