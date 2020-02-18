@@ -314,7 +314,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+200, 1000))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 2000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
