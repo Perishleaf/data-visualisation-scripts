@@ -100,12 +100,8 @@ for index, _ in df_confirmed_diff.iterrows():
     # find out the latest time after 24-hour
     if diff >= 24:
         break
-if diff > 24:
-    plusConfirmedNum = df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index]
-    plusPercentNum1 = (df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index])/df_confirmed_diff['Total'][index]
-else:
-    plusConfirmedNum = df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index+1]
-    plusPercentNum1 = (df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index+1])/df_confirmed_diff['Total'][index]
+plusConfirmedNum = df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index]
+plusPercentNum1 = (df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index])/df_confirmed_diff['Total'][index]
 
 # Construct recovered cases dataframe for line plot
 DateList = []
@@ -154,12 +150,8 @@ for index, _ in df_recovered_diff.iterrows():
     # find out the latest time after 24-hour
     if diff >= 24:
         break
-if diff > 24:
-    plusRecoveredNum = df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index]
-    plusPercentNum2 = (df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index])/df_recovered_diff['Total'][index]
-else:
-    plusRecoveredNum = df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index+1]
-    plusPercentNum2 = (df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index+1])/df_recovered_diff['Total'][index]
+plusRecoveredNum = df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index]
+plusPercentNum2 = (df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index])/df_recovered_diff['Total'][index]
 
 # Construct death case dataframe for line plot
 DateList = []
@@ -208,12 +200,8 @@ for index, _ in df_deaths_diff.iterrows():
     # find out the latest time after 24-hour
     if diff >= 24:
         break
-if diff > 24:
-    plusDeathNum = df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index]
-    plusPercentNum3 = (df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index])/df_deaths_diff['Total'][index]
-else:
-    plusDeathNum = df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index+1]
-    plusPercentNum3 = (df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index+1])/df_deaths_diff['Total'][index]
+plusDeathNum = df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index]
+plusPercentNum3 = (df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index])/df_deaths_diff['Total'][index]
 
 # Create data table to show in app
 # Generate sum values for Country/Region level
