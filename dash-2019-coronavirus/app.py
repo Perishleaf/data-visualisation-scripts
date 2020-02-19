@@ -510,6 +510,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
  #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
  #               ),
+ 				html.P(
+                 id="note",
+                 children=['⚠️ Source from ', 
+                 html.A('REUTERS', href='https://www.reuters.com/article/us-china-health-iran/two-iranians-die-after-testing-positive-for-coronavirus-official-idUSKBN20D1HN'),
+                 ': Two Iranians die after testing positive for coronavirus.']
+                ), 					
                 html.P(style={'fontWeight':'bold'},
                     children="Last updated on {}.".format(latestDate))
             ]        

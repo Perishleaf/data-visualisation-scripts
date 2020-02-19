@@ -1,6 +1,8 @@
 # 2019 Novel Coronavirus (COVID-19) Dashboard Monitor and Data Repository
 [![license](https://img.shields.io/github/license/Perishleaf/data-visualisation-scripts)](https://github.com/Perishleaf/data-visualisation-scripts/blob/master/LICENSE)
 
+English | [中文](https://github.com/Perishleaf/data-visualisation-scripts/blob/master/dash-2019-coronavirus/markdown_chinese/HowTo.md)
+
 This public repository achives data and source code for building a dashboard for tracking spread of COVID-19 globally.
 
 Tools used include python, dash, and plotly.
