@@ -221,7 +221,7 @@ dfSum = dfSum.replace({'Country/Region':'China'}, 'Mainland China')
 dfSum = dfSum[['Country/Region','Confirmed','Recovered','Deaths','lat','lon']]
 
 # Save numbers into variables to use in the app
-latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d %Y %H:%M AEDT')
+latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
 secondLastDate=datetime.strftime(df_confirmed['Date'][1], '%b %d')
 daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
