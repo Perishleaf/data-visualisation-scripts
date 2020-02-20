@@ -495,34 +495,44 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                     of COVID-19 confirmed globally.\
                     This dash board is developed to visualise and track the recent reported \
                     cases on a daily timescale.".format(latestDate, confirmedCases),
-                ),
- #               html.P(
- #               	id="note",
- #               	children=['⚠️ Source from ', 
- #               	html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
- #               	': in its February 14 official report, deducted \
- #                 108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
- #               	Data have been corrected for these changes.']
- #               ),
- #               html.P(
- #                id="note",
- #                children=['⚠️ Source from ', 
- #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
- #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
- #               ),
-         				html.P(
-                    id="note",
-                    children=['⚠️ Source from ',
+                )         
+            ]        
+        ),
+        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%','height':'50px', 'overflow':'auto'},
+          id='note',
+          children=[
+#              html.P(
+#                  children=['⚠️ Source from ', 
+#                  html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
+#                  ': in its February 14 official report, deducted \
+#                  108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
+#                  Data have been corrected for these changes.']
+#               ),
+#              html.P(
+#                  children=['⚠️ Source from ', 
+#                  html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
+#                  ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
+#               ),
+              html.P(
+                  children=['⚠️ Source from ',
+                            html.A('The Guardian', href='https://www.theguardian.com/world/live/2020/feb/20/coronavirus-live-updates-diamond-princess-cruise-ship-japan-deaths-latest-news-china-infections'),
+                            ': two Japanese passengers from Diamond Princess have died, a man and a woman in their 80s, both with an underlying illness.']              
+               ),
+              html.P(
+                  children=['⚠️ Source from ',
                             html.A('Bloomberg', href='https://www.bloomberg.com/news/articles/2020-02-19/china-eyes-hna-takeover-hubei-says-108-new-deaths-virus-update?srnd=premium-asia'),
                             ': South Korea reports first death as outbreak spreads.']
-                ), 					
+               ),
+              html.Div(
                 html.P(style={'fontWeight':'bold'},
-                       children="Last updated on {}.".format(latestDate))
-                    ]        
-                ),
+                    children="Last updated on {}.".format(latestDate)),
+               ),
+              
+          ]
+        ),
         html.Div(
             id="number-plate",
-            style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%'},
+            style={'marginLeft':'1.5%','marginRight':'1.5%','marginBottom':'.5%','marginTop':'.5%'},
                  children=[
                      html.Div(
                          style={'width':'24.4%','backgroundColor':'#cbd2d3','display':'inline-block',

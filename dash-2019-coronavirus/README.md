@@ -12,6 +12,7 @@ Data sourced from
 * [Tencent News](https://news.qq.com//zt2020/page/feiyan.htm#charts)
 * [Australia Government Department of Health](https://www.health.gov.au/news/coronavirus-update-at-a-glance)
 * [worldometers](https://www.worldometers.info/coronavirus/)
+* [National Health Commission of the People's Republic of China](http://www.nhc.gov.cn/)
 * [JCU-CSSE](https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#)
 
 Dashboard is deployed on Heroku and can be accessed from https://dash-coronavirus-2020.herokuapp.com/
