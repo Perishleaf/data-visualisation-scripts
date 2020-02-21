@@ -496,7 +496,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                     This dash board is developed to visualise and track the recent reported \
                     cases on a daily timescale.".format(latestDate, confirmedCases),
                 ),
- #               html.P(
+ #              html.P(
  #               	id="note",
  #               	children=['⚠️ Source from ', 
  #               	html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
@@ -504,17 +504,17 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                 108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
  #               	Data have been corrected for these changes.']
  #               ),
- #               html.P(
+ #              html.P(
  #                id="note",
  #                children=['⚠️ Source from ', 
  #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
  #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
  #               ),
-         				html.P(
-                    id="note",
-                    children=['⚠️ Source from ',
-                            html.A('Bloomberg', href='https://www.bloomberg.com/news/articles/2020-02-19/china-eyes-hna-takeover-hubei-says-108-new-deaths-virus-update?srnd=premium-asia'),
-                            ': South Korea reports first death as outbreak spreads.']
+         		html.P(
+                  id="note",
+                  children=['⚠️ Source from ',
+                            html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
+                            ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
                 ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
@@ -736,7 +736,7 @@ def update_figures(derived_virtual_selected_rows):
         paper_bgcolor='#cbd2d3',
         margin=go.layout.Margin(l=10,r=10,b=10,t=0,pad=40),
         hovermode='closest',
-        transition = {'duration':1000},
+        transition = {'duration':50},
         mapbox=go.layout.Mapbox(
             accesstoken=mapbox_access_token,
             style="light",
