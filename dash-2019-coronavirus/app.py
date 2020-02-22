@@ -510,11 +510,17 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
  #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
  #               ),
-         		html.P(
+ #        		    html.P(
+ #                 id="note",
+ #                 children=['⚠️ Source from ',
+ #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
+ #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
+ #               ),
+                html.P(
                   id="note",
                   children=['⚠️ Source from ',
-                            html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
-                            ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
+                            html.A('Bloomberg', href='https://www.bloomberg.com/news/articles/2020-02-21/new-cases-outside-china-spark-concern-on-pandemic-virus-update?srnd=premium-asia'),
+                            ':  Iran reports the 5th death and 10 new cases of new coronavirus.']
                 ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
