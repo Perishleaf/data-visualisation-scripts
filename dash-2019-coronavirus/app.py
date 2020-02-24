@@ -302,7 +302,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 2000))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 3000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -519,8 +519,8 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                 html.P(
                   id="note",
                   children=['⚠️ Source from ',
-                            html.A('Bloomberg', href='https://www.bloomberg.com/news/articles/2020-02-21/new-cases-outside-china-spark-concern-on-pandemic-virus-update?srnd=premium-asia'),
-                            ':  Iran reports the 5th death and 10 new cases of new coronavirus.']
+                            html.A('Bloomberg', href='https://www.bloomberg.com/news/articles/2020-02-24/kuwait-bahrain-report-cases-of-coronavirus-linked-to-iran'),
+                            ':  Kuwait and Bahrain report cases of Coronavirus linked to Iran.']
                 ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
@@ -743,6 +743,17 @@ def update_figures(derived_virtual_selected_rows):
         margin=go.layout.Margin(l=10,r=10,b=10,t=0,pad=40),
         hovermode='closest',
         transition = {'duration':50},
+        annotations=[
+        dict(
+            x=.5,
+            y=-.01,
+            align='center',
+            showarrow=False,
+            text="Points are placed based on data geolocation levels.<br><b>City level<b> - Australia; <b>Province/State level<b> - China, United States, and Canada; <b>Country level<b> - other countries.",
+            xref="paper",
+            yref="paper",
+            font=dict(size=10, color='#292929'),
+        )],
         mapbox=go.layout.Mapbox(
             accesstoken=mapbox_access_token,
             style="light",
