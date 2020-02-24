@@ -519,8 +519,8 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                 html.P(
                   id="note",
                   children=['⚠️ Source from ',
-                            html.A('Bloomberg', href='https://www.bloomberg.com/news/articles/2020-02-24/kuwait-bahrain-report-cases-of-coronavirus-linked-to-iran'),
-                            ':  Kuwait and Bahrain report cases of Coronavirus linked to Iran.']
+                            html.A('la Repubblica', href='https://www.repubblica.it/cronaca/2020/02/22/news/coronavirus_in_italia_aggiornamento_ora_per_ora-249241616/?ref=RHPPTP-BL-I249215369-C12-P1-S1.12-T1'),
+                            ':  58 new cases in Italy, adds total to 215 cases.']
                 ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
@@ -724,10 +724,10 @@ def update_figures(derived_virtual_selected_rows):
         mode='markers',
         marker=go.scattermapbox.Marker(
             color='#ca261d',
-            size=dfs[keyList[0]]['Confirmed'].tolist(), 
-            sizemin=4,
+            size=[math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']], 
+            sizemin=1,
             sizemode='area',
-            sizeref=2.*max(dfs[keyList[0]]['Confirmed'].tolist())/(150.**2),
+            sizeref=2.*max([math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']])/(100.**2),
         ),
         text=textList,
         hovertext=['Comfirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
@@ -760,11 +760,11 @@ def update_figures(derived_virtual_selected_rows):
             # The direction you're facing, measured clockwise as an angle from true north on a compass
             bearing=0,
             center=go.layout.mapbox.Center(
-                lat=3.684188 if len(derived_virtual_selected_rows)==0 else dff['lat'][derived_virtual_selected_rows[0]], 
-                lon=148.374024 if len(derived_virtual_selected_rows)==0 else dff['lon'][derived_virtual_selected_rows[0]]
+                lat=14.056159 if len(derived_virtual_selected_rows)==0 else dff['lat'][derived_virtual_selected_rows[0]], 
+                lon=152.033186 if len(derived_virtual_selected_rows)==0 else dff['lon'][derived_virtual_selected_rows[0]]
             ),
             pitch=0,
-            zoom=1.2 if len(derived_virtual_selected_rows)==0 else 4
+            zoom=1.01 if len(derived_virtual_selected_rows)==0 else 4
         )
     )
 
