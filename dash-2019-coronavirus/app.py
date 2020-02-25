@@ -217,8 +217,9 @@ dfGPS = dfGPS[['Country/Region','lat','lon']]
 # Merge two dataframes
 dfSum = pd.merge(dfCase, dfGPS, how='inner', on='Country/Region')
 dfSum = dfSum.replace({'Country/Region':'China'}, 'Mainland China')
+dfSum['Remaining'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
 # Rearrange columns to correspond to the number plate order
-dfSum = dfSum[['Country/Region','Confirmed','Recovered','Deaths','lat','lon']]
+dfSum = dfSum[['Country/Region','Remaining','Confirmed','Recovered','Deaths','lat','lon']]
 
 # Save numbers into variables to use in the app
 latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
@@ -516,12 +517,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
-                html.P(
-                  id="note",
-                  children=['⚠️ Source from ',
-                            html.A('la Repubblica', href='https://www.repubblica.it/cronaca/2020/02/22/news/coronavirus_in_italia_aggiornamento_ora_per_ora-249241616/?ref=RHPPTP-BL-I249215369-C12-P1-S1.12-T1'),
-                            ':  58 new cases in Italy, adds total to 215 cases.']
-                ), 					
+ #               html.P(
+ #                 id="note",
+ #                 children=['⚠️ Source from ',
+ #                           html.A('CDC', href='https://www.cdc.gov/coronavirus/2019-ncov/cases-in-us.html'),
+ #                           ':  18 new cases in the United States from the Diamond Princess cruise ship.']
+ #               ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
                     ]        
@@ -634,7 +635,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                   dash_table.DataTable(
                                       id='datatable-interact-location',
                                       # Don't show coordinates
-                                      columns=[{"name": i, "id": i} for i in dfSum.columns[0:4]],
+                                      columns=[{"name": i, "id": i} for i in dfSum.columns[0:5]],
                                       # But still store coordinates in the table for interactivity
                                       data=dfSum.to_dict("rows"),
                                       row_selectable="single",
@@ -643,7 +644,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                       style_as_list_view=True,
                                       style_cell={
                                           'font_family':'Arial',
-                                          'font_size':'1.5rem',
+                                          'font_size':'1.2rem',
                                           'padding':'.1rem',
                                           'backgroundColor':'#f4f4f2',
                                       },
@@ -657,10 +658,11 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                         'backgroundColor':'#f4f4f2',
                                         'fontWeight':'bold'},
                                       style_cell_conditional=[
-                                          {'if': {'column_id':'Country/Regions'},'width':'40%'},
-                                          {'if': {'column_id':'Confirmed'},'width':'20%'},
-                                          {'if': {'column_id':'Recovered'},'width':'20%'},
-                                          {'if': {'column_id':'Deaths'},'width':'20%'},
+                                          {'if': {'column_id':'Country/Regions'},'width':'28%'},
+                                          {'if': {'column_id':'Remaining'},'width':'18%'},
+                                          {'if': {'column_id':'Confirmed'},'width':'18%'},
+                                          {'if': {'column_id':'Recovered'},'width':'18%'},
+                                          {'if': {'column_id':'Deaths'},'width':'18%'},
                                           {'if': {'column_id':'Confirmed'},'color':'#d7191c'},
                                           {'if': {'column_id':'Recovered'},'color':'#1a9622'},
                                           {'if': {'column_id':'Deaths'},'color':'#6c6c6c'},
