@@ -517,12 +517,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
- #               html.P(
- #                 id="note",
- #                 children=['⚠️ Source from ',
- #                           html.A('CDC', href='https://www.cdc.gov/coronavirus/2019-ncov/cases-in-us.html'),
- #                           ':  18 new cases in the United States from the Diamond Princess cruise ship.']
- #               ), 					
+                html.P(
+                  id="note",
+                  children=['⚠️ Source from ',
+                            html.A('New York Times', href='https://www.nytimes.com/2020/02/25/world/asia/coronavirus-news.html'),
+                            ':  A Brazilian man tested positive for coronavirus on Tuesday after recently traveling to Italy, marking South America\'s first case of the virus.']
+                ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
                     ]        
@@ -732,7 +732,7 @@ def update_figures(derived_virtual_selected_rows):
             sizeref=2.*max([math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Comfirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
+        hovertext=['Confirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
                                                                                                     dfs[keyList[0]]['Recovered'],
                                                                                                     dfs[keyList[0]]['Deaths'])],
         hovertemplate = "<b>%{text}</b><br><br>" +
