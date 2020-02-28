@@ -450,19 +450,21 @@ app = dash.Dash(__name__,
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
                     {"name": "description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
-                    {"property":"og:image", "content": "https://github.com/Perishleaf/data-visualisation-scripts/blob/master/dash-2019-coronavirus/app_screenshot.gif"},
-                    {"property":"og:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
                     {"property": "og:title", "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
+                    {"property": "og:type", "content": "website"},
+                    {"property":"og:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu676943c67ca727a9a973d1fe66ac6f83_849996_1200x0_resize_lanczos_2.png"},
+                    {"property": "og:url", "content": "https://dash-coronavirus-2020.herokuapp.com/"},
+                    {"property":"og:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title", "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
                     {"name": "twitter:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
-                    {"name": "twitter:image", "content": "https://miro.medium.com/max/7756/1*xdQoVwWfIVvLmig724Culw.png"},
+                    {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu676943c67ca727a9a973d1fe66ac6f83_849996_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport", "content": "width=device-width, height=device-height, initial-scale=1.0"}
                 ]
       )
 
-app.title = 'Coronavirus COVID-19 Monitor'
+app.title = 'Coronavirus COVID-19 Global Monitor'
 
 # Section for Google annlytic #
 app.index_string = """<!DOCTYPE html>
@@ -529,12 +531,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
- #               html.P(
- #                 id="note",
- #                 children=['⚠️ Source from ',
- #                           html.A('CNN', href='https://edition.cnn.com/asia/live-news/coronavirus-outbreak-02-27-20-intl-hnk/index.html'),
- #                           ': Denmark and Estonia both have confirmed their first coronavirus cases.']
- #               ), 					
+                html.P(
+                  id="note",
+                  children=['⚠️ Source from ',
+                            html.A('RNZ', href='https://www.rnz.co.nz/news/national/410625/new-zealand-confirms-case-of-covid-19-coronavirus'),
+                            ': New Zealand Prime Minister Jacinda Ardern confirmed this afternoon that a suspected case of Covid-19 coronavirus has tested positive.']
+                ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
                     ]        
