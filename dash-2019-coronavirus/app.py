@@ -303,7 +303,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 3000))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 4000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -448,9 +448,21 @@ fig_rate.update_layout(
 app = dash.Dash(__name__, 
                 assets_folder='./assets/',
                 meta_tags=[
+                    {"name": "author", "content": "Jun Ye"},
+                    {"name": "description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
+                    {"property":"og:image", "content": "https://github.com/Perishleaf/data-visualisation-scripts/blob/master/dash-2019-coronavirus/app_screenshot.gif"},
+                    {"property":"og:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
+                    {"property": "og:title", "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
+                    {"name": "twitter:card", "content": "summary_large_image"},
+                    {"name": "twitter:site", "content": "@perishleaf"},
+                    {"name": "twitter:title", "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
+                    {"name": "twitter:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
+                    {"name": "twitter:image", "content": "https://miro.medium.com/max/7756/1*xdQoVwWfIVvLmig724Culw.png"},
                     {"name": "viewport", "content": "width=device-width, height=device-height, initial-scale=1.0"}
                 ]
       )
+
+app.title = 'Coronavirus COVID-19 Monitor'
 
 # Section for Google annlytic #
 app.index_string = """<!DOCTYPE html>
@@ -517,12 +529,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
-                html.P(
-                  id="note",
-                  children=['⚠️ Source from ',
-                            html.A('New York Times', href='https://www.nytimes.com/2020/02/25/world/asia/coronavirus-news.html'),
-                            ':  A Brazilian man tested positive for coronavirus on Tuesday after recently traveling to Italy, marking South America\'s first case of the virus.']
-                ), 					
+ #               html.P(
+ #                 id="note",
+ #                 children=['⚠️ Source from ',
+ #                           html.A('CNN', href='https://edition.cnn.com/asia/live-news/coronavirus-outbreak-02-27-20-intl-hnk/index.html'),
+ #                           ': Denmark and Estonia both have confirmed their first coronavirus cases.']
+ #               ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
                     ]        
@@ -720,12 +732,19 @@ def update_figures(derived_virtual_selected_rows):
         else:
             textList.append(region)
 
+    # Generate a list for color gradient display
+    colorList=[]
+
+    for comfirmed, recovered, deaths in zip(dfs[keyList[0]]['Confirmed'],dfs[keyList[0]]['Recovered'],dfs[keyList[0]]['Deaths']):
+        remaining = recovered / (comfirmed - deaths)
+        colorList.append(remaining)
+
     fig2 = go.Figure(go.Scattermapbox(
         lat=dfs[keyList[0]]['lat'],
         lon=dfs[keyList[0]]['lon'],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            color='#ca261d',
+            color=['#d7191c' if i < 1 else '#1a9622' for i in colorList],
             size=[math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']], 
             sizemin=1,
             sizemode='area',
