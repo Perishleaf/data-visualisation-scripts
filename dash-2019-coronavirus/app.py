@@ -531,12 +531,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
-                html.P(
-                  id="note",
-                  children=['⚠️ Source from ',
-                            html.A('RNZ', href='https://www.rnz.co.nz/news/national/410625/new-zealand-confirms-case-of-covid-19-coronavirus'),
-                            ': New Zealand Prime Minister Jacinda Ardern confirmed this afternoon that a suspected case of Covid-19 coronavirus has tested positive.']
-                ), 					
+ #               html.P(
+ #                 id="note",
+ #                 children=['⚠️ Source from ',
+ #                           html.A('RNZ', href='https://www.rnz.co.nz/news/national/410625/new-zealand-confirms-case-of-covid-19-coronavirus'),
+ #                           ': New Zealand Prime Minister Jacinda Ardern confirmed this afternoon that a suspected case of Covid-19 coronavirus has tested positive.']
+ #               ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="Last updated on {}.".format(latestDate))
                     ]        
