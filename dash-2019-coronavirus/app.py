@@ -220,6 +220,8 @@ dfSum = dfSum.replace({'Country/Region':'China'}, 'Mainland China')
 dfSum['Remaining'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
 # Rearrange columns to correspond to the number plate order
 dfSum = dfSum[['Country/Region','Remaining','Confirmed','Recovered','Deaths','lat','lon']]
+# Sort value based on Remaining cases and then Confirmed cases
+dfSum = dfSum.sort_values(by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
 
 # Save numbers into variables to use in the app
 latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
@@ -531,14 +533,14 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
- #               html.P(
- #                 id="note",
- #                 children=['⚠️ Source from ',
- #                           html.A('RNZ', href='https://www.rnz.co.nz/news/national/410625/new-zealand-confirms-case-of-covid-19-coronavirus'),
- #                           ': New Zealand Prime Minister Jacinda Ardern confirmed this afternoon that a suspected case of Covid-19 coronavirus has tested positive.']
- #               ), 					
+                html.P(
+                  id="note",
+                  children=['⚠️ Source from ',
+                            html.A('The Sunday Morning Herald', href='https://www.smh.com.au/politics/federal/australian-authorities-review-italy-travel-advice-as-confirmed-cases-rise-20200301-p545qn.html'),
+                            ': A 78-year-old Perth man, who flown out of Diamond Princess cruise ship, has become the first Australian fatality of coronavirus.']
+                ), 					
                 html.P(style={'fontWeight':'bold'},
-                       children="Last updated on {}.".format(latestDate))
+                       children="🔴 Last updated on {}.".format(latestDate))
                     ]        
                 ),
         html.Div(
