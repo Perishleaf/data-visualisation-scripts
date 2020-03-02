@@ -222,6 +222,9 @@ dfSum['Remaining'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
 dfSum = dfSum[['Country/Region','Remaining','Confirmed','Recovered','Deaths','lat','lon']]
 # Sort value based on Remaining cases and then Confirmed cases
 dfSum = dfSum.sort_values(by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
+# Set row ids pass to selected_row_ids
+dfSum['id'] = dfSum['Country/Region']
+dfSum.set_index('id', inplace=True, drop=False)
 
 # Save numbers into variables to use in the app
 latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
@@ -242,8 +245,8 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Mainl
                                    mode='lines+markers',
                                    line_shape='spline',
                                    name='Mainland China',
-                                   line=dict(color='#921113', width=3),
-                                   marker=dict(size=6, color='#f4f4f2',
+                                   line=dict(color='#921113', width=4),
+                                   marker=dict(size=4, color='#f4f4f2',
                                                line=dict(width=1,color='#921113')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
                                    hovertext=['Mainland China confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Mainland China']],
@@ -254,8 +257,8 @@ fig_confirmed.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Other
                                    mode='lines+markers',
                                    line_shape='spline',
                                    name='Other Region',
-                                   line=dict(color='#eb5254', width=3),
-                                   marker=dict(size=6, color='#f4f4f2',
+                                   line=dict(color='#eb5254', width=4),
+                                   marker=dict(size=4, color='#f4f4f2',
                                                line=dict(width=1,color='#eb5254')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_confirmed['Date']],
                                    hovertext=['Other region confirmed<br>{:,d} cases<br>'.format(i) for i in df_confirmed['Other locations']],
@@ -277,8 +280,9 @@ fig_confirmed.update_layout(
         pad=0
     ),
     yaxis=dict(
-        showline=True, linecolor='#272e3e',
+        showline=False, linecolor='#272e3e',
         zeroline=False,
+        #showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         tickmode='array',
@@ -289,7 +293,8 @@ fig_confirmed.update_layout(
     ),
 #    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
-        showline=True, linecolor='#272e3e',
+        showline=False, linecolor='#272e3e',
+        showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         zeroline=False
@@ -305,7 +310,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 4000))
+tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 5000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -314,8 +319,8 @@ fig_combine.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Total']
                                    mode='lines+markers',
                                    line_shape='spline',
                                    name='Total Recovered Cases',
-                                   line=dict(color='#168038', width=3),
-                                   marker=dict(size=6, color='#f4f4f2',
+                                   line=dict(color='#168038', width=4),
+                                   marker=dict(size=4, color='#f4f4f2',
                                                line=dict(width=1,color='#168038')),
                                    text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_recovered['Date']],
                                    hovertext=['Total recovered<br>{:,d} cases<br>'.format(i) for i in df_recovered['Total']],
@@ -326,8 +331,8 @@ fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
                                 mode='lines+markers',
                                 line_shape='spline',
                                 name='Total Death Cases',
-                                line=dict(color='#626262', width=3),
-                                marker=dict(size=6, color='#f4f4f2',
+                                line=dict(color='#626262', width=4),
+                                marker=dict(size=4, color='#f4f4f2',
                                             line=dict(width=1,color='#626262')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Total death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Total']],
@@ -336,11 +341,11 @@ fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
                                               '<extra></extra>'))
 # Customise layout
 fig_combine.update_layout(
-    #title=dict(
-    #    text="<b>Recovered Cases Timeline<b>",
-    #    y=0.96, x=0.5, xanchor='center', yanchor='top',
-    #    font=dict(size=20, color="#292929", family="Playfair Display")
-    #),
+#    title=dict(
+#    text="<b>Confirmed Cases Timeline<b>",
+#    y=0.96, x=0.5, xanchor='center', yanchor='top',
+#    font=dict(size=20, color="#292929", family="Playfair Display")
+#   ),
     margin=go.layout.Margin(
         l=10,
         r=10,
@@ -349,8 +354,9 @@ fig_combine.update_layout(
         pad=0
     ),
     yaxis=dict(
-        showline=True, linecolor='#272e3e',
+        showline=False, linecolor='#272e3e',
         zeroline=False,
+        #showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         tickmode='array',
@@ -359,9 +365,10 @@ fig_combine.update_layout(
         # Set tick label accordingly
         ticktext=["{:.0f}k".format(i/1000) for i in tickList]
     ),
-#    yaxis_title="Total Recovered Case Number",
+#    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
-        showline=True, linecolor='#272e3e',
+        showline=False, linecolor='#272e3e',
+        showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         zeroline=False
@@ -386,8 +393,8 @@ fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Mainland China']
                                 mode='lines+markers',
                                 line_shape='spline',
                                 name='Mainland China',
-                                line=dict(color='#626262', width=3),
-                                marker=dict(size=6, color='#f4f4f2',
+                                line=dict(color='#626262', width=4),
+                                marker=dict(size=4, color='#f4f4f2',
                                             line=dict(width=1,color='#626262')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Mainland China death rate<br>{:.2f}%'.format(i) for i in df_deaths['Mainland China']/df_confirmed['Mainland China']*100],
@@ -398,8 +405,8 @@ fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations'
                                 mode='lines+markers',
                                 line_shape='spline',
                                 name='Other Region',
-                                line=dict(color='#a7a7a7', width=3),
-                                marker=dict(size=6, color='#f4f4f2',
+                                line=dict(color='#a7a7a7', width=4),
+                                marker=dict(size=4, color='#f4f4f2',
                                             line=dict(width=1,color='#a7a7a7')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Other region death rate<br>{:.2f}%'.format(i) for i in df_deaths['Other locations']/df_confirmed['Other locations']*100],
@@ -417,8 +424,9 @@ fig_rate.update_layout(
         pad=0
     ),
     yaxis=dict(
-        showline=True, linecolor='#272e3e',
+        showline=False, linecolor='#272e3e',
         zeroline=False,
+        #showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         tickmode='array',
@@ -427,9 +435,10 @@ fig_rate.update_layout(
         # Set tick label accordingly
         ticktext=['{:.1f}'.format(i) for i in tickList]
     ),
-#    yaxis_title="Total Death Case Number",
+#    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
-        showline=True, linecolor='#272e3e',
+        showline=False, linecolor='#272e3e',
+        showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth = .1,
         zeroline=False
@@ -511,7 +520,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                     seventh-largest city in China with 11 million residents. As of {}, there are over {:,d} cases \
                     of COVID-19 confirmed globally.\
                     This dash board is developed to visualise and track the recent reported \
-                    cases on a daily timescale.".format(latestDate, confirmedCases),
+                    cases on a hourly timescale.".format(latestDate, confirmedCases),
                 ),
  #              html.P(
  #               	id="note",
@@ -533,12 +542,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
  #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
  #               ),
-                html.P(
-                  id="note",
-                  children=['⚠️ Source from ',
-                            html.A('The Sunday Morning Herald', href='https://www.smh.com.au/politics/federal/australian-authorities-review-italy-travel-advice-as-confirmed-cases-rise-20200301-p545qn.html'),
-                            ': A 78-year-old Perth man, who flown out of Diamond Princess cruise ship, has become the first Australian fatality of coronavirus.']
-                ), 					
+ #               html.P(
+ #                 id="note",
+ #                 children=['⚠️ Source from ',
+ #                           html.A('The New York Times', href='https://www.nytimes.com/2020/03/01/world/coronavirus-news.html'),
+ #                           ': New York State Reports First Case.']
+ #                ), 					
                 html.P(style={'fontWeight':'bold'},
                        children="🔴 Last updated on {}.".format(latestDate))
                     ]        
@@ -704,10 +713,11 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
 
 @app.callback(
     Output('datatable-interact-map', 'figure'),
-    [Input('datatable-interact-location', 'derived_virtual_selected_rows')]
+    [Input('datatable-interact-location', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location', 'selected_row_ids')]
 )
 
-def update_figures(derived_virtual_selected_rows):
+def update_figures(row_ids, selected_row_ids):
     # When the table is first rendered, `derived_virtual_data` and
     # `derived_virtual_selected_rows` will be `None`. This is due to an
     # idiosyncracy in Dash (unsupplied properties are always None and Dash
@@ -717,8 +727,9 @@ def update_figures(derived_virtual_selected_rows):
     # Instead of setting `None` in here, you could also set
     # `derived_virtual_data=df.to_rows('dict')` when you initialize
     # the component.
-    if derived_virtual_selected_rows is None:
-        derived_virtual_selected_rows = []
+        
+    if row_ids is None:
+        row_ids = []
         
     dff = dfSum
         
@@ -735,7 +746,7 @@ def update_figures(derived_virtual_selected_rows):
                 textList.append(area+', '+region)
         else:
             textList.append(region)
-
+            
     # Generate a list for color gradient display
     colorList=[]
 
@@ -749,13 +760,13 @@ def update_figures(derived_virtual_selected_rows):
         mode='markers',
         marker=go.scattermapbox.Marker(
             color=['#d7191c' if i < 1 else '#1a9622' for i in colorList],
-            size=[math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']], 
+            size=[i**(1/3) for i in dfs[keyList[0]]['Confirmed']], 
             sizemin=1,
             sizemode='area',
             sizeref=2.*max([math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Confirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
+        hovertext=['Comfirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
                                                                                                     dfs[keyList[0]]['Recovered'],
                                                                                                     dfs[keyList[0]]['Deaths'])],
         hovertemplate = "<b>%{text}</b><br><br>" +
@@ -774,7 +785,7 @@ def update_figures(derived_virtual_selected_rows):
             y=-.01,
             align='center',
             showarrow=False,
-            text="Points are placed based on data geolocation levels.<br><b>City level<b> - Australia; <b>Province/State level<b> - China, United States, and Canada; <b>Country level<b> - other countries.",
+            text="Points are placed based on data geolocation levels.<br><b>Province/State level<b> - China, Australia, United States, and Canada; <b>Country level<b> - other countries.",
             xref="paper",
             yref="paper",
             font=dict(size=10, color='#292929'),
@@ -785,15 +796,16 @@ def update_figures(derived_virtual_selected_rows):
             # The direction you're facing, measured clockwise as an angle from true north on a compass
             bearing=0,
             center=go.layout.mapbox.Center(
-                lat=14.056159 if len(derived_virtual_selected_rows)==0 else dff['lat'][derived_virtual_selected_rows[0]], 
-                lon=152.033186 if len(derived_virtual_selected_rows)==0 else dff['lon'][derived_virtual_selected_rows[0]]
+                lat=14.056159 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lat, 
+                lon=152.033186 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lon
             ),
             pitch=0,
-            zoom=1.01 if len(derived_virtual_selected_rows)==0 else 4
+            zoom=1.01 if len(row_ids)==0 else 4
         )
     )
 
     return fig2
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
