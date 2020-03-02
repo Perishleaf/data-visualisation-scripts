@@ -34,9 +34,6 @@ for key, df in dfs.items():
     dfs[key]=dfs[key].astype({'Confirmed':'int64', 'Deaths':'int64', 'Recovered':'int64'})
     # Change as China for coordinate search
     dfs[key]=dfs[key].replace({'Country/Region':'Mainland China'}, 'China')
-    dfs[key]=dfs[key].replace({'Province/State':'Queensland'}, 'Brisbane')
-    dfs[key]=dfs[key].replace({'Province/State':'New South Wales'}, 'Sydney')
-    dfs[key]=dfs[key].replace({'Province/State':'Victoria'}, 'Melbourne')
     # Add a zero to the date so can be convert by datetime.strptime as 0-padded date
     dfs[key]['Last Update'] = '0' + dfs[key]['Last Update']
     # Convert time as Australian eastern daylight time
