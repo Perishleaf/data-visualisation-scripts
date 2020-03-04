@@ -850,8 +850,17 @@ hr {
         font-size: 4rem;
     }
 
-    #number-plate h5{
+    #number-plate h5 {
         font-family: Arial;
+        font-size: 1rem;
+    }
+
+    #time-stamp p {
+        font-family: Arial;
+        font-size: 1rem;
+    }
+
+    #my-footer p {
         font-size: 1rem;
     }
 

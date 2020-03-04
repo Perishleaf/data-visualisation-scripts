@@ -546,10 +546,8 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                           html.A('The New York Times', href='https://www.nytimes.com/2020/03/01/world/coronavirus-news.html'),
  #                           ': New York State Reports First Case.']
  #                ), 					
-                html.P(
-                  id='time-stamp',
-                  #style={'fontWeight':'bold'},
-                       children="🔴 Last updated on {}. (Sorry, the app server may experince short period of interruption while updating data)".format(latestDate))
+                html.P(style={'fontWeight':'bold'},
+                       children="🔴 Last updated on {}.".format(latestDate))
                     ]        
                 ),
         html.Div(
@@ -696,12 +694,17 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                   )
                               ])
                  ]),
-        html.Div(
-          id='my-footer',
-          style={'marginLeft':'1.5%','marginRight':'1.5%'},
+        html.Div(style={'marginLeft':'1.5%','marginRight':'1.5%'},
                  children=[
                      html.P(style={'textAlign':'center','margin':'auto'},
-                            children=[" 🙏 God Bless the World 🙏 |",
+                            children=["Data source from ",
+                                      html.A('Dingxiangyuan, ', href='https://ncov.dxy.cn/ncovh5/view/pneumonia?sce\
+                                      ne=2&clicktime=1579582238&enterid=1579582238&from=singlemessage&isappinstalled=0'),
+                                      html.A('Tencent News, ', href='https://news.qq.com//zt2020/page/feiyan.htm#charts'),
+                                      'and ', 
+                                      html.A('JHU CSSE', href='https://docs.google.com/spreadsheets/d/1yZv9w9z\
+                                      RKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#'),
+                                      " | 🙏 Pray for China, Pray for the World 🙏 |",
                                       " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️ in Sydney"])])
 
             ])
@@ -792,10 +795,10 @@ def update_figures(row_ids, selected_row_ids):
             bearing=0,
             center=go.layout.mapbox.Center(
                 lat=14.056159 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lat, 
-                lon=22.920039 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lon
+                lon=152.033186 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lon
             ),
             pitch=0,
-            zoom=1.03 if len(row_ids)==0 else 4
+            zoom=1.01 if len(row_ids)==0 else 4
         )
     )
 
