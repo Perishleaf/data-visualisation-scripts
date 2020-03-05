@@ -14,58 +14,11 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
-###################################
-#### Private function
-###################################
-
-def df_for_lineplot_diff(dfs, CaseType):
-    '''This is the function for construct df for line plot'''
-    
-    assert type(CaseType) is str, "CaseType must be one of the following three strings Confirmed/Recovered/Deaths"
-    
-    
-    # Construct confirmed cases dataframe for line plot
-    DateList = []
-    ChinaList =[]
-    OtherList = []
-
-    for key, df in dfs.items():
-        dfTpm = df.groupby(['Country/Region'])[CaseType].agg(np.sum)
-        dfTpm = pd.DataFrame({'Code':dfTpm.index, CaseType:dfTpm.values})
-        dfTpm = dfTpm.sort_values(by=CaseType, ascending=False).reset_index(drop=True)
-        DateList.append(df['Date_last_updated_AEDT'][0])
-        ChinaList.append(dfTpm[CaseType][0])
-        OtherList.append(dfTpm[CaseType][1:].sum())
-
-    df = pd.DataFrame({'Date':DateList,
-                       'Mainland China':ChinaList,
-                       'Other locations':OtherList})
-    df['Total']=df['Mainland China']+df['Other locations']
-
-    # Calculate differenec in a 24-hour window
-    for index, _ in df.iterrows():
-        # Calculate the time differnece in hour
-        diff=(df['Date'][0] - df['Date'][index]).total_seconds()/3600
-        # find out the latest time after 24-hour
-        if diff >= 24:
-            break
-    plusNum = df['Total'][0] - df['Total'][index]
-    plusPercentNum = (df['Total'][0] - df['Total'][index])/df['Total'][index]
-
-    # Select the latest data from a given date
-    df['date_day']=[d.date() for d in df['Date']]
-    df=df.groupby(by=df['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
-    
-    df=df.reset_index(drop=True)
-    
-    return df, plusNum, plusPercentNum
-
 ################################################################################
 #### Data processing
 ################################################################################
-# Import xls file and store each sheet in to a df list
-# xls format is a bit faster than xlsx
-xl_file = pd.ExcelFile('./data.xls',)
+# Import xlsx file and store each sheet in to a df list
+xl_file = pd.ExcelFile('./data.xlsx',)
 
 dfs = {sheet_name: xl_file.parse(sheet_name) 
           for sheet_name in xl_file.sheet_names}
@@ -97,16 +50,155 @@ confirmedCases=dfs[keyList[0]]['Confirmed'].sum()
 deathsCases=dfs[keyList[0]]['Deaths'].sum()
 recoveredCases=dfs[keyList[0]]['Recovered'].sum()
 
-# Construct confirmed cases dataframe for line plot and 24-hour window case difference
-df_confirmed, plusConfirmedNum, plusPercentNum1 = df_for_lineplot_diff(dfs, 'Confirmed')
+# Construct confirmed cases dataframe for line plot
+DateList = []
+ChinaList =[]
+OtherList = []
 
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Confirmed'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Confirmed':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Confirmed', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Confirmed'][0])
+    OtherList.append(dfTpm['Confirmed'][1:].sum())
+    
+df_confirmed = pd.DataFrame({'Date':DateList,
+                             'Mainland China':ChinaList,
+                             'Other locations':OtherList})
+# Select the latest data from a given date
+df_confirmed['date_day']=[d.date() for d in df_confirmed['Date']]
+df_confirmed=df_confirmed.groupby(by=df_confirmed['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
+df_confirmed['Total']=df_confirmed['Mainland China']+df_confirmed['Other locations']
+df_confirmed=df_confirmed.reset_index(drop=True)
 
-# Construct recovered cases dataframe for line plot and 24-hour window case difference
-df_recovered, plusRecoveredNum, plusPercentNum2 = df_for_lineplot_diff(dfs, 'Recovered')
+# Construct new dataframe for 24-hour window case difference
+DateList = []
+ChinaList =[]
+OtherList = []
 
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Confirmed'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Confirmed':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Confirmed', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Confirmed'][0])
+    OtherList.append(dfTpm['Confirmed'][1:].sum())
+    
+df_confirmed_diff = pd.DataFrame({'Date':DateList,
+                                  'Mainland China':ChinaList,
+                                  'Other locations':OtherList}) 
+df_confirmed_diff['Total']=df_confirmed_diff['Mainland China']+df_confirmed_diff['Other locations']
 
-# Construct death case dataframe for line plot and 24-hour window case difference
-df_deaths, plusDeathNum, plusPercentNum3 = df_for_lineplot_diff(dfs, 'Deaths')
+# Calculate differenec in a 24-hour window
+for index, _ in df_confirmed_diff.iterrows():
+    # Calculate the time differnece in hour
+    diff=(df_confirmed_diff['Date'][0] - df_confirmed_diff['Date'][index]).total_seconds()/3600
+    # find out the latest time after 24-hour
+    if diff >= 24:
+        break
+plusConfirmedNum = df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index]
+plusPercentNum1 = (df_confirmed_diff['Total'][0] - df_confirmed_diff['Total'][index])/df_confirmed_diff['Total'][index]
+
+# Construct recovered cases dataframe for line plot
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Recovered'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Recovered':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Recovered', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Recovered'][0])
+    OtherList.append(dfTpm['Recovered'][1:].sum())
+    
+df_recovered = pd.DataFrame({'Date':DateList,
+                             'Mainland China':ChinaList,
+                             'Other locations':OtherList}) 
+# Select the latest data from a given date
+df_recovered['date_day']=[d.date() for d in df_recovered['Date']]
+df_recovered=df_recovered.groupby(by=df_recovered['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
+df_recovered['Total']=df_recovered['Mainland China']+df_recovered['Other locations']
+df_recovered=df_recovered.reset_index(drop=True)
+
+# Construct new dataframe for 24-hour window case difference
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Recovered'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Recovered':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Recovered', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Recovered'][0])
+    OtherList.append(dfTpm['Recovered'][1:].sum())
+    
+df_recovered_diff = pd.DataFrame({'Date':DateList,
+                                  'Mainland China':ChinaList,
+                                  'Other locations':OtherList}) 
+df_recovered_diff['Total']=df_recovered_diff['Mainland China']+df_recovered_diff['Other locations']
+
+# Calculate differenec in a 24-hour window
+for index, _ in df_recovered_diff.iterrows():
+    # Calculate the time differnece in hour
+    diff=(df_recovered_diff['Date'][0] - df_recovered_diff['Date'][index]).total_seconds()/3600
+    # find out the latest time after 24-hour
+    if diff >= 24:
+        break
+plusRecoveredNum = df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index]
+plusPercentNum2 = (df_recovered_diff['Total'][0] - df_recovered_diff['Total'][index])/df_recovered_diff['Total'][index]
+
+# Construct death case dataframe for line plot
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Deaths'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Deaths':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Deaths', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Deaths'][0])
+    OtherList.append(dfTpm['Deaths'][1:].sum())
+    
+df_deaths = pd.DataFrame({'Date':DateList,
+                          'Mainland China':ChinaList,
+                          'Other locations':OtherList})
+# Select the latest data from a given date
+df_deaths['date_day']=[d.date() for d in df_deaths['Date']]
+df_deaths=df_deaths.groupby(by='date_day', sort=False).transform(max).drop_duplicates(['Date'])
+df_deaths['Total']=df_deaths['Mainland China']+df_deaths['Other locations']
+df_deaths=df_deaths.reset_index(drop=True)
+
+# Construct new dataframe for 24-hour window case difference
+DateList = []
+ChinaList =[]
+OtherList = []
+
+for key, df in dfs.items():
+    dfTpm = df.groupby(['Country/Region'])['Deaths'].agg(np.sum)
+    dfTpm = pd.DataFrame({'Code':dfTpm.index, 'Deaths':dfTpm.values})
+    dfTpm = dfTpm.sort_values(by='Deaths', ascending=False).reset_index(drop=True)
+    DateList.append(df['Date_last_updated_AEDT'][0])
+    ChinaList.append(dfTpm['Deaths'][0])
+    OtherList.append(dfTpm['Deaths'][1:].sum())
+    
+df_deaths_diff = pd.DataFrame({'Date':DateList,
+                                  'Mainland China':ChinaList,
+                                  'Other locations':OtherList}) 
+df_deaths_diff['Total']=df_deaths_diff['Mainland China']+df_deaths_diff['Other locations']
+
+# Calculate differenec in a 24-hour window
+for index, _ in df_deaths_diff.iterrows():
+    # Calculate the time differnece in hour
+    diff=(df_deaths_diff['Date'][0] - df_deaths_diff['Date'][index]).total_seconds()/3600
+    # find out the latest time after 24-hour
+    if diff >= 24:
+        break
+plusDeathNum = df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index]
+plusPercentNum3 = (df_deaths_diff['Total'][0] - df_deaths_diff['Total'][index])/df_deaths_diff['Total'][index]
 
 # Create data table to show in app
 # Generate sum values for Country/Region level
