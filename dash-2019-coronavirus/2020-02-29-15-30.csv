@@ -1,0 +1,109 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,2/29/2020 15:30,66337,2727,28930
+Guangdong,Mainland China,2/29/2020 15:30,1349,7,973
+Zhejiang,Mainland China,2/29/2020 15:30,1205,1,1016
+Shandong,Mainland China,2/29/2020 15:30,756,6,418
+Henan,Mainland China,2/29/2020 15:30,1272,21,1162
+Anhui,Mainland China,2/29/2020 15:30,990,6,868
+Jiangxi,Mainland China,2/29/2020 15:30,935,1,811
+Hunan,Mainland China,2/29/2020 15:30,1018,4,844
+Heilongjiang,Mainland China,2/29/2020 15:30,480,13,300
+Sichuan,Mainland China,2/29/2020 15:30,538,3,350
+Chongqing,Mainland China,2/29/2020 15:30,576,6,422
+Jiangsu,Mainland China,2/29/2020 15:30,631,0,523
+Beijing,Mainland China,2/29/2020 15:30,411,8,271
+Guangxi,Mainland China,2/29/2020 15:30,252,2,172
+Fujian,Mainland China,2/29/2020 15:30,296,1,242
+Shanghai,Mainland China,2/29/2020 15:30,337,3,287
+Hebei,Mainland China,2/29/2020 15:30,318,6,281
+Shaanxi,Mainland China,2/29/2020 15:30,245,1,207
+Yunnan,Mainland China,2/29/2020 15:30,174,2,157
+Tianjin,Mainland China,2/29/2020 15:30,136,3,105
+Hainan,Mainland China,2/29/2020 15:30,168,5,147
+Guizhou,Mainland China,2/29/2020 15:30,146,2,112
+Liaoning,Mainland China,2/29/2020 15:30,121,1,95
+Shanxi,Mainland China,2/29/2020 15:30,133,0,113
+Inner Mongolia,Mainland China,2/29/2020 15:30,75,0,49
+Xinjiang,Mainland China,2/29/2020 15:30,76,3,52
+Jilin,Mainland China,2/29/2020 15:30,93,1,75
+Ningxia,Mainland China,2/29/2020 15:30,73,0,69
+Gansu,Mainland China,2/29/2020 15:30,91,2,82
+Qinghai,Mainland China,2/29/2020 15:30,18,0,18
+Tibet,Mainland China,2/29/2020 15:30,1,0,1
+,South Korea,2/29/2020 15:30,3150,17,24
+,Italy,2/29/2020 15:30,1128,29,50
+Yokohama,Japan,2/29/2020 15:30,705,6,10
+,Iran,2/29/2020 15:30,593,43,123
+,Japan,2/29/2020 15:30,241,5,32
+,Singapore,2/29/2020 15:30,102,0,72
+Hong Kong,Hong Kong,2/29/2020 15:30,94,2,30
+,Germany,2/29/2020 15:30,79,0,16
+,France,2/29/2020 15:30,100,2,12
+,Kuwait,2/29/2020 15:30,45,0,0
+,Spain,2/29/2020 15:30,50,0,2
+,Thailand,2/29/2020 15:30,42,0,28
+,Bahrain,2/29/2020 15:30,41,0,0
+Taiwan,Taiwan,2/29/2020 15:30,39,1,9
+,Malaysia,2/29/2020 15:30,25,0,20
+,UK,2/29/2020 15:30,23,0,8
+,United Arab Emirates,2/29/2020 15:30,21,0,5
+,Vietnam,2/29/2020 15:30,16,0,16
+,Switzerland,2/29/2020 15:30,19,0,0
+,Norway,2/29/2020 15:30,15,0,0
+,Iraq,2/29/2020 15:30,13,0,0
+,Sweden,2/29/2020 15:30,12,0,0
+Macau,Macau,2/29/2020 15:30,10,0,8
+,Austria,2/29/2020 15:30,9,0,0
+,Israel,2/29/2020 15:30,7,0,1
+,Lebanon,2/29/2020 15:30,7,0,0
+,Croatia,2/29/2020 15:30,6,0,0
+,Netherlands,2/29/2020 15:30,6,0,0
+,Oman,2/29/2020 15:30,6,0,0
+,Greece,2/29/2020 15:30,4,0,0
+,Pakistan,2/29/2020 15:30,4,0,0
+,Philippines,2/29/2020 15:30,3,1,2
+,Denmark,2/29/2020 15:30,3,0,0
+,Finland,2/29/2020 15:30,3,0,1
+,Georgia,2/29/2020 15:30,3,0,0
+,India,2/29/2020 15:30,3,0,3
+,Mexico,2/29/2020 15:30,3,0,0
+,Romania,2/29/2020 15:30,3,0,1
+,Russia,2/29/2020 15:30,2,0,2
+,Afghanistan,2/29/2020 15:30,1,0,0
+,Algeria,2/29/2020 15:30,1,0,0
+,Azerbaijan,2/29/2020 15:30,1,0,0
+,Belarus,2/29/2020 15:30,1,0,0
+Brussels,Belgium,2/29/2020 15:30,1,0,1
+,Brazil,2/29/2020 15:30,1,0,0
+,Cambodia,2/29/2020 15:30,1,0,1
+,Ecuador,2/29/2020 15:30,1,0,0
+,Egypt,2/29/2020 15:30,1,0,1
+,Estonia,2/29/2020 15:30,1,0,0
+,Iceland,2/29/2020 15:30,1,0,0
+,Lithuania,2/29/2020 15:30,1,0,0
+,Luxembourg,2/29/2020 15:30,1,0,0
+,North Macedonia,2/29/2020 15:30,1,0,0
+,Monaco,2/29/2020 15:30,1,0,0
+,Nepal,2/29/2020 15:30,1,0,1
+,New Zealand,2/29/2020 15:30,1,0,0
+,Nigeria,2/29/2020 15:30,1,0,0
+,Qatar,2/29/2020 15:30,1,0,0
+,San Marino,2/29/2020 15:30,1,0,0
+,Sri Lanka,2/29/2020 15:30,1,0,1
+British Columbia,Canada,2/29/2020 15:30,7,0,3
+Ontario,Canada,2/29/2020 15:30,8,0,3
+Quebec,Canada,2/29/2020 15:30,1,0,0
+Massachusetts,US,2/29/2020 15:30,1,0,0
+Illinois,US,2/29/2020 15:30,2,0,2
+Wisconsin,US,2/29/2020 15:30,1,0,0
+WA,US,2/29/2020 15:30,5,1,1
+California,US,2/29/2020 15:30,12,0,2
+Arizona,US,2/29/2020 15:30,1,0,1
+Texas,US,2/29/2020 15:30,1,0,0
+Nebraska,US,2/29/2020 15:30,44,0,0
+Oregon,US,2/29/2020 15:30,1,0,0
+Queensland,Australia,2/29/2020 15:30,9,0,5
+New South Wales,Australia,2/29/2020 15:30,4,0,4
+Victoria,Australia,2/29/2020 15:30,7,0,4
+South Australia,Australia,2/29/2020 15:30,3,0,2
+Western Australia,Australia,2/29/2020 15:30,2,0,0

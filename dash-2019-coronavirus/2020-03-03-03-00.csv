@@ -1,0 +1,128 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/03/2020  03:00,67217,2834,36199
+Guangdong,Mainland China,3/03/2020  03:00,1350,7,1084
+Zhejiang,Mainland China,3/03/2020  03:00,1213,1,1082
+Shandong,Mainland China,3/03/2020  03:00,758,6,502
+Henan,Mainland China,3/03/2020  03:00,1272,22,1225
+Anhui,Mainland China,3/03/2020  03:00,990,6,917
+Jiangxi,Mainland China,3/03/2020  03:00,935,1,870
+Hunan,Mainland China,3/03/2020  03:00,1018,4,901
+Heilongjiang,Mainland China,3/03/2020  03:00,480,13,358
+Sichuan,Mainland China,3/03/2020  03:00,538,3,392
+Chongqing,Mainland China,3/03/2020  03:00,576,6,469
+Jiangsu,Mainland China,3/03/2020  03:00,631,0,556
+Beijing,Mainland China,3/03/2020  03:00,414,8,288
+Guangxi,Mainland China,3/03/2020  03:00,252,2,202
+Fujian,Mainland China,3/03/2020  03:00,296,1,255
+Shanghai,Mainland China,3/03/2020  03:00,338,3,294
+Hebei,Mainland China,3/03/2020  03:00,318,6,299
+Shaanxi,Mainland China,3/03/2020  03:00,245,1,216
+Yunnan,Mainland China,3/03/2020  03:00,174,2,169
+Tianjin,Mainland China,3/03/2020  03:00,136,3,118
+Hainan,Mainland China,3/03/2020  03:00,168,5,151
+Guizhou,Mainland China,3/03/2020  03:00,146,2,114
+Liaoning,Mainland China,3/03/2020  03:00,125,1,104
+Shanxi,Mainland China,3/03/2020  03:00,133,0,119
+Inner Mongolia,Mainland China,3/03/2020  03:00,75,0,54
+Xinjiang,Mainland China,3/03/2020  03:00,76,3,68
+Jilin,Mainland China,3/03/2020  03:00,93,1,83
+Ningxia,Mainland China,3/03/2020  03:00,74,0,69
+Gansu,Mainland China,3/03/2020  03:00,91,2,85
+Qinghai,Mainland China,3/03/2020  03:00,18,0,18
+Tibet,Mainland China,3/03/2020  03:00,1,0,1
+,South Korea,3/03/2020  03:00,4812,28,34
+,Italy,3/03/2020  03:00,2036,52,149
+,Iran,3/03/2020  03:00,1501,66,291
+Yokohama,Japan,3/03/2020  03:00,706,6,100
+,Japan,3/03/2020  03:00,274,6,42
+,France,3/03/2020  03:00,191,3,12
+,Germany,3/03/2020  03:00,165,0,16
+,Spain,3/03/2020  03:00,120,0,2
+,Singapore,3/03/2020  03:00,108,0,78
+Hong Kong,Hong Kong,3/03/2020  03:00,100,2,36
+,Kuwait,3/03/2020  03:00,56,0,0
+,Bahrain,3/03/2020  03:00,49,0,0
+,Thailand,3/03/2020  03:00,43,1,30
+Taiwan,Taiwan,3/03/2020  03:00,41,1,12
+,UK,3/03/2020  03:00,40,0,8
+,Switzerland,3/03/2020  03:00,30,0,1
+,Malaysia,3/03/2020  03:00,29,0,22
+,Iraq,3/03/2020  03:00,26,0,0
+,Norway,3/03/2020  03:00,25,0,0
+,United Arab Emirates,3/03/2020  03:00,21,0,5
+,Austria,3/03/2020  03:00,18,0,0
+,Netherlands,3/03/2020  03:00,18,0,0
+,Vietnam,3/03/2020  03:00,16,0,16
+,Sweden,3/03/2020  03:00,15,0,0
+,Lebanon,3/03/2020  03:00,13,0,0
+,Israel,3/03/2020  03:00,12,0,1
+Macau,Macau,3/03/2020  03:00,10,0,8
+,Iceland,3/03/2020  03:00,9,0,0
+,San Marino,3/03/2020  03:00,8,0,0
+Brussels,Belgium,3/03/2020  03:00,8,0,1
+,Croatia,3/03/2020  03:00,8,0,0
+,Ecuador,3/03/2020  03:00,7,0,0
+,Finland,3/03/2020  03:00,7,0,1
+,Greece,3/03/2020  03:00,7,0,0
+,Qatar,3/03/2020  03:00,7,0,0
+,India,3/03/2020  03:00,6,0,3
+,Mexico,3/03/2020  03:00,6,0,0
+,Oman,3/03/2020  03:00,6,0,2
+,Algeria,3/03/2020  03:00,5,0,0
+,Pakistan,3/03/2020  03:00,5,0,0
+,Czechia,3/03/2020  03:00,4,0,0
+,Denmark,3/03/2020  03:00,4,0,0
+,Philippines,3/03/2020  03:00,3,1,2
+,Azerbaijan,3/03/2020  03:00,3,0,0
+,Georgia,3/03/2020  03:00,3,0,0
+,Romania,3/03/2020  03:00,3,0,1
+,Russia,3/03/2020  03:00,3,0,2
+,Brazil,3/03/2020  03:00,2,0,0
+,Egypt,3/03/2020  03:00,2,0,1
+,Indonesia,3/03/2020  03:00,2,0,0
+,Portugal,3/03/2020  03:00,2,0,0
+,Afghanistan,3/03/2020  03:00,1,0,0
+,Andorra,3/03/2020  03:00,1,0,0
+,Armenia,3/03/2020  03:00,1,0,0
+,Belarus,3/03/2020  03:00,1,0,0
+,Cambodia,3/03/2020  03:00,1,0,1
+,Dominican Republic,3/03/2020  03:00,1,0,0
+,Estonia,3/03/2020  03:00,1,0,0
+,Ireland,3/03/2020  03:00,1,0,0
+,Jordan,3/03/2020  03:00,1,0,0
+,Latvia,3/03/2020  03:00,1,0,0
+,Lithuania,3/03/2020  03:00,1,0,0
+,Luxembourg,3/03/2020  03:00,1,0,0
+,North Macedonia,3/03/2020  03:00,1,0,0
+,Monaco,3/03/2020  03:00,1,0,0
+,Morocco,3/03/2020  03:00,1,0,0
+,Nepal,3/03/2020  03:00,1,0,1
+,New Zealand,3/03/2020  03:00,1,0,0
+,Nigeria,3/03/2020  03:00,1,0,0
+,Saudi Arabia,3/03/2020  03:00,1,0,0
+,Senegal,3/03/2020  03:00,1,0,0
+,Sri Lanka,3/03/2020  03:00,1,0,1
+,Tunisia,3/03/2020  03:00,1,0,0
+British Columbia,Canada,3/03/2020  03:00,8,0,3
+Ontario,Canada,3/03/2020  03:00,18,0,3
+Quebec,Canada,3/03/2020  03:00,1,0,0
+WA,US,3/03/2020  03:00,18,6,1
+Oregon,US,3/03/2020  03:00,3,0,0
+California,US,3/03/2020  03:00,24,0,2
+Arizona,US,3/03/2020  03:00,1,0,1
+Texas,US,3/03/2020  03:00,4,0,0
+Florida,US,3/03/2020  03:00,2,0,0
+New York,US,3/03/2020  03:00,1,0,0
+Rhode Island,US,3/03/2020  03:00,2,0,0
+Massachusetts,US,3/03/2020  03:00,2,0,1
+New Hampshire,US,3/03/2020  03:00,1,0,0
+Illinois,US,3/03/2020  03:00,4,0,2
+Wisconsin,US,3/03/2020  03:00,1,0,0
+Georgia,US,3/03/2020  03:00,2,0,0
+From Diamond Princess cruise,US,3/03/2020  03:00,42,0,0
+Queensland,Australia,3/03/2020  03:00,10,0,8
+New South Wales,Australia,3/03/2020  03:00,13,0,4
+Victoria,Australia,3/03/2020  03:00,9,0,7
+South Australia,Australia,3/03/2020  03:00,3,0,2
+Western Australia,Australia,3/03/2020  03:00,2,1,0
+Tasmania,Australia,3/03/2020  03:00,1,0,0

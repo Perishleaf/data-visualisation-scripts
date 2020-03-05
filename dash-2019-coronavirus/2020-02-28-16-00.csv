@@ -1,0 +1,104 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,2/28/2020 16:00,65914,2682,26403
+Guangdong,Mainland China,2/28/2020 16:00,1348,7,935
+Zhejiang,Mainland China,2/28/2020 16:00,1205,1,975
+Shandong,Mainland China,2/28/2020 16:00,756,6,405
+Henan,Mainland China,2/28/2020 16:00,1272,20,1112
+Anhui,Mainland China,2/28/2020 16:00,990,6,821
+Jiangxi,Mainland China,2/28/2020 16:00,935,1,790
+Hunan,Mainland China,2/28/2020 16:00,1017,4,830
+Heilongjiang,Mainland China,2/28/2020 16:00,480,13,283
+Sichuan,Mainland China,2/28/2020 16:00,538,3,338
+Chongqing,Mainland China,2/28/2020 16:00,576,6,402
+Jiangsu,Mainland China,2/28/2020 16:00,631,0,515
+Beijing,Mainland China,2/28/2020 16:00,410,7,257
+Guangxi,Mainland China,2/28/2020 16:00,252,2,168
+Fujian,Mainland China,2/28/2020 16:00,296,1,235
+Shanghai,Mainland China,2/28/2020 16:00,337,3,279
+Hebei,Mainland China,2/28/2020 16:00,318,6,277
+Shaanxi,Mainland China,2/28/2020 16:00,245,1,199
+Yunnan,Mainland China,2/28/2020 16:00,174,2,156
+Tianjin,Mainland China,2/28/2020 16:00,136,3,102
+Hainan,Mainland China,2/28/2020 16:00,168,5,133
+Hong Kong,Hong Kong,2/28/2020 16:00,94,2,30
+Guizhou,Mainland China,2/28/2020 16:00,146,2,112
+Liaoning,Mainland China,2/28/2020 16:00,121,1,93
+Shanxi,Mainland China,2/28/2020 16:00,133,0,109
+Inner Mongolia,Mainland China,2/28/2020 16:00,75,0,45
+Xinjiang,Mainland China,2/28/2020 16:00,76,3,52
+Jilin,Mainland China,2/28/2020 16:00,93,1,73
+Ningxia,Mainland China,2/28/2020 16:00,72,0,68
+Taiwan,Taiwan,2/28/2020 16:00,34,1,6
+Gansu,Mainland China,2/28/2020 16:00,91,2,82
+Macau,Macau,2/28/2020 16:00,10,0,8
+Qinghai,Mainland China,2/28/2020 16:00,18,0,18
+Tibet,Mainland China,2/28/2020 16:00,1,0,1
+,South Korea,2/28/2020 16:00,2337,16,24
+Yokohama,Japan,2/28/2020 16:00,705,6,10
+,Italy,2/28/2020 16:00,888,21,46
+,Iran,2/28/2020 16:00,388,34,73
+,Japan,2/28/2020 16:00,226,5,32
+,Singapore,2/28/2020 16:00,96,0,66
+,Germany,2/28/2020 16:00,60,0,16
+,Kuwait,2/28/2020 16:00,45,0,0
+,Thailand,2/28/2020 16:00,41,0,28
+,France,2/28/2020 16:00,57,2,11
+,Bahrain,2/28/2020 16:00,38,0,0
+,Spain,2/28/2020 16:00,26,0,2
+,Malaysia,2/28/2020 16:00,25,0,20
+,United Arab Emirates,2/28/2020 16:00,19,0,5
+,Vietnam,2/28/2020 16:00,16,0,16
+,UK,2/28/2020 16:00,20,0,8
+,Switzerland,2/28/2020 16:00,15,0,0
+,Iraq,2/28/2020 16:00,8,0,0
+,Sweden,2/28/2020 16:00,11,0,0
+,Oman,2/28/2020 16:00,6,0,0
+,Austria,2/28/2020 16:00,6,0,0
+,Norway,2/28/2020 16:00,6,0,0
+,Philippines,2/28/2020 16:00,3,1,2
+,Croatia,2/28/2020 16:00,5,0,0
+,Greece,2/28/2020 16:00,4,0,0
+,India,2/28/2020 16:00,3,0,3
+,Israel,2/28/2020 16:00,6,0,1
+,Lebanon,2/28/2020 16:00,3,0,0
+,Finland,2/28/2020 16:00,2,0,1
+,Mexico,2/28/2020 16:00,2,0,0
+,Pakistan,2/28/2020 16:00,2,0,0
+,Russia,2/28/2020 16:00,2,0,2
+,Afghanistan,2/28/2020 16:00,1,0,0
+,Algeria,2/28/2020 16:00,1,0,0
+,Azerbaijan,2/28/2020 16:00,1,0,0
+,Belarus,2/28/2020 16:00,1,0,0
+Brussels,Belgium,2/28/2020 16:00,1,0,1
+,Brazil,2/28/2020 16:00,1,0,0
+,Cambodia,2/28/2020 16:00,1,0,1
+,Denmark,2/28/2020 16:00,2,0,0
+,Egypt,2/28/2020 16:00,1,0,1
+,Estonia,2/28/2020 16:00,1,0,0
+,Iceland,2/28/2020 16:00,1,0,0
+,Georgia,2/28/2020 16:00,2,0,0
+,Lithuania,2/28/2020 16:00,1,0,0
+,North Macedonia,2/28/2020 16:00,1,0,0
+,Nepal,2/28/2020 16:00,1,0,1
+,Netherlands,2/28/2020 16:00,2,0,0
+,New Zealand,2/28/2020 16:00,1,0,0
+,Nigeria,2/28/2020 16:00,1,0,0
+,Romania,2/28/2020 16:00,3,0,0
+,San Marino,2/28/2020 16:00,1,0,0
+,Sri Lanka,2/28/2020 16:00,1,0,1
+British Columbia,Canada,2/28/2020 16:00,7,0,0
+Ontario,Canada,2/28/2020 16:00,6,0,3
+Quebec,Canada,2/28/2020 16:00,1,0,0
+Massachusetts,US,2/28/2020 16:00,1,0,0
+Illinois,US,2/28/2020 16:00,2,0,2
+Wisconsin,US,2/28/2020 16:00,1,0,0
+WA,US,2/28/2020 16:00,1,0,1
+California,US,2/28/2020 16:00,11,0,2
+Arizona,US,2/28/2020 16:00,1,0,1
+Texas,US,2/28/2020 16:00,1,0,0
+Nebraska,US,2/28/2020 16:00,44,0,0
+Victoria,Australia,2/28/2020 16:00,7,0,4
+New South Wales,Australia,2/28/2020 16:00,4,0,4
+Queensland,Australia,2/28/2020 16:00,8,0,5
+Western Australia,Australia,2/28/2020 16:00,2,0,0
+South Australia,Australia,2/28/2020 16:00,3,0,2

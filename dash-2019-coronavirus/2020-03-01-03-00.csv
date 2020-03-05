@@ -1,0 +1,110 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/01/2020  03:00,66907,2761,31322
+Guangdong,Mainland China,3/01/2020  03:00,1349,7,1011
+Zhejiang,Mainland China,3/01/2020  03:00,1205,1,1028
+Shandong,Mainland China,3/01/2020  03:00,756,6,434
+Henan,Mainland China,3/01/2020  03:00,1272,22,1185
+Anhui,Mainland China,3/01/2020  03:00,990,6,870
+Jiangxi,Mainland China,3/01/2020  03:00,935,1,831
+Hunan,Mainland China,3/01/2020  03:00,1018,4,861
+Heilongjiang,Mainland China,3/01/2020  03:00,480,13,330
+Sichuan,Mainland China,3/01/2020  03:00,538,3,363
+Chongqing,Mainland China,3/01/2020  03:00,576,6,438
+Jiangsu,Mainland China,3/01/2020  03:00,631,0,531
+Beijing,Mainland China,3/01/2020  03:00,413,8,276
+Guangxi,Mainland China,3/01/2020  03:00,252,2,179
+Fujian,Mainland China,3/01/2020  03:00,296,1,243
+Shanghai,Mainland China,3/01/2020  03:00,337,3,290
+Hebei,Mainland China,3/01/2020  03:00,318,6,283
+Shaanxi,Mainland China,3/01/2020  03:00,245,1,207
+Yunnan,Mainland China,3/01/2020  03:00,174,2,163
+Tianjin,Mainland China,3/01/2020  03:00,136,3,109
+Hainan,Mainland China,3/01/2020  03:00,168,5,148
+Guizhou,Mainland China,3/01/2020  03:00,146,2,112
+Liaoning,Mainland China,3/01/2020  03:00,121,1,101
+Shanxi,Mainland China,3/01/2020  03:00,133,0,115
+Inner Mongolia,Mainland China,3/01/2020  03:00,75,0,51
+Xinjiang,Mainland China,3/01/2020  03:00,76,3,62
+Jilin,Mainland China,3/01/2020  03:00,93,1,75
+Ningxia,Mainland China,3/01/2020  03:00,73,0,69
+Gansu,Mainland China,3/01/2020  03:00,91,2,82
+Qinghai,Mainland China,3/01/2020  03:00,18,0,18
+Tibet,Mainland China,3/01/2020  03:00,1,0,1
+,South Korea,3/01/2020  03:00,3526,17,30
+,Italy,3/01/2020  03:00,1128,29,50
+Yokohama,Japan,3/01/2020  03:00,705,6,10
+,Iran,3/01/2020  03:00,593,43,123
+,Japan,3/01/2020  03:00,241,6,32
+,Singapore,3/01/2020  03:00,102,0,72
+,France,3/01/2020  03:00,100,2,12
+Hong Kong,Hong Kong,3/01/2020  03:00,95,2,33
+,Germany,3/01/2020  03:00,79,0,16
+,Spain,3/01/2020  03:00,58,0,2
+,Kuwait,3/01/2020  03:00,45,0,0
+,Thailand,3/01/2020  03:00,42,0,28
+,Bahrain,3/01/2020  03:00,41,0,0
+Taiwan,Taiwan,3/01/2020  03:00,39,1,9
+,Malaysia,3/01/2020  03:00,25,0,20
+,UK,3/01/2020  03:00,23,0,8
+,United Arab Emirates,3/01/2020  03:00,21,0,5
+,Switzerland,3/01/2020  03:00,19,0,0
+,Vietnam,3/01/2020  03:00,16,0,16
+,Norway,3/01/2020  03:00,15,0,0
+,Iraq,3/01/2020  03:00,13,0,0
+,Sweden,3/01/2020  03:00,12,0,0
+,Austria,3/01/2020  03:00,10,0,0
+Macau,Macau,3/01/2020  03:00,10,0,8
+,Greece,3/01/2020  03:00,7,0,0
+,Israel,3/01/2020  03:00,7,0,1
+,Lebanon,3/01/2020  03:00,7,0,0
+,Netherlands,3/01/2020  03:00,7,0,0
+,Croatia,3/01/2020  03:00,6,0,0
+,Oman,3/01/2020  03:00,6,0,0
+,Mexico,3/01/2020  03:00,4,0,0
+,Pakistan,3/01/2020  03:00,4,0,0
+,Philippines,3/01/2020  03:00,3,1,2
+,Denmark,3/01/2020  03:00,3,0,0
+,Finland,3/01/2020  03:00,3,0,1
+,Georgia,3/01/2020  03:00,3,0,0
+,India,3/01/2020  03:00,3,0,3
+,Romania,3/01/2020  03:00,3,0,1
+,Brazil,3/01/2020  03:00,2,0,0
+,Russia,3/01/2020  03:00,2,0,2
+,Afghanistan,3/01/2020  03:00,1,0,0
+,Algeria,3/01/2020  03:00,1,0,0
+,Azerbaijan,3/01/2020  03:00,1,0,0
+,Belarus,3/01/2020  03:00,1,0,0
+Brussels,Belgium,3/01/2020  03:00,1,0,1
+,Cambodia,3/01/2020  03:00,1,0,1
+,Ecuador,3/01/2020  03:00,1,0,0
+,Egypt,3/01/2020  03:00,1,0,1
+,Estonia,3/01/2020  03:00,1,0,0
+,Iceland,3/01/2020  03:00,1,0,0
+,Ireland,3/01/2020  03:00,1,0,0
+,Lithuania,3/01/2020  03:00,1,0,0
+,Luxembourg,3/01/2020  03:00,1,0,0
+,North Macedonia,3/01/2020  03:00,1,0,0
+,Monaco,3/01/2020  03:00,1,0,0
+,Nepal,3/01/2020  03:00,1,0,1
+,New Zealand,3/01/2020  03:00,1,0,0
+,Nigeria,3/01/2020  03:00,1,0,0
+,Qatar,3/01/2020  03:00,1,0,0
+,San Marino,3/01/2020  03:00,1,0,0
+,Sri Lanka,3/01/2020  03:00,1,0,1
+British Columbia,Canada,3/01/2020  03:00,8,0,3
+Ontario,Canada,3/01/2020  03:00,11,0,3
+Quebec,Canada,3/01/2020  03:00,1,0,0
+Massachusetts,US,3/01/2020  03:00,1,0,1
+Illinois,US,3/01/2020  03:00,3,0,2
+Wisconsin,US,3/01/2020  03:00,1,0,0
+WA,US,3/01/2020  03:00,7,1,1
+California,US,3/01/2020  03:00,12,0,2
+Arizona,US,3/01/2020  03:00,1,0,1
+Texas,US,3/01/2020  03:00,1,0,0
+Nebraska,US,3/01/2020  03:00,44,0,0
+Oregon,US,3/01/2020  03:00,1,0,0
+Queensland,Australia,3/01/2020  03:00,9,0,5
+New South Wales,Australia,3/01/2020  03:00,5,0,4
+Victoria,Australia,3/01/2020  03:00,8,0,4
+South Australia,Australia,3/01/2020  03:00,3,0,2
+Western Australia,Australia,3/01/2020  03:00,2,1,0

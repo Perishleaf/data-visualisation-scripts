@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import math 
+import os
 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -63,9 +64,17 @@ def df_for_lineplot_diff(dfs, CaseType):
 ################################################################################
 #### Data processing
 ################################################################################
+# Import csv file and store each csv in to a df list
+
+#filename = os.listdir('./')
+#sheet_name = [i.replace('.csv', '') for i in filename if 'data' not in i and i.endswith('.csv')]
+#sheet_name = sheet_name[::-1]
+
+#dfs = {sheet_name: pd.read_csv('./{}.csv'.format(sheet_name))
+#          for sheet_name in sheet_name}
+
 # Import xls file and store each sheet in to a df list
-# xls format is a bit faster than xlsx
-xl_file = pd.ExcelFile('./data.xls',)
+xl_file = pd.ExcelFile('./data.xls')
 
 dfs = {sheet_name: xl_file.parse(sheet_name) 
           for sheet_name in xl_file.sheet_names}
