@@ -38,11 +38,13 @@
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px lightgrey;
     position: relative;
     width: 100%;
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
@@ -58,6 +60,8 @@
     .container {
         width: 100%;
         padding: 0;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px lightgrey;
     }
 }
 
@@ -65,6 +69,8 @@
 @media (min-width: 550px) {
     .container {
         width: 80%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px lightgrey;
     }
 
     .column,

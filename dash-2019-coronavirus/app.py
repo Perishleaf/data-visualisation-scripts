@@ -32,11 +32,11 @@ def df_for_lineplot_diff(dfs, CaseType):
 
     for key, df in dfs.items():
         dfTpm = df.groupby(['Country/Region'])[CaseType].agg(np.sum)
-        dfTpm = pd.DataFrame({'Code':dfTpm.index, CaseType:dfTpm.values})
-        dfTpm = dfTpm.sort_values(by=CaseType, ascending=False).reset_index(drop=True)
+        dfTpm = pd.DataFrame({'Region':dfTpm.index, CaseType:dfTpm.values})
+        #dfTpm = dfTpm.sort_values(by=CaseType, ascending=False).reset_index(drop=True)
         DateList.append(df['Date_last_updated_AEDT'][0])
-        ChinaList.append(dfTpm[CaseType][0])
-        OtherList.append(dfTpm[CaseType][1:].sum())
+        ChinaList.append(dfTpm.loc[dfTpm['Region'] == 'China', CaseType].iloc[0])
+        OtherList.append(dfTpm.loc[dfTpm['Region'] != 'China', CaseType].sum())
 
     df = pd.DataFrame({'Date':DateList,
                        'Mainland China':ChinaList,
@@ -100,6 +100,7 @@ for key, df in dfs.items():
 # To save time, coordinates calling was done seperately
 # Import the data with coordinates
 dfs[keyList[0]]=pd.read_csv('{}_data.csv'.format(keyList[0]))
+dfs[keyList[0]]=dfs[keyList[0]].astype({'Date_last_updated_AEDT':'datetime64'})
 
 # Save numbers into variables to use in the app
 confirmedCases=dfs[keyList[0]]['Confirmed'].sum()
@@ -592,9 +593,9 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                       },
                                       fixed_rows={'headers':True,'data':0},
                                       style_table={
-                                          'maxHeight':'500px',
+                                          #'maxHeight':'500px',
                                           #'overflowY':'scroll',
-                                          'overflowX':'scroll',
+                                          #'overflowX':'scroll',
                                       },
                                       style_header={
                                         'backgroundColor':'#f4f4f2',

@@ -1,0 +1,143 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/05/2020  15:00,67466,2902,40574
+Guangdong,Mainland China,3/05/2020  15:00,1350,7,1181
+Zhejiang,Mainland China,3/05/2020  15:00,1215,1,1124
+Shandong,Mainland China,3/05/2020  15:00,758,6,577
+Henan,Mainland China,3/05/2020  15:00,1272,22,1239
+Anhui,Mainland China,3/05/2020  15:00,990,6,970
+Jiangxi,Mainland China,3/05/2020  15:00,935,1,901
+Hunan,Mainland China,3/05/2020  15:00,1018,4,938
+Heilongjiang,Mainland China,3/05/2020  15:00,481,13,379
+Sichuan,Mainland China,3/05/2020  15:00,539,3,423
+Chongqing,Mainland China,3/05/2020  15:00,576,6,502
+Jiangsu,Mainland China,3/05/2020  15:00,631,0,580
+Beijing,Mainland China,3/05/2020  15:00,418,8,297
+Guangxi,Mainland China,3/05/2020  15:00,252,2,214
+Fujian,Mainland China,3/05/2020  15:00,296,1,277
+Shanghai,Mainland China,3/05/2020  15:00,338,3,303
+Hebei,Mainland China,3/05/2020  15:00,318,6,303
+Shaanxi,Mainland China,3/05/2020  15:00,245,1,224
+Yunnan,Mainland China,3/05/2020  15:00,174,2,169
+Tianjin,Mainland China,3/05/2020  15:00,136,3,128
+Hainan,Mainland China,3/05/2020  15:00,168,5,158
+Guizhou,Mainland China,3/05/2020  15:00,146,2,114
+Liaoning,Mainland China,3/05/2020  15:00,125,1,106
+Shanxi,Mainland China,3/05/2020  15:00,133,0,124
+Inner Mongolia,Mainland China,3/05/2020  15:00,75,1,64
+Xinjiang,Mainland China,3/05/2020  15:00,76,3,70
+Jilin,Mainland China,3/05/2020  15:00,93,1,87
+Ningxia,Mainland China,3/05/2020  15:00,74,0,69
+Gansu,Mainland China,3/05/2020  15:00,91,2,87
+Qinghai,Mainland China,3/05/2020  15:00,18,0,18
+Tibet,Mainland China,3/05/2020  15:00,1,0,1
+,South Korea,3/05/2020  15:00,6088,40,135
+,Italy,3/05/2020  15:00,3858,148,414
+,Iran,3/05/2020  15:00,3513,108,739
+Yokohama,Japan,3/05/2020  15:00,696,6,212
+,Germany,3/05/2020  15:00,543,0,17
+,France,3/05/2020  15:00,377,6,12
+,Japan,3/05/2020  15:00,361,6,43
+,Spain,3/05/2020  15:00,282,3,3
+,Singapore,3/05/2020  15:00,117,0,81
+,UK,3/05/2020  15:00,116,1,8
+,Switzerland,3/05/2020  15:00,114,1,3
+Hong Kong,Hong Kong,3/05/2020  15:00,104,2,43
+,Sweden,3/05/2020  15:00,94,0,1
+,Norway,3/05/2020  15:00,89,0,0
+,Netherlands,3/05/2020  15:00,82,0,0
+,Kuwait,3/05/2020  15:00,58,0,0
+,Bahrain,3/05/2020  15:00,55,0,4
+,Malaysia,3/05/2020  15:00,55,0,22
+Brussels,Belgium,3/05/2020  15:00,50,0,1
+,Thailand,3/05/2020  15:00,47,1,31
+Taiwan,Taiwan,3/05/2020  15:00,44,1,12
+,Austria,3/05/2020  15:00,41,0,2
+,Iraq,3/05/2020  15:00,35,3,0
+,Iceland,3/05/2020  15:00,34,0,1
+,Greece,3/05/2020  15:00,31,0,0
+,India,3/05/2020  15:00,30,0,3
+,United Arab Emirates,3/05/2020  15:00,28,0,5
+,San Marino,3/05/2020  15:00,21,0,0
+,Denmark,3/05/2020  15:00,20,0,0
+,Algeria,3/05/2020  15:00,17,0,0
+,Israel,3/05/2020  15:00,17,0,1
+,Lebanon,3/05/2020  15:00,16,0,0
+,Oman,3/05/2020  15:00,15,0,2
+,Vietnam,3/05/2020  15:00,16,0,16
+,Ecuador,3/05/2020  15:00,13,0,0
+,Ireland,3/05/2020  15:00,13,0,0
+,Czechia,3/05/2020  15:00,12,0,0
+,Finland,3/05/2020  15:00,12,0,1
+Macau,Macau,3/05/2020  15:00,10,0,9
+,Croatia,3/05/2020  15:00,10,0,0
+,Portugal,3/05/2020  15:00,9,0,0
+,Qatar,3/05/2020  15:00,8,0,0
+,Palestine,3/05/2020  15:00,7,0,0
+,Azerbaijan,3/05/2020  15:00,6,0,0
+,Belarus,3/05/2020  15:00,6,0,0
+,Mexico,3/05/2020  15:00,6,0,1
+,Romania,3/05/2020  15:00,6,0,1
+,Pakistan,3/05/2020  15:00,5,0,0
+,Saudi Arabia,3/05/2020  15:00,5,0,1
+,Brazil,3/05/2020  15:00,4,0,0
+,Georgia,3/05/2020  15:00,4,0,0
+,Russia,3/05/2020  15:00,4,0,2
+,Senegal,3/05/2020  15:00,4,0,0
+,Philippines,3/05/2020  15:00,3,1,2
+,Egypt,3/05/2020  15:00,3,0,1
+,Estonia,3/05/2020  15:00,3,0,0
+,New Zealand,3/05/2020  15:00,3,0,0
+,Chile,3/05/2020  15:00,3,0,0
+,Slovenia,3/05/2020  15:00,3,0,0
+,Indonesia,3/05/2020  15:00,2,0,0
+,Luxembourg,3/05/2020  15:00,2,0,0
+,Morocco,3/05/2020  15:00,2,0,0
+,Bosnia and Herzegovina,3/05/2020  15:00,2,0,0
+,Hungary,3/05/2020  15:00,2,0,0
+,Afghanistan,3/05/2020  15:00,1,0,0
+,Andorra,3/05/2020  15:00,1,0,0
+,Armenia,3/05/2020  15:00,1,0,0
+,Cambodia,3/05/2020  15:00,1,0,1
+,Dominican Republic,3/05/2020  15:00,1,0,0
+,Jordan,3/05/2020  15:00,1,0,0
+,Latvia,3/05/2020  15:00,1,0,0
+,Lithuania,3/05/2020  15:00,1,0,0
+,North Macedonia,3/05/2020  15:00,1,0,0
+,Monaco,3/05/2020  15:00,1,0,0
+,Nepal,3/05/2020  15:00,1,0,1
+,Nigeria,3/05/2020  15:00,1,0,0
+,Sri Lanka,3/05/2020  15:00,1,0,1
+,Tunisia,3/05/2020  15:00,1,0,0
+,Ukraine,3/05/2020  15:00,1,0,0
+,Argentina,3/05/2020  15:00,1,0,0
+,Liechtenstein,3/05/2020  15:00,1,0,0
+,Poland,3/05/2020  15:00,1,0,0
+,South Africa,3/05/2020  15:00,1,0,0
+British Columbia,Canada,3/05/2020  15:00,13,0,3
+Ontario,Canada,3/05/2020  15:00,22,0,3
+Quebec,Canada,3/05/2020  15:00,2,0,0
+WA,US,3/05/2020  15:00,70,10,1
+Oregon,US,3/05/2020  15:00,3,0,0
+California,US,3/05/2020  15:00,40,1,2
+Nevada,US,3/05/2020  15:01,1,0,0
+Arizona,US,3/05/2020  15:00,2,0,1
+Texas,US,3/05/2020  15:00,5,0,0
+Florida,US,3/05/2020  15:00,4,0,0
+Georgia,US,3/05/2020  15:00,2,0,0
+North Carolina,US,3/05/2020  15:00,1,0,0
+Tennessee,US,3/05/2020  15:01,1,0,0
+New Jersey,US,3/05/2020  15:00,1,0,0
+New York,US,3/05/2020  15:00,22,0,0
+Rhode Island,US,3/05/2020  15:00,2,0,0
+Massachusetts,US,3/05/2020  15:00,2,0,1
+New Hampshire,US,3/05/2020  15:00,2,0,0
+Illinois,US,3/05/2020  15:00,5,0,2
+Wisconsin,US,3/05/2020  15:00,1,0,0
+From Diamond Princess cruise,US,3/05/2020  15:00,42,0,0
+Queensland,Australia,3/05/2020  15:00,13,0,8
+New South Wales,Australia,3/05/2020  15:00,25,1,4
+Victoria,Australia,3/05/2020  15:00,10,0,7
+South Australia,Australia,3/05/2020  15:00,7,0,2
+Western Australia,Australia,3/05/2020  15:00,3,1,0
+Tasmania,Australia,3/05/2020  15:00,1,0,0
+Northern Territory,Australia,3/05/2020  15:00,1,0,0
