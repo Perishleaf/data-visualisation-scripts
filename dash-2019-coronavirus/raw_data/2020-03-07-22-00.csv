@@ -1,0 +1,176 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/07/2020 22:00,67707,2986,45011
+Guangdong,Mainland China,3/07/2020 22:00,1352,7,1250
+Zhejiang,Mainland China,3/07/2020 22:00,1215,1,1157
+Shandong,Mainland China,3/07/2020 22:00,758,6,637
+Henan,Mainland China,3/07/2020 22:00,1272,22,1246
+Anhui,Mainland China,3/07/2020 22:00,990,6,981
+Jiangxi,Mainland China,3/07/2020 22:00,935,1,918
+Hunan,Mainland China,3/07/2020 22:00,1018,4,965
+Heilongjiang,Mainland China,3/07/2020 22:00,481,13,409
+Sichuan,Mainland China,3/07/2020 22:00,539,3,457
+Chongqing,Mainland China,3/07/2020 22:00,576,6,526
+Jiangsu,Mainland China,3/07/2020 22:00,631,0,610
+Beijing,Mainland China,3/07/2020 22:00,428,8,308
+Guangxi,Mainland China,3/07/2020 22:00,252,2,223
+Fujian,Mainland China,3/07/2020 22:00,296,1,295
+Shanghai,Mainland China,3/07/2020 22:00,342,3,313
+Hebei,Mainland China,3/07/2020 22:00,318,6,307
+Shaanxi,Mainland China,3/07/2020 22:00,245,1,226
+Yunnan,Mainland China,3/07/2020 22:00,174,2,170
+Tianjin,Mainland China,3/07/2020 22:00,136,3,128
+Hainan,Mainland China,3/07/2020 22:00,168,6,158
+Guizhou,Mainland China,3/07/2020 22:00,146,2,117
+Liaoning,Mainland China,3/07/2020 22:00,125,1,108
+Shanxi,Mainland China,3/07/2020 22:00,133,0,126
+Inner Mongolia,Mainland China,3/07/2020 22:00,75,1,68
+Xinjiang,Mainland China,3/07/2020 22:00,76,3,72
+Jilin,Mainland China,3/07/2020 22:00,93,1,90
+Ningxia,Mainland China,3/07/2020 22:00,75,0,71
+Gansu,Mainland China,3/07/2020 22:00,120,2,87
+Qinghai,Mainland China,3/07/2020 22:00,18,0,18
+Tibet,Mainland China,3/07/2020 22:00,1,0,1
+British Columbia,Canada,3/07/2020 22:00,27,0,3
+Alberta,Canada,3/07/2020 22:00,2,0,0
+Ontario,Canada,3/07/2020 22:00,28,0,3
+Quebec,Canada,3/07/2020 22:00,3,0,0
+WA,US,3/07/2020 22:00,108,16,1
+California,US,3/07/2020 22:00,107,1,2
+New York,US,3/07/2020 22:00,89,0,0
+From Diamond Princess cruise,US,3/07/2020 22:00,42,0,0
+Massachusetts,US,3/07/2020 22:00,14,0,1
+Texas,US,3/07/2020 22:00,13,0,0
+Florida,US,3/07/2020 22:00,11,2,0
+Colorado,US,3/07/2020 22:00,8,0,0
+Oregon,US,3/07/2020 22:00,7,0,0
+Georgia,US,3/07/2020 22:00,7,0,0
+Illinois,US,3/07/2020 22:00,6,0,2
+Arizona,US,3/07/2020 22:00,5,0,1
+New Jersey,US,3/07/2020 22:00,4,0,0
+Pennsylvania,US,3/07/2020 22:00,4,0,0
+Rhode Island,US,3/07/2020 22:00,3,0,0
+Maryland,US,3/07/2020 22:00,3,0,0
+New Hampshire,US,3/07/2020 22:00,2,0,0
+North Carolina,US,3/07/2020 22:00,2,0,0
+Nevada,US,3/07/2020 22:00,2,0,0
+Connecticut,US,3/07/2020 22:00,2,0,0
+South Carolina,US,3/07/2020 22:00,2,0,0
+Wisconsin,US,3/07/2020 22:00,1,0,1
+Tennessee,US,3/07/2020 22:00,1,0,0
+Indiana,US,3/07/2020 22:00,1,0,0
+Minnesota,US,3/07/2020 22:00,1,0,0
+Kentucky,US,3/07/2020 22:00,1,0,0
+Nebraska,US,3/07/2020 22:00,1,0,0
+Oklahoma,US,3/07/2020 22:00,1,0,0
+Hawaii,US,3/07/2020 22:00,1,0,0
+Utah,US,3/07/2020 22:00,1,0,0
+Washington DC,US,3/07/2020 22:00,1,0,0
+Kansas,US,3/07/2020 22:00,1,0,0
+Virginia,US,3/07/2020 22:00,1,0,0
+Missouri,US,3/07/2020 22:00,1,0,0
+Queensland,Australia,3/07/2020 22:00,14,0,8
+New South Wales,Australia,3/07/2020 22:00,38,2,5
+Victoria,Australia,3/07/2020 22:00,11,0,7
+South Australia,Australia,3/07/2020 22:00,7,0,2
+Western Australia,Australia,3/07/2020 22:00,3,1,0
+Tasmania,Australia,3/07/2020 22:00,2,0,0
+,South Korea,3/07/2020 22:00,7134,50,118
+,Italy,3/07/2020 22:00,5883,233,589
+,Iran,3/07/2020 22:00,5823,145,1669
+,France,3/07/2020 22:00,949,16,12
+,Germany,3/07/2020 22:00,800,0,18
+Yokohama,Japan,3/07/2020 22:00,696,6,212
+,Spain,3/07/2020 22:00,525,10,30
+,Japan,3/07/2020 22:00,461,6,76
+,Switzerland,3/07/2020 22:00,268,1,3
+,UK,3/07/2020 22:00,209,2,18
+,Netherlands,3/07/2020 22:00,188,1,0
+Brussels,Belgium,3/07/2020 22:00,169,0,1
+,Sweden,3/07/2020 22:00,161,0,1
+,Norway,3/07/2020 22:00,156,0,1
+,Singapore,3/07/2020 22:00,138,0,90
+Hong Kong,Hong Kong,3/07/2020 22:00,109,2,55
+,Malaysia,3/07/2020 22:00,93,0,23
+,Bahrain,3/07/2020 22:00,85,0,6
+,Austria,3/07/2020 22:00,81,0,2
+,Greece,3/07/2020 22:00,66,0,0
+,Kuwait,3/07/2020 22:00,61,0,1
+,Iraq,3/07/2020 22:00,54,4,1
+,Thailand,3/07/2020 22:00,50,1,31
+,Iceland,3/07/2020 22:00,50,0,1
+,Egypt,3/07/2020 22:00,48,0,1
+Taiwan,Taiwan,3/07/2020 22:00,45,1,15
+,United Arab Emirates,3/07/2020 22:00,45,0,7
+,India,3/07/2020 22:00,34,0,3
+,Lebanon,3/07/2020 22:00,28,0,1
+,Denmark,3/07/2020 22:00,27,0,1
+,San Marino,3/07/2020 22:00,26,1,0
+,Czechia,3/07/2020 22:00,26,0,0
+,Israel,3/07/2020 22:00,21,0,2
+,Portugal,3/07/2020 22:00,21,0,0
+,Vietnam,3/07/2020 22:00,20,0,16
+,Algeria,3/07/2020 22:00,19,0,0
+,Brazil,3/07/2020 22:00,19,0,0
+,Finland,3/07/2020 22:00,19,0,1
+,Ireland,3/07/2020 22:00,19,0,0
+,Palestine,3/07/2020 22:00,19,0,0
+,Oman,3/07/2020 22:00,16,0,2
+,Russia,3/07/2020 22:00,15,0,2
+,Ecuador,3/07/2020 22:00,14,0,0
+,Georgia,3/07/2020 22:00,13,0,0
+,Romania,3/07/2020 22:00,13,0,3
+,Croatia,3/07/2020 22:00,12,0,0
+,Qatar,3/07/2020 22:00,12,0,0
+,Slovenia,3/07/2020 22:00,12,0,0
+Macau,Macau,3/07/2020 22:00,10,0,10
+,Estonia,3/07/2020 22:00,10,0,0
+,Argentina,3/07/2020 22:00,9,0,0
+,Azerbaijan,3/07/2020 22:00,9,0,0
+,Mexico,3/07/2020 22:00,7,0,1
+,Saudi Arabia,3/07/2020 22:00,7,0,1
+,Chile,3/07/2020 22:00,7,0,0
+,Philippines,3/07/2020 22:00,6,1,2
+,Belarus,3/07/2020 22:00,6,0,0
+,Pakistan,3/07/2020 22:00,6,0,1
+,Peru,3/07/2020 22:00,1,0,0
+,Poland,3/07/2020 22:00,6,0,0
+,New Zealand,3/07/2020 22:00,5,0,0
+,French Guiana,3/07/2020 22:00,5,0,0
+,Hungary,3/07/2020 22:00,5,0,0
+,Afghanistan,3/07/2020 22:00,1,0,0
+,Indonesia,3/07/2020 22:00,4,0,0
+,Senegal,3/07/2020 22:00,4,0,1
+,Luxembourg,3/07/2020 22:00,3,0,0
+,North Macedonia,3/07/2020 22:00,3,0,0
+,Bosnia and Herzegovina,3/07/2020 22:00,3,0,0
+,Malta,3/07/2020 22:00,3,0,0
+,Slovakia,3/07/2020 22:00,3,0,0
+,Cambodia,3/07/2020 22:00,2,0,1
+,Dominican Republic,3/07/2020 22:00,2,0,0
+,Morocco,3/07/2020 22:00,2,0,0
+,Bulgaria,3/07/2020 22:00,2,0,0
+,Cameroon,3/07/2020 22:00,2,0,0
+,Faeroe Islands,3/07/2020 22:00,2,0,0
+,Maldives,3/07/2020 22:00,2,0,0
+,South Africa,3/07/2020 22:00,2,0,0
+,Andorra,3/07/2020 22:00,1,0,0
+,Armenia,3/07/2020 22:00,1,0,0
+,Jordan,3/07/2020 22:00,1,0,0
+,Latvia,3/07/2020 22:00,1,0,1
+,Lithuania,3/07/2020 22:00,1,0,0
+,Monaco,3/07/2020 22:00,1,0,0
+,Nepal,3/07/2020 22:00,1,0,1
+,Nigeria,3/07/2020 22:00,1,0,0
+,Sri Lanka,3/07/2020 22:00,1,0,1
+,Tunisia,3/07/2020 22:00,1,0,0
+,Ukraine,3/07/2020 22:00,1,0,0
+,Bhutan,3/07/2020 22:00,1,0,0
+,Colombia,3/07/2020 22:00,1,0,0
+,Costa Rica,3/07/2020 22:00,1,0,0
+,Gibraltar,3/07/2020 22:00,1,0,0
+,Vatican City,3/07/2020 22:00,1,0,0
+,Liechtenstein,3/07/2020 22:00,1,0,0
+,Moldova,3/07/2020 22:00,1,0,0
+,Paraguay,3/07/2020 22:00,1,0,0
+,Serbia,3/07/2020 22:00,1,0,0
+,Togo,3/07/2020 22:00,1,0,0

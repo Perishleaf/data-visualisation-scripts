@@ -64,15 +64,17 @@ def df_for_lineplot_diff(dfs, CaseType):
 ################################################################################
 #### Data processing
 ################################################################################
+# Method #1
 # Import csv file and store each csv in to a df list
 
-#filename = os.listdir('./')
+#filename = os.listdir('./raw_data/')
 #sheet_name = [i.replace('.csv', '') for i in filename if 'data' not in i and i.endswith('.csv')]
 #sheet_name = sheet_name[::-1]
 
-#dfs = {sheet_name: pd.read_csv('./{}.csv'.format(sheet_name))
+#dfs = {sheet_name: pd.read_csv('./raw_data/{}.csv'.format(sheet_name))
 #          for sheet_name in sheet_name}
 
+# Method #2
 # Import xls file and store each sheet in to a df list
 xl_file = pd.ExcelFile('./data.xls')
 
@@ -223,9 +225,9 @@ fig_confirmed.update_layout(
     font=dict(color='#292929')
 )
 
-# Line plot for combine cases
-# Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_recovered['Mainland China'].max()+1000, 5000))
+# Line plot for combine recovered cases
+# Set up tick scale based on total recovered case number
+tickList = list(np.arange(0, df_recovered['Total'].max()+2000, 10000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -298,7 +300,7 @@ fig_combine.update_layout(
 )
 
 # Line plot for death rate cases
-# Set up tick scale based on confirmed case number
+# Set up tick scale based on death case number of Mainland China
 tickList = list(np.arange(0, (df_deaths['Mainland China']/df_confirmed['Mainland China']*100).max(), 0.5))
 
 # Create empty figure canvas
@@ -366,6 +368,10 @@ fig_rate.update_layout(
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
 )
+
+##################################################################################################
+#### Start dash app
+##################################################################################################
 
 ##################################################################################################
 #### Start dash app
@@ -439,12 +445,12 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                     cases on a hourly timescale.".format(latestDate, confirmedCases),
                 ),
  #              html.P(
- #               	id="note",
- #               	children=['⚠️ Source from ', 
- #               	html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
- #               	': in its February 14 official report, deducted \
+ #                id="note",
+ #                children=['⚠️ Source from ', 
+ #                html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
+ #                ': in its February 14 official report, deducted \
  #                 108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
- #               	Data have been corrected for these changes.']
+ #                Data have been corrected for these changes.']
  #               ),
  #              html.P(
  #                id="note",
@@ -452,7 +458,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
  #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
  #               ),
- #        		    html.P(
+ #                html.P(
  #                 id="note",
  #                 children=['⚠️ Source from ',
  #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
@@ -463,7 +469,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
  #                 children=['⚠️ Source from ',
  #                           html.A('The New York Times', href='https://www.nytimes.com/2020/03/01/world/coronavirus-news.html'),
  #                           ': New York State Reports First Case.']
- #                ), 					
+ #                ),          
                 html.P(
                   id='time-stamp',
                   #style={'fontWeight':'bold'},
@@ -567,8 +573,10 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                children='Latest Coronavirus Outbreak Map'),
                                   dcc.Graph(
                                       id='datatable-interact-map',
-                                      style={'height':'500px'},
-                                  )
+                                      style={'height':'500px'},),
+                                  dcc.Graph(
+                                      id='datatable-interact-lineplot',
+                                      style={'height':'300px'},),
                               ]),
                      html.Div(style={'width':'32.79%','display':'inline-block','verticalAlign':'top'},
                               children=[
@@ -593,7 +601,10 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                       },
                                       fixed_rows={'headers':True,'data':0},
                                       style_table={
-                                          #'maxHeight':'500px',
+                                          'minHeight': '800px', 
+                                          'height': '800px', 
+                                          'maxHeight': '800px'
+                                          #'Height':'300px',
                                           #'overflowY':'scroll',
                                           #'overflowX':'scroll',
                                       },
@@ -620,9 +631,8 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                  children=[
                      html.P(style={'textAlign':'center','margin':'auto'},
                             children=[" 🙏 God Bless the World 🙏 |",
-                                      " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️ in Sydney"])])
-
-            ])
+                                      " Developed by ",html.A('Jun', href='https://junye0798.com/')," with ❤️ in Sydney"])]),
+        ])
 
 @app.callback(
     Output('datatable-interact-map', 'figure'),
@@ -630,7 +640,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
      Input('datatable-interact-location', 'selected_row_ids')]
 )
 
-def update_figures(row_ids, selected_row_ids):
+def update_figures(derived_virtual_selected_rows, selected_row_ids):
     # When the table is first rendered, `derived_virtual_data` and
     # `derived_virtual_selected_rows` will be `None`. This is due to an
     # idiosyncracy in Dash (unsupplied properties are always None and Dash
@@ -641,8 +651,8 @@ def update_figures(row_ids, selected_row_ids):
     # `derived_virtual_data=df.to_rows('dict')` when you initialize
     # the component.
         
-    if row_ids is None:
-        row_ids = []
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
         
     dff = dfSum
         
@@ -679,7 +689,7 @@ def update_figures(row_ids, selected_row_ids):
             sizeref=2.*max([math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Comfirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
+        hovertext=['Confirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
                                                                                                     dfs[keyList[0]]['Recovered'],
                                                                                                     dfs[keyList[0]]['Deaths'])],
         hovertemplate = "<b>%{text}</b><br><br>" +
@@ -709,16 +719,146 @@ def update_figures(row_ids, selected_row_ids):
             # The direction you're facing, measured clockwise as an angle from true north on a compass
             bearing=0,
             center=go.layout.mapbox.Center(
-                lat=14.056159 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lat, 
-                lon=22.920039 if len(row_ids)==0 else dff.loc[selected_row_ids[0]].lon
+                lat=14.056159 if len(derived_virtual_selected_rows)==0 else dff.loc[selected_row_ids[0]].lat, 
+                lon=6.395626 if len(derived_virtual_selected_rows)==0 else dff.loc[selected_row_ids[0]].lon
             ),
             pitch=0,
-            zoom=1.03 if len(row_ids)==0 else 4
+            zoom=1.02 if len(derived_virtual_selected_rows)==0 else 4
         )
     )
 
     return fig2
 
+@app.callback(
+    Output('datatable-interact-lineplot', 'figure'),
+    [Input('datatable-interact-location', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location', 'selected_row_ids')]
+)
+
+def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
+    
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
+        
+    dff = dfSum
+    
+    if selected_row_ids:
+        if dff.loc[selected_row_ids[0]]['Country/Region'] == 'Mainland China':
+            Region = 'China'
+        else:
+            Region = dff.loc[selected_row_ids[0]]['Country/Region']
+    else:
+        Region = 'Australia'
+        
+    # Read cumulative data of a given region from ./cumulative_data folder
+    df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
+    df_region=df_region.astype({'Date_last_updated_AEDT':'datetime64', 'date_day':'datetime64'})
+
+    # Line plot for confirmed cases
+    # Set up tick scale based on confirmed case number
+    #tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 10000))
+
+    # Create empty figure canvas
+    fig3 = go.Figure()
+    # Add trace to the figure
+    fig3.add_trace(go.Scatter(x=df_region['date_day'], 
+                             y=df_region['Confirmed'],
+                             mode='lines+markers',
+                             #line_shape='spline',
+                             name='Confirmed case',
+                             line=dict(color='#d7191c', width=2),
+                             #marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#921113')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region['date_day']],
+                             hovertext=['{} Confirmed<br>{:,d} cases<br>'.format(Region, i) for i in df_region['Confirmed']],
+                             hovertemplate='<b>%{text}</b><br></br>'+
+                                                     '%{hovertext}'+
+                                                     '<extra></extra>'))
+    fig3.add_trace(go.Scatter(x=df_region['date_day'], 
+                             y=df_region['Recovered'],
+                             mode='lines+markers',
+                             #line_shape='spline',
+                             name='Recovered case',
+                             line=dict(color='#1a9622', width=2),                         
+                             #marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#168038')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region['date_day']],
+                             hovertext=['{} Recovered<br>{:,d} cases<br>'.format(Region, i) for i in df_region['Recovered']],
+                             hovertemplate='<b>%{text}</b><br></br>'+
+                                                     '%{hovertext}'+
+                                                     '<extra></extra>'))
+    fig3.add_trace(go.Scatter(x=df_region['date_day'], 
+                             y=df_region['Deaths'],
+                             mode='lines+markers',
+                             #line_shape='spline',
+                             name='Death case',
+                             line=dict(color='#626262', width=2),
+                             #marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#626262')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region['date_day']],
+                             hovertext=['{} Deaths<br>{:,d} cases<br>'.format(Region, i) for i in df_region['Deaths']],
+                             hovertemplate='<b>%{text}</b><br></br>'+
+                                                     '%{hovertext}'+
+                                                     '<extra></extra>'))
+
+    # Customise layout
+    fig3.update_layout(
+        #title=dict(
+        #    text="<b>Confirmed Cases Timeline<b>",
+        #    y=0.96, x=0.5, xanchor='center', yanchor='top',
+        #    font=dict(size=20, color="#292929", family="Playfair Display")
+        #),
+        margin=go.layout.Margin(
+            l=10,
+            r=10,
+            b=10,
+            t=5,
+            pad=0
+        ),
+        annotations=[
+            dict(
+                x=.5,
+                y=.4,
+                xref="paper",
+                yref="paper",
+                text=Region,
+                opacity=0.5,
+                font=dict(family='Arial, sans-serif',
+                          size=60,
+                          color="grey"),
+            )
+        ],
+        yaxis=dict(
+            showline=False, linecolor='#272e3e',
+            zeroline=False,
+            #showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth = .1,
+            tickmode='array',
+            # Set tick range based on the maximum number
+            #tickvals=tickList,
+            # Set tick label accordingly
+            #ticktext=["{:.0f}k".format(i/1000) for i in tickList]
+        ),
+        xaxis_title="Cumulative Cases (Select Country/Region From Table)",
+        xaxis=dict(
+            showline=False, linecolor='#272e3e',
+            showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth = .1,
+            zeroline=False
+        ),
+        xaxis_tickformat='%b %d',
+        #transition = {'duration':500},
+        hovermode = 'x',
+        legend_orientation="h",
+        legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
+        plot_bgcolor='#f4f4f2',
+        paper_bgcolor='#cbd2d3',
+        font=dict(color='#292929')
+    )
+    
+    return fig3
 
 if __name__ == "__main__":
     app.run_server(debug=True)

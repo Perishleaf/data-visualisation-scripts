@@ -1,0 +1,162 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/06/2020 20:30,67666,2959,43468
+Guangdong,Mainland China,3/06/2020 20:30,1352,7,1233
+Zhejiang,Mainland China,3/06/2020 20:30,1215,1,1149
+Shandong,Mainland China,3/06/2020 20:30,758,6,625
+Henan,Mainland China,3/06/2020 20:30,1272,22,1243
+Anhui,Mainland China,3/06/2020 20:30,990,6,979
+Jiangxi,Mainland China,3/06/2020 20:30,935,1,916
+Hunan,Mainland China,3/06/2020 20:30,1018,4,959
+Heilongjiang,Mainland China,3/06/2020 20:30,481,13,402
+Sichuan,Mainland China,3/06/2020 20:30,539,3,448
+Chongqing,Mainland China,3/06/2020 20:30,576,6,520
+Jiangsu,Mainland China,3/06/2020 20:30,631,0,601
+Beijing,Mainland China,3/06/2020 20:30,426,8,303
+Guangxi,Mainland China,3/06/2020 20:30,252,2,219
+Fujian,Mainland China,3/06/2020 20:30,296,1,284
+Shanghai,Mainland China,3/06/2020 20:30,342,3,306
+Hebei,Mainland China,3/06/2020 20:30,318,6,305
+Shaanxi,Mainland China,3/06/2020 20:30,245,1,226
+Yunnan,Mainland China,3/06/2020 20:30,174,2,170
+Tianjin,Mainland China,3/06/2020 20:30,136,3,128
+Hainan,Mainland China,3/06/2020 20:30,168,6,158
+Guizhou,Mainland China,3/06/2020 20:30,146,2,115
+Liaoning,Mainland China,3/06/2020 20:30,125,1,106
+Shanxi,Mainland China,3/06/2020 20:30,133,0,126
+Inner Mongolia,Mainland China,3/06/2020 20:30,75,1,65
+Xinjiang,Mainland China,3/06/2020 20:30,76,3,71
+Jilin,Mainland China,3/06/2020 20:30,93,1,90
+Ningxia,Mainland China,3/06/2020 20:30,75,0,71
+Gansu,Mainland China,3/06/2020 20:30,119,2,87
+Qinghai,Mainland China,3/06/2020 20:30,18,0,18
+Tibet,Mainland China,3/06/2020 20:30,1,0,1
+,South Korea,3/06/2020 20:30,6593,43,135
+,Iran,3/06/2020 20:30,4747,124,913
+,Italy,3/06/2020 20:30,4636,197,523
+Yokohama,Japan,3/06/2020 20:30,696,6,212
+,Germany,3/06/2020 20:30,670,0,17
+,France,3/06/2020 20:30,653,9,12
+,Japan,3/06/2020 20:30,420,6,46
+,Spain,3/06/2020 20:30,400,6,3
+,Switzerland,3/06/2020 20:30,214,1,3
+,UK,3/06/2020 20:30,164,2,18
+,Sweden,3/06/2020 20:30,136,0,1
+,Singapore,3/06/2020 20:30,130,0,81
+,Netherlands,3/06/2020 20:30,128,1,0
+,Norway,3/06/2020 20:30,127,0,1
+Brussels,Belgium,3/06/2020 20:30,109,0,1
+Hong Kong,Hong Kong,3/06/2020 20:30,108,2,51
+,Malaysia,3/06/2020 20:30,83,0,23
+,Austria,3/06/2020 20:30,66,0,2
+,Bahrain,3/06/2020 20:30,60,0,4
+,Kuwait,3/06/2020 20:30,58,0,0
+,Iraq,3/06/2020 20:30,48,4,1
+,Thailand,3/06/2020 20:30,48,1,31
+Taiwan,Taiwan,3/06/2020 20:30,45,1,15
+,Greece,3/06/2020 20:30,45,0,0
+,United Arab Emirates,3/06/2020 20:30,45,0,5
+,Iceland,3/06/2020 20:30,43,0,0
+,India,3/06/2020 20:30,31,0,3
+,San Marino,3/06/2020 20:30,23,0,0
+,Denmark,3/06/2020 20:30,23,0,1
+,Lebanon,3/06/2020 20:30,22,0,0
+,Israel,3/06/2020 20:30,21,0,2
+,Czechia,3/06/2020 20:30,19,0,0
+,Ireland,3/06/2020 20:30,18,0,0
+,Algeria,3/06/2020 20:30,17,0,0
+,Vietnam,3/06/2020 20:30,17,0,16
+,Oman,3/06/2020 20:30,16,0,2
+,Palestine,3/06/2020 20:30,16,0,0
+,Egypt,3/06/2020 20:30,15,0,1
+,Finland,3/06/2020 20:30,15,0,1
+,Brazil,3/06/2020 20:30,13,0,0
+,Ecuador,3/06/2020 20:30,13,0,0
+,Portugal,3/06/2020 20:30,13,0,0
+,Russia,3/06/2020 20:30,13,0,2
+,Croatia,3/06/2020 20:30,11,0,0
+,Qatar,3/06/2020 20:30,11,0,0
+Macau,Macau,3/06/2020 20:30,10,0,10
+,Estonia,3/06/2020 20:30,10,0,0
+,Georgia,3/06/2020 20:30,9,0,0
+,Romania,3/06/2020 20:30,9,0,3
+,Argentina,3/06/2020 20:30,8,0,0
+,Slovenia,3/06/2020 20:30,8,0,0
+,Azerbaijan,3/06/2020 20:30,6,0,0
+,Belarus,3/06/2020 20:30,6,0,0
+,Mexico,3/06/2020 20:30,6,0,1
+,Pakistan,3/06/2020 20:30,6,0,1
+,Philippines,3/06/2020 20:30,5,1,2
+,New Zealand,3/06/2020 20:30,5,0,0
+,Saudi Arabia,3/06/2020 20:30,5,0,1
+,Chile,3/06/2020 20:30,5,0,0
+,Poland,3/06/2020 20:30,5,0,0
+,Indonesia,3/06/2020 20:30,4,0,0
+,Senegal,3/06/2020 20:30,4,0,0
+,Hungary,3/06/2020 20:30,4,0,0
+,Luxembourg,3/06/2020 20:30,3,0,0
+,North Macedonia,3/06/2020 20:30,3,0,0
+,Bosnia and Herzegovina,3/06/2020 20:30,3,0,0
+,Dominican Republic,3/06/2020 20:30,2,0,0
+,Morocco,3/06/2020 20:30,2,0,0
+,Afghanistan,3/06/2020 20:30,1,0,0
+,Andorra,3/06/2020 20:30,1,0,0
+,Armenia,3/06/2020 20:30,1,0,0
+,Cambodia,3/06/2020 20:30,1,0,1
+,Jordan,3/06/2020 20:30,1,0,0
+,Latvia,3/06/2020 20:30,1,0,1
+,Lithuania,3/06/2020 20:30,1,0,0
+,Monaco,3/06/2020 20:30,1,0,0
+,Nepal,3/06/2020 20:30,1,0,1
+,Nigeria,3/06/2020 20:30,1,0,0
+,Sri Lanka,3/06/2020 20:30,1,0,1
+,Tunisia,3/06/2020 20:30,1,0,0
+,Ukraine,3/06/2020 20:30,1,0,0
+,Bhutan,3/06/2020 20:30,1,0,0
+,Cameroon,3/06/2020 20:30,1,0,0
+,Colombia,3/06/2020 20:30,1,0,0
+,Costa Rica,3/06/2020 20:30,1,0,0
+,Gibraltar,3/06/2020 20:30,1,0,0
+,Vatican City,3/06/2020 20:30,1,0,0
+,Liechtenstein,3/06/2020 20:30,1,0,0
+,Peru,3/06/2020 20:30,1,0,0
+,Serbia,3/06/2020 20:30,1,0,0
+,Slovakia,3/06/2020 20:30,1,0,0
+,South Africa,3/06/2020 20:30,1,0,0
+,Togo,3/06/2020 20:30,1,0,0
+British Columbia,Canada,3/06/2020 20:30,21,0,3
+Alberta,Canada,3/06/2020 20:30,2,0,0
+Ontario,Canada,3/06/2020 20:30,26,0,3
+Quebec,Canada,3/06/2020 20:30,3,0,0
+California,US,3/06/2020 20:30,87,1,2
+WA,US,3/06/2020 20:30,84,12,1
+New York,US,3/06/2020 20:30,44,0,0
+From Diamond Princess cruise,US,3/06/2020 20:30,42,0,0
+Texas,US,3/06/2020 20:30,9,0,0
+Massachusetts,US,3/06/2020 20:30,8,0,1
+Illinois,US,3/06/2020 20:30,5,0,2
+Colorado,US,3/06/2020 20:30,5,0,0
+Florida,US,3/06/2020 20:30,4,0,0
+New Jersey,US,3/06/2020 20:30,4,0,0
+Arizona,US,3/06/2020 20:30,3,0,1
+Oregon,US,3/06/2020 20:30,3,0,0
+Georgia,US,3/06/2020 20:30,3,0,0
+Maryland,US,3/06/2020 20:30,3,0,0
+Rhode Island,US,3/06/2020 20:30,2,0,0
+New Hampshire,US,3/06/2020 20:30,2,0,0
+North Carolina,US,3/06/2020 20:30,2,0,0
+Nevada,US,3/06/2020 20:30,2,0,0
+Pennsylvania,US,3/06/2020 20:30,2,0,0
+Wisconsin,US,3/06/2020 20:30,1,0,1
+Tennessee,US,3/06/2020 20:30,1,0,0
+Indiana,US,3/06/2020 20:30,1,0,0
+Minnesota,US,3/06/2020 20:30,1,0,0
+Kentucky,US,3/06/2020 20:30,1,0,0
+Nebraska,US,3/06/2020 20:30,1,0,0
+Oklahoma,US,3/06/2020 20:30,1,0,0
+Connecticut,US,3/06/2020 20:30,1,0,0
+Queensland,Australia,3/06/2020 20:30,14,0,8
+New South Wales,Australia,3/06/2020 20:30,29,1,5
+Victoria,Australia,3/06/2020 20:30,11,0,7
+South Australia,Australia,3/06/2020 20:30,7,0,2
+Western Australia,Australia,3/06/2020 20:30,3,1,0
+Tasmania,Australia,3/06/2020 20:30,1,0,0
