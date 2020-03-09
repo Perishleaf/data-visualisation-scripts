@@ -416,6 +416,7 @@ app.index_string = """<!DOCTYPE html>
         <title>{%title%}</title>
         {%favicon%}
         {%css%}
+        <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e5e32508d3a3d0019ee3ecb&product=sticky-share-buttons&cms=website' async='async'></script>
     </head>
     <body>
         {%app_entry%}
