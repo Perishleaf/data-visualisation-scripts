@@ -69,7 +69,7 @@ def df_for_lineplot_diff(dfs, CaseType):
 
 #filename = os.listdir('./raw_data/')
 #sheet_name = [i.replace('.csv', '') for i in filename if 'data' not in i and i.endswith('.csv')]
-#sheet_name = sheet_name[::-1]
+#sheet_name.sort(reverse=True)
 
 #dfs = {sheet_name: pd.read_csv('./raw_data/{}.csv'.format(sheet_name))
 #          for sheet_name in sheet_name}
@@ -709,7 +709,7 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
             y=-.01,
             align='center',
             showarrow=False,
-            text="Points are placed based on data geolocation levels.<br><b>Province/State level<b> - China, Australia, United States, and Canada; <b>Country level<b> - other countries.",
+            text="Points are placed based on data geolocation levels.<br>Province/State level - China, Australia, United States, and Canada; Country level- other countries.",
             xref="paper",
             yref="paper",
             font=dict(size=10, color='#292929'),
