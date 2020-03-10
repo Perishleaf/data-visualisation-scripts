@@ -21,10 +21,11 @@ Additional details about how to build this dashboard can be accessed from [here]
 
 __To-do list:__
 
-- [x] 2 Mar. Code optimisation for importing excel sheets data
-- [x] 3 Mar. Add donation widge
-- [x] 9 Mar. Add share slide
-- [x] 8 Mar. Code optimisation for scrapping data from various sources
+- [x] Code optimisation for importing excel sheets data
+- [x] Add donation widge
+- [x] Add share slide
+- [x] Code optimisation for calling coordinates using opencage geocoder
+- [x] Code optimisation for scrapping data from various sources
 - [ ] Layout and design
 
 ![App screenshot](./app_screenshot.gif)
