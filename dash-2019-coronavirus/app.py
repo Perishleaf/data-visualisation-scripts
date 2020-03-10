@@ -474,7 +474,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                 html.P(
                   id='time-stamp',
                   #style={'fontWeight':'bold'},
-                       children="🔴 Last updated on {}. (Sorry, the app server may experince short period of interruption while updating data)".format(latestDate))
+                       children="🔴 Last update: {} (Sorry, the app server may experince short period of interruption while updating data)".format(latestDate))
                     ]        
                 ),
         html.Div(

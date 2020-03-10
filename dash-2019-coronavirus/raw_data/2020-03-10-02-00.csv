@@ -1,0 +1,192 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/10/2020 02:00,67760,3024,47590
+Guangdong,Mainland China,3/10/2020 02:00,1353,8,1273
+Zhejiang,Mainland China,3/10/2020 02:00,1215,1,1186
+Shandong,Mainland China,3/10/2020 02:00,758,6,704
+Henan,Mainland China,3/10/2020 02:00,1272,22,1247
+Anhui,Mainland China,3/10/2020 02:00,990,6,984
+Jiangxi,Mainland China,3/10/2020 02:00,935,1,927
+Hunan,Mainland China,3/10/2020 02:00,1018,4,988
+Heilongjiang,Mainland China,3/10/2020 02:00,481,13,434
+Sichuan,Mainland China,3/10/2020 02:00,539,3,474
+Chongqing,Mainland China,3/10/2020 02:00,576,6,542
+Jiangsu,Mainland China,3/10/2020 02:00,631,0,624
+Beijing,Mainland China,3/10/2020 02:00,429,8,320
+Guangxi,Mainland China,3/10/2020 02:00,252,2,234
+Fujian,Mainland China,3/10/2020 02:00,296,1,295
+Shanghai,Mainland China,3/10/2020 02:00,342,3,319
+Hebei,Mainland China,3/10/2020 02:00,318,6,307
+Shaanxi,Mainland China,3/10/2020 02:00,245,1,227
+Yunnan,Mainland China,3/10/2020 02:00,174,2,170
+Tianjin,Mainland China,3/10/2020 02:00,136,3,130
+Hainan,Mainland China,3/10/2020 02:00,168,6,159
+Guizhou,Mainland China,3/10/2020 02:00,146,2,129
+Liaoning,Mainland China,3/10/2020 02:00,125,1,111
+Shanxi,Mainland China,3/10/2020 02:00,133,0,128
+Inner Mongolia,Mainland China,3/10/2020 02:00,75,1,70
+Xinjiang,Mainland China,3/10/2020 02:00,76,3,73
+Jilin,Mainland China,3/10/2020 02:00,93,1,91
+Ningxia,Mainland China,3/10/2020 02:00,75,0,71
+Gansu,Mainland China,3/10/2020 02:00,124,2,88
+Qinghai,Mainland China,3/10/2020 02:00,18,0,18
+Tibet,Mainland China,3/10/2020 02:00,1,0,1
+Queensland,Australia,3/10/2020 02:00,18,0,8
+New South Wales,Australia,3/10/2020 02:00,54,2,5
+Victoria,Australia,3/10/2020 02:00,19,0,7
+South Australia,Australia,3/10/2020 02:00,7,0,3
+Western Australia,Australia,3/10/2020 02:00,6,1,0
+Tasmania,Australia,3/10/2020 02:00,2,0,0
+WA,US,3/10/2020 02:00,167,22,1
+New York,US,3/10/2020 02:00,143,0,0
+California,US,3/10/2020 02:00,143,2,2
+From Diamond Princess cruise,US,3/10/2020 02:00,45,0,0
+Massachusetts,US,3/10/2020 02:00,41,0,1
+From Grand Princess,US,3/10/2020 02:00,21,0,0
+Georgia,US,3/10/2020 02:00,17,0,0
+Oregon,US,3/10/2020 02:00,14,0,0
+Florida,US,3/10/2020 02:00,14,2,0
+Texas,US,3/10/2020 02:00,13,0,0
+Colorado,US,3/10/2020 02:00,12,0,0
+Illinois,US,3/10/2020 02:00,11,0,2
+New Jersey,US,3/10/2020 02:00,11,0,0
+Pennsylvania,US,3/10/2020 02:00,10,0,0
+Iowa,US,3/10/2020 02:00,8,0,0
+South Carolina,US,3/10/2020 02:00,7,0,0
+North Carolina,US,3/10/2020 02:00,7,0,0
+Virginia,US,3/10/2020 02:00,7,0,0
+Arizona,US,3/10/2020 02:00,6,0,1
+Maryland,US,3/10/2020 02:00,6,0,0
+Kentucky,US,3/10/2020 02:00,6,0,0
+Indiana,US,3/10/2020 02:00,5,0,0
+New Hampshire,US,3/10/2020 02:00,4,0,0
+Nevada,US,3/10/2020 02:00,4,0,0
+Tennessee,US,3/10/2020 02:00,4,0,0
+Rhode Island,US,3/10/2020 02:00,3,0,0
+Nebraska,US,3/10/2020 02:00,3,0,0
+Ohio,US,3/10/2020 02:00,3,0,0
+Wisconsin,US,3/10/2020 02:00,2,0,1
+Minnesota,US,3/10/2020 02:00,2,0,0
+Hawaii,US,3/10/2020 02:00,2,0,0
+Washington DC,US,3/10/2020 02:00,2,0,0
+Connecticut,US,3/10/2020 02:00,2,0,0
+Oklahoma,US,3/10/2020 02:00,1,0,0
+Utah,US,3/10/2020 02:00,1,0,0
+Kansas,US,3/10/2020 02:00,1,0,0
+Missouri,US,3/10/2020 02:00,1,0,0
+Vermont,US,3/10/2020 02:00,1,0,0
+Louisiana,US,3/10/2020 02:00,1,0,0
+Ontario,Canada,3/10/2020 02:00,35,0,3
+British Columbia,Canada,3/10/2020 02:00,32,1,3
+Alberta,Canada,3/10/2020 02:00,7,0,0
+Quebec,Canada,3/10/2020 02:00,4,0,0
+,Italy,3/10/2020 02:00,9172,463,724
+,South Korea,3/10/2020 02:00,7513,54,247
+,Iran,3/10/2020 02:00,7161,237,2394
+,France,3/10/2020 02:00,1412,30,12
+,Spain,3/10/2020 02:00,1231,30,32
+,Germany,3/10/2020 02:00,1224,2,18
+Yokohama,Japan,3/10/2020 02:00,696,7,245
+,Japan,3/10/2020 02:00,530,9,101
+,Switzerland,3/10/2020 02:00,374,2,3
+,UK,3/10/2020 02:00,321,5,18
+,Netherlands,3/10/2020 02:00,321,4,0
+,Sweden,3/10/2020 02:00,261,0,1
+Brussels,Belgium,3/10/2020 02:00,239,0,1
+,Norway,3/10/2020 02:00,227,0,1
+,Singapore,3/10/2020 02:00,160,0,93
+,Austria,3/10/2020 02:00,131,0,2
+,Malaysia,3/10/2020 02:00,117,0,24
+Hong Kong,Hong Kong,3/10/2020 02:00,116,3,59
+,Denmark,3/10/2020 02:00,113,0,1
+,Bahrain,3/10/2020 02:00,109,0,22
+,Greece,3/10/2020 02:00,84,0,0
+,Iraq,3/10/2020 02:00,71,7,3
+,Iceland,3/10/2020 02:00,65,0,1
+,Kuwait,3/10/2020 02:00,65,0,1
+,Egypt,3/10/2020 02:00,59,1,1
+,United Arab Emirates,3/10/2020 02:00,59,0,12
+,San Marino,3/10/2020 02:00,51,2,0
+,Thailand,3/10/2020 02:00,50,1,33
+,Israel,3/10/2020 02:00,50,0,4
+,India,3/10/2020 02:00,47,0,4
+Taiwan,Taiwan,3/10/2020 02:00,45,1,15
+,Lebanon,3/10/2020 02:00,41,0,1
+,Czechia,3/10/2020 02:00,40,0,0
+,Portugal,3/10/2020 02:00,39,0,0
+,Finland,3/10/2020 02:00,33,0,1
+,Vietnam,3/10/2020 02:00,31,0,16
+,Brazil,3/10/2020 02:00,25,0,0
+,Slovenia,3/10/2020 02:00,25,0,0
+,Palestine,3/10/2020 02:00,25,0,0
+,Philippines,3/10/2020 02:00,24,1,2
+,Ireland,3/10/2020 02:00,24,0,0
+,Algeria,3/10/2020 02:00,20,0,0
+,Russia,3/10/2020 02:00,20,0,3
+,Saudi Arabia,3/10/2020 02:00,20,0,1
+,Indonesia,3/10/2020 02:00,19,0,0
+,Oman,3/10/2020 02:00,18,0,9
+,Qatar,3/10/2020 02:00,18,0,0
+,Argentina,3/10/2020 02:00,17,1,0
+,Romania,3/10/2020 02:00,17,0,5
+,Poland,3/10/2020 02:00,17,0,0
+,Pakistan,3/10/2020 02:00,16,0,2
+,Ecuador,3/10/2020 02:00,15,0,0
+,Georgia,3/10/2020 02:00,15,0,0
+,Croatia,3/10/2020 02:00,13,0,0
+,Chile,3/10/2020 02:00,13,0,0
+Macau,Macau,3/10/2020 02:00,10,0,10
+,Estonia,3/10/2020 02:00,10,0,0
+,Azerbaijan,3/10/2020 02:00,9,0,0
+,Costa Rica,3/10/2020 02:00,9,0,0
+,Hungary,3/10/2020 02:00,9,0,0
+,Peru,3/10/2020 02:00,9,0,0
+,Mexico,3/10/2020 02:00,7,0,4
+,Slovakia,3/10/2020 02:00,7,0,0
+,South Africa,3/10/2020 02:00,7,0,0
+,Belarus,3/10/2020 02:00,6,0,0
+,Latvia,3/10/2020 02:00,6,0,1
+,Albania,3/10/2020 02:00,6,0,0
+,Maldives,3/10/2020 02:00,6,0,0
+,Dominican Republic,3/10/2020 02:00,5,0,0
+,Luxembourg,3/10/2020 02:00,5,0,0
+,New Zealand,3/10/2020 02:00,5,0,0
+,Tunisia,3/10/2020 02:00,5,0,0
+,Bosnia and Herzegovina,3/10/2020 02:00,5,0,0
+,French Guiana,3/10/2020 02:00,5,0,0
+,Afghanistan,3/10/2020 02:00,4,0,0
+,North Macedonia,3/10/2020 02:00,4,0,0
+,Senegal,3/10/2020 02:00,4,0,1
+,Bulgaria,3/10/2020 02:00,4,0,0
+,Malta,3/10/2020 02:00,4,0,0
+,Bangladesh,3/10/2020 02:00,3,0,0
+,Colombia,3/10/2020 02:00,3,0,0
+,Cambodia,3/10/2020 02:00,2,0,1
+,Morocco,3/10/2020 02:00,2,0,0
+,Nigeria,3/10/2020 02:00,2,0,0
+,Cameroon,3/10/2020 02:00,2,0,0
+,Cyprus,3/10/2020 02:00,2,0,0
+,Faeroe Islands,3/10/2020 02:00,2,0,0
+,Martinique,3/10/2020 02:00,2,0,0
+,Saint Martin,3/10/2020 02:00,2,0,0
+,Serbia,3/10/2020 02:00,2,0,0
+,Andorra,3/10/2020 02:00,1,0,0
+,Armenia,3/10/2020 02:00,1,0,0
+,Jordan,3/10/2020 02:00,1,0,0
+,Lithuania,3/10/2020 02:00,1,0,0
+,Monaco,3/10/2020 02:00,1,0,0
+,Nepal,3/10/2020 02:00,1,0,1
+,Sri Lanka,3/10/2020 02:00,1,0,1
+,Ukraine,3/10/2020 02:00,1,0,0
+,Bhutan,3/10/2020 02:00,1,0,0
+,Brunei,3/10/2020 02:00,1,0,0
+,Burkina Faso,3/10/2020 02:00,1,0,0
+,Channel Islands,3/10/2020 02:00,1,0,0
+,Gibraltar,3/10/2020 02:00,1,0,1
+,Vatican City,3/10/2020 02:00,1,0,0
+,Liechtenstein,3/10/2020 02:00,1,0,0
+,Moldova,3/10/2020 02:00,1,0,0
+,Mongolia,3/10/2020 02:00,1,0,0
+,Panama,3/10/2020 02:00,1,0,0
+,Paraguay,3/10/2020 02:00,1,0,0
+,St. Barth,3/10/2020 02:00,1,0,0
+,Togo,3/10/2020 02:00,1,0,0

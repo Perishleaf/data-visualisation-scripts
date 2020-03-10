@@ -771,6 +771,11 @@ hr {
         font-weight: bold;
     }
 
+    #dcc-table h5 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
     #graph-container {
         margin-top: 5rem;
     }
@@ -812,6 +817,11 @@ hr {
     }
 
     #dcc-map h5 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    #dcc-table h5 {
         font-size: 2.5rem;
         font-weight: bold;
     }
@@ -876,6 +886,11 @@ hr {
     }
 
     #dcc-map h5 {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    #dcc-table h5 {
         font-size: 1rem;
         font-weight: bold;
     }
