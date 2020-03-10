@@ -19,11 +19,13 @@ Dashboard is deployed on Heroku and can be accessed from https://dash-coronaviru
 
 Additional details about how to build this dashboard can be accessed from [here](https://towardsdatascience.com/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash-90364f016764) and [here](https://towardsdatascience.com/elevate-your-dashboard-interactivity-in-dash-b655a0f45067)
 
+#To-do list:#
+
 - [x] 2 Mar. Code optimisation for importing excel sheets data
 - [x] 3 Mar. Add donation widge
 - [x] 9 Mar. Add share slide
 - [x] 8 Mar. Code optimisation for scrapping data from various sources
-- [] Layout and design
+- [ ] Layout and design
 
 ![App screenshot](./app_screenshot.gif)
 
