@@ -61,6 +61,58 @@ def df_for_lineplot_diff(dfs, CaseType):
     
     return df, plusNum, plusPercentNum
 
+def make_country_table(countryName):
+    '''This is the function for building df for Province/State of a given country'''
+    countryTable = dfs[keyList[0]].loc[dfs[keyList[0]]['Country/Region'] == countryName]
+    # Suppress SettingWithCopyWarning
+    pd.options.mode.chained_assignment = None
+    countryTable['Remaining'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+    countryTable = countryTable[['Province/State','Remaining','Confirmed','Recovered','Deaths','lat','lon']]
+    countryTable = countryTable.sort_values(by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
+    # Set row ids pass to selected_row_ids
+    countryTable['id'] = countryTable['Province/State']
+    countryTable.set_index('id', inplace=True, drop=False)
+    # Turn on SettingWithCopyWarning
+    pd.options.mode.chained_assignment = 'warn'
+    return countryTable
+
+def make_dcc_country_tab(countryName, dataframe):
+    '''This is for generating tab component for country table'''
+    return dcc.Tab(label=countryName,
+            value=countryName,
+            className='custom-tab',
+            selected_className='custom-tab--selected',
+            children=[
+                dash_table.DataTable(
+                    # Don't show coordinates
+                    columns=[{"name": i, "id": i} for i in dataframe.columns[0:5]],
+                    # But still store coordinates in the table for interactivity
+                    data=dataframe.to_dict("rows"),
+                    #row_selectable="single",
+                    sort_action="native",
+                    style_as_list_view=True,
+                    style_cell={'font_family':'Arial',
+                                'font_size':'1.2rem',
+                                'padding':'.1rem',
+                                'backgroundColor':'#f4f4f2',},
+                    fixed_rows={'headers':True,'data':0},
+                    style_table={'minHeight': '750px', 
+                                 'height': '750px', 
+                                 'maxHeight': '750px'},
+                    style_header={'backgroundColor':'#f4f4f2',
+                                  'fontWeight':'bold'},
+                    style_cell_conditional=[{'if': {'column_id':'Province/State'},'width':'28%'},
+                                            {'if': {'column_id':'Remaining'},'width':'18%'},
+                                            {'if': {'column_id':'Confirmed'},'width':'18%'},
+                                            {'if': {'column_id':'Recovered'},'width':'18%'},
+                                            {'if': {'column_id':'Deaths'},'width':'18%'},
+                                            {'if': {'column_id':'Confirmed'},'color':'#d7191c'},
+                                            {'if': {'column_id':'Recovered'},'color':'#1a9622'},
+                                            {'if': {'column_id':'Deaths'},'color':'#6c6c6c'},
+                                            {'textAlign': 'center'}],
+                )
+        ])
+
 ################################################################################
 #### Data processing
 ################################################################################
@@ -142,6 +194,12 @@ dfSum = dfSum.sort_values(by=['Remaining', 'Confirmed'], ascending=False).reset_
 # Set row ids pass to selected_row_ids
 dfSum['id'] = dfSum['Country/Region']
 dfSum.set_index('id', inplace=True, drop=False)
+
+# Create tables for tabs
+CNTable = make_country_table('China')
+AUSTable = make_country_table('Australia')
+USTable = make_country_table('US')
+CANTable = make_country_table('Canada')
 
 # Save numbers into variables to use in the app
 latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
@@ -584,45 +642,52 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
                                                children='Cases by Country/Region'),
-                                  dash_table.DataTable(
-                                      id='datatable-interact-location',
-                                      # Don't show coordinates
-                                      columns=[{"name": i, "id": i} for i in dfSum.columns[0:5]],
-                                      # But still store coordinates in the table for interactivity
-                                      data=dfSum.to_dict("rows"),
-                                      row_selectable="single",
-                                      #selected_rows=[],
-                                      sort_action="native",
-                                      style_as_list_view=True,
-                                      style_cell={
-                                          'font_family':'Arial',
-                                          'font_size':'1.2rem',
-                                          'padding':'.1rem',
-                                          'backgroundColor':'#f4f4f2',
-                                      },
-                                      fixed_rows={'headers':True,'data':0},
-                                      style_table={
-                                          'minHeight': '800px', 
-                                          'height': '800px', 
-                                          'maxHeight': '800px'
-                                          #'Height':'300px',
-                                          #'overflowY':'scroll',
-                                          #'overflowX':'scroll',
-                                      },
-                                      style_header={
-                                        'backgroundColor':'#f4f4f2',
-                                        'fontWeight':'bold'},
-                                      style_cell_conditional=[
-                                          {'if': {'column_id':'Country/Regions'},'width':'28%'},
-                                          {'if': {'column_id':'Remaining'},'width':'18%'},
-                                          {'if': {'column_id':'Confirmed'},'width':'18%'},
-                                          {'if': {'column_id':'Recovered'},'width':'18%'},
-                                          {'if': {'column_id':'Deaths'},'width':'18%'},
-                                          {'if': {'column_id':'Confirmed'},'color':'#d7191c'},
-                                          {'if': {'column_id':'Recovered'},'color':'#1a9622'},
-                                          {'if': {'column_id':'Deaths'},'color':'#6c6c6c'},
-                                          {'textAlign': 'center'}
-                                      ],
+                                  dcc.Tabs(
+                                      id="tabs-table",
+                                      value='tab-1',
+                                      parent_className='custom-tabs',
+                                      className='custom-tabs-container',
+                                      children=[
+                                          dcc.Tab(label='The World',
+                                              value='tab-1',
+                                              className='custom-tab',
+                                              selected_className='custom-tab--selected',
+                                              children=[
+                                                  dash_table.DataTable(
+                                                      id='datatable-interact-location',
+                                                      # Don't show coordinates
+                                                      columns=[{"name": i, "id": i} for i in dfSum.columns[0:5]],
+                                                      # But still store coordinates in the table for interactivity
+                                                      data=dfSum.to_dict("rows"),
+                                                      row_selectable="single",
+                                                      sort_action="native",
+                                                      style_as_list_view=True,
+                                                      style_cell={'font_family':'Arial',
+                                                                  'font_size':'1.2rem',
+                                                                  'padding':'.1rem',
+                                                                  'backgroundColor':'#f4f4f2',},
+                                                      fixed_rows={'headers':True,'data':0},
+                                                      style_table={'minHeight': '750px', 
+                                                                   'height': '750px', 
+                                                                   'maxHeight': '750px'},
+                                                      style_header={'backgroundColor':'#f4f4f2',
+                                                                    'fontWeight':'bold'},
+                                                      style_cell_conditional=[{'if': {'column_id':'Country/Regions'},'width':'28%'},
+                                                                              {'if': {'column_id':'Remaining'},'width':'18%'},
+                                                                              {'if': {'column_id':'Confirmed'},'width':'18%'},
+                                                                              {'if': {'column_id':'Recovered'},'width':'18%'},
+                                                                              {'if': {'column_id':'Deaths'},'width':'18%'},
+                                                                              {'if': {'column_id':'Confirmed'},'color':'#d7191c'},
+                                                                              {'if': {'column_id':'Recovered'},'color':'#1a9622'},
+                                                                              {'if': {'column_id':'Deaths'},'color':'#6c6c6c'},
+                                                                              {'textAlign': 'center'}],
+                                                  )
+                                          ]),
+                                          make_dcc_country_tab('Australia', AUSTable),
+                                          make_dcc_country_tab('Canada', CANTable),
+                                          make_dcc_country_tab('Mainland China', CNTable),
+                                          make_dcc_country_tab('United States', USTable),
+                                      ]
                                   )
                               ])
                  ]),
@@ -690,9 +755,9 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
             sizeref=2.*max([math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Confirmed: {}<br>Recovered: {}<br>Death: {}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
-                                                                                                    dfs[keyList[0]]['Recovered'],
-                                                                                                    dfs[keyList[0]]['Deaths'])],
+        hovertext=['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
+                                                                                                             dfs[keyList[0]]['Recovered'],
+                                                                                                             dfs[keyList[0]]['Deaths'])],
         hovertemplate = "<b>%{text}</b><br><br>" +
                         "%{hovertext}<br>" +
                         "<extra></extra>")
@@ -709,7 +774,7 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
             y=-.01,
             align='center',
             showarrow=False,
-            text="Points are placed based on data geolocation levels.<br>Province/State level - China, Australia, United States, and Canada; Country level- other countries.",
+            text="Points are placed based on data geolocation levels.<br>Province/State level - Australia, China, Canada, and United States; Country level- other countries.",
             xref="paper",
             yref="paper",
             font=dict(size=10, color='#292929'),
@@ -860,6 +925,7 @@ def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
     )
     
     return fig3
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
