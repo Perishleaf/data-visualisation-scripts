@@ -442,14 +442,14 @@ app = dash.Dash(__name__,
                     {"name": "description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
                     {"property": "og:title", "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
                     {"property": "og:type", "content": "website"},
-                    {"property":"og:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu676943c67ca727a9a973d1fe66ac6f83_849996_1200x0_resize_lanczos_2.png"},
+                    {"property":"og:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"property": "og:url", "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property":"og:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title", "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
                     {"name": "twitter:description", "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
-                    {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu676943c67ca727a9a973d1fe66ac6f83_849996_1200x0_resize_lanczos_2.png"},
+                    {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport", "content": "width=device-width, height=device-height, initial-scale=1.0"}
                 ]
       )

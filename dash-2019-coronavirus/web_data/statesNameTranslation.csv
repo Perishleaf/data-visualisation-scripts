@@ -2,7 +2,7 @@
 阿拉巴马,Alabama,AL,US
 阿拉斯加,Alaska,AK,US
 亚利桑那,Arizona,AZ,US
-阿肯色,Arkansas,AR,US
+阿肯色州,Arkansas,AR,US
 加州,California,CA,US
 科罗拉多,Colorado,CO,US
 康涅狄格,Connecticut,CT,US
@@ -22,9 +22,9 @@
 马萨诸塞,Massachusetts,MA,US
 密西根,Michigan,MI,US
 明尼苏达,Minnesota,MN,US
-密西西比,Mississippi,MS,US
+密西西比州,Mississippi,MS,US
 密苏里,Missouri,MO,US
-蒙大拿,Montana,MT,US
+蒙大拿州,Montana,MT,US
 内布拉斯加,Nebraska,NE,US
 内华达,Nevada,NV,US
 新罕布什尔,New Hampshire,NH,US
@@ -32,7 +32,7 @@
 新墨西哥,New Mexico,NM,US
 纽约,New York,NY,US
 北卡,North Carolina,NC,US
-北达科他州,North Dakota,ND,US
+北达科塔,North Dakota,ND,US
 俄亥俄,Ohio,OH,US
 俄克拉荷马,Oklahoma,OK,US
 俄勒冈,Oregon,OR,US
@@ -48,11 +48,12 @@
 华盛顿州,WA,WA,US
 西弗吉尼亚,West Virginia,WV,US
 威斯康星,Wisconsin,WI,US
-怀俄明,Wyoming,WY,US
+怀俄明州,Wyoming,WY,US
 华盛顿特区,Washington DC,,US
 安大略,Ontario,,Canada
 不列颠哥伦比亚,British Columbia,,Canada
 魁北克,Quebec,,Canada
 阿尔伯塔,Alberta,,Canada
+新不伦瑞克省,New Brunswick,,Canada
 钻石公主号,From Diamond Princess cruise,,US
 至尊公主号,From Grand Princess,,US
