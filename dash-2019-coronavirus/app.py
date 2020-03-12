@@ -740,7 +740,7 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
     colorList=[]
 
     for comfirmed, recovered, deaths in zip(dfs[keyList[0]]['Confirmed'],dfs[keyList[0]]['Recovered'],dfs[keyList[0]]['Deaths']):
-        remaining = recovered / (comfirmed - deaths)
+        remaining = comfirmed - deaths -recovered 
         colorList.append(remaining)
 
     fig2 = go.Figure(go.Scattermapbox(
@@ -748,7 +748,7 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
         lon=dfs[keyList[0]]['lon'],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            color=['#d7191c' if i < 1 else '#1a9622' for i in colorList],
+            color=['#d7191c' if i > 0 else '#1a9622' for i in colorList],
             size=[i**(1/3) for i in dfs[keyList[0]]['Confirmed']], 
             sizemin=1,
             sizemode='area',

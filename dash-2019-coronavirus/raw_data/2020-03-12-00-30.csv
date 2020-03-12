@@ -1,0 +1,212 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/12/2020 00:30,67781,3056,50298
+Guangdong,Mainland China,3/12/2020 00:30,1356,8,1289
+Zhejiang,Mainland China,3/12/2020 00:30,1215,1,1197
+Shandong,Mainland China,3/12/2020 00:30,760,6,733
+Henan,Mainland China,3/12/2020 00:30,1273,22,1249
+Anhui,Mainland China,3/12/2020 00:30,990,6,984
+Jiangxi,Mainland China,3/12/2020 00:30,935,1,934
+Hunan,Mainland China,3/12/2020 00:30,1018,4,998
+Heilongjiang,Mainland China,3/12/2020 00:30,482,13,440
+Sichuan,Mainland China,3/12/2020 00:30,539,3,494
+Chongqing,Mainland China,3/12/2020 00:30,576,6,554
+Jiangsu,Mainland China,3/12/2020 00:30,631,0,628
+Beijing,Mainland China,3/12/2020 00:30,435,8,334
+Guangxi,Mainland China,3/12/2020 00:30,252,2,241
+Fujian,Mainland China,3/12/2020 00:30,296,1,295
+Shanghai,Mainland China,3/12/2020 00:30,344,3,320
+Hebei,Mainland China,3/12/2020 00:30,318,6,307
+Shaanxi,Mainland China,3/12/2020 00:30,245,2,232
+Yunnan,Mainland China,3/12/2020 00:30,174,2,170
+Tianjin,Mainland China,3/12/2020 00:30,136,3,132
+Hainan,Mainland China,3/12/2020 00:30,168,6,159
+Guizhou,Mainland China,3/12/2020 00:30,146,2,137
+Liaoning,Mainland China,3/12/2020 00:30,125,1,111
+Shanxi,Mainland China,3/12/2020 00:30,133,0,131
+Inner Mongolia,Mainland China,3/12/2020 00:30,75,1,71
+Xinjiang,Mainland China,3/12/2020 00:30,76,3,73
+Jilin,Mainland China,3/12/2020 00:30,93,1,91
+Ningxia,Mainland China,3/12/2020 00:30,75,0,72
+Gansu,Mainland China,3/12/2020 00:30,125,2,88
+Qinghai,Mainland China,3/12/2020 00:30,18,0,18
+Tibet,Mainland China,3/12/2020 00:30,1,0,1
+New South Wales,Australia,3/12/2020 00:30,77,2,6
+Queensland,Australia,3/12/2020 00:30,27,0,8
+Victoria,Australia,3/12/2020 00:30,28,0,7
+South Australia,Australia,3/12/2020 00:30,9,0,3
+Western Australia,Australia,3/12/2020 00:30,9,1,0
+Tasmania,Australia,3/12/2020 00:30,3,0,0
+Australian Capital Territory,Australia,3/12/2020 00:30,1,0,0
+WA,US,3/12/2020 00:30,373,29,1
+New York,US,3/12/2020 00:30,219,0,0
+California,US,3/12/2020 00:30,178,4,2
+Massachusetts,US,3/12/2020 00:30,95,0,1
+From Diamond Princess cruise,US,3/12/2020 00:30,45,0,0
+Colorado,US,3/12/2020 00:30,34,0,0
+Georgia,US,3/12/2020 00:30,31,0,0
+Florida,US,3/12/2020 00:30,30,2,0
+Illinois,US,3/12/2020 00:30,25,0,2
+New Jersey,US,3/12/2020 00:30,23,1,0
+Texas,US,3/12/2020 00:30,23,0,0
+Oregon,US,3/12/2020 00:30,21,0,0
+From Grand Princess,US,3/12/2020 00:30,21,0,0
+Pennsylvania,US,3/12/2020 00:30,16,0,0
+Iowa,US,3/12/2020 00:30,14,0,0
+Louisiana,US,3/12/2020 00:30,13,0,0
+Maryland,US,3/12/2020 00:30,12,0,0
+Indiana,US,3/12/2020 00:30,11,0,0
+Nebraska,US,3/12/2020 00:30,10,0,0
+South Carolina,US,3/12/2020 00:30,10,0,0
+Washington DC,US,3/12/2020 00:30,10,0,0
+Arizona,US,3/12/2020 00:30,9,0,1
+North Carolina,US,3/12/2020 00:30,9,0,0
+Tennessee,US,3/12/2020 00:30,9,0,0
+Virginia,US,3/12/2020 00:30,9,0,0
+Kentucky,US,3/12/2020 00:30,8,0,0
+South Dakota,US,3/12/2020 00:30,8,1,0
+Nevada,US,3/12/2020 00:30,7,0,0
+Wisconsin,US,3/12/2020 00:30,6,0,1
+Rhode Island,US,3/12/2020 00:30,5,0,0
+New Hampshire,US,3/12/2020 00:30,5,0,0
+Minnesota,US,3/12/2020 00:30,5,0,0
+Ohio,US,3/12/2020 00:30,4,0,0
+New Mexico,US,3/12/2020 00:30,4,0,0
+Utah,US,3/12/2020 00:30,3,0,0
+Connecticut,US,3/12/2020 00:30,3,0,0
+Oklahoma,US,3/12/2020 00:30,2,0,0
+Hawaii,US,3/12/2020 00:30,2,0,0
+Vermont,US,3/12/2020 00:30,2,0,0
+Michigan,US,3/12/2020 00:30,2,0,0
+Kansas,US,3/12/2020 00:30,1,0,0
+Missouri,US,3/12/2020 00:30,1,0,0
+Arkansas,US,3/12/2020 00:30,1,0,0
+Montana,US,3/12/2020 00:30,1,0,0
+Delaware,US,3/12/2020 00:30,1,0,0
+Mississippi,US,3/12/2020 00:30,1,0,0
+Wyoming,US,3/12/2020 00:30,1,0,0
+North Dakota,US,3/12/2020 00:30,1,0,0
+British Columbia,Canada,3/12/2020 00:30,46,1,3
+Ontario,Canada,3/12/2020 00:30,42,0,3
+Alberta,Canada,3/12/2020 00:30,19,0,0
+Quebec,Canada,3/12/2020 00:30,9,0,0
+New Brunswick,Canada,3/12/2020 00:30,1,0,0
+,Italy,3/12/2020 00:30,12462,827,1045
+,Iran,3/12/2020 00:30,9000,354,2959
+,South Korea,3/12/2020 00:30,7869,66,333
+,France,3/12/2020 00:30,2281,48,12
+,Spain,3/12/2020 00:30,2277,55,183
+,Germany,3/12/2020 00:30,1966,3,25
+Yokohama,Japan,3/12/2020 00:30,696,7,325
+,Switzerland,3/12/2020 00:30,652,4,4
+,Japan,3/12/2020 00:30,639,16,118
+,Norway,3/12/2020 00:30,629,0,1
+,Denmark,3/12/2020 00:30,514,0,1
+,Netherlands,3/12/2020 00:30,503,5,2
+,Sweden,3/12/2020 00:30,500,1,1
+,UK,3/12/2020 00:30,456,8,18
+Brussels,Belgium,3/12/2020 00:30,314,3,1
+,Qatar,3/12/2020 00:30,262,0,0
+,Austria,3/12/2020 00:30,246,0,4
+,Bahrain,3/12/2020 00:30,195,0,35
+,Singapore,3/12/2020 00:30,178,0,96
+,Malaysia,3/12/2020 00:30,149,0,26
+Hong Kong,Hong Kong,3/12/2020 00:30,130,3,77
+,Greece,3/12/2020 00:30,99,0,0
+,Israel,3/12/2020 00:30,97,0,4
+,Czechia,3/12/2020 00:30,94,0,0
+,Iceland,3/12/2020 00:30,85,0,0
+,United Arab Emirates,3/12/2020 00:30,74,0,17
+,Kuwait,3/12/2020 00:30,72,0,3
+,Iraq,3/12/2020 00:30,71,7,15
+,San Marino,3/12/2020 00:30,69,2,0
+,Lebanon,3/12/2020 00:30,68,2,1
+,Egypt,3/12/2020 00:30,67,1,27
+,Finland,3/12/2020 00:30,65,0,1
+,India,3/12/2020 00:30,62,0,4
+,Portugal,3/12/2020 00:30,61,0,0
+,Thailand,3/12/2020 00:30,59,1,34
+,Slovenia,3/12/2020 00:30,57,0,0
+,Brazil,3/12/2020 00:30,52,0,0
+,Philippines,3/12/2020 00:30,49,2,2
+Taiwan,Taiwan,3/12/2020 00:30,48,1,17
+,Romania,3/12/2020 00:30,47,0,6
+,Saudi Arabia,3/12/2020 00:30,45,0,1
+,Ireland,3/12/2020 00:30,43,1,0
+,Vietnam,3/12/2020 00:30,39,0,16
+,Indonesia,3/12/2020 00:30,34,1,2
+,Poland,3/12/2020 00:30,31,0,0
+,Palestine,3/12/2020 00:30,30,0,0
+,Russia,3/12/2020 00:30,28,0,3
+,Georgia,3/12/2020 00:30,24,0,0
+,Chile,3/12/2020 00:30,23,0,0
+,Costa Rica,3/12/2020 00:30,22,0,0
+,Argentina,3/12/2020 00:30,21,1,0
+,Algeria,3/12/2020 00:30,20,0,0
+,Pakistan,3/12/2020 00:30,20,0,2
+,Croatia,3/12/2020 00:30,19,0,0
+,Oman,3/12/2020 00:30,18,0,9
+,Serbia,3/12/2020 00:30,18,0,0
+,Ecuador,3/12/2020 00:30,17,0,0
+,Peru,3/12/2020 00:30,17,0,0
+,Estonia,3/12/2020 00:30,16,0,0
+,Albania,3/12/2020 00:30,15,1,0
+,Panama,3/12/2020 00:30,14,1,0
+,Hungary,3/12/2020 00:30,13,0,0
+,South Africa,3/12/2020 00:30,13,0,0
+,Mexico,3/12/2020 00:30,12,0,4
+,Azerbaijan,3/12/2020 00:30,11,0,3
+,Brunei,3/12/2020 00:30,11,0,0
+Macau,Macau,3/12/2020 00:30,10,0,10
+,Latvia,3/12/2020 00:30,10,0,1
+,Slovakia,3/12/2020 00:30,10,0,0
+,Belarus,3/12/2020 00:30,9,0,3
+,Colombia,3/12/2020 00:30,9,0,0
+,Maldives,3/12/2020 00:30,8,0,0
+,Bulgaria,3/12/2020 00:30,7,1,0
+,Afghanistan,3/12/2020 00:30,7,0,0
+,Luxembourg,3/12/2020 00:30,7,0,0
+,North Macedonia,3/12/2020 00:30,7,0,0
+,Tunisia,3/12/2020 00:30,7,0,0
+,Bosnia and Herzegovina,3/12/2020 00:30,7,0,0
+,Malta,3/12/2020 00:30,7,0,0
+,Morocco,3/12/2020 00:30,6,1,0
+,Cyprus,3/12/2020 00:30,6,0,0
+,Dominican Republic,3/12/2020 00:30,5,0,0
+,New Zealand,3/12/2020 00:30,5,0,0
+,French Guiana,3/12/2020 00:30,5,0,0
+,Paraguay,3/12/2020 00:30,5,0,0
+,Senegal,3/12/2020 00:30,4,0,1
+,Cambodia,3/12/2020 00:30,3,0,1
+,Lithuania,3/12/2020 00:30,3,0,0
+,Bangladesh,3/12/2020 00:30,3,0,0
+,Cuba,3/12/2020 00:30,3,0,0
+,Liechtenstein,3/12/2020 00:30,3,0,0
+,Martinique,3/12/2020 00:30,3,0,0
+,Moldova,3/12/2020 00:30,3,0,0
+,Nigeria,3/12/2020 00:30,2,0,0
+,Sri Lanka,3/12/2020 00:30,2,0,1
+,Bolivia,3/12/2020 00:30,2,0,0
+,Burkina Faso,3/12/2020 00:30,2,0,0
+,Cameroon,3/12/2020 00:30,2,0,0
+,Channel Islands,3/12/2020 00:30,2,0,0
+,Faeroe Islands,3/12/2020 00:30,2,0,0
+,Honduras,3/12/2020 00:30,2,0,0
+,Jamaica,3/12/2020 00:30,2,0,0
+,Saint Martin,3/12/2020 00:30,2,0,0
+,Andorra,3/12/2020 00:30,1,0,0
+,Armenia,3/12/2020 00:30,1,0,0
+,Jordan,3/12/2020 00:30,1,0,0
+,Monaco,3/12/2020 00:30,1,0,0
+,Nepal,3/12/2020 00:30,1,0,1
+,Ukraine,3/12/2020 00:30,1,0,0
+,Bhutan,3/12/2020 00:30,1,0,0
+,Ivory Coast,3/12/2020 00:30,1,0,0
+,DRC,3/12/2020 00:30,1,0,0
+,French Polynesia,3/12/2020 00:30,1,0,0
+,Gibraltar,3/12/2020 00:30,1,0,1
+,Vatican City,3/12/2020 00:30,1,0,0
+,Mongolia,3/12/2020 00:30,1,0,0
+,Reunion,3/12/2020 00:30,1,0,0
+,St. Barth,3/12/2020 00:30,1,0,0
+,Togo,3/12/2020 00:30,1,0,0
+,Turkey,3/12/2020 00:30,1,0,0
