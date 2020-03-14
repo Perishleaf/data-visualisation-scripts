@@ -359,7 +359,7 @@ fig_combine.update_layout(
 
 # Line plot for death rate cases
 # Set up tick scale based on death case number of Mainland China
-tickList = list(np.arange(0, (df_deaths['Mainland China']/df_confirmed['Mainland China']*100).max(), 0.5))
+tickList = list(np.arange(0, (df_deaths['Mainland China']/df_confirmed['Mainland China']*100).max()+0.2, 0.5))
 
 # Create empty figure canvas
 fig_rate = go.Figure()
