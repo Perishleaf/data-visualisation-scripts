@@ -26,7 +26,7 @@ __To-do list:__
 - [x] Add share slide
 - [x] Code optimisation for calling coordinates using opencage geocoder
 - [x] Code optimisation for scrapping data from various sources
-- [x] Code optimisation for generating overvie lineplot/reduce response time
+- [x] Code optimisation for generating overview lineplot/reduce response time
 - [ ] Layout and design
 
 ![App screenshot](./app_screenshot.gif)
