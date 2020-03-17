@@ -1,64 +1,64 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
-Hubei,Mainland China,1/31/2020 19:00,7153,249.0,169.0
-Zhejiang,Mainland China,1/31/2020 19:00,537,,14.0
-Guangdong,Mainland China,1/31/2020 19:00,436,,10.0
-Henan,Mainland China,1/31/2020 19:00,352,2.0,3.0
-Hunan,Mainland China,1/31/2020 19:00,332,,3.0
-Jiangxi,Mainland China,1/31/2020 19:00,240,,7.0
-Chongqing,Mainland China,1/31/2020 19:00,238,1.0,1.0
-Anhui,Mainland China,1/31/2020 19:00,237,,3.0
-Shandong,Mainland China,1/31/2020 19:00,184,,2.0
-Sichuan,Mainland China,1/31/2020 19:00,177,1.0,1.0
-Jiangsu,Mainland China,1/31/2020 19:00,168,,5.0
-Shanghai,Mainland China,1/31/2020 19:00,153,1.0,9.0
-Beijing,Mainland China,1/31/2020 19:00,139,1.0,5.0
-Fujian,Mainland China,1/31/2020 19:00,120,,
-Hebei,Mainland China,1/31/2020 19:00,96,1.0,
-Guangxi,Mainland China,1/31/2020 19:00,88,,2.0
-Shaanxi,Mainland China,1/31/2020 19:00,87,,
-Yunnan,Mainland China,1/31/2020 19:00,83,,1.0
-Liaoning,Mainland China,1/31/2020 19:00,60,,1.0
-Heilongjiang,Mainland China,1/31/2020 19:00,59,2.0,
-Hainan,Mainland China,1/31/2020 19:00,58,1.0,1.0
-Shanxi,Mainland China,1/31/2020 19:00,47,,1.0
-Gansu,Mainland China,1/31/2020 19:00,35,,
-Tianjin,Mainland China,1/31/2020 19:00,32,,
-Guizhou,Mainland China,1/31/2020 19:00,29,,2.0
-Ningxia,Mainland China,1/31/2020 19:00,21,,1.0
-Inner Mongolia,Mainland China,1/31/2020 19:00,20,,
-Xinjiang,Mainland China,1/31/2020 19:00,17,,
-Jilin,Mainland China,1/31/2020 19:00,14,,1.0
-Hong Kong,Hong Kong,1/31/2020 19:00,13,,
-Taiwan,Taiwan,1/31/2020 19:00,10,,
-Qinghai,Mainland China,1/31/2020 19:00,8,,
-Macau,Macau,1/31/2020 19:00,7,,
-Tibet,Mainland China,1/31/2020 19:00,1,,
-WA,US,1/31/2020 19:00,1,,
-Illinois,US,1/31/2020 19:00,2,,
-California,US,1/31/2020 19:00,3,,
-Arizona,US,1/31/2020 19:00,1,,
-,Japan,1/31/2020 19:00,17,,1.0
-,Thailand,1/31/2020 19:00,19,,7.0
-,South Korea,1/31/2020 19:00,11,,
-,Singapore,1/31/2020 19:00,16,,
-,Vietnam,1/31/2020 19:00,2,,
-,France,1/31/2020 19:00,6,,
-,Nepal,1/31/2020 19:00,1,,
-,Malaysia,1/31/2020 19:00,8,,
-Ontario,Canada,1/31/2020 19:00,2,,
-British Columbia,Canada,1/31/2020 19:00,1,,
-,Cambodia,1/31/2020 19:00,1,,
-,Sri Lanka,1/31/2020 19:00,1,,
-New South Wales,Australia,1/31/2020 19:00,4,,2.0
-Victoria,Australia,1/31/2020 19:00,2,,
-Queensland,Australia,1/31/2020 19:00,3,,
-Bavaria,Germany,1/31/2020 19:00,7,,
-,Finland,1/31/2020 19:00,1,,
-,United Arab Emirates,1/31/2020 19:00,4,,
-,Philippines,1/31/2020 19:00,1,,
-,India,1/31/2020 19:00,1,,
-,Italy,1/31/2020 19:00,2,,
-,Sweden,1/31/2020 19:00,1,,
-,Russia,1/31/2020 19:00,2,,
-,Spain,1/31/2020 19:00,1,,
-,UK,1/31/2020 19:00,2,,
+Hubei,Mainland China,1/31/2020 19:00,7153,249,169
+Zhejiang,Mainland China,1/31/2020 19:00,537,0,14
+Guangdong,Mainland China,1/31/2020 19:00,436,0,10
+Henan,Mainland China,1/31/2020 19:00,352,2,3
+Hunan,Mainland China,1/31/2020 19:00,332,0,3
+Jiangxi,Mainland China,1/31/2020 19:00,240,0,7
+Chongqing,Mainland China,1/31/2020 19:00,238,1,1
+Anhui,Mainland China,1/31/2020 19:00,237,0,3
+Shandong,Mainland China,1/31/2020 19:00,184,0,2
+Sichuan,Mainland China,1/31/2020 19:00,177,1,1
+Jiangsu,Mainland China,1/31/2020 19:00,168,0,5
+Shanghai,Mainland China,1/31/2020 19:00,153,1,9
+Beijing,Mainland China,1/31/2020 19:00,139,1,5
+Fujian,Mainland China,1/31/2020 19:00,120,0,0
+Hebei,Mainland China,1/31/2020 19:00,96,1,0
+Guangxi,Mainland China,1/31/2020 19:00,88,0,2
+Shaanxi,Mainland China,1/31/2020 19:00,87,0,0
+Yunnan,Mainland China,1/31/2020 19:00,83,0,1
+Liaoning,Mainland China,1/31/2020 19:00,60,0,1
+Heilongjiang,Mainland China,1/31/2020 19:00,59,2,0
+Hainan,Mainland China,1/31/2020 19:00,58,1,1
+Shanxi,Mainland China,1/31/2020 19:00,47,0,1
+Gansu,Mainland China,1/31/2020 19:00,35,0,0
+Tianjin,Mainland China,1/31/2020 19:00,32,0,0
+Guizhou,Mainland China,1/31/2020 19:00,29,0,2
+Ningxia,Mainland China,1/31/2020 19:00,21,0,1
+Inner Mongolia,Mainland China,1/31/2020 19:00,20,0,0
+Xinjiang,Mainland China,1/31/2020 19:00,17,0,0
+Jilin,Mainland China,1/31/2020 19:00,14,0,1
+Hong Kong,Hong Kong,1/31/2020 19:00,13,0,0
+Taiwan,Taiwan,1/31/2020 19:00,10,0,0
+Qinghai,Mainland China,1/31/2020 19:00,8,0,0
+Macau,Macau,1/31/2020 19:00,7,0,0
+Tibet,Mainland China,1/31/2020 19:00,1,0,0
+WA,US,1/31/2020 19:00,1,0,0
+Illinois,US,1/31/2020 19:00,2,0,0
+California,US,1/31/2020 19:00,3,0,0
+Arizona,US,1/31/2020 19:00,1,0,0
+,Japan,1/31/2020 19:00,17,0,1
+,Thailand,1/31/2020 19:00,19,0,7
+,South Korea,1/31/2020 19:00,11,0,0
+,Singapore,1/31/2020 19:00,16,0,0
+,Vietnam,1/31/2020 19:00,2,0,0
+,France,1/31/2020 19:00,6,0,0
+,Nepal,1/31/2020 19:00,1,0,0
+,Malaysia,1/31/2020 19:00,8,0,0
+Ontario,Canada,1/31/2020 19:00,2,0,0
+British Columbia,Canada,1/31/2020 19:00,1,0,0
+,Cambodia,1/31/2020 19:00,1,0,0
+,Sri Lanka,1/31/2020 19:00,1,0,0
+New South Wales,Australia,1/31/2020 19:00,4,0,2
+Victoria,Australia,1/31/2020 19:00,2,0,0
+Queensland,Australia,1/31/2020 19:00,3,0,0
+Bavaria,Germany,1/31/2020 19:00,7,0,0
+,Finland,1/31/2020 19:00,1,0,0
+,United Arab Emirates,1/31/2020 19:00,4,0,0
+,Philippines,1/31/2020 19:00,1,0,0
+,India,1/31/2020 19:00,1,0,0
+,Italy,1/31/2020 19:00,2,0,0
+,Sweden,1/31/2020 19:00,1,0,0
+,Russia,1/31/2020 19:00,2,0,0
+,Spain,1/31/2020 19:00,1,0,0
+,UK,1/31/2020 19:00,2,0,0

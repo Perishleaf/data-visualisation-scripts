@@ -1,52 +1,52 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
-Hubei,Mainland China,1/27/2020 20:30,2714,100.0,47.0
-Zhejiang,Mainland China,1/27/2020 20:30,173,,1.0
-Henan,Mainland China,1/27/2020 20:30,168,1.0,
-Guangdong,Mainland China,1/27/2020 20:30,151,,4.0
-Chongqing,Mainland China,1/27/2020 20:30,132,,
-Anhui,Mainland China,1/27/2020 20:30,106,,
-Hunan,Mainland China,1/27/2020 20:30,100,,
-Sichuan,Mainland China,1/27/2020 20:30,90,,
-Shandong,Mainland China,1/27/2020 20:30,87,1.0,
-Beijing,Mainland China,1/27/2020 20:30,80,1.0,2.0
-Jiangxi,Mainland China,1/27/2020 20:30,72,,2.0
-Jiangsu,Mainland China,1/27/2020 20:30,70,,1.0
-Shanghai,Mainland China,1/27/2020 20:30,66,1.0,3.0
-Fujian,Mainland China,1/27/2020 20:30,59,,
-Guangxi,Mainland China,1/27/2020 20:30,51,,
-Shaanxi,Mainland China,1/27/2020 20:30,35,,
-Hainan,Mainland China,1/27/2020 20:30,33,1.0,
-Hebei,Mainland China,1/27/2020 20:30,33,1.0,
-Heilongjiang,Mainland China,1/27/2020 20:30,30,1.0,
-Liaoning,Mainland China,1/27/2020 20:30,27,,
-Yunnan,Mainland China,1/27/2020 20:30,26,,
-Tianjin,Mainland China,1/27/2020 20:30,23,,
-Shanxi,Mainland China,1/27/2020 20:30,20,,
-Gansu,Mainland China,1/27/2020 20:30,19,,
-Inner Mongolia,Mainland China,1/27/2020 20:30,11,,
-Guizhou,Mainland China,1/27/2020 20:30,9,,
-Hong Kong,Hong Kong,1/27/2020 20:30,8,,
-Ningxia,Mainland China,1/27/2020 20:30,7,,
-Jilin,Mainland China,1/27/2020 20:30,6,,
-Macau,Macau,1/27/2020 20:30,6,,
-Qinghai,Mainland China,1/27/2020 20:30,6,,
-Taiwan,Taiwan,1/27/2020 20:30,5,,
-Xinjiang,Mainland China,1/27/2020 20:30,5,,
-WA,US,1/27/2020 20:30,1,,
-Illinois,US,1/27/2020 20:30,1,,
-California,US,1/27/2020 20:30,2,,
-Arizona,US,1/27/2020 20:30,1,,
-,Japan,1/27/2020 20:30,4,,1.0
-,Thailand,1/27/2020 20:30,8,,2.0
-,South Korea,1/27/2020 20:30,4,,
-,Singapore,1/27/2020 20:30,5,,
-,Vietnam,1/27/2020 20:30,2,,
-,France,1/27/2020 20:30,3,,
-,Nepal,1/27/2020 20:30,1,,
-,Malaysia,1/27/2020 20:30,4,,
-Ontario,Canada,1/27/2020 20:30,1,,
-,Cambodia,1/27/2020 20:30,1,,
-,Sri Lanka,1/27/2020 20:30,1,,
-New South Wales,Australia,1/27/2020 20:30,4,,
-Victoria,Australia,1/27/2020 20:30,1,,
-Bavaria,Germany,1/27/2020 20:30,1,,
+Hubei,Mainland China,1/27/2020 20:30,2714,100,47
+Zhejiang,Mainland China,1/27/2020 20:30,173,0,1
+Henan,Mainland China,1/27/2020 20:30,168,1,0
+Guangdong,Mainland China,1/27/2020 20:30,151,0,4
+Chongqing,Mainland China,1/27/2020 20:30,132,0,0
+Anhui,Mainland China,1/27/2020 20:30,106,0,0
+Hunan,Mainland China,1/27/2020 20:30,100,0,0
+Sichuan,Mainland China,1/27/2020 20:30,90,0,0
+Shandong,Mainland China,1/27/2020 20:30,87,1,0
+Beijing,Mainland China,1/27/2020 20:30,80,1,2
+Jiangxi,Mainland China,1/27/2020 20:30,72,0,2
+Jiangsu,Mainland China,1/27/2020 20:30,70,0,1
+Shanghai,Mainland China,1/27/2020 20:30,66,1,3
+Fujian,Mainland China,1/27/2020 20:30,59,0,0
+Guangxi,Mainland China,1/27/2020 20:30,51,0,0
+Shaanxi,Mainland China,1/27/2020 20:30,35,0,0
+Hainan,Mainland China,1/27/2020 20:30,33,1,0
+Hebei,Mainland China,1/27/2020 20:30,33,1,0
+Heilongjiang,Mainland China,1/27/2020 20:30,30,1,0
+Liaoning,Mainland China,1/27/2020 20:30,27,0,0
+Yunnan,Mainland China,1/27/2020 20:30,26,0,0
+Tianjin,Mainland China,1/27/2020 20:30,23,0,0
+Shanxi,Mainland China,1/27/2020 20:30,20,0,0
+Gansu,Mainland China,1/27/2020 20:30,19,0,0
+Inner Mongolia,Mainland China,1/27/2020 20:30,11,0,0
+Guizhou,Mainland China,1/27/2020 20:30,9,0,0
+Hong Kong,Hong Kong,1/27/2020 20:30,8,0,0
+Ningxia,Mainland China,1/27/2020 20:30,7,0,0
+Jilin,Mainland China,1/27/2020 20:30,6,0,0
+Macau,Macau,1/27/2020 20:30,6,0,0
+Qinghai,Mainland China,1/27/2020 20:30,6,0,0
+Taiwan,Taiwan,1/27/2020 20:30,5,0,0
+Xinjiang,Mainland China,1/27/2020 20:30,5,0,0
+WA,US,1/27/2020 20:30,1,0,0
+Illinois,US,1/27/2020 20:30,1,0,0
+California,US,1/27/2020 20:30,2,0,0
+Arizona,US,1/27/2020 20:30,1,0,0
+,Japan,1/27/2020 20:30,4,0,1
+,Thailand,1/27/2020 20:30,8,0,2
+,South Korea,1/27/2020 20:30,4,0,0
+,Singapore,1/27/2020 20:30,5,0,0
+,Vietnam,1/27/2020 20:30,2,0,0
+,France,1/27/2020 20:30,3,0,0
+,Nepal,1/27/2020 20:30,1,0,0
+,Malaysia,1/27/2020 20:30,4,0,0
+Ontario,Canada,1/27/2020 20:30,1,0,0
+,Cambodia,1/27/2020 20:30,1,0,0
+,Sri Lanka,1/27/2020 20:30,1,0,0
+New South Wales,Australia,1/27/2020 20:30,4,0,0
+Victoria,Australia,1/27/2020 20:30,1,0,0
+Bavaria,Germany,1/27/2020 20:30,1,0,0

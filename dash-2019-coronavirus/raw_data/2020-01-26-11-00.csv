@@ -1,48 +1,48 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered,Suspected
-Hubei,Mainland China,1/26/2020 11:00,1058,52.0,42.0,
-Guangdong,Mainland China,1/26/2020 11:00,111,,2.0,
-Zhejiang,Mainland China,1/26/2020 11:00,104,,1.0,
-Henan,Mainland China,1/26/2020 11:00,83,1.0,,3.0
-Chongqing,Mainland China,1/26/2020 11:00,75,,,
-Hunan,Mainland China,1/26/2020 11:00,69,,,
-Beijing,Mainland China,1/26/2020 11:00,68,,2.0,
-Anhui,Mainland China,1/26/2020 11:00,60,,,4.0
-Shandong,Mainland China,1/26/2020 11:00,46,,,
-Sichuan,Mainland China,1/26/2020 11:00,44,,,4.0
-Shanghai,Mainland China,1/26/2020 11:00,40,1.0,1.0,72.0
-Guangxi,Mainland China,1/26/2020 11:00,36,,,
-Jiangxi,Mainland China,1/26/2020 11:00,36,,,
-Fujian,Mainland China,1/26/2020 11:00,35,,,20.0
-Jiangsu,Mainland China,1/26/2020 11:00,33,,1.0,
-Hainan,Mainland China,1/26/2020 11:00,22,,,
-Shaanxi,Mainland China,1/26/2020 11:00,22,,,
-Liaoning,Mainland China,1/26/2020 11:00,21,,,
-Yunnan,Mainland China,1/26/2020 11:00,16,,,36.0
-Heilongjiang,Mainland China,1/26/2020 11:00,15,1.0,,
-Tianjin,Mainland China,1/26/2020 11:00,14,,,
-Hebei,Mainland China,1/26/2020 11:00,13,1.0,,
-Shanxi,Mainland China,1/26/2020 11:00,9,,,
-Hong Kong,Hong Kong,1/26/2020 11:00,8,,,244.0
-Inner Mongolia,Mainland China,1/26/2020 11:00,7,,,
-Gansu,Mainland China,1/26/2020 11:00,7,,,
-Guizhou,Mainland China,1/26/2020 11:00,5,,,
-Macau,Macau,1/26/2020 11:00,5,,,
-Ningxia,Mainland China,1/26/2020 11:00,4,,,
-Jilin,Mainland China,1/26/2020 11:00,4,,,
-Taiwan,Taiwan,1/26/2020 11:00,4,,,
-Xinjiang,Mainland China,1/26/2020 11:00,4,,,
-Qinghai,Mainland China,1/26/2020 11:00,1,,,
-WA,US,1/26/2020 11:00,1,,,
-Illinois,US,1/26/2020 11:00,1,,,
-California,US,1/26/2020 11:00,1,,,
-,Japan,1/26/2020 11:00,4,,1.0,
-,Thailand,1/26/2020 11:00,8,,2.0,
-,South Korea,1/26/2020 11:00,3,,,
-,Singapore,1/26/2020 11:00,4,,,
-,Vietnam,1/26/2020 11:00,2,,,
-,France,1/26/2020 11:00,3,,,
-New South Wales,Australia,1/26/2020 11:00,3,,,
-Victoria,Australia,1/26/2020 11:00,1,,,
-,Nepal,1/26/2020 11:00,1,,,
-,Malaysia,1/26/2020 11:00,4,,,
-Ontario,Canada,1/26/2020 11:00,1,,,
+Hubei,Mainland China,1/26/2020 11:00,1058,52,42,0
+Guangdong,Mainland China,1/26/2020 11:00,111,0,2,0
+Zhejiang,Mainland China,1/26/2020 11:00,104,0,1,0
+Henan,Mainland China,1/26/2020 11:00,83,1,0,3
+Chongqing,Mainland China,1/26/2020 11:00,75,0,0,0
+Hunan,Mainland China,1/26/2020 11:00,69,0,0,0
+Beijing,Mainland China,1/26/2020 11:00,68,0,2,0
+Anhui,Mainland China,1/26/2020 11:00,60,0,0,4
+Shandong,Mainland China,1/26/2020 11:00,46,0,0,0
+Sichuan,Mainland China,1/26/2020 11:00,44,0,0,4
+Shanghai,Mainland China,1/26/2020 11:00,40,1,1,72
+Guangxi,Mainland China,1/26/2020 11:00,36,0,0,0
+Jiangxi,Mainland China,1/26/2020 11:00,36,0,0,0
+Fujian,Mainland China,1/26/2020 11:00,35,0,0,20
+Jiangsu,Mainland China,1/26/2020 11:00,33,0,1,0
+Hainan,Mainland China,1/26/2020 11:00,22,0,0,0
+Shaanxi,Mainland China,1/26/2020 11:00,22,0,0,0
+Liaoning,Mainland China,1/26/2020 11:00,21,0,0,0
+Yunnan,Mainland China,1/26/2020 11:00,16,0,0,36
+Heilongjiang,Mainland China,1/26/2020 11:00,15,1,0,0
+Tianjin,Mainland China,1/26/2020 11:00,14,0,0,0
+Hebei,Mainland China,1/26/2020 11:00,13,1,0,0
+Shanxi,Mainland China,1/26/2020 11:00,9,0,0,0
+Hong Kong,Hong Kong,1/26/2020 11:00,8,0,0,244
+Inner Mongolia,Mainland China,1/26/2020 11:00,7,0,0,0
+Gansu,Mainland China,1/26/2020 11:00,7,0,0,0
+Guizhou,Mainland China,1/26/2020 11:00,5,0,0,0
+Macau,Macau,1/26/2020 11:00,5,0,0,0
+Ningxia,Mainland China,1/26/2020 11:00,4,0,0,0
+Jilin,Mainland China,1/26/2020 11:00,4,0,0,0
+Taiwan,Taiwan,1/26/2020 11:00,4,0,0,0
+Xinjiang,Mainland China,1/26/2020 11:00,4,0,0,0
+Qinghai,Mainland China,1/26/2020 11:00,1,0,0,0
+WA,US,1/26/2020 11:00,1,0,0,0
+Illinois,US,1/26/2020 11:00,1,0,0,0
+California,US,1/26/2020 11:00,1,0,0,0
+,Japan,1/26/2020 11:00,4,0,1,0
+,Thailand,1/26/2020 11:00,8,0,2,0
+,South Korea,1/26/2020 11:00,3,0,0,0
+,Singapore,1/26/2020 11:00,4,0,0,0
+,Vietnam,1/26/2020 11:00,2,0,0,0
+,France,1/26/2020 11:00,3,0,0,0
+New South Wales,Australia,1/26/2020 11:00,3,0,0,0
+Victoria,Australia,1/26/2020 11:00,1,0,0,0
+,Nepal,1/26/2020 11:00,1,0,0,0
+,Malaysia,1/26/2020 11:00,4,0,0,0
+Ontario,Canada,1/26/2020 11:00,1,0,0,0

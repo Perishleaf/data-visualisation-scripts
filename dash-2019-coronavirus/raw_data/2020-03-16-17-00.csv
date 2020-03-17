@@ -1,0 +1,260 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/16/2020 17:00,67798,3099,55094
+Beijing,Mainland China,3/16/2020 17:00,452,8,360
+Guangdong,Mainland China,3/16/2020 17:00,1361,8,1306
+Gansu,Mainland China,3/16/2020 17:00,133,2,91
+Shanghai,Mainland China,3/16/2020 17:00,355,3,325
+Sichuan,Mainland China,3/16/2020 17:00,539,3,516
+Heilongjiang,Mainland China,3/16/2020 17:00,482,13,454
+Zhejiang,Mainland China,3/16/2020 17:00,1231,1,1215
+Shandong,Mainland China,3/16/2020 17:00,760,7,746
+Shaanxi,Mainland China,3/16/2020 17:00,245,2,233
+Liaoning,Mainland China,3/16/2020 17:00,125,1,114
+Guangxi,Mainland China,3/16/2020 17:00,252,2,247
+Inner Mongolia,Mainland China,3/16/2020 17:00,75,1,72
+Hebei,Mainland China,3/16/2020 17:00,318,6,310
+Hainan,Mainland China,3/16/2020 17:00,168,6,160
+Ningxia,Mainland China,3/16/2020 17:00,75,0,75
+Henan,Mainland China,3/16/2020 17:00,1273,22,1250
+Jiangsu,Mainland China,3/16/2020 17:00,631,0,631
+Chongqing,Mainland China,3/16/2020 17:00,576,6,570
+Guizhou,Mainland China,3/16/2020 17:00,146,2,144
+Tianjin,Mainland China,3/16/2020 17:00,136,3,133
+Jilin,Mainland China,3/16/2020 17:00,93,1,92
+Hunan,Mainland China,3/16/2020 17:00,1018,4,1014
+Anhui,Mainland China,3/16/2020 17:00,990,6,984
+Jiangxi,Mainland China,3/16/2020 17:00,935,1,934
+Fujian,Mainland China,3/16/2020 17:00,296,1,295
+Yunnan,Mainland China,3/16/2020 17:00,175,2,172
+Shanxi,Mainland China,3/16/2020 17:00,133,0,133
+Xinjiang,Mainland China,3/16/2020 17:00,76,3,73
+Qinghai,Mainland China,3/16/2020 17:00,18,0,18
+Tibet,Mainland China,3/16/2020 17:00,1,0,1
+New South Wales,Australia,3/16/2020 17:00,170,4,7
+Queensland,Australia,3/16/2020 17:00,69,0,9
+Victoria,Australia,3/16/2020 17:00,71,0,8
+South Australia,Australia,3/16/2020 17:00,29,0,3
+Western Australia,Australia,3/16/2020 17:00,28,1,0
+Tasmania,Australia,3/16/2020 17:00,7,0,0
+Australian Capital Territory,Australia,3/16/2020 17:00,2,0,0
+New York,US,3/16/2020 17:00,967,10,0
+WA,US,3/16/2020 17:00,862,48,1
+California,US,3/16/2020 17:00,531,6,6
+Massachusetts,US,3/16/2020 17:00,197,0,1
+New Jersey,US,3/16/2020 17:00,178,2,0
+Florida,US,3/16/2020 17:00,155,5,0
+Louisiana,US,3/16/2020 17:00,136,3,0
+Colorado,US,3/16/2020 17:00,135,1,0
+Georgia,US,3/16/2020 17:00,121,1,0
+Illinois,US,3/16/2020 17:00,105,0,2
+Texas,US,3/16/2020 17:00,85,0,0
+Pennsylvania,US,3/16/2020 17:00,77,0,0
+Minnesota,US,3/16/2020 17:00,54,0,0
+Michigan,US,3/16/2020 17:00,53,0,0
+Tennessee,US,3/16/2020 17:00,52,0,0
+Virginia,US,3/16/2020 17:00,50,2,0
+Ohio,US,3/16/2020 17:00,50,0,0
+Wisconsin,US,3/16/2020 17:00,47,0,1
+From Diamond Princess cruise,US,3/16/2020 17:00,47,0,0
+Nevada,US,3/16/2020 17:00,45,1,0
+Maryland,US,3/16/2020 17:00,41,0,0
+Connecticut,US,3/16/2020 17:00,41,0,0
+Oregon,US,3/16/2020 17:00,39,1,0
+Utah,US,3/16/2020 17:00,39,0,0
+North Carolina,US,3/16/2020 17:00,38,0,0
+South Carolina,US,3/16/2020 17:00,33,1,0
+Alabama,US,3/16/2020 17:00,29,0,0
+Indiana,US,3/16/2020 17:00,25,1,0
+Iowa,US,3/16/2020 17:00,22,0,0
+Arkansas,US,3/16/2020 17:00,22,0,0
+Rhode Island,US,3/16/2020 17:00,21,0,0
+Kentucky,US,3/16/2020 17:00,21,1,0
+New Mexico,US,3/16/2020 17:00,21,0,0
+From Grand Princess,US,3/16/2020 17:00,20,0,0
+Arizona,US,3/16/2020 17:00,18,0,1
+Nebraska,US,3/16/2020 17:00,18,0,0
+New Hampshire,US,3/16/2020 17:00,17,0,0
+Washington DC,US,3/16/2020 17:00,17,0,0
+Maine,US,3/16/2020 17:00,17,0,0
+Mississippi,US,3/16/2020 17:00,13,0,0
+Vermont,US,3/16/2020 17:00,12,0,0
+Kansas,US,3/16/2020 17:00,11,1,0
+Oklahoma,US,3/16/2020 17:00,10,0,0
+South Dakota,US,3/16/2020 17:00,10,1,0
+Delaware,US,3/16/2020 17:00,8,0,0
+Hawaii,US,3/16/2020 17:00,7,0,0
+Montana,US,3/16/2020 17:00,7,0,0
+Missouri,US,3/16/2020 17:00,6,0,0
+Idaho,US,3/16/2020 17:00,5,0,0
+Wyoming,US,3/16/2020 17:00,3,0,0
+North Dakota,US,3/16/2020 17:00,1,0,0
+Alaska,US,3/16/2020 17:00,1,0,0
+Ontario,Canada,3/16/2020 17:00,177,0,4
+British Columbia,Canada,3/16/2020 17:00,103,4,4
+Alberta,Canada,3/16/2020 17:00,56,0,0
+Quebec,Canada,3/16/2020 17:00,50,0,0
+New Brunswick,Canada,3/16/2020 17:00,7,0,0
+Manitoba,Canada,3/16/2020 17:00,7,0,0
+Saskatchewan,Canada,3/16/2020 17:00,7,0,0
+Nova Scotia,Canada,3/16/2020 17:00,5,0,0
+Prince Edward Island,Canada,3/16/2020 17:00,1,0,0
+Newfoundland and labrador,Canada,3/16/2020 17:00,1,0,0
+,Italy,3/16/2020 17:00,27980,2158,2749
+,Iran,3/16/2020 17:00,14991,853,4590
+,Spain,3/16/2020 17:00,9942,342,530
+,South Korea,3/16/2020 17:00,8236,75,1137
+,Germany,3/16/2020 17:00,7241,15,65
+,France,3/16/2020 17:00,6633,148,12
+,Switzerland,3/16/2020 17:00,2353,19,4
+,UK,3/16/2020 17:00,1543,55,52
+,Netherlands,3/16/2020 17:00,1413,24,2
+,Norway,3/16/2020 17:00,1340,3,1
+,Sweden,3/16/2020 17:00,1121,7,1
+Brussels,Belgium,3/16/2020 17:00,1058,10,1
+,Austria,3/16/2020 17:00,1018,3,8
+,Denmark,3/16/2020 17:00,914,4,1
+,Japan,3/16/2020 17:00,895,27,144
+Yokohama,Japan,3/16/2020 17:00,696,7,456
+,Malaysia,3/16/2020 17:00,566,0,42
+,Qatar,3/16/2020 17:00,439,0,4
+,Greece,3/16/2020 17:00,352,4,8
+,Czechia,3/16/2020 17:00,344,0,3
+,Portugal,3/16/2020 17:00,331,1,3
+,Israel,3/16/2020 17:00,298,0,4
+,Finland,3/16/2020 17:00,278,0,10
+,Slovenia,3/16/2020 17:00,253,1,0
+,Singapore,3/16/2020 17:00,243,0,109
+,Brazil,3/16/2020 17:00,234,0,2
+,Bahrain,3/16/2020 17:00,227,1,81
+,Estonia,3/16/2020 17:00,205,0,1
+,Iceland,3/16/2020 17:00,198,0,0
+,Pakistan,3/16/2020 17:00,184,1,2
+,Poland,3/16/2020 17:00,177,4,0
+,Ireland,3/16/2020 17:00,170,2,5
+,Romania,3/16/2020 17:00,168,0,9
+,Chile,3/16/2020 17:00,156,0,0
+Hong Kong,Hong Kong,3/16/2020 17:00,155,4,81
+,Egypt,3/16/2020 17:00,150,2,32
+,Thailand,3/16/2020 17:00,147,1,35
+,Philippines,3/16/2020 17:00,142,12,5
+,Indonesia,3/16/2020 17:00,134,5,8
+,Iraq,3/16/2020 17:00,133,10,32
+,Saudi Arabia,3/16/2020 17:00,133,0,6
+,India,3/16/2020 17:00,129,2,13
+,Kuwait,3/16/2020 17:00,123,0,9
+,San Marino,3/16/2020 17:00,109,7,4
+,Lebanon,3/16/2020 17:00,109,3,3
+,United Arab Emirates,3/16/2020 17:00,98,0,23
+,Russia,3/16/2020 17:00,93,0,8
+,Peru,3/16/2020 17:00,86,0,1
+,Luxembourg,3/16/2020 17:00,81,1,0
+,Slovakia,3/16/2020 17:00,72,0,0
+Taiwan,Taiwan,3/16/2020 17:00,67,1,20
+,South Africa,3/16/2020 17:00,64,0,0
+,Bulgaria,3/16/2020 17:00,62,2,0
+,Vietnam,3/16/2020 17:00,61,0,16
+,Algeria,3/16/2020 17:00,60,4,10
+,Ecuador,3/16/2020 17:00,58,2,0
+,Croatia,3/16/2020 17:00,57,0,3
+,Serbia,3/16/2020 17:00,57,0,1
+,Argentina,3/16/2020 17:00,56,2,3
+,Panama,3/16/2020 17:00,55,1,0
+,Brunei,3/16/2020 17:00,54,0,0
+,Colombia,3/16/2020 17:00,54,0,1
+,Mexico,3/16/2020 17:00,53,0,4
+,Albania,3/16/2020 17:00,51,1,0
+,Turkey,3/16/2020 17:00,47,0,0
+,Cyprus,3/16/2020 17:00,46,0,0
+,Armenia,3/16/2020 17:00,45,0,1
+,Hungary,3/16/2020 17:00,39,1,2
+,Palestine,3/16/2020 17:00,39,0,0
+,Morocco,3/16/2020 17:00,38,1,1
+,Belarus,3/16/2020 17:00,36,0,3
+,Costa Rica,3/16/2020 17:00,35,0,0
+,Latvia,3/16/2020 17:00,34,0,1
+,Georgia,3/16/2020 17:00,33,0,1
+,Malta,3/16/2020 17:00,30,0,2
+,Jordan,3/16/2020 17:00,29,0,1
+,Moldova,3/16/2020 17:00,29,0,1
+,Sri Lanka,3/16/2020 17:00,28,0,1
+,Azerbaijan,3/16/2020 17:00,25,1,6
+,Bosnia and Herzegovina,3/16/2020 17:00,25,0,2
+,North Macedonia,3/16/2020 17:00,24,0,1
+,Senegal,3/16/2020 17:00,24,0,2
+,Oman,3/16/2020 17:00,22,0,9
+,Afghanistan,3/16/2020 17:00,21,0,1
+,Dominican Republic,3/16/2020 17:00,21,0,0
+,Tunisia,3/16/2020 17:00,20,0,0
+,Faeroe Islands,3/16/2020 17:00,18,0,0
+,Lithuania,3/16/2020 17:00,17,0,1
+,Venezuela,3/16/2020 17:00,17,0,0
+,Burkina Faso,3/16/2020 17:00,15,0,0
+,Jamaica,3/16/2020 17:00,15,0,2
+,Martinique,3/16/2020 17:00,15,0,0
+,Andorra,3/16/2020 17:00,14,0,0
+,Maldives,3/16/2020 17:00,13,0,0
+,Cambodia,3/16/2020 17:00,12,0,1
+Macau,Macau,3/16/2020 17:00,11,0,10
+,Bolivia,3/16/2020 17:00,11,0,0
+,French Guiana,3/16/2020 17:00,11,0,0
+,Kazakhstan,3/16/2020 17:00,10,0,0
+,Reunion,3/16/2020 17:00,9,0,0
+,Guatemala,3/16/2020 17:00,8,1,0
+,New Zealand,3/16/2020 17:00,8,0,0
+,Bangladesh,3/16/2020 17:00,8,0,3
+,Paraguay,3/16/2020 17:00,8,0,0
+,Uruguay,3/16/2020 17:00,8,0,0
+,Uzbekistan,3/16/2020 17:00,8,0,0
+,Guyana,3/16/2020 17:00,7,1,0
+,Ukraine,3/16/2020 17:00,7,1,0
+,Liechtenstein,3/16/2020 17:00,7,0,0
+,Monaco,3/16/2020 17:00,6,0,0
+,Channel Islands,3/16/2020 17:00,6,0,0
+,Ghana,3/16/2020 17:00,6,0,0
+,Guadeloupe,3/16/2020 17:00,6,0,0
+,Honduras,3/16/2020 17:00,6,0,0
+,Ethiopia,3/16/2020 17:00,5,0,0
+,Puerto Rico,3/16/2020 17:00,5,0,0
+,Rwanda,3/16/2020 17:00,5,0,0
+,Cameroon,3/16/2020 17:00,4,0,0
+,Ivory Coast,3/16/2020 17:00,4,0,0
+,Cuba,3/16/2020 17:00,4,0,0
+,Mongolia,3/16/2020 17:00,4,0,0
+,Trinidad and Tobago,3/16/2020 17:00,4,0,0
+,French Polynesia,3/16/2020 17:00,3,0,0
+,Gibraltar,3/16/2020 17:00,3,0,1
+,Guam,3/16/2020 17:00,3,0,0
+,Kenya,3/16/2020 17:00,3,0,0
+,St. Barth,3/16/2020 17:00,3,0,0
+,Seychelles,3/16/2020 17:00,3,0,0
+,Nigeria,3/16/2020 17:00,2,0,1
+,Aruba,3/16/2020 17:00,2,0,0
+,Curacao,3/16/2020 17:00,2,0,0
+,DRC,3/16/2020 17:00,2,0,0
+,Namibia,3/16/2020 17:00,2,0,0
+,Saint Lucia,3/16/2020 17:00,2,0,0
+,Saint Martin,3/16/2020 17:00,2,0,0
+,Cayman Islands,3/16/2020 17:00,1,1,0
+,Sudan,3/16/2020 17:00,1,1,0
+,Nepal,3/16/2020 17:00,1,0,1
+,Antigua and Barbuda,3/16/2020 17:00,1,0,0
+,Bahamas,3/16/2020 17:00,1,0,0
+,Benin,3/16/2020 17:00,1,0,0
+,Bhutan,3/16/2020 17:00,1,0,0
+,CAR,3/16/2020 17:00,1,0,0
+,Congo,3/16/2020 17:00,1,0,0
+,Equatorial Guinea,3/16/2020 17:00,1,0,0
+,Gabon,3/16/2020 17:00,1,0,0
+,Greenland,3/16/2020 17:00,1,0,0
+,Guinea,3/16/2020 17:00,1,0,0
+,Vatican City,3/16/2020 17:00,1,0,0
+,Liberia,3/16/2020 17:00,1,0,0
+,Mauritania,3/16/2020 17:00,1,0,0
+,Mayotte,3/16/2020 17:00,1,0,0
+,St. Vincent Grenadines,3/16/2020 17:00,1,0,0
+,Somalia,3/16/2020 17:00,1,0,0
+,Suriname,3/16/2020 17:00,1,0,0
+,Eswatini,3/16/2020 17:00,1,0,0
+,Tanzania,3/16/2020 17:00,1,0,0
+,Togo,3/16/2020 17:00,1,0,0
+,U.S. Virgin Islands,3/16/2020 17:00,1,0,0

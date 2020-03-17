@@ -1,55 +1,55 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
-Hubei,Mainland China,1/29/2020 14:30,3554,125.0,88.0
-Zhejiang,Mainland China,1/29/2020 14:30,296,,3.0
-Guangdong,Mainland China,1/29/2020 14:30,277,,5.0
-Hunan,Mainland China,1/29/2020 14:30,221,,
-Henan,Mainland China,1/29/2020 14:30,206,2.0,1.0
-Anhui,Mainland China,1/29/2020 14:30,152,,2.0
-Chongqing,Mainland China,1/29/2020 14:30,147,,1.0
-Shandong,Mainland China,1/29/2020 14:30,130,,1.0
-Beijing,Mainland China,1/29/2020 14:30,111,1.0,4.0
-Jiangxi,Mainland China,1/29/2020 14:30,109,,3.0
-Sichuan,Mainland China,1/29/2020 14:30,108,1.0,1.0
-Jiangsu,Mainland China,1/29/2020 14:30,99,,1.0
-Shanghai,Mainland China,1/29/2020 14:30,96,1.0,5.0
-Fujian,Mainland China,1/29/2020 14:30,84,,
-Guangxi,Mainland China,1/29/2020 14:30,58,,2.0
-Shaanxi,Mainland China,1/29/2020 14:30,56,,
-Yunnan,Mainland China,1/29/2020 14:30,55,,
-Hebei,Mainland China,1/29/2020 14:30,48,1.0,
-Hainan,Mainland China,1/29/2020 14:30,43,1.0,
-Liaoning,Mainland China,1/29/2020 14:30,39,,1.0
-Heilongjiang,Mainland China,1/29/2020 14:30,38,1.0,
-Tianjin,Mainland China,1/29/2020 14:30,27,,
-Shanxi,Mainland China,1/29/2020 14:30,27,,1.0
-Gansu,Mainland China,1/29/2020 14:30,24,,
-Inner Mongolia,Mainland China,1/29/2020 14:30,16,,
-Xinjiang,Mainland China,1/29/2020 14:30,13,,
-Ningxia,Mainland China,1/29/2020 14:30,12,,
-Hong Kong,Hong Kong,1/29/2020 14:30,10,,
-Guizhou,Mainland China,1/29/2020 14:30,9,,1.0
-Jilin,Mainland China,1/29/2020 14:30,9,,
-Taiwan,Taiwan,1/29/2020 14:30,8,,
-Macau,Macau,1/29/2020 14:30,7,,
-Qinghai,Mainland China,1/29/2020 14:30,6,,
-WA,US,1/29/2020 14:30,1,,
-Illinois,US,1/29/2020 14:30,1,,
-California,US,1/29/2020 14:30,2,,
-Arizona,US,1/29/2020 14:30,1,,
-,Japan,1/29/2020 14:30,7,,1.0
-,Thailand,1/29/2020 14:30,14,,5.0
-,South Korea,1/29/2020 14:30,4,,
-,Singapore,1/29/2020 14:30,7,,
-,Vietnam,1/29/2020 14:30,2,,
-,France,1/29/2020 14:30,5,,
-,Nepal,1/29/2020 14:30,1,,
-,Malaysia,1/29/2020 14:30,7,,
-Ontario,Canada,1/29/2020 14:30,1,,
-British Columbia,Canada,1/29/2020 14:30,1,,
-,Cambodia,1/29/2020 14:30,1,,
-,Sri Lanka,1/29/2020 14:30,1,,
-New South Wales,Australia,1/29/2020 14:30,4,,
-Victoria,Australia,1/29/2020 14:30,1,,
-Bavaria,Germany,1/29/2020 14:30,4,,
-,Finland,1/29/2020 14:30,1,,
-,United Arab Emirates,1/29/2020 14:30,4,,
+Hubei,Mainland China,1/29/2020 14:30,3554,125,88
+Zhejiang,Mainland China,1/29/2020 14:30,296,0,3
+Guangdong,Mainland China,1/29/2020 14:30,277,0,5
+Hunan,Mainland China,1/29/2020 14:30,221,0,0
+Henan,Mainland China,1/29/2020 14:30,206,2,1
+Anhui,Mainland China,1/29/2020 14:30,152,0,2
+Chongqing,Mainland China,1/29/2020 14:30,147,0,1
+Shandong,Mainland China,1/29/2020 14:30,130,0,1
+Beijing,Mainland China,1/29/2020 14:30,111,1,4
+Jiangxi,Mainland China,1/29/2020 14:30,109,0,3
+Sichuan,Mainland China,1/29/2020 14:30,108,1,1
+Jiangsu,Mainland China,1/29/2020 14:30,99,0,1
+Shanghai,Mainland China,1/29/2020 14:30,96,1,5
+Fujian,Mainland China,1/29/2020 14:30,84,0,0
+Guangxi,Mainland China,1/29/2020 14:30,58,0,2
+Shaanxi,Mainland China,1/29/2020 14:30,56,0,0
+Yunnan,Mainland China,1/29/2020 14:30,55,0,0
+Hebei,Mainland China,1/29/2020 14:30,48,1,0
+Hainan,Mainland China,1/29/2020 14:30,43,1,0
+Liaoning,Mainland China,1/29/2020 14:30,39,0,1
+Heilongjiang,Mainland China,1/29/2020 14:30,38,1,0
+Tianjin,Mainland China,1/29/2020 14:30,27,0,0
+Shanxi,Mainland China,1/29/2020 14:30,27,0,1
+Gansu,Mainland China,1/29/2020 14:30,24,0,0
+Inner Mongolia,Mainland China,1/29/2020 14:30,16,0,0
+Xinjiang,Mainland China,1/29/2020 14:30,13,0,0
+Ningxia,Mainland China,1/29/2020 14:30,12,0,0
+Hong Kong,Hong Kong,1/29/2020 14:30,10,0,0
+Guizhou,Mainland China,1/29/2020 14:30,9,0,1
+Jilin,Mainland China,1/29/2020 14:30,9,0,0
+Taiwan,Taiwan,1/29/2020 14:30,8,0,0
+Macau,Macau,1/29/2020 14:30,7,0,0
+Qinghai,Mainland China,1/29/2020 14:30,6,0,0
+WA,US,1/29/2020 14:30,1,0,0
+Illinois,US,1/29/2020 14:30,1,0,0
+California,US,1/29/2020 14:30,2,0,0
+Arizona,US,1/29/2020 14:30,1,0,0
+,Japan,1/29/2020 14:30,7,0,1
+,Thailand,1/29/2020 14:30,14,0,5
+,South Korea,1/29/2020 14:30,4,0,0
+,Singapore,1/29/2020 14:30,7,0,0
+,Vietnam,1/29/2020 14:30,2,0,0
+,France,1/29/2020 14:30,5,0,0
+,Nepal,1/29/2020 14:30,1,0,0
+,Malaysia,1/29/2020 14:30,7,0,0
+Ontario,Canada,1/29/2020 14:30,1,0,0
+British Columbia,Canada,1/29/2020 14:30,1,0,0
+,Cambodia,1/29/2020 14:30,1,0,0
+,Sri Lanka,1/29/2020 14:30,1,0,0
+New South Wales,Australia,1/29/2020 14:30,4,0,0
+Victoria,Australia,1/29/2020 14:30,1,0,0
+Bavaria,Germany,1/29/2020 14:30,4,0,0
+,Finland,1/29/2020 14:30,1,0,0
+,United Arab Emirates,1/29/2020 14:30,4,0,0

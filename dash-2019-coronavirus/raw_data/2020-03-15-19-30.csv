@@ -1,0 +1,255 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/15/2020 19:30,67794,3085,54288
+Beijing,Mainland China,3/15/2020 19:30,437,8,353
+Guangdong,Mainland China,3/15/2020 19:30,1356,8,1304
+Gansu,Mainland China,3/15/2020 19:30,132,2,91
+Shanghai,Mainland China,3/15/2020 19:30,353,3,324
+Sichuan,Mainland China,3/15/2020 19:30,539,3,516
+Heilongjiang,Mainland China,3/15/2020 19:30,482,13,453
+Zhejiang,Mainland China,3/15/2020 19:30,1231,1,1211
+Shandong,Mainland China,3/15/2020 19:30,760,7,741
+Shaanxi,Mainland China,3/15/2020 19:30,245,2,232
+Liaoning,Mainland China,3/15/2020 19:30,125,1,114
+Guangxi,Mainland China,3/15/2020 19:30,252,2,243
+Inner Mongolia,Mainland China,3/15/2020 19:30,75,1,71
+Hebei,Mainland China,3/15/2020 19:30,318,6,310
+Hainan,Mainland China,3/15/2020 19:30,168,6,160
+Ningxia,Mainland China,3/15/2020 19:30,75,0,73
+Henan,Mainland China,3/15/2020 19:30,1273,22,1250
+Jiangsu,Mainland China,3/15/2020 19:30,631,0,631
+Chongqing,Mainland China,3/15/2020 19:30,576,6,570
+Guizhou,Mainland China,3/15/2020 19:30,146,2,143
+Tianjin,Mainland China,3/15/2020 19:30,136,3,133
+Jilin,Mainland China,3/15/2020 19:30,93,1,91
+Hunan,Mainland China,3/15/2020 19:30,1018,4,1014
+Anhui,Mainland China,3/15/2020 19:30,990,6,984
+Jiangxi,Mainland China,3/15/2020 19:30,935,1,934
+Fujian,Mainland China,3/15/2020 19:30,296,1,295
+Yunnan,Mainland China,3/15/2020 19:30,174,2,172
+Shanxi,Mainland China,3/15/2020 19:30,133,0,133
+Xinjiang,Mainland China,3/15/2020 19:30,76,3,73
+Qinghai,Mainland China,3/15/2020 19:30,18,0,18
+Tibet,Mainland China,3/15/2020 19:30,1,0,1
+New South Wales,Australia,3/15/2020 19:30,134,4,7
+Queensland,Australia,3/15/2020 19:30,62,0,9
+Victoria,Australia,3/15/2020 19:30,71,0,8
+South Australia,Australia,3/15/2020 19:30,20,0,3
+Western Australia,Australia,3/15/2020 19:30,17,1,0
+Tasmania,Australia,3/15/2020 19:30,7,0,0
+Australian Capital Territory,Australia,3/15/2020 19:30,2,0,0
+WA,US,3/15/2020 19:30,769,42,1
+New York,US,3/15/2020 19:30,744,6,0
+California,US,3/15/2020 19:30,425,6,6
+Massachusetts,US,3/15/2020 19:30,164,0,1
+Colorado,US,3/15/2020 19:30,131,1,0
+Florida,US,3/15/2020 19:30,115,4,0
+Louisiana,US,3/15/2020 19:30,102,2,0
+Georgia,US,3/15/2020 19:30,99,1,0
+New Jersey,US,3/15/2020 19:30,98,2,0
+Illinois,US,3/15/2020 19:30,93,0,2
+Texas,US,3/15/2020 19:30,73,0,0
+Pennsylvania,US,3/15/2020 19:30,66,0,0
+From Diamond Princess cruise,US,3/15/2020 19:30,46,0,0
+Virginia,US,3/15/2020 19:30,45,1,0
+Michigan,US,3/15/2020 19:30,45,0,0
+Oregon,US,3/15/2020 19:30,39,1,0
+Tennessee,US,3/15/2020 19:30,39,0,0
+Ohio,US,3/15/2020 19:30,37,0,0
+Minnesota,US,3/15/2020 19:30,35,0,0
+Wisconsin,US,3/15/2020 19:30,33,0,1
+North Carolina,US,3/15/2020 19:30,33,0,0
+Maryland,US,3/15/2020 19:30,33,0,0
+South Carolina,US,3/15/2020 19:30,28,0,0
+Utah,US,3/15/2020 19:30,28,0,0
+Connecticut,US,3/15/2020 19:30,26,0,0
+Nevada,US,3/15/2020 19:30,24,0,0
+Alabama,US,3/15/2020 19:30,22,0,0
+From Grand Princess,US,3/15/2020 19:30,21,0,0
+Rhode Island,US,3/15/2020 19:30,20,0,0
+Indiana,US,3/15/2020 19:30,20,0,0
+Kentucky,US,3/15/2020 19:30,20,0,0
+Nebraska,US,3/15/2020 19:30,19,0,0
+Washington DC,US,3/15/2020 19:30,18,0,0
+Iowa,US,3/15/2020 19:30,18,0,0
+New Mexico,US,3/15/2020 19:30,17,0,0
+Arkansas,US,3/15/2020 19:30,16,0,0
+Arizona,US,3/15/2020 19:30,13,0,1
+New Hampshire,US,3/15/2020 19:30,13,0,0
+Maine,US,3/15/2020 19:30,12,0,0
+Mississippi,US,3/15/2020 19:30,10,0,0
+Kansas,US,3/15/2020 19:30,9,1,0
+South Dakota,US,3/15/2020 19:30,9,1,0
+Vermont,US,3/15/2020 19:30,8,0,0
+Oklahoma,US,3/15/2020 19:30,7,0,0
+Delaware,US,3/15/2020 19:30,7,0,0
+Montana,US,3/15/2020 19:30,7,0,0
+Hawaii,US,3/15/2020 19:30,6,0,0
+Missouri,US,3/15/2020 19:30,5,0,0
+Idaho,US,3/15/2020 19:30,5,0,0
+Wyoming,US,3/15/2020 19:30,3,0,0
+North Dakota,US,3/15/2020 19:30,1,0,0
+Alaska,US,3/15/2020 19:30,1,0,0
+Ontario,Canada,3/15/2020 19:30,145,0,4
+British Columbia,Canada,3/15/2020 19:30,73,1,4
+Alberta,Canada,3/15/2020 19:30,56,0,0
+Quebec,Canada,3/15/2020 19:30,39,0,0
+Manitoba,Canada,3/15/2020 19:30,7,0,0
+New Brunswick,Canada,3/15/2020 19:30,6,0,0
+Saskatchewan,Canada,3/15/2020 19:30,6,0,0
+Nova Scotia,Canada,3/15/2020 19:30,3,0,0
+Prince Edward Island,Canada,3/15/2020 19:30,1,0,0
+Newfoundland and labrador,Canada,3/15/2020 19:30,1,0,0
+,Italy,3/15/2020 19:30,24747,1809,2335
+,Iran,3/15/2020 19:30,13938,724,4590
+,South Korea,3/15/2020 19:30,8162,75,834
+,Spain,3/15/2020 19:30,7845,292,517
+,Germany,3/15/2020 19:30,5813,11,46
+,France,3/15/2020 19:30,5423,127,12
+,Switzerland,3/15/2020 19:30,2217,14,4
+,UK,3/15/2020 19:30,1391,35,20
+,Norway,3/15/2020 19:30,1254,3,1
+,Netherlands,3/15/2020 19:30,1135,20,2
+,Sweden,3/15/2020 19:30,1040,3,1
+Brussels,Belgium,3/15/2020 19:30,886,4,1
+,Denmark,3/15/2020 19:30,864,2,1
+,Austria,3/15/2020 19:30,860,1,6
+,Japan,3/15/2020 19:30,839,24,144
+Yokohama,Japan,3/15/2020 19:30,696,7,456
+,Malaysia,3/15/2020 19:30,428,0,42
+,Qatar,3/15/2020 19:30,401,0,4
+,Greece,3/15/2020 19:30,331,4,8
+,Czechia,3/15/2020 19:30,293,0,0
+,Portugal,3/15/2020 19:30,245,0,2
+,Finland,3/15/2020 19:30,244,0,10
+,Singapore,3/15/2020 19:30,226,0,105
+,Slovenia,3/15/2020 19:30,219,1,0
+,Bahrain,3/15/2020 19:30,214,0,77
+,Israel,3/15/2020 19:30,213,0,4
+,Brazil,3/15/2020 19:30,200,0,1
+,Iceland,3/15/2020 19:30,180,0,0
+,Estonia,3/15/2020 19:30,171,0,1
+,Ireland,3/15/2020 19:30,170,2,1
+Hong Kong,Hong Kong,3/15/2020 19:30,149,4,81
+,Philippines,3/15/2020 19:30,140,12,2
+,Romania,3/15/2020 19:30,139,0,9
+,Egypt,3/15/2020 19:30,126,2,27
+,Poland,3/15/2020 19:30,125,3,13
+,Iraq,3/15/2020 19:30,124,10,26
+,Saudi Arabia,3/15/2020 19:30,118,0,2
+,Indonesia,3/15/2020 19:30,117,5,8
+,Thailand,3/15/2020 19:30,114,1,35
+,India,3/15/2020 19:30,112,2,13
+,Kuwait,3/15/2020 19:30,112,0,9
+,San Marino,3/15/2020 19:30,109,7,4
+,Lebanon,3/15/2020 19:30,99,3,1
+,United Arab Emirates,3/15/2020 19:30,98,0,20
+,Luxembourg,3/15/2020 19:30,77,1,0
+,Chile,3/15/2020 19:30,75,0,0
+,Peru,3/15/2020 19:30,71,0,0
+,Russia,3/15/2020 19:30,63,0,8
+,Slovakia,3/15/2020 19:30,61,0,0
+,South Africa,3/15/2020 19:30,61,0,0
+Taiwan,Taiwan,3/15/2020 19:30,59,1,20
+,Vietnam,3/15/2020 19:30,56,0,16
+,Pakistan,3/15/2020 19:30,53,0,2
+,Bulgaria,3/15/2020 19:30,51,2,0
+,Brunei,3/15/2020 19:30,50,0,0
+,Croatia,3/15/2020 19:30,49,0,2
+,Algeria,3/15/2020 19:30,48,4,10
+,Serbia,3/15/2020 19:30,48,0,1
+,Argentina,3/15/2020 19:30,46,2,0
+,Panama,3/15/2020 19:30,43,1,0
+,Mexico,3/15/2020 19:30,43,0,4
+,Albania,3/15/2020 19:30,42,1,0
+,Palestine,3/15/2020 19:30,38,0,0
+,Ecuador,3/15/2020 19:30,37,2,0
+,Costa Rica,3/15/2020 19:30,35,0,0
+,Colombia,3/15/2020 19:30,34,0,0
+,Georgia,3/15/2020 19:30,33,0,1
+,Cyprus,3/15/2020 19:30,33,0,0
+,Hungary,3/15/2020 19:30,32,1,1
+,Latvia,3/15/2020 19:30,30,0,1
+,Morocco,3/15/2020 19:30,28,1,1
+,Belarus,3/15/2020 19:30,27,0,3
+,Armenia,3/15/2020 19:30,26,0,0
+,Senegal,3/15/2020 19:30,24,0,2
+,Bosnia and Herzegovina,3/15/2020 19:30,24,0,0
+,Azerbaijan,3/15/2020 19:30,23,1,6
+,Moldova,3/15/2020 19:30,23,0,0
+,Oman,3/15/2020 19:30,22,0,9
+,Malta,3/15/2020 19:30,21,0,2
+,Tunisia,3/15/2020 19:30,20,0,0
+,North Macedonia,3/15/2020 19:30,19,0,1
+,Sri Lanka,3/15/2020 19:30,18,0,1
+,Turkey,3/15/2020 19:30,18,0,0
+,Venezuela,3/15/2020 19:30,17,0,0
+,Afghanistan,3/15/2020 19:30,16,0,1
+,Lithuania,3/15/2020 19:30,14,0,1
+,Maldives,3/15/2020 19:30,13,0,0
+,Cambodia,3/15/2020 19:30,12,0,1
+Macau,Macau,3/15/2020 19:30,11,0,10
+,Dominican Republic,3/15/2020 19:30,11,0,0
+,Faeroe Islands,3/15/2020 19:30,11,0,0
+,Jordan,3/15/2020 19:30,10,0,1
+,Bolivia,3/15/2020 19:30,10,0,0
+,Jamaica,3/15/2020 19:30,10,0,2
+,Martinique,3/15/2020 19:30,10,0,0
+,Kazakhstan,3/15/2020 19:30,9,0,0
+,New Zealand,3/15/2020 19:30,8,0,0
+,French Guiana,3/15/2020 19:30,7,0,0
+,Liechtenstein,3/15/2020 19:30,7,0,0
+,Paraguay,3/15/2020 19:30,7,0,0
+,Reunion,3/15/2020 19:30,7,0,0
+,Ghana,3/15/2020 19:30,6,0,0
+,Uruguay,3/15/2020 19:30,6,0,0
+,Andorra,3/15/2020 19:30,5,0,0
+,Bangladesh,3/15/2020 19:30,5,0,2
+,Puerto Rico,3/15/2020 19:30,5,0,0
+,Rwanda,3/15/2020 19:30,5,0,0
+,Guyana,3/15/2020 19:30,4,1,0
+,Cameroon,3/15/2020 19:30,4,0,0
+,Ivory Coast,3/15/2020 19:30,4,0,0
+,Cuba,3/15/2020 19:30,4,0,0
+,Ethiopia,3/15/2020 19:30,4,0,0
+,Uzbekistan,3/15/2020 19:30,4,0,0
+,Ukraine,3/15/2020 19:30,3,1,0
+,Burkina Faso,3/15/2020 19:30,3,0,0
+,Channel Islands,3/15/2020 19:30,3,0,0
+,French Polynesia,3/15/2020 19:30,3,0,0
+,Guadeloupe,3/15/2020 19:30,3,0,0
+,Guam,3/15/2020 19:30,3,0,0
+,Honduras,3/15/2020 19:30,3,0,0
+,Kenya,3/15/2020 19:30,3,0,0
+,Seychelles,3/15/2020 19:30,3,0,0
+,Monaco,3/15/2020 19:30,2,0,0
+,Nigeria,3/15/2020 19:30,2,0,1
+,Aruba,3/15/2020 19:30,2,0,0
+,Curacao,3/15/2020 19:30,2,0,0
+,DRC,3/15/2020 19:30,2,0,0
+,Namibia,3/15/2020 19:30,2,0,0
+,Saint Lucia,3/15/2020 19:30,2,0,0
+,Saint Martin,3/15/2020 19:30,2,0,0
+,Trinidad and Tobago,3/15/2020 19:30,2,0,0
+,Guatemala,3/15/2020 19:30,1,1,0
+,Sudan,3/15/2020 19:30,1,1,0
+,Nepal,3/15/2020 19:30,1,0,1
+,Antigua and Barbuda,3/15/2020 19:30,1,0,0
+,Bahamas,3/15/2020 19:30,1,0,0
+,Bhutan,3/15/2020 19:30,1,0,0
+,Cayman Islands,3/15/2020 19:30,1,0,0
+,CAR,3/15/2020 19:30,1,0,0
+,Congo,3/15/2020 19:30,1,0,0
+,Equatorial Guinea,3/15/2020 19:30,1,0,0
+,Gabon,3/15/2020 19:30,1,0,0
+,Gibraltar,3/15/2020 19:30,1,0,1
+,Guinea,3/15/2020 19:30,1,0,0
+,Vatican City,3/15/2020 19:30,1,0,0
+,Mauritania,3/15/2020 19:30,1,0,0
+,Mayotte,3/15/2020 19:30,1,0,0
+,Mongolia,3/15/2020 19:30,1,0,0
+,St. Barth,3/15/2020 19:30,1,0,0
+,St. Vincent Grenadines,3/15/2020 19:30,1,0,0
+,Suriname,3/15/2020 19:30,1,0,0
+,Eswatini,3/15/2020 19:30,1,0,0
+,Togo,3/15/2020 19:30,1,0,0
+,U.S. Virgin Islands,3/15/2020 19:30,1,0,0

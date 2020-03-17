@@ -19,48 +19,6 @@ from dash.dependencies import Input, Output
 #### Private function
 ###################################
 
-def df_for_lineplot_diff(dfs, CaseType):
-    '''This is the function for construct df for line plot'''
-    
-    assert type(CaseType) is str, "CaseType must be one of the following three strings Confirmed/Recovered/Deaths"
-    
-    
-    # Construct confirmed cases dataframe for line plot
-    DateList = []
-    ChinaList =[]
-    OtherList = []
-
-    for key, df in dfs.items():
-        dfTpm = df.groupby(['Country/Region'])[CaseType].agg(np.sum)
-        dfTpm = pd.DataFrame({'Region':dfTpm.index, CaseType:dfTpm.values})
-        #dfTpm = dfTpm.sort_values(by=CaseType, ascending=False).reset_index(drop=True)
-        DateList.append(df['Date_last_updated_AEDT'][0])
-        ChinaList.append(dfTpm.loc[dfTpm['Region'] == 'China', CaseType].iloc[0])
-        OtherList.append(dfTpm.loc[dfTpm['Region'] != 'China', CaseType].sum())
-
-    df = pd.DataFrame({'Date':DateList,
-                       'Mainland China':ChinaList,
-                       'Other locations':OtherList})
-    df['Total']=df['Mainland China']+df['Other locations']
-
-    # Calculate differenec in a 24-hour window
-    for index, _ in df.iterrows():
-        # Calculate the time differnece in hour
-        diff=(df['Date'][0] - df['Date'][index]).total_seconds()/3600
-        # find out the latest time after 24-hour
-        if diff >= 24:
-            break
-    plusNum = df['Total'][0] - df['Total'][index]
-    plusPercentNum = (df['Total'][0] - df['Total'][index])/df['Total'][index]
-
-    # Select the latest data from a given date
-    df['date_day']=[d.date() for d in df['Date']]
-    df=df.groupby(by=df['date_day'], sort=False).transform(max).drop_duplicates(['Date'])
-    
-    df=df.reset_index(drop=True)
-    
-    return df, plusNum, plusPercentNum
-
 def make_country_table(countryName):
     '''This is the function for building df for Province/State of a given country'''
     countryTable = dfs[keyList[0]].loc[dfs[keyList[0]]['Country/Region'] == countryName]
@@ -149,6 +107,7 @@ for key, df in dfs.items():
     # Convert time as Australian eastern daylight time
     dfs[key]['Date_last_updated_AEDT'] = [datetime.strptime(d, '%m/%d/%Y %H:%M') for d in dfs[key]['Last Update']]
     dfs[key]['Date_last_updated_AEDT'] = dfs[key]['Date_last_updated_AEDT'] + timedelta(hours=16)
+    #dfs[key]['Remaining'] = dfs[key]['Confirmed'] - dfs[key]['Recovered'] - dfs[key]['Deaths']
 
 # Add coordinates for each area in the list for the latest table sheet
 # To save time, coordinates calling was done seperately
@@ -162,15 +121,28 @@ deathsCases=dfs[keyList[0]]['Deaths'].sum()
 recoveredCases=dfs[keyList[0]]['Recovered'].sum()
 
 # Construct confirmed cases dataframe for line plot and 24-hour window case difference
-df_confirmed, plusConfirmedNum, plusPercentNum1 = df_for_lineplot_diff(dfs, 'Confirmed')
-
+df_confirmed = pd.read_csv('./lineplot_data/df_confirmed.csv')
+df_confirmed = df_confirmed.astype({'Date':'datetime64'})
+plusConfirmedNum = df_confirmed['plusNum'][0]
+plusPercentNum1 = df_confirmed['plusPercentNum'][0]
 
 # Construct recovered cases dataframe for line plot and 24-hour window case difference
-df_recovered, plusRecoveredNum, plusPercentNum2 = df_for_lineplot_diff(dfs, 'Recovered')
-
+df_recovered = pd.read_csv('./lineplot_data/df_recovered.csv')
+df_recovered = df_recovered.astype({'Date':'datetime64'})
+plusRecoveredNum = df_recovered['plusNum'][0]
+plusPercentNum2 = df_recovered['plusPercentNum'][0] 
 
 # Construct death case dataframe for line plot and 24-hour window case difference
-df_deaths, plusDeathNum, plusPercentNum3 = df_for_lineplot_diff(dfs, 'Deaths')
+df_deaths = pd.read_csv('./lineplot_data/df_deaths.csv')
+df_deaths = df_deaths.astype({'Date':'datetime64'})
+plusDeathNum = df_deaths['plusNum'][0]
+plusPercentNum3 = df_deaths['plusPercentNum'][0]
+
+# Construct remaining case dataframe for line plot and 24-hour window case difference
+df_remaining = pd.read_csv('./lineplot_data/df_remaining.csv')
+df_remaining = df_remaining.astype({'Date':'datetime64'})
+plusRemainNum = df_remaining['plusNum'][0]
+plusRemainNum3 = df_remaining['plusPercentNum'][0]
 
 # Create data table to show in app
 # Generate sum values for Country/Region level
@@ -211,7 +183,7 @@ daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%
 #############################################################################################
 # Line plot for confirmed cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 10000))
+tickList = list(np.arange(0, df_confirmed['Other locations'].max()+1000, 10000))
 
 # Create empty figure canvas
 fig_confirmed = go.Figure()
@@ -277,7 +249,7 @@ fig_confirmed.update_layout(
     xaxis_tickformat='%b %d',
     hovermode = 'x',
     legend_orientation="h",
-#    legend=dict(x=.35, y=-.05),
+    #legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
     plot_bgcolor='#f4f4f2',
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
@@ -285,7 +257,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine recovered cases
 # Set up tick scale based on total recovered case number
-tickList = list(np.arange(0, df_recovered['Total'].max()+2000, 10000))
+tickList = list(np.arange(0, df_remaining['Total'].max()+2000, 10000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -311,6 +283,18 @@ fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
                                             line=dict(width=1,color='#626262')),
                                 text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
                                 hovertext=['Total death<br>{:,d} cases<br>'.format(i) for i in df_deaths['Total']],
+                                hovertemplate='<b>%{text}</b><br></br>'+
+                                              '%{hovertext}'+
+                                              '<extra></extra>'))
+fig_combine.add_trace(go.Scatter(x=df_remaining['Date'], y=df_remaining['Total'],
+                                mode='lines+markers',
+                                line_shape='spline',
+                                name='Total Remaining Cases',
+                                line=dict(color='#e36209', width=4),
+                                marker=dict(size=4, color='#f4f4f2',
+                                            line=dict(width=1,color='#e36209')),
+                                text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_deaths['Date']],
+                                hovertext=['Total remaining<br>{:,d} cases<br>'.format(i) for i in df_remaining['Total']],
                                 hovertemplate='<b>%{text}</b><br></br>'+
                                               '%{hovertext}'+
                                               '<extra></extra>'))
@@ -351,7 +335,7 @@ fig_combine.update_layout(
     xaxis_tickformat='%b %d',
     hovermode = 'x',
     legend_orientation="h",
-#    legend=dict(x=.35, y=-.05),
+    #legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
     plot_bgcolor='#f4f4f2',
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
@@ -421,7 +405,7 @@ fig_rate.update_layout(
     xaxis_tickformat='%b %d',
     hovermode = 'x',
     legend_orientation="h",
-#    legend=dict(x=.35, y=-.05),
+    #legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
     plot_bgcolor='#f4f4f2',
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
@@ -612,7 +596,7 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                               children=[
                                   html.H5(style={'textAlign':'center','backgroundColor':'#cbd2d3',
                                                  'color':'#292929','padding':'1rem','marginBottom':'0'},
-                                               children='Recovered/Death Case Timeline'),
+                                               children='Remaining/Recovered/Death Case Timeline'),
                                   dcc.Graph(style={'height':'300px'},figure=fig_combine)]),
                      html.Div(
                          style={'width':'32.79%','display':'inline-block','verticalAlign':'top'},
@@ -818,7 +802,7 @@ def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
         
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
-    df_region=df_region.astype({'Date_last_updated_AEDT':'datetime64', 'date_day':'datetime64'})
+    df_region = df_region.astype({'Date_last_updated_AEDT':'datetime64', 'date_day':'datetime64'})
 
     # Line plot for confirmed cases
     # Set up tick scale based on confirmed case number

@@ -1,53 +1,53 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
-Hubei,Mainland China,1/28/2020 23:00,3554,125.0,80.0
-Zhejiang,Mainland China,1/28/2020 23:00,296,,3.0
-Guangdong,Mainland China,1/28/2020 23:00,241,,5.0
-Hunan,Mainland China,1/28/2020 23:00,221,,
-Henan,Mainland China,1/28/2020 23:00,206,2.0,1.0
-Anhui,Mainland China,1/28/2020 23:00,152,,
-Chongqing,Mainland China,1/28/2020 23:00,147,,1.0
-Shandong,Mainland China,1/28/2020 23:00,121,,
-Jiangxi,Mainland China,1/28/2020 23:00,109,,3.0
-Sichuan,Mainland China,1/28/2020 23:00,108,,
-Jiangsu,Mainland China,1/28/2020 23:00,99,,1.0
-Beijing,Mainland China,1/28/2020 23:00,91,1.0,4.0
-Fujian,Mainland China,1/28/2020 23:00,82,,
-Shanghai,Mainland China,1/28/2020 23:00,80,1.0,4.0
-Guangxi,Mainland China,1/28/2020 23:00,58,,2.0
-Shaanxi,Mainland China,1/28/2020 23:00,56,,
-Hebei,Mainland China,1/28/2020 23:00,48,1.0,
-Yunnan,Mainland China,1/28/2020 23:00,44,,
-Hainan,Mainland China,1/28/2020 23:00,43,1.0,
-Heilongjiang,Mainland China,1/28/2020 23:00,37,1.0,
-Liaoning,Mainland China,1/28/2020 23:00,36,,
-Shanxi,Mainland China,1/28/2020 23:00,27,,
-Tianjin,Mainland China,1/28/2020 23:00,25,,
-Gansu,Mainland China,1/28/2020 23:00,24,,
-Inner Mongolia,Mainland China,1/28/2020 23:00,16,,
-Xinjiang,Mainland China,1/28/2020 23:00,13,,
-Ningxia,Mainland China,1/28/2020 23:00,12,,
-Guizhou,Mainland China,1/28/2020 23:00,9,,
-Jilin,Mainland China,1/28/2020 23:00,9,,
-Hong Kong,Hong Kong,1/28/2020 23:00,8,,
-Taiwan,Taiwan,1/28/2020 23:00,8,,
-Macau,Macau,1/28/2020 23:00,7,,
-Qinghai,Mainland China,1/28/2020 23:00,6,,
-WA,US,1/28/2020 23:00,1,,
-Illinois,US,1/28/2020 23:00,1,,
-California,US,1/28/2020 23:00,2,,
-Arizona,US,1/28/2020 23:00,1,,
-,Japan,1/28/2020 23:00,7,,1.0
-,Thailand,1/28/2020 23:00,14,,5.0
-,South Korea,1/28/2020 23:00,4,,
-,Singapore,1/28/2020 23:00,7,,
-,Vietnam,1/28/2020 23:00,2,,
-,France,1/28/2020 23:00,4,,
-,Nepal,1/28/2020 23:00,1,,
-,Malaysia,1/28/2020 23:00,7,,
-Ontario,Canada,1/28/2020 23:00,1,,
-British Columbia,Canada,1/28/2020 23:00,1,,
-,Cambodia,1/28/2020 23:00,1,,
-,Sri Lanka,1/28/2020 23:00,1,,
-New South Wales,Australia,1/28/2020 23:00,4,,
-Victoria,Australia,1/28/2020 23:00,1,,
-Bavaria,Germany,1/28/2020 23:00,4,,
+Hubei,Mainland China,1/28/2020 23:00,3554,125,80
+Zhejiang,Mainland China,1/28/2020 23:00,296,0,3
+Guangdong,Mainland China,1/28/2020 23:00,241,0,5
+Hunan,Mainland China,1/28/2020 23:00,221,0,0
+Henan,Mainland China,1/28/2020 23:00,206,2,1
+Anhui,Mainland China,1/28/2020 23:00,152,0,0
+Chongqing,Mainland China,1/28/2020 23:00,147,0,1
+Shandong,Mainland China,1/28/2020 23:00,121,0,0
+Jiangxi,Mainland China,1/28/2020 23:00,109,0,3
+Sichuan,Mainland China,1/28/2020 23:00,108,0,0
+Jiangsu,Mainland China,1/28/2020 23:00,99,0,1
+Beijing,Mainland China,1/28/2020 23:00,91,1,4
+Fujian,Mainland China,1/28/2020 23:00,82,0,0
+Shanghai,Mainland China,1/28/2020 23:00,80,1,4
+Guangxi,Mainland China,1/28/2020 23:00,58,0,2
+Shaanxi,Mainland China,1/28/2020 23:00,56,0,0
+Hebei,Mainland China,1/28/2020 23:00,48,1,0
+Yunnan,Mainland China,1/28/2020 23:00,44,0,0
+Hainan,Mainland China,1/28/2020 23:00,43,1,0
+Heilongjiang,Mainland China,1/28/2020 23:00,37,1,0
+Liaoning,Mainland China,1/28/2020 23:00,36,0,0
+Shanxi,Mainland China,1/28/2020 23:00,27,0,0
+Tianjin,Mainland China,1/28/2020 23:00,25,0,0
+Gansu,Mainland China,1/28/2020 23:00,24,0,0
+Inner Mongolia,Mainland China,1/28/2020 23:00,16,0,0
+Xinjiang,Mainland China,1/28/2020 23:00,13,0,0
+Ningxia,Mainland China,1/28/2020 23:00,12,0,0
+Guizhou,Mainland China,1/28/2020 23:00,9,0,0
+Jilin,Mainland China,1/28/2020 23:00,9,0,0
+Hong Kong,Hong Kong,1/28/2020 23:00,8,0,0
+Taiwan,Taiwan,1/28/2020 23:00,8,0,0
+Macau,Macau,1/28/2020 23:00,7,0,0
+Qinghai,Mainland China,1/28/2020 23:00,6,0,0
+WA,US,1/28/2020 23:00,1,0,0
+Illinois,US,1/28/2020 23:00,1,0,0
+California,US,1/28/2020 23:00,2,0,0
+Arizona,US,1/28/2020 23:00,1,0,0
+,Japan,1/28/2020 23:00,7,0,1
+,Thailand,1/28/2020 23:00,14,0,5
+,South Korea,1/28/2020 23:00,4,0,0
+,Singapore,1/28/2020 23:00,7,0,0
+,Vietnam,1/28/2020 23:00,2,0,0
+,France,1/28/2020 23:00,4,0,0
+,Nepal,1/28/2020 23:00,1,0,0
+,Malaysia,1/28/2020 23:00,7,0,0
+Ontario,Canada,1/28/2020 23:00,1,0,0
+British Columbia,Canada,1/28/2020 23:00,1,0,0
+,Cambodia,1/28/2020 23:00,1,0,0
+,Sri Lanka,1/28/2020 23:00,1,0,0
+New South Wales,Australia,1/28/2020 23:00,4,0,0
+Victoria,Australia,1/28/2020 23:00,1,0,0
+Bavaria,Germany,1/28/2020 23:00,4,0,0

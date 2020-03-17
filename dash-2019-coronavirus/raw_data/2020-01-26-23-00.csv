@@ -1,49 +1,49 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
-Hubei,Mainland China,1/26/2020 23:00,1423,76.0,44.0
-Guangdong,Mainland China,1/26/2020 23:00,146,,2.0
-Zhejiang,Mainland China,1/26/2020 23:00,128,,1.0
-Henan,Mainland China,1/26/2020 23:00,128,1.0,
-Chongqing,Mainland China,1/26/2020 23:00,110,,
-Hunan,Mainland China,1/26/2020 23:00,100,,
-Anhui,Mainland China,1/26/2020 23:00,70,,
-Sichuan,Mainland China,1/26/2020 23:00,69,,
-Beijing,Mainland China,1/26/2020 23:00,68,,2.0
-Shandong,Mainland China,1/26/2020 23:00,63,,
-Shanghai,Mainland China,1/26/2020 23:00,53,1.0,1.0
-Jiangxi,Mainland China,1/26/2020 23:00,48,,
-Jiangsu,Mainland China,1/26/2020 23:00,47,,1.0
-Guangxi,Mainland China,1/26/2020 23:00,46,,
-Fujian,Mainland China,1/26/2020 23:00,35,,
-Liaoning,Mainland China,1/26/2020 23:00,23,,
-Hainan,Mainland China,1/26/2020 23:00,22,,
-Shaanxi,Mainland China,1/26/2020 23:00,22,,
-Heilongjiang,Mainland China,1/26/2020 23:00,21,1.0,
-Yunnan,Mainland China,1/26/2020 23:00,19,,
-Hebei,Mainland China,1/26/2020 23:00,18,1.0,
-Tianjin,Mainland China,1/26/2020 23:00,14,,
-Gansu,Mainland China,1/26/2020 23:00,14,,
-Shanxi,Mainland China,1/26/2020 23:00,13,,
-Inner Mongolia,Mainland China,1/26/2020 23:00,11,,
-Hong Kong,Hong Kong,1/26/2020 23:00,8,,
-Guizhou,Mainland China,1/26/2020 23:00,7,,
-Jilin,Mainland China,1/26/2020 23:00,6,,
-Macau,Macau,1/26/2020 23:00,6,,
-Xinjiang,Mainland China,1/26/2020 23:00,5,,
-Ningxia,Mainland China,1/26/2020 23:00,4,,
-Taiwan,Taiwan,1/26/2020 23:00,4,,
-Qinghai,Mainland China,1/26/2020 23:00,4,,
-WA,US,1/26/2020 23:00,1,,
-Illinois,US,1/26/2020 23:00,1,,
-California,US,1/26/2020 23:00,2,,
-Arizona,US,1/26/2020 23:00,1,,
-,Japan,1/26/2020 23:00,4,,1.0
-,Thailand,1/26/2020 23:00,8,,2.0
-,South Korea,1/26/2020 23:00,3,,
-,Singapore,1/26/2020 23:00,4,,
-,Vietnam,1/26/2020 23:00,2,,
-,France,1/26/2020 23:00,3,,
-New South Wales,Australia,1/26/2020 23:00,3,,
-Victoria,Australia,1/26/2020 23:00,1,,
-,Nepal,1/26/2020 23:00,1,,
-,Malaysia,1/26/2020 23:00,4,,
-Ontario,Canada,1/26/2020 23:00,1,,
+Hubei,Mainland China,1/26/2020 23:00,1423,76,44
+Guangdong,Mainland China,1/26/2020 23:00,146,0,2
+Zhejiang,Mainland China,1/26/2020 23:00,128,0,1
+Henan,Mainland China,1/26/2020 23:00,128,1,0
+Chongqing,Mainland China,1/26/2020 23:00,110,0,0
+Hunan,Mainland China,1/26/2020 23:00,100,0,0
+Anhui,Mainland China,1/26/2020 23:00,70,0,0
+Sichuan,Mainland China,1/26/2020 23:00,69,0,0
+Beijing,Mainland China,1/26/2020 23:00,68,0,2
+Shandong,Mainland China,1/26/2020 23:00,63,0,0
+Shanghai,Mainland China,1/26/2020 23:00,53,1,1
+Jiangxi,Mainland China,1/26/2020 23:00,48,0,0
+Jiangsu,Mainland China,1/26/2020 23:00,47,0,1
+Guangxi,Mainland China,1/26/2020 23:00,46,0,0
+Fujian,Mainland China,1/26/2020 23:00,35,0,0
+Liaoning,Mainland China,1/26/2020 23:00,23,0,0
+Hainan,Mainland China,1/26/2020 23:00,22,0,0
+Shaanxi,Mainland China,1/26/2020 23:00,22,0,0
+Heilongjiang,Mainland China,1/26/2020 23:00,21,1,0
+Yunnan,Mainland China,1/26/2020 23:00,19,0,0
+Hebei,Mainland China,1/26/2020 23:00,18,1,0
+Tianjin,Mainland China,1/26/2020 23:00,14,0,0
+Gansu,Mainland China,1/26/2020 23:00,14,0,0
+Shanxi,Mainland China,1/26/2020 23:00,13,0,0
+Inner Mongolia,Mainland China,1/26/2020 23:00,11,0,0
+Hong Kong,Hong Kong,1/26/2020 23:00,8,0,0
+Guizhou,Mainland China,1/26/2020 23:00,7,0,0
+Jilin,Mainland China,1/26/2020 23:00,6,0,0
+Macau,Macau,1/26/2020 23:00,6,0,0
+Xinjiang,Mainland China,1/26/2020 23:00,5,0,0
+Ningxia,Mainland China,1/26/2020 23:00,4,0,0
+Taiwan,Taiwan,1/26/2020 23:00,4,0,0
+Qinghai,Mainland China,1/26/2020 23:00,4,0,0
+WA,US,1/26/2020 23:00,1,0,0
+Illinois,US,1/26/2020 23:00,1,0,0
+California,US,1/26/2020 23:00,2,0,0
+Arizona,US,1/26/2020 23:00,1,0,0
+,Japan,1/26/2020 23:00,4,0,1
+,Thailand,1/26/2020 23:00,8,0,2
+,South Korea,1/26/2020 23:00,3,0,0
+,Singapore,1/26/2020 23:00,4,0,0
+,Vietnam,1/26/2020 23:00,2,0,0
+,France,1/26/2020 23:00,3,0,0
+New South Wales,Australia,1/26/2020 23:00,3,0,0
+Victoria,Australia,1/26/2020 23:00,1,0,0
+,Nepal,1/26/2020 23:00,1,0,0
+,Malaysia,1/26/2020 23:00,4,0,0
+Ontario,Canada,1/26/2020 23:00,1,0,0

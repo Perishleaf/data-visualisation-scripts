@@ -1,28 +1,28 @@
 Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered,Suspected
-Hubei,Mainland China,1/21/2020 00:00,270,6,,11.0
-Guangdong,Mainland China,1/21/2020 00:00,17,0,,4.0
-Beijing,Mainland China,1/21/2020 00:00,10,0,,
-Shanghai,Mainland China,1/21/2020 00:00,9,0,,10.0
-Zhejiang,Mainland China,1/21/2020 00:00,5,0,,16.0
-Chongqing,Mainland China,1/21/2020 00:00,5,0,,
-Sichuan,Mainland China,1/21/2020 00:00,2,0,,1.0
-Tianjin,Mainland China,1/21/2020 00:00,2,0,,
-Jiangxi,Mainland China,1/21/2020 00:00,2,0,,
-,Thailand,1/21/2020 00:00,2,0,,
-Yunnan,Mainland China,1/21/2020 00:00,1,0,,
-Taiwan,Mainland China,1/21/2020 00:00,1,0,,
-Shandong,Mainland China,1/21/2020 00:00,1,0,,
-Henan,Mainland China,1/21/2020 00:00,1,0,,
-Hunan,Mainland China,1/21/2020 00:00,1,0,,
-,Japan,1/21/2020 00:00,1,0,,
-,South Korea,1/21/2020 00:00,1,0,,
-WA,US,1/21/2020 00:00,1,0,,
-Jilin,Mainland China,1/21/2020 00:00,0,0,,1.0
-Ningxia,Mainland China,1/21/2020 00:00,0,0,,1.0
-Anhui,Mainland China,1/21/2020 00:00,0,0,,3.0
-Guangxi,Mainland China,1/21/2020 00:00,0,0,,1.0
-Hainan,Mainland China,1/21/2020 00:00,0,0,,1.0
-Guizhou,Mainland China,1/21/2020 00:00,0,0,,1.0
-Liaoning,Mainland China,1/21/2020 00:00,0,0,,1.0
-Hong Kong,Mainland China,1/21/2020 00:00,0,0,,117.0
-Heilongjiang,Mainland China,1/21/2020 00:00,0,0,,1.0
+Hubei,Mainland China,1/21/2020 00:00,270,6,0,11
+Guangdong,Mainland China,1/21/2020 00:00,17,0,0,4
+Beijing,Mainland China,1/21/2020 00:00,10,0,0,0
+Shanghai,Mainland China,1/21/2020 00:00,9,0,0,10
+Zhejiang,Mainland China,1/21/2020 00:00,5,0,0,16
+Chongqing,Mainland China,1/21/2020 00:00,5,0,0,0
+Sichuan,Mainland China,1/21/2020 00:00,2,0,0,1
+Tianjin,Mainland China,1/21/2020 00:00,2,0,0,0
+Jiangxi,Mainland China,1/21/2020 00:00,2,0,0,0
+,Thailand,1/21/2020 00:00,2,0,0,0
+Yunnan,Mainland China,1/21/2020 00:00,1,0,0,0
+Taiwan,Mainland China,1/21/2020 00:00,1,0,0,0
+Shandong,Mainland China,1/21/2020 00:00,1,0,0,0
+Henan,Mainland China,1/21/2020 00:00,1,0,0,0
+Hunan,Mainland China,1/21/2020 00:00,1,0,0,0
+,Japan,1/21/2020 00:00,1,0,0,0
+,South Korea,1/21/2020 00:00,1,0,0,0
+WA,US,1/21/2020 00:00,1,0,0,0
+Jilin,Mainland China,1/21/2020 00:00,0,0,0,1
+Ningxia,Mainland China,1/21/2020 00:00,0,0,0,1
+Anhui,Mainland China,1/21/2020 00:00,0,0,0,3
+Guangxi,Mainland China,1/21/2020 00:00,0,0,0,1
+Hainan,Mainland China,1/21/2020 00:00,0,0,0,1
+Guizhou,Mainland China,1/21/2020 00:00,0,0,0,1
+Liaoning,Mainland China,1/21/2020 00:00,0,0,0,1
+Hong Kong,Mainland China,1/21/2020 00:00,0,0,0,117
+Heilongjiang,Mainland China,1/21/2020 00:00,0,0,0,1
