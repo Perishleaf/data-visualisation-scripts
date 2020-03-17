@@ -152,7 +152,7 @@ dfCase = dfCase.sort_values(by=['Confirmed'], ascending=False).reset_index(drop=
 dfCase = dfCase.drop(columns=['lat','lon'])
 
 # Grep lat and lon by the first instance to represent its Country/Region
-dfGPS = dfs[keyList[0]].groupby(by=['Country/Region'], sort=False).first().reset_index()
+dfGPS = dfs[keyList[0]].groupby(by='Country/Region', sort=False).first().reset_index()
 dfGPS = dfGPS[['Country/Region','lat','lon']]
 
 # Merge two dataframes
