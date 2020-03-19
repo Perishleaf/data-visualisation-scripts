@@ -21,7 +21,7 @@ from dash.dependencies import Input, Output
 
 def make_country_table(countryName):
     '''This is the function for building df for Province/State of a given country'''
-    countryTable = dfs[keyList[0]].loc[dfs[keyList[0]]['Country/Region'] == countryName]
+    countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
     # Suppress SettingWithCopyWarning
     pd.options.mode.chained_assignment = None
     countryTable['Remaining'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
@@ -36,89 +36,89 @@ def make_country_table(countryName):
 
 def make_dcc_country_tab(countryName, dataframe):
     '''This is for generating tab component for country table'''
-    return dcc.Tab(label=countryName,
-            value=countryName,
-            className='custom-tab',
-            selected_className='custom-tab--selected',
-            children=[
-                dash_table.DataTable(
+    return dcc.Tab(label = countryName,
+            value = countryName,
+            className = 'custom-tab',
+            selected_className = 'custom-tab--selected',
+            children = [dash_table.DataTable(
                     # Don't show coordinates
-                    columns=[{"name": i, "id": i} for i in dataframe.columns[0:5]],
+                    columns = [{"name": i, "id": i} for i in dataframe.columns[0:5]],
                     # But still store coordinates in the table for interactivity
-                    data=dataframe.to_dict("rows"),
+                    data = dataframe.to_dict("rows"),
                     #row_selectable="single",
-                    sort_action="native",
-                    style_as_list_view=True,
-                    style_cell={'font_family':'Arial',
-                                'font_size':'1.2rem',
-                                'padding':'.1rem',
-                                'backgroundColor':'#f4f4f2',},
-                    fixed_rows={'headers':True,'data':0},
-                    style_table={'minHeight': '750px', 
-                                 'height': '750px', 
-                                 'maxHeight': '750px'},
-                    style_header={'backgroundColor':'#f4f4f2',
-                                  'fontWeight':'bold'},
-                    style_cell_conditional=[{'if': {'column_id':'Province/State'},'width':'28%'},
-                                            {'if': {'column_id':'Remaining'},'width':'18%'},
-                                            {'if': {'column_id':'Confirmed'},'width':'18%'},
-                                            {'if': {'column_id':'Recovered'},'width':'18%'},
-                                            {'if': {'column_id':'Deaths'},'width':'18%'},
-                                            {'if': {'column_id':'Confirmed'},'color':'#d7191c'},
-                                            {'if': {'column_id':'Recovered'},'color':'#1a9622'},
-                                            {'if': {'column_id':'Deaths'},'color':'#6c6c6c'},
-                                            {'textAlign': 'center'}],
-                )
-        ])
+                    sort_action = "native",
+                    style_as_list_view = True,
+                    style_cell = {'font_family':'Arial',
+                                  'font_size':'1.2rem',
+                                  'padding':'.1rem',
+                                  'backgroundColor':'#f4f4f2',},
+                    fixed_rows = {'headers':True,'data':0},
+                    style_table = {'minHeight': '750px', 
+                                   'height': '750px', 
+                                   'maxHeight': '750px'},
+                    style_header = {'backgroundColor':'#f4f4f2',
+                                    'fontWeight':'bold'},
+                    style_cell_conditional = [{'if': {'column_id':'Province/State'},'width':'28%'},
+                                              {'if': {'column_id':'Remaining'},'width':'18%'},
+                                              {'if': {'column_id':'Confirmed'},'width':'18%'},
+                                              {'if': {'column_id':'Recovered'},'width':'18%'},
+                                              {'if': {'column_id':'Deaths'},'width':'18%'},
+                                              {'if': {'column_id':'Confirmed'},'color':'#d7191c'},
+                                              {'if': {'column_id':'Recovered'},'color':'#1a9622'},
+                                              {'if': {'column_id':'Deaths'},'color':'#6c6c6c'},
+                                              {'textAlign': 'center'}],
+                        )
+            ]
+          )
 
 ################################################################################
 #### Data processing
 ################################################################################
 # Method #1
 # Import csv file and store each csv in to a df list
-
-#filename = os.listdir('./raw_data/')
-#sheet_name = [i.replace('.csv', '') for i in filename if 'data' not in i and i.endswith('.csv')]
-#sheet_name.sort(reverse=True)
+# NOTE all following steps really rely on the correct order of these csv files in folder raw_data
+filename = os.listdir('./raw_data/')
+sheet_name = [i.replace('.csv', '') for i in filename if 'data' not in i and i.endswith('.csv')]
+sheet_name.sort(reverse=True)
 
 #dfs = {sheet_name: pd.read_csv('./raw_data/{}.csv'.format(sheet_name))
 #          for sheet_name in sheet_name}
 
 # Method #2
 # Import xls file and store each sheet in to a df list
-xl_file = pd.ExcelFile('./data.xls')
+#xl_file = pd.ExcelFile('./data.xls')
 
-dfs = {sheet_name: xl_file.parse(sheet_name) 
-          for sheet_name in xl_file.sheet_names}
+#dfs = {sheet_name: xl_file.parse(sheet_name) 
+#          for sheet_name in xl_file.sheet_names}
 
 # Data from each sheet can be accessed via key
-keyList = list(dfs.keys())
+#keyList = list(dfs.keys())
 
 # Data cleansing
-for key, df in dfs.items():
-    dfs[key].loc[:,'Confirmed'].fillna(value=0, inplace=True)
-    dfs[key].loc[:,'Deaths'].fillna(value=0, inplace=True)
-    dfs[key].loc[:,'Recovered'].fillna(value=0, inplace=True)
-    dfs[key]=dfs[key].astype({'Confirmed':'int64', 'Deaths':'int64', 'Recovered':'int64'})
-    # Change as China for coordinate search
-    dfs[key]=dfs[key].replace({'Country/Region':'Mainland China'}, 'China')
-    # Add a zero to the date so can be convert by datetime.strptime as 0-padded date
-    dfs[key]['Last Update'] = '0' + dfs[key]['Last Update']
-    # Convert time as Australian eastern daylight time
-    dfs[key]['Date_last_updated_AEDT'] = [datetime.strptime(d, '%m/%d/%Y %H:%M') for d in dfs[key]['Last Update']]
-    dfs[key]['Date_last_updated_AEDT'] = dfs[key]['Date_last_updated_AEDT'] + timedelta(hours=16)
-    #dfs[key]['Remaining'] = dfs[key]['Confirmed'] - dfs[key]['Recovered'] - dfs[key]['Deaths']
+#for key, df in dfs.items():
+#    dfs[key].loc[:,'Confirmed'].fillna(value=0, inplace=True)
+#    dfs[key].loc[:,'Deaths'].fillna(value=0, inplace=True)
+#    dfs[key].loc[:,'Recovered'].fillna(value=0, inplace=True)
+#    dfs[key]=dfs[key].astype({'Confirmed':'int64', 'Deaths':'int64', 'Recovered':'int64'})
+#    # Change as China for coordinate search
+#    dfs[key]=dfs[key].replace({'Country/Region':'Mainland China'}, 'China')
+#    # Add a zero to the date so can be convert by datetime.strptime as 0-padded date
+#    dfs[key]['Last Update'] = '0' + dfs[key]['Last Update']
+#    # Convert time as Australian eastern daylight time
+#    dfs[key]['Date_last_updated_AEDT'] = [datetime.strptime(d, '%m/%d/%Y %H:%M') for d in dfs[key]['Last Update']]
+#    dfs[key]['Date_last_updated_AEDT'] = dfs[key]['Date_last_updated_AEDT'] + timedelta(hours=16)
+#   #dfs[key]['Remaining'] = dfs[key]['Confirmed'] - dfs[key]['Recovered'] - dfs[key]['Deaths']
 
 # Add coordinates for each area in the list for the latest table sheet
 # To save time, coordinates calling was done seperately
 # Import the data with coordinates
-dfs[keyList[0]]=pd.read_csv('{}_data.csv'.format(keyList[0]))
-dfs[keyList[0]]=dfs[keyList[0]].astype({'Date_last_updated_AEDT':'datetime64'})
+df_latest = pd.read_csv('{}_data.csv'.format(sheet_name[0]))
+df_latest = df_latest.astype({'Date_last_updated_AEDT':'datetime64'})
 
 # Save numbers into variables to use in the app
-confirmedCases=dfs[keyList[0]]['Confirmed'].sum()
-deathsCases=dfs[keyList[0]]['Deaths'].sum()
-recoveredCases=dfs[keyList[0]]['Recovered'].sum()
+confirmedCases = df_latest['Confirmed'].sum()
+deathsCases = df_latest['Deaths'].sum()
+recoveredCases = df_latest['Recovered'].sum()
 
 # Construct confirmed cases dataframe for line plot and 24-hour window case difference
 df_confirmed = pd.read_csv('./lineplot_data/df_confirmed.csv')
@@ -146,13 +146,13 @@ plusRemainNum3 = df_remaining['plusPercentNum'][0]
 
 # Create data table to show in app
 # Generate sum values for Country/Region level
-dfCase = dfs[keyList[0]].groupby(by='Country/Region', sort=False).sum().reset_index()
+dfCase = df_latest.groupby(by='Country/Region', sort=False).sum().reset_index()
 dfCase = dfCase.sort_values(by=['Confirmed'], ascending=False).reset_index(drop=True)
 # As lat and lon also underwent sum(), which is not desired, remove from this table.
 dfCase = dfCase.drop(columns=['lat','lon'])
 
 # Grep lat and lon by the first instance to represent its Country/Region
-dfGPS = dfs[keyList[0]].groupby(by='Country/Region', sort=False).first().reset_index()
+dfGPS = df_latest.groupby(by='Country/Region', sort=False).first().reset_index()
 dfGPS = dfGPS[['Country/Region','lat','lon']]
 
 # Merge two dataframes
@@ -174,16 +174,16 @@ USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
 
 # Save numbers into variables to use in the app
-latestDate=datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
-secondLastDate=datetime.strftime(df_confirmed['Date'][1], '%b %d')
-daysOutbreak=(df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
+latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
+secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
+daysOutbreak = (df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
 #############################################################################################
 #### Start to make plots
 #############################################################################################
 # Line plot for confirmed cases
 # Set up tick scale based on confirmed case number
-tickList = list(np.arange(0, df_confirmed['Other locations'].max()+1000, 10000))
+tickList = list(np.arange(0, df_confirmed['Other locations'].max()+1000, 15000))
 
 # Create empty figure canvas
 fig_confirmed = go.Figure()
@@ -257,7 +257,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine recovered cases
 # Set up tick scale based on total recovered case number
-tickList = list(np.arange(0, df_remaining['Total'].max()+2000, 10000))
+tickList = list(np.arange(0, df_remaining['Total'].max()+2000, 15000))
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -410,10 +410,6 @@ fig_rate.update_layout(
     paper_bgcolor='#cbd2d3',
     font=dict(color='#292929')
 )
-
-##################################################################################################
-#### Start dash app
-##################################################################################################
 
 ##################################################################################################
 #### Start dash app
@@ -710,7 +706,7 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
 
     # Generate a list for hover text display
     textList=[]
-    for area, region in zip(dfs[keyList[0]]['Province/State'], dfs[keyList[0]]['Country/Region']):
+    for area, region in zip(df_latest['Province/State'], df_latest['Country/Region']):
         
         if type(area) is str:
             if region == "Hong Kong" or region == "Macau" or region == "Taiwan":
@@ -723,25 +719,25 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
     # Generate a list for color gradient display
     colorList=[]
 
-    for comfirmed, recovered, deaths in zip(dfs[keyList[0]]['Confirmed'],dfs[keyList[0]]['Recovered'],dfs[keyList[0]]['Deaths']):
+    for comfirmed, recovered, deaths in zip(df_latest['Confirmed'],df_latest['Recovered'],df_latest['Deaths']):
         remaining = comfirmed - deaths -recovered 
         colorList.append(remaining)
 
     fig2 = go.Figure(go.Scattermapbox(
-        lat=dfs[keyList[0]]['lat'],
-        lon=dfs[keyList[0]]['lon'],
+        lat=df_latest['lat'],
+        lon=df_latest['lon'],
         mode='markers',
         marker=go.scattermapbox.Marker(
             color=['#d7191c' if i > 0 else '#1a9622' for i in colorList],
-            size=[i**(1/3) for i in dfs[keyList[0]]['Confirmed']], 
+            size=[i**(1/3) for i in df_latest['Confirmed']], 
             sizemin=1,
             sizemode='area',
-            sizeref=2.*max([math.sqrt(i) for i in dfs[keyList[0]]['Confirmed']])/(100.**2),
+            sizeref=2.*max([math.sqrt(i) for i in df_latest['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}'.format(i, j, k) for i, j, k in zip(dfs[keyList[0]]['Confirmed'],
-                                                                                                             dfs[keyList[0]]['Recovered'],
-                                                                                                             dfs[keyList[0]]['Deaths'])],
+        hovertext=['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}'.format(i, j, k) for i, j, k in zip(df_latest['Confirmed'],
+                                                                                                             df_latest['Recovered'],
+                                                                                                             df_latest['Deaths'])],
         hovertemplate = "<b>%{text}</b><br><br>" +
                         "%{hovertext}<br>" +
                         "<extra></extra>")
