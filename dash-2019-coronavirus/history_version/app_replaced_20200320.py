@@ -178,13 +178,6 @@ latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
 daysOutbreak = (df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
-# Pseduo data for logplot
-pseduoDay = np.arange(1, daysOutbreak+1)
-y1 = 100*(1.85)**(pseduoDay-1) # 85% growth rate
-y2 = 100*(1.35)**(pseduoDay-1) # 35% growth rate
-y3 = 100*(1.15)**(pseduoDay-1) # 15% growth rate
-y4 = 100*(1.05)**(pseduoDay-1) # 5% growth rate
-
 #############################################################################################
 #### Start to make plots
 #############################################################################################
@@ -250,11 +243,11 @@ fig_confirmed.update_layout(
         showline=False, linecolor='#272e3e',
         showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
-        gridwidth=.1,
+        gridwidth = .1,
         zeroline=False
     ),
     xaxis_tickformat='%b %d',
-    hovermode='x',
+    hovermode = 'x',
     legend_orientation="h",
     #legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
     plot_bgcolor='#f4f4f2',
@@ -623,9 +616,6 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                   dcc.Graph(
                                       id='datatable-interact-lineplot',
                                       style={'height':'300px'},),
-                                  dcc.Graph(
-                                      id='datatable-interact-logplot',
-                                      style={'height':'300px'},),
                               ]),
                      html.Div(style={'width':'32.79%','display':'inline-block','verticalAlign':'top'},
                               children=[
@@ -657,9 +647,9 @@ app.layout = html.Div(style={'backgroundColor':'#f4f4f2'},
                                                                   'padding':'.1rem',
                                                                   'backgroundColor':'#f4f4f2',},
                                                       fixed_rows={'headers':True,'data':0},
-                                                      style_table={'minHeight': '1050px', 
-                                                                   'height': '1050px', 
-                                                                   'maxHeight': '1050px'},
+                                                      style_table={'minHeight': '750px', 
+                                                                   'height': '750px', 
+                                                                   'maxHeight': '750px'},
                                                       style_header={'backgroundColor':'#f4f4f2',
                                                                     'fontWeight':'bold'},
                                                       style_cell_conditional=[{'if': {'column_id':'Country/Regions'},'width':'28%'},
@@ -859,6 +849,11 @@ def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
 
     # Customise layout
     fig3.update_layout(
+        #title=dict(
+        #    text="<b>Confirmed Cases Timeline<b>",
+        #    y=0.96, x=0.5, xanchor='center', yanchor='top',
+        #    font=dict(size=20, color="#292929", family="Playfair Display")
+        #),
         margin=go.layout.Margin(
             l=10,
             r=10,
@@ -879,7 +874,6 @@ def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
                           color="grey"),
             )
         ],
-        yaxis_title="Cases numbers",
         yaxis=dict(
             showline=False, linecolor='#272e3e',
             zeroline=False,
@@ -911,156 +905,6 @@ def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
     )
     
     return fig3
-
-@app.callback(
-    Output('datatable-interact-logplot', 'figure'),
-    [Input('datatable-interact-location', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location', 'selected_row_ids')]
-)
-
-def update_logplot(derived_virtual_selected_rows, selected_row_ids):
-
-  if derived_virtual_selected_rows is None:
-        derived_virtual_selected_rows = []
-        
-  dff = dfSum
-  elapseDay = daysOutbreak
-    
-  if selected_row_ids:
-      if dff.loc[selected_row_ids[0]]['Country/Region'] == 'Mainland China':
-          Region = 'China'
-      else:
-          Region = dff.loc[selected_row_ids[0]]['Country/Region']
-  else:
-      Region = 'Australia'
-        
-  # Read cumulative data of a given region from ./cumulative_data folder
-  dfs_curve = pd.read_csv('./lineplot_data/dfs_curve.csv')
-   
-  # Create empty figure canvas
-  fig_curve = go.Figure()
-  # Add trace to the figure
-
-  for i in set(dfs_curve['Region']):
-          
-      if i == Region:
-          fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == i]['DayElapsed'],
-                                         y=dfs_curve.loc[dfs_curve['Region'] == i]['Confirmed'],
-                                         mode='lines',
-                                         line_shape='spline',
-                                         name=i,
-                                         line=dict(color='#d7191c', width=3),
-                                         text=[i for i in dfs_curve.loc[dfs_curve['Region'] == i]['Region']],
-                                         hovertemplate='<b>%{text}</b><br>'+
-                                                     '<br>%{x} days after 100 cases<br>'+
-                                                     'with %{y:,d} cases<br>'
-                                                     '<extra></extra>'
-                                         ))
-#          fig_curve.add_trace(go.Scatter(x=[dfs_curve.loc[dfs_curve['Region'] == i]['DayElapsed'][0]],
-#                                         y=[dfs_curve.loc[dfs_curve['Region'] == i]['Confirmed'][0]],
-#                                         mode='markers',
-#                                         marker=dict(size=6, color='#d7191c',
-#                                         line=dict(width=1,color='#d7191c')),
-#                                         text=[i],
-#                                         hovertemplate='<b>%{text}</b><br>'+
-#                                                       '<br>%{x} days after 100 cases<br>'+
-#                                                       'with %{y:,d} cases<br>'
-#                                                       '<extra></extra>'
-#                                         ))
-      else:
-          fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == i]['DayElapsed'],
-                                         y=dfs_curve.loc[dfs_curve['Region'] == i]['Confirmed'],
-                                         mode='lines',
-                                         line_shape='spline',
-                                         name=i,
-                                         opacity =0.3,
-                                         line=dict(color='#636363', width=1),
-                                         text=[i for i in dfs_curve.loc[dfs_curve['Region'] == i]['Region']],
-                                         hovertemplate='<b>%{text}</b><br>'+
-                                                     '<br>%{x} days after 100 cases<br>'+
-                                                     'with %{y:,d} cases<br>'
-                                                     '<extra></extra>'
-                                        ))
-          fig_curve.add_trace(go.Scatter(x=pseduoDay,
-                                         y=y1,
-                                         line = dict(color='rgba(203, 210, 211,.3)', width=1, dash='dot'),
-                                         text=['85% growth rate' for i in pseduoDay],
-                                         hovertemplate='<b>%{text}</b><br>'+
-                                                       '<extra></extra>'
-                                      ))
-          fig_curve.add_trace(go.Scatter(x=pseduoDay,
-                                         y=y2,
-                                         line = dict(color='rgba(203, 210, 211,.3)', width=1, dash='dot'),
-                                         text=['35% growth rate' for i in pseduoDay],
-                                         hovertemplate='<b>%{text}</b><br>'+
-                                                       '<extra></extra>'
-                                       ))
-          fig_curve.add_trace(go.Scatter(x=pseduoDay,
-                                         y=y3,
-                                         line = dict(color='rgba(203, 210, 211,.3)', width=1, dash='dot'),
-                                         text=['15% growth rate' for i in pseduoDay],
-                                         hovertemplate='<b>%{text}</b><br>'+
-                                                       '<extra></extra>'
-                                       ))
-          fig_curve.add_trace(go.Scatter(x=pseduoDay,
-                                         y=y4,
-                                         line = dict(color='rgba(203, 210, 211,.3)', width=1, dash='dot'),
-                                         text=['5% growth rate' for i in pseduoDay],
-                                         hovertemplate='<b>%{text}</b><br>'+
-                                                       '<extra></extra>'
-                                       ))
-
-  # Customise layout
-  fig_curve.update_xaxes(range=[0, elapseDay-19])
-  fig_curve.update_yaxes(range=[1.9, 5])
-  fig_curve.update_layout(
-      xaxis_title="Number of day since 100th confirmed cases",
-      yaxis_title="Confirmed cases (Logarithmic)",
-      margin=go.layout.Margin(
-          l=10,
-          r=10,
-          b=10,
-          t=5,
-          pad=0
-      ),
-      annotations=[
-            dict(
-                x=.5,
-                y=.4,
-                xref="paper",
-                yref="paper",
-                text=Region,
-                opacity=0.5,
-                font=dict(family='Arial, sans-serif',
-                          size=60,
-                          color="grey"),
-            )
-      ],
-      yaxis_type="log",
-      yaxis=dict(
-          showline=False, 
-          linecolor='#272e3e',
-          zeroline=False,
-          #showgrid=False,
-          gridcolor='rgba(203, 210, 211,.3)',
-          gridwidth = .1,
-      ),
-      xaxis=dict(
-          showline=False, 
-          linecolor='#272e3e',
-          #showgrid=False,
-          gridcolor='rgba(203, 210, 211,.3)',
-          gridwidth = .1,
-          zeroline=False
-      ),
-      showlegend=False,
-      #hovermode = 'x',
-      plot_bgcolor='#f4f4f2',
-      paper_bgcolor='#cbd2d3',
-      font=dict(color='#292929')
-  )
-
-  return fig_curve
 
 
 if __name__ == "__main__":
