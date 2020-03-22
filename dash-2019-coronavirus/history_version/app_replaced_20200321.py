@@ -58,9 +58,9 @@ def make_dcc_country_tab(countryName, dataframe):
                                   'padding': '.1rem',
                                   'backgroundColor': '#f4f4f2', },
                     fixed_rows={'headers': True, 'data': 0},
-                    style_table={'minHeight': '750px',
-                                   'height': '750px',
-                                   'maxHeight': '750px'},
+                    style_table={'minHeight': '1050px',
+                                   'height': '1050px',
+                                   'maxHeight': '1050px'},
                     style_header={'backgroundColor': '#f4f4f2',
                                     'fontWeight': 'bold'},
                     style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '28%'},
@@ -196,6 +196,9 @@ latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
 daysOutbreak = (df_confirmed['Date'][0] -
                 datetime.strptime('12/31/2019', '%m/%d/%Y')).days
+
+# Read cumulative data of a given region from ./cumulative_data folder
+dfs_curve = pd.read_csv('./lineplot_data/dfs_curve.csv')
 
 # Pseduo data for logplot
 pseduoDay = np.arange(1, daysOutbreak+1)
@@ -1009,106 +1012,60 @@ def update_logplot(derived_virtual_selected_rows, selected_row_ids):
     else:
         Region = 'Australia'
 
-    # Read cumulative data of a given region from ./cumulative_data folder
-    dfs_curve = pd.read_csv('./lineplot_data/dfs_curve.csv')
-
     # Create empty figure canvas
     fig_curve = go.Figure()
 
     # Add trace to the figure
     if Region in set(dfs_curve['Region']):
 
-        for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'Singapore']:
-          fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == regionName]['DayElapsed'],
-                                         y=dfs_curve.loc[dfs_curve['Region'] == regionName]['Confirmed'],
-                                         mode='lines',
-                                         line_shape='spline',
-                                         name=regionName,
-                                         opacity=0.3,
-                                         line=dict(color='#636363', width=1.5),
-                                         text=[
-                                            i for i in dfs_curve.loc[dfs_curve['Region'] == regionName]['Region']],
-                                         hovertemplate='<b>%{text}</b><br>' +
-                                                       '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
-                                                       '<extra></extra>'
-                             )
-          )
+        for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'Singapore']:  
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                          y=y1,
-                                         line=dict(color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                         line=dict(
+                                             color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                          text=[
                                              '85% growth rate' for i in pseduoDay],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<extra></extra>'
-                            )
+                             )
           )
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                          y=y2,
                                          line=dict(
-                                           color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                             color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                          text=[
                                              '35% growth rate' for i in pseduoDay],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<extra></extra>'
-                            )
+                             )
           )
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                          y=y3,
                                          line=dict(
-                                           color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                             color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                          text=[
                                              '15% growth rate' for i in pseduoDay],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<extra></extra>'
-                            )
+                             )
           )
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                          y=y4,
                                          line=dict(
-                                             color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                             color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                          text=[
                                              '5% growth rate' for i in pseduoDay],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<extra></extra>'
-                            )
+                             )
           )
-          fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == Region]['DayElapsed'],
-                                         y=dfs_curve.loc[dfs_curve['Region'] == Region]['Confirmed'],
-                                         mode='lines',
-                                         line_shape='spline',
-                                         name=Region,
-                                         line=dict(color='#d7191c', width=3),
-                                         text=[
-                                             i for i in dfs_curve.loc[dfs_curve['Region'] == Region]['Region']],
-                                         hovertemplate='<b>%{text}</b><br>' +
-                                                       '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
-                                                       '<extra></extra>'
-                            )
-          )
-          fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == Region,'DayElapsed'][0],
-                                         y=dfs_curve.loc[dfs_curve['Region'] == Region,'Confirmed'][0],
-                                         mode='markers',
-                                         marker=dict(size=6, color='#d7191c',
-                                          line=dict(width=1, color='#d7191c')),
-                                         text=Region,
-                                         hovertemplate='<b>%{text}</b><br>' +
-                                                       '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
-                                                       '<extra></extra>'
-                            )
-        )
-
-    else:
-        for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'Singapore']:
           fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == regionName]['DayElapsed'],
                                          y=dfs_curve.loc[dfs_curve['Region'] == regionName]['Confirmed'],
                                          mode='lines',
                                          line_shape='spline',
                                          name=regionName,
-                                         opacity=0.3,
-                                         line=dict(color='#636363', width=1.5),
+                                         #opacity=0.5,
+                                         line=dict(color='rgba(0,0,0,.3)', width=1.5),
                                          text=[
                                             i for i in dfs_curve.loc[dfs_curve['Region'] == regionName]['Region']],
                                          hovertemplate='<b>%{text}</b><br>' +
@@ -1117,11 +1074,40 @@ def update_logplot(derived_virtual_selected_rows, selected_row_ids):
                                                        '<extra></extra>'
                              )
           )
+        fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == Region]['DayElapsed'],
+                                       y=dfs_curve.loc[dfs_curve['Region'] == Region]['Confirmed'],
+                                       mode='lines',
+                                       line_shape='spline',
+                                       name=Region,
+                                       line=dict(color='#d7191c', width=3),
+                                       text=[
+                                           i for i in dfs_curve.loc[dfs_curve['Region'] == Region]['Region']],
+                                       hovertemplate='<b>%{text}</b><br>' +
+                                                     '<br>%{x} days after 100 cases<br>' +
+                                                     'with %{y:,d} cases<br>'
+                                                     '<extra></extra>'
+                            )
+        )
+#       fig_curve.add_trace(go.Scatter(x=[dfs_curve.loc[dfs_curve['Region'] == Region]['DayElapsed'][0]],
+#                                      y=[dfs_curve.loc[dfs_curve['Region'] == Region]['Confirmed'][0]],
+#                                      mode='markers',
+#                                      marker=dict(size=6, color='#d7191c',
+#                                      line=dict(width=1, color='#d7191c')),
+#                                      text=[Region],
+#                                      hovertemplate='<b>%{text}</b><br>' +
+#                                                    '<br>%{x} days after 100 cases<br>' +
+#                                                    'with %{y:,d} cases<br>'
+#                                                    '<extra></extra>'
+#                          )
+#       )
+
+    else:
+        for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'Singapore']:
 
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                        y=y1,
                                        line=dict(
-                                           color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                           color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                        text=[
                                            '85% growth rate' for i in pseduoDay],
                                        hovertemplate='<b>%{text}</b><br>' +
@@ -1131,7 +1117,7 @@ def update_logplot(derived_virtual_selected_rows, selected_row_ids):
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                        y=y2,
                                        line=dict(
-                                           color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                           color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                        text=[
                                            '35% growth rate' for i in pseduoDay],
                                        hovertemplate='<b>%{text}</b><br>' +
@@ -1141,7 +1127,7 @@ def update_logplot(derived_virtual_selected_rows, selected_row_ids):
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                        y=y3,
                                        line=dict(
-                                           color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                           color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                        text=[
                                            '15% growth rate' for i in pseduoDay],
                                        hovertemplate='<b>%{text}</b><br>' +
@@ -1151,15 +1137,28 @@ def update_logplot(derived_virtual_selected_rows, selected_row_ids):
           fig_curve.add_trace(go.Scatter(x=pseduoDay,
                                        y=y4,
                                        line=dict(
-                                           color='rgba(0, 0, 0, .5)', width=1, dash='dot'),
+                                           color='rgba(99, 99, 99, .1)', width=1, dash='dot'),
                                        text=[
                                            '5% growth rate' for i in pseduoDay],
                                        hovertemplate='<b>%{text}</b><br>' +
                                                      '<extra></extra>'
                             )
           )
-
-
+          fig_curve.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == regionName]['DayElapsed'],
+                                         y=dfs_curve.loc[dfs_curve['Region'] == regionName]['Confirmed'],
+                                         mode='lines',
+                                         line_shape='spline',
+                                         name=regionName,
+                                         #opacity=0.5,
+                                         line=dict(color='rgba(0,0,0,.3)', width=1.5),
+                                         text=[
+                                            i for i in dfs_curve.loc[dfs_curve['Region'] == regionName]['Region']],
+                                         hovertemplate='<b>%{text}</b><br>' +
+                                                       '<br>%{x} days after 100 cases<br>' +
+                                                       'with %{y:,d} cases<br>'
+                                                       '<extra></extra>'
+                             )
+          )
 
     # Customise layout
     fig_curve.update_xaxes(range=[0, elapseDay-19])

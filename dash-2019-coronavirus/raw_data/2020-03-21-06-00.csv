@@ -1,0 +1,286 @@
+Province/State,Country/Region,Last Update,Confirmed,Deaths,Recovered
+Hubei,Mainland China,3/21/2020 06:00,67800,3139,58946
+Beijing,Mainland China,3/21/2020 06:00,504,8,396
+Guangdong,Mainland China,3/21/2020 06:00,1399,8,1325
+Gansu,Mainland China,3/21/2020 06:00,134,2,113
+Shanghai,Mainland China,3/21/2020 06:00,380,3,327
+Sichuan,Mainland China,3/21/2020 06:00,542,3,536
+Heilongjiang,Mainland China,3/21/2020 06:00,484,13,463
+Zhejiang,Mainland China,3/21/2020 06:00,1236,1,1219
+Shandong,Mainland China,3/21/2020 06:00,764,7,749
+Shaanxi,Mainland China,3/21/2020 06:00,248,3,239
+Liaoning,Mainland China,3/21/2020 06:00,126,2,122
+Guangxi,Mainland China,3/21/2020 06:00,254,2,250
+Inner Mongolia,Mainland China,3/21/2020 06:00,75,1,74
+Hebei,Mainland China,3/21/2020 06:00,318,6,310
+Hainan,Mainland China,3/21/2020 06:00,168,6,161
+Ningxia,Mainland China,3/21/2020 06:00,75,0,75
+Henan,Mainland China,3/21/2020 06:00,1273,22,1250
+Jiangsu,Mainland China,3/21/2020 06:00,631,0,631
+Chongqing,Mainland China,3/21/2020 06:00,576,6,570
+Guizhou,Mainland China,3/21/2020 06:00,146,2,144
+Tianjin,Mainland China,3/21/2020 06:00,137,3,133
+Jilin,Mainland China,3/21/2020 06:00,93,1,92
+Hunan,Mainland China,3/21/2020 06:00,1018,4,1014
+Anhui,Mainland China,3/21/2020 06:00,990,6,984
+Jiangxi,Mainland China,3/21/2020 06:00,935,1,934
+Fujian,Mainland China,3/21/2020 06:00,303,1,295
+Yunnan,Mainland China,3/21/2020 06:00,176,2,172
+Shanxi,Mainland China,3/21/2020 06:00,133,0,133
+Xinjiang,Mainland China,3/21/2020 06:00,76,3,73
+Qinghai,Mainland China,3/21/2020 06:00,18,0,18
+Tibet,Mainland China,3/21/2020 06:00,1,0,1
+New South Wales,Australia,3/21/2020 06:00,435,5,4
+Queensland,Australia,3/21/2020 06:00,221,1,9
+Victoria,Australia,3/21/2020 06:00,229,0,28
+South Australia,Australia,3/21/2020 06:00,67,0,6
+Western Australia,Australia,3/21/2020 06:00,90,1,1
+Tasmania,Australia,3/21/2020 06:00,16,0,3
+Australian Capital Territory,Australia,3/21/2020 06:00,9,0,1
+Northern Territory,Australia,3/21/2020 06:00,2,0,0
+New York,US,3/21/2020 06:00,8515,56,0
+WA,US,3/21/2020 06:00,1524,83,1
+California,US,3/21/2020 06:00,1249,24,6
+New Jersey,US,3/21/2020 06:00,890,11,1
+Illinois,US,3/21/2020 06:00,585,5,2
+Florida,US,3/21/2020 06:00,563,11,0
+Michigan,US,3/21/2020 06:00,552,3,0
+Louisiana,US,3/21/2020 06:00,537,14,0
+Georgia,US,3/21/2020 06:00,485,14,0
+Texas,US,3/21/2020 06:00,430,5,0
+Massachusetts,US,3/21/2020 06:00,413,1,1
+Colorado,US,3/21/2020 06:00,363,4,0
+Pennsylvania,US,3/21/2020 06:00,311,1,0
+Tennessee,US,3/21/2020 06:00,265,1,0
+Wisconsin,US,3/21/2020 06:00,219,3,1
+Connecticut,US,3/21/2020 06:00,194,4,0
+North Carolina,US,3/21/2020 06:00,189,0,0
+Ohio,US,3/21/2020 06:00,174,3,0
+Nevada,US,3/21/2020 06:00,161,2,0
+Maryland,US,3/21/2020 06:00,149,2,3
+South Carolina,US,3/21/2020 06:00,126,3,0
+Virginia,US,3/21/2020 06:00,125,2,0
+Minnesota,US,3/21/2020 06:00,115,0,0
+Oregon,US,3/21/2020 06:00,114,4,0
+Utah,US,3/21/2020 06:00,112,0,0
+Alabama,US,3/21/2020 06:00,106,0,0
+Arkansas,US,3/21/2020 06:00,100,0,0
+Indiana,US,3/21/2020 06:00,86,3,0
+Mississippi,US,3/21/2020 06:00,80,1,0
+Arizona,US,3/21/2020 06:00,79,1,1
+Washington DC,US,3/21/2020 06:00,77,1,0
+Missouri,US,3/21/2020 06:00,73,3,0
+Kentucky,US,3/21/2020 06:00,64,2,1
+Maine,US,3/21/2020 06:00,56,0,0
+New Hampshire,US,3/21/2020 06:00,55,0,0
+Rhode Island,US,3/21/2020 06:00,54,0,0
+From Diamond Princess cruise,US,3/21/2020 06:00,49,0,0
+Oklahoma,US,3/21/2020 06:00,49,1,0
+Kansas,US,3/21/2020 06:00,48,1,0
+Iowa,US,3/21/2020 06:00,45,0,0
+New Mexico,US,3/21/2020 06:00,43,0,0
+Delaware,US,3/21/2020 06:00,39,0,0
+Nebraska,US,3/21/2020 06:00,38,0,0
+Hawaii,US,3/21/2020 06:00,37,0,0
+Idaho,US,3/21/2020 06:00,36,0,0
+Vermont,US,3/21/2020 06:00,29,2,0
+North Dakota,US,3/21/2020 06:00,26,0,0
+From Grand Princess,US,3/21/2020 06:00,23,1,0
+Wyoming,US,3/21/2020 06:00,22,0,0
+Montana,US,3/21/2020 06:00,20,0,0
+South Dakota,US,3/21/2020 06:00,14,1,0
+Alaska,US,3/21/2020 06:00,12,0,0
+West Virginia,US,3/21/2020 06:00,8,0,0
+British Columbia,Canada,3/21/2020 06:00,348,8,4
+Ontario,Canada,3/21/2020 06:00,318,2,5
+Alberta,Canada,3/21/2020 06:00,195,1,0
+Quebec,Canada,3/21/2020 06:00,139,1,0
+Saskatchewan,Canada,3/21/2020 06:00,26,0,0
+Manitoba,Canada,3/21/2020 06:00,17,0,0
+Nova Scotia,Canada,3/21/2020 06:00,15,0,0
+New Brunswick,Canada,3/21/2020 06:00,11,0,0
+Newfoundland and Labrador,Canada,3/21/2020 06:00,4,0,0
+Prince Edward Island,Canada,3/21/2020 06:00,2,0,0
+,Italy,3/21/2020 06:00,47021,4032,5129
+,Spain,3/21/2020 06:00,24926,1326,2125
+,Iran,3/21/2020 06:00,20610,1556,7635
+,Germany,3/21/2020 06:00,20142,70,180
+,France,3/21/2020 06:00,12612,450,1587
+,South Korea,3/21/2020 06:00,8799,102,2612
+,Switzerland,3/21/2020 06:00,5616,57,15
+,UK,3/21/2020 06:00,3983,177,65
+,Netherlands,3/21/2020 06:00,2994,106,2
+Brussels,Belgium,3/21/2020 06:00,2815,67,263
+,Austria,3/21/2020 06:00,2695,7,9
+,Norway,3/21/2020 06:00,1995,7,1
+,Sweden,3/21/2020 06:00,1657,16,16
+,Denmark,3/21/2020 06:00,1255,9,1
+,Malaysia,3/21/2020 06:00,1183,4,114
+,Portugal,3/21/2020 06:00,1020,7,5
+,Japan,3/21/2020 06:00,1007,35,215
+,Brazil,3/21/2020 06:00,977,11,2
+,Czechia,3/21/2020 06:00,904,0,4
+,Israel,3/21/2020 06:00,883,1,36
+Yokohama,Japan,3/21/2020 06:00,712,8,567
+,Ireland,3/21/2020 06:00,683,3,5
+,Turkey,3/21/2020 06:00,670,9,0
+,Pakistan,3/21/2020 06:00,534,3,13
+,Finland,3/21/2020 06:00,503,0,10
+,Greece,3/21/2020 06:00,495,10,19
+,Luxembourg,3/21/2020 06:00,484,5,6
+,Qatar,3/21/2020 06:00,470,0,10
+,Indonesia,3/21/2020 06:00,450,38,20
+,Poland,3/21/2020 06:00,439,5,13
+,Chile,3/21/2020 06:00,434,0,6
+,Ecuador,3/21/2020 06:00,426,7,3
+,Thailand,3/21/2020 06:00,411,1,42
+,Iceland,3/21/2020 06:00,409,0,5
+,Singapore,3/21/2020 06:00,385,2,131
+,Saudi Arabia,3/21/2020 06:00,344,0,8
+,Slovenia,3/21/2020 06:00,341,1,0
+,Romania,3/21/2020 06:00,308,0,31
+,Philippines,3/21/2020 06:00,307,19,13
+,Estonia,3/21/2020 06:00,306,0,1
+,Bahrain,3/21/2020 06:00,298,1,125
+,Egypt,3/21/2020 06:00,285,8,42
+,India,3/21/2020 06:00,275,5,23
+Hong Kong,Hong Kong,3/21/2020 06:00,273,4,98
+,Peru,3/21/2020 06:00,263,4,1
+,Russia,3/21/2020 06:00,253,1,12
+,South Africa,3/21/2020 06:00,240,0,1
+,Iraq,3/21/2020 06:00,208,17,49
+,Mexico,3/21/2020 06:00,203,2,4
+,Panama,3/21/2020 06:00,200,1,1
+,Lebanon,3/21/2020 06:00,187,4,4
+,Kuwait,3/21/2020 06:00,176,0,27
+,Croatia,3/21/2020 06:00,168,1,5
+,Armenia,3/21/2020 06:00,160,0,1
+,Argentina,3/21/2020 06:00,158,3,3
+,Colombia,3/21/2020 06:00,158,0,1
+Taiwan,Taiwan,3/21/2020 06:00,153,2,28
+,San Marino,3/21/2020 06:00,151,14,4
+,Serbia,3/21/2020 06:00,149,1,2
+,Bulgaria,3/21/2020 06:00,142,3,3
+,United Arab Emirates,3/21/2020 06:00,140,2,31
+,Slovakia,3/21/2020 06:00,137,0,7
+,Latvia,3/21/2020 06:00,124,0,1
+,Costa Rica,3/21/2020 06:00,113,2,2
+,Uruguay,3/21/2020 06:00,110,0,0
+,Hungary,3/21/2020 06:00,103,4,7
+,Algeria,3/21/2020 06:00,94,11,32
+,Vietnam,3/21/2020 06:00,92,0,17
+,Faeroe Islands,3/21/2020 06:00,92,0,3
+,Bosnia and Herzegovina,3/21/2020 06:00,90,0,2
+,Morocco,3/21/2020 06:00,86,3,2
+,Jordan,3/21/2020 06:00,85,0,1
+,Brunei,3/21/2020 06:00,83,0,1
+,North Macedonia,3/21/2020 06:00,77,0,1
+,Albania,3/21/2020 06:00,76,2,2
+,Andorra,3/21/2020 06:00,75,0,1
+,Cyprus,3/21/2020 06:00,75,0,0
+,Sri Lanka,3/21/2020 06:00,73,0,3
+,Dominican Republic,3/21/2020 06:00,72,2,0
+,Lithuania,3/21/2020 06:00,69,1,1
+,Belarus,3/21/2020 06:00,69,0,15
+,Moldova,3/21/2020 06:00,66,1,1
+,Venezuela,3/21/2020 06:00,65,0,1
+,Malta,3/21/2020 06:00,64,0,2
+,Tunisia,3/21/2020 06:00,60,1,1
+,Kazakhstan,3/21/2020 06:00,53,0,0
+,New Zealand,3/21/2020 06:00,52,0,0
+,Oman,3/21/2020 06:00,52,0,13
+,Palestine,3/21/2020 06:00,52,0,17
+,Guadeloupe,3/21/2020 06:00,51,1,0
+,Cambodia,3/21/2020 06:00,51,0,1
+,Georgia,3/21/2020 06:00,47,0,1
+,Senegal,3/21/2020 06:00,47,0,5
+,Reunion,3/21/2020 06:00,45,0,0
+,Azerbaijan,3/21/2020 06:00,44,1,7
+,Ukraine,3/21/2020 06:00,41,3,1
+,Burkina Faso,3/21/2020 06:00,40,1,4
+,Liechtenstein,3/21/2020 06:00,37,0,0
+,Uzbekistan,3/21/2020 06:00,37,0,0
+,Martinique,3/21/2020 06:00,32,1,0
+,Cameroon,3/21/2020 06:00,27,0,2
+,Bangladesh,3/21/2020 06:00,24,2,3
+,Afghanistan,3/21/2020 06:00,24,0,1
+,Honduras,3/21/2020 06:00,24,0,0
+,DRC,3/21/2020 06:00,23,1,0
+,Cuba,3/21/2020 06:00,21,1,0
+,Jamaica,3/21/2020 06:00,19,1,2
+,Bolivia,3/21/2020 06:00,19,0,0
+,Ghana,3/21/2020 06:00,19,0,0
+,Paraguay,3/21/2020 06:00,18,1,0
+Macau,Macau,3/21/2020 06:00,17,0,10
+,Rwanda,3/21/2020 06:00,17,0,0
+,Guyana,3/21/2020 06:00,15,1,0
+,French Guiana,3/21/2020 06:00,15,0,0
+,French Polynesia,3/21/2020 06:00,15,0,0
+,Mauritius,3/21/2020 06:00,14,1,0
+,Channel Islands,3/21/2020 06:00,14,0,0
+,Ivory Coast,3/21/2020 06:00,14,0,1
+,Guam,3/21/2020 06:00,14,0,0
+,Montenegro,3/21/2020 06:00,14,0,0
+,Puerto Rico,3/21/2020 06:00,14,0,0
+,Maldives,3/21/2020 06:00,13,0,2
+,Guatemala,3/21/2020 06:00,12,1,0
+,Nigeria,3/21/2020 06:00,12,0,1
+,Kyrgyzstan,3/21/2020 06:00,12,0,0
+,Monaco,3/21/2020 06:00,11,0,0
+,Gibraltar,3/21/2020 06:00,10,0,2
+,Mongolia,3/21/2020 06:00,10,0,0
+,Ethiopia,3/21/2020 06:00,9,0,0
+,Togo,3/21/2020 06:00,9,0,0
+,Trinidad and Tobago,3/21/2020 06:00,9,0,0
+,Kenya,3/21/2020 06:00,7,0,0
+,Mayotte,3/21/2020 06:00,7,0,0
+,Seychelles,3/21/2020 06:00,7,0,0
+,Barbados,3/21/2020 06:00,6,0,0
+,Equatorial Guinea,3/21/2020 06:00,6,0,0
+,Tanzania,3/21/2020 06:00,6,0,0
+,U.S. Virgin Islands,3/21/2020 06:00,6,0,0
+,Aruba,3/21/2020 06:00,5,0,1
+,Gabon,3/21/2020 06:00,4,1,0
+,Bahamas,3/21/2020 06:00,4,0,0
+,New Caledonia,3/21/2020 06:00,4,0,0
+,Saint Martin,3/21/2020 06:00,4,0,0
+,Suriname,3/21/2020 06:00,4,0,0
+,Cayman Islands,3/21/2020 06:00,3,1,0
+,Curacao,3/21/2020 06:00,3,1,0
+,CAR,3/21/2020 06:00,3,0,0
+,Congo,3/21/2020 06:00,3,0,0
+,El Salvador,3/21/2020 06:00,3,0,0
+,Liberia,3/21/2020 06:00,3,0,0
+,Madagascar,3/21/2020 06:00,3,0,0
+,Namibia,3/21/2020 06:00,3,0,0
+,St. Barth,3/21/2020 06:00,3,0,0
+,Zimbabwe,3/21/2020 06:00,3,0,0
+,Sudan,3/21/2020 06:00,2,1,0
+,Angola,3/21/2020 06:00,2,0,0
+,Benin,3/21/2020 06:00,2,0,0
+,Bermuda,3/21/2020 06:00,2,0,0
+,Bhutan,3/21/2020 06:00,2,0,0
+,Fiji,3/21/2020 06:00,2,0,0
+,Greenland,3/21/2020 06:00,2,0,0
+,Guinea,3/21/2020 06:00,2,0,0
+,Haiti,3/21/2020 06:00,2,0,0
+,Isle of Man,3/21/2020 06:00,2,0,0
+,Mauritania,3/21/2020 06:00,2,0,0
+,Nicaragua,3/21/2020 06:00,2,0,0
+,Saint Lucia,3/21/2020 06:00,2,0,0
+,Zambia,3/21/2020 06:00,2,0,0
+,Nepal,3/21/2020 06:00,1,0,1
+,Antigua and Barbuda,3/21/2020 06:00,1,0,0
+,Cabo Verde,3/21/2020 06:00,1,0,0
+,Chad,3/21/2020 06:00,1,0,0
+,Djibouti,3/21/2020 06:00,1,0,0
+,Gambia,3/21/2020 06:00,1,0,0
+,Vatican City,3/21/2020 06:00,1,0,0
+,Montserrat,3/21/2020 06:00,1,0,0
+,Niger,3/21/2020 06:00,1,0,0
+,Papua New Guinea,3/21/2020 06:00,1,0,0
+,St. Vincent Grenadines,3/21/2020 06:00,1,0,0
+,Sint Maarten,3/21/2020 06:00,1,0,0
+,Somalia,3/21/2020 06:00,1,0,0
+,Eswatini,3/21/2020 06:00,1,0,0
+,Timor-Leste,3/21/2020 06:00,1,0,0
