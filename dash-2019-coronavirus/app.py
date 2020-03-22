@@ -191,6 +191,9 @@ AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
 
+# Remove dummy row of recovered case number in USTable
+USTable = USTable.dropna(subset=['Province/State'])
+
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')

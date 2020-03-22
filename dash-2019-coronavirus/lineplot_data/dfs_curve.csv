@@ -3,7 +3,7 @@ Confirmed,DayElapsed,Region
 200,3,Panama
 137,2,Panama
 109,1,Panama
-26721,20,US
+26844,20,US
 19728,19,US
 14309,18,US
 9404,17,US
@@ -23,7 +23,7 @@ Confirmed,DayElapsed,Region
 162,3,US
 129,2,US
 107,1,US
-158,3,Argentina
+225,3,Argentina
 158,2,Argentina
 128,1,Argentina
 473,10,Iceland
@@ -44,13 +44,13 @@ Confirmed,DayElapsed,Region
 126,3,India
 117,2,India
 107,1,India
-163,3,Bulgaria
-142,2,Bulgaria
-112,1,Bulgaria
-160,4,Armenia
+190,4,Armenia
 160,3,Armenia
 136,2,Armenia
 122,1,Armenia
+163,3,Bulgaria
+142,2,Bulgaria
+112,1,Bulgaria
 14459,22,France
 12612,21,France
 10995,20,France
@@ -102,7 +102,7 @@ Confirmed,DayElapsed,Region
 223,3,Ireland
 170,2,Ireland
 129,1,Ireland
-203,4,Mexico
+251,4,Mexico
 203,3,Mexico
 164,2,Mexico
 118,1,Mexico
@@ -133,7 +133,7 @@ Confirmed,DayElapsed,Region
 198,3,Canada
 157,2,Canada
 117,1,Canada
-2992,15,Austria
+3024,15,Austria
 2695,14,Austria
 2203,13,Austria
 1843,12,Austria
@@ -148,7 +148,7 @@ Confirmed,DayElapsed,Region
 157,3,Austria
 112,2,Austria
 104,1,Austria
-523,10,Finland
+594,10,Finland
 503,9,Finland
 430,8,Finland
 387,7,Finland
@@ -188,7 +188,7 @@ Confirmed,DayElapsed,Region
 168,3,Croatia
 113,2,Croatia
 102,1,Croatia
-81013,62,China
+81057,62,China
 81013,61,China
 80977,60,China
 80929,59,China
@@ -335,7 +335,7 @@ Confirmed,DayElapsed,Region
 260,3,Ecuador
 168,2,Ecuador
 111,1,Ecuador
-110,2,Uruguay
+135,2,Uruguay
 110,1,Uruguay
 139,1,Algeria
 178,5,Slovakia
@@ -357,10 +357,10 @@ Confirmed,DayElapsed,Region
 340,2,Denmark
 156,1,Denmark
 100,1,Jordan
-171,3,Serbia
+188,3,Serbia
 149,2,Serbia
 118,1,Serbia
-307,8,Philippines
+380,8,Philippines
 307,7,Philippines
 230,6,Philippines
 217,5,Philippines
@@ -454,12 +454,13 @@ Confirmed,DayElapsed,Region
 670,3,Turkey
 359,2,Turkey
 191,1,Turkey
+105,1,Lithuania
 306,5,Russia
 253,4,Russia
 199,3,Russia
 147,2,Russia
 147,1,Russia
-2164,17,Norway
+2216,17,Norway
 1995,16,Norway
 1802,15,Norway
 1631,14,Norway
@@ -585,14 +586,14 @@ Confirmed,DayElapsed,Region
 124,3,Iraq
 110,2,Iraq
 101,1,Iraq
-103,2,Hungary
+131,2,Hungary
 103,1,Hungary
 318,5,Peru
 263,4,Peru
 234,3,Peru
 155,2,Peru
 117,1,Peru
-411,8,Thailand
+599,8,Thailand
 411,7,Thailand
 322,6,Thailand
 272,5,Thailand
@@ -625,7 +626,7 @@ Confirmed,DayElapsed,Region
 140,1,Luxembourg
 117,2,Costa Rica
 113,1,Costa Rica
-1283,13,Australia
+1352,13,Australia
 1069,12,Australia
 875,11,Australia
 707,10,Australia
@@ -657,7 +658,7 @@ Confirmed,DayElapsed,Region
 320,3,Qatar
 262,2,Qatar
 262,1,Qatar
-196,4,Colombia
+210,4,Colombia
 158,3,Colombia
 128,2,Colombia
 102,1,Colombia
