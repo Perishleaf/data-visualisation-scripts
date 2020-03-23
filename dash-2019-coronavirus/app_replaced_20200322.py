@@ -58,9 +58,9 @@ def make_dcc_country_tab(countryName, dataframe):
                                   'padding': '.1rem',
                                   'backgroundColor': '#f4f4f2', },
                     fixed_rows={'headers': True, 'data': 0},
-                    style_table={'minHeight': '800px',
-                                   'height': '800px',
-                                   'maxHeight': '800px'},
+                    style_table={'minHeight': '1050px',
+                                   'height': '1050px',
+                                   'maxHeight': '1050px'},
                     style_header={'backgroundColor': '#f4f4f2',
                                     'fontWeight': 'bold'},
                     style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '28%'},
@@ -190,6 +190,9 @@ CNTable = make_country_table('China')
 AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
+
+# Remove dummy row of recovered case number in USTable
+USTable = USTable.dropna(subset=['Province/State'])
 
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
@@ -448,227 +451,6 @@ fig_rate.update_layout(
     font=dict(color='#292929', size=10)
 )
 
-# Default cumulative plot for tab
-# Read cumulative data of a given region from ./cumulative_data folder
-df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format('Australia'))
-df_region_tab = df_region_tab.astype({'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
-
-
-# Create empty figure canvas
-fig_cumulative_tab = go.Figure()
-# Add trace to the figure
-fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
-                                        y=df_region_tab['Confirmed'],
-                                        mode='lines+markers',
-                                        # line_shape='spline',
-                                        name='Confirmed case',
-                                        line=dict(color='#d7191c', width=2),
-                                        # marker=dict(size=4, color='#f4f4f2',
-                                        #            line=dict(width=1,color='#921113')),
-                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
-                                        hovertext=['{} Confirmed<br>{:,d} cases<br>'.format('Australia', i) for i in df_region_tab['Confirmed']],
-                                        hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                      '<extra></extra>'))
-fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
-                                        y=df_region_tab['Recovered'],
-                                        mode='lines+markers',
-                                        # line_shape='spline',
-                                        name='Recovered case',
-                                        line=dict(color='#1a9622', width=2),
-                                        # marker=dict(size=4, color='#f4f4f2',
-                                        #            line=dict(width=1,color='#168038')),
-                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
-                                        hovertext=['{} Recovered<br>{:,d} cases<br>'.format('Australia', i) for i in df_region_tab['Recovered']],
-                                        hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                      '<extra></extra>'))
-fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
-                                        y=df_region_tab['Deaths'],
-                                        mode='lines+markers',
-                                        # line_shape='spline',
-                                        name='Death case',
-                                        line=dict(color='#626262', width=2),
-                                        # marker=dict(size=4, color='#f4f4f2',
-                                        #            line=dict(width=1,color='#626262')),
-                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
-                                        hovertext=['{} Deaths<br>{:,d} cases<br>'.format('Australia', i) for i in df_region_tab['Deaths']],
-                                        hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                      '<extra></extra>'))
-# Customise layout
-fig_cumulative_tab.update_layout(
-        margin=go.layout.Margin(
-            l=10,
-            r=10,
-            b=10,
-            t=5,
-            pad=0
-        ),
-        annotations=[
-            dict(
-                x=.5,
-                y=.4,
-                xref="paper",
-                yref="paper",
-                text='Australia',
-                opacity=0.5,
-                font=dict(family='Arial, sans-serif',
-                          size=60,
-                          color="grey"),
-            )
-        ],
-        yaxis_title="Cumulative cases numbers",
-        yaxis=dict(
-            showline=False, linecolor='#272e3e',
-            zeroline=False,
-            # showgrid=False,
-            gridcolor='rgba(203, 210, 211,.3)',
-            gridwidth=.1,
-            tickmode='array',
-            # Set tick range based on the maximum number
-            # tickvals=tickList,
-            # Set tick label accordingly
-            # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
-        ),
-        xaxis_title="Select Country/Region From Table",
-        xaxis=dict(
-            showline=False, linecolor='#272e3e',
-            showgrid=False,
-            gridcolor='rgba(203, 210, 211,.3)',
-            gridwidth=.1,
-            zeroline=False
-        ),
-        xaxis_tickformat='%b %d',
-        # transition = {'duration':500},
-        hovermode='x',
-        legend_orientation="h",
-        legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-        plot_bgcolor='#f4f4f2',
-        paper_bgcolor='#cbd2d3',
-        font=dict(color='#292929', size=10)
-    )
-
-# Default curve plot for tab
-# Create empty figure canvas
-fig_curve_tab = go.Figure()
-
-fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
-                                   y=y1,
-                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['85% growth rate' for i in pseduoDay],
-                                   hovertemplate='<b>%{text}</b><br>' +
-                                                 '<extra></extra>'
-                            )
-)
-fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
-                                   y=y2,
-                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['35% growth rate' for i in pseduoDay],
-                                   hovertemplate='<b>%{text}</b><br>' +
-                                                 '<extra></extra>'
-                            )
-)
-fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
-                                   y=y3,
-                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['15% growth rate' for i in pseduoDay],
-                                   hovertemplate='<b>%{text}</b><br>' +
-                                                 '<extra></extra>'
-                            )
-)
-fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
-                                   y=y4,
-                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['5% growth rate' for i in pseduoDay],
-                                   hovertemplate='<b>%{text}</b><br>' +
-                                                 '<extra></extra>'
-                            )
-)
-for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'Singapore']:
-
-  dotgrayx_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
-  dotgrayy_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
-
-  fig_curve_tab.add_trace(go.Scatter(x=dfs_curve.loc[dfs_curve['Region'] == regionName]['DayElapsed'],
-                                     y=dfs_curve.loc[dfs_curve['Region'] == regionName]['Confirmed'],
-                                     mode='lines',
-                                     line_shape='spline',
-                                     name=regionName,
-                                     opacity=0.3,
-                                     line=dict(color='#636363', width=1.5),
-                                     text=[
-                                            i for i in dfs_curve.loc[dfs_curve['Region'] == regionName]['Region']],
-                                     hovertemplate='<b>%{text}</b><br>' +
-                                                   '<br>%{x} days after 100 cases<br>' +
-                                                   'with %{y:,d} cases<br>'
-                                                   '<extra></extra>'
-                             )
-  )
-
-  fig_curve_tab.add_trace(go.Scatter(x=dotgrayx_tab,
-                                     y=dotgrayy_tab,
-                                     mode='markers',
-                                     marker=dict(size=6, color='#636363',
-                                     line=dict(width=1, color='#636363')),
-                                     opacity=0.5,
-                                     text=[regionName],
-                                     hovertemplate='<b>%{text}</b><br>' +
-                                                   '<br>%{x} days after 100 cases<br>' +
-                                                   'with %{y:,d} cases<br>'
-                                                   '<extra></extra>'
-                            )
-  )
-
-# Customise layout
-fig_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
-fig_curve_tab.update_yaxes(range=[1.9, 5.1])
-fig_curve_tab.update_layout(
-        xaxis_title="Number of day since 100th confirmed cases",
-        yaxis_title="Confirmed cases (Logarithmic)",
-        margin=go.layout.Margin(
-            l=10,
-            r=10,
-            b=10,
-            t=5,
-            pad=0
-            ),
-        annotations=[dict(
-            x=.5,
-            y=.4,
-            xref="paper",
-            yref="paper",
-            text='Australia' if 'Australia' in set(dfs_curve['Region']) else "Not over 100 cases",
-            opacity=0.5,
-            font=dict(family='Arial, sans-serif',
-                      size=60,
-                      color="grey"),
-                    )
-        ],
-        yaxis_type="log",
-        yaxis=dict(
-            showline=False, 
-            linecolor='#272e3e',
-            zeroline=False,
-            # showgrid=False,
-            gridcolor='rgba(203, 210, 211,.3)',
-            gridwidth = .1,
-        ),
-        xaxis=dict(
-            showline=False, 
-            linecolor='#272e3e',
-            # showgrid=False,
-            gridcolor='rgba(203, 210, 211,.3)',
-            gridwidth = .1,
-            zeroline=False
-        ),
-        showlegend=False,
-        # hovermode = 'x',
-        plot_bgcolor='#f4f4f2',
-        paper_bgcolor='#cbd2d3',
-        font=dict(color='#292929', size=10)
-    )
-
 ##################################################################################################
 # Start dash app
 ##################################################################################################
@@ -731,8 +513,6 @@ app.index_string = """<!DOCTYPE html>
 </html>"""
 
 server = app.server
-
-app.config['suppress_callback_exceptions'] = True
 
 app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
     children=[
@@ -888,22 +668,12 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                   dcc.Graph(
                                       id='datatable-interact-map',
                                       style={'height': '500px'},),
-                                  dcc.Tabs(
-                                      id="tabs-plots", 
-                                      value='Cumulative Cases',
-                                      parent_className='custom-tabs',
-                                      className='custom-tabs-container', 
-                                      children=[dcc.Tab(className='custom-tab',
-                                                        selected_className='custom-tab--selected',
-                                                        label='Cumulative Cases', 
-                                                        value='Cumulative Cases'),
-                                                dcc.Tab(className='custom-tab',
-                                                        selected_className='custom-tab--selected',
-                                                        label='Logarithmic Growth Curve', 
-                                                        value='Logarithmic Growth Curve'),
-                                      ]
-                                  ),
-                                  html.Div(id='tabs-content-plots'),
+                                  dcc.Graph(
+                                      id='datatable-interact-lineplot',
+                                      style={'height': '300px'},),
+                                  dcc.Graph(
+                                      id='datatable-interact-logplot',
+                                      style={'height': '300px'},),
                               ]),
                      html.Div(style={'width': '32.79%', 'display': 'inline-block', 'verticalAlign': 'top'},
                               children=[
@@ -938,9 +708,9 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                                   'backgroundColor': '#f4f4f2', },
                                                       fixed_rows={
                                                           'headers': True, 'data': 0},
-                                                      style_table={'minHeight': '800px',
-                                                                   'height': '800px',
-                                                                   'maxHeight': '800px'},
+                                                      style_table={'minHeight': '1050px',
+                                                                   'height': '1050px',
+                                                                   'maxHeight': '1050px'},
                                                       style_header={'backgroundColor': '#f4f4f2',
                                                                     'fontWeight': 'bold'},
                                                       style_cell_conditional=[{'if': {'column_id': 'Country/Regions'}, 'width': '28%'},
@@ -1080,17 +850,6 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
 
     return fig2
 
-@app.callback(Output('tabs-content-plots', 'children'),
-              [Input('tabs-plots', 'value')])
-def render_content(tab):
-    if tab == 'Cumulative Cases':
-        return dcc.Graph(id='datatable-interact-lineplot',
-                         style={'height': '300px'},
-                         figure=fig_cumulative_tab,)
-    elif tab == 'Logarithmic Growth Curve':
-        return dcc.Graph(id='datatable-interact-logplot',
-                         style={'height': '300px'},
-                         figure=fig_curve_tab,)
 
 @app.callback(
     Output('datatable-interact-lineplot', 'figure'),
@@ -1442,7 +1201,6 @@ def update_logplot(derived_virtual_selected_rows, selected_row_ids):
     )
 
     return fig_curve
-
 
 
 if __name__ == "__main__":

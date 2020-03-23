@@ -1,31 +1,297 @@
 Confirmed,DayElapsed,Region
+313,5,Panama
 245,4,Panama
 200,3,Panama
 137,2,Panama
 109,1,Panama
-26844,20,US
-19728,19,US
-14309,18,US
-9404,17,US
-6493,16,US
-4724,15,US
-3790,14,US
-3038,13,US
-2324,12,US
-1754,11,US
-1326,10,US
-1042,9,US
-751,8,US
-572,7,US
-460,6,US
-342,5,US
-234,4,US
-162,3,US
-129,2,US
-107,1,US
-225,3,Argentina
-158,2,Argentina
-128,1,Argentina
+1457,12,Canada
+1318,11,Canada
+1075,10,Canada
+862,9,Canada
+718,8,Canada
+589,7,Canada
+433,6,Canada
+337,5,Canada
+253,4,Canada
+198,3,Canada
+157,2,Canada
+117,1,Canada
+4204,17,Netherlands
+3631,16,Netherlands
+2994,15,Netherlands
+2460,14,Netherlands
+2051,13,Netherlands
+1705,12,Netherlands
+1413,11,Netherlands
+1135,10,Netherlands
+959,9,Netherlands
+804,8,Netherlands
+614,7,Netherlands
+503,6,Netherlands
+382,5,Netherlands
+321,4,Netherlands
+265,3,Netherlands
+188,2,Netherlands
+128,1,Netherlands
+24873,22,Germany
+22364,21,Germany
+20142,20,Germany
+16626,19,Germany
+13083,18,Germany
+9919,17,Germany
+7610,16,Germany
+6215,15,Germany
+4649,14,Germany
+3758,13,Germany
+2750,12,Germany
+1966,11,Germany
+1613,10,Germany
+1224,9,Germany
+1151,8,Germany
+847,7,Germany
+692,6,Germany
+577,5,Germany
+349,4,Germany
+240,3,Germany
+165,2,Germany
+150,1,Germany
+1395,14,Denmark
+1326,13,Denmark
+1255,12,Denmark
+1226,11,Denmark
+1132,10,Denmark
+1044,9,Denmark
+960,8,Denmark
+898,7,Denmark
+864,6,Denmark
+827,5,Denmark
+785,4,Denmark
+615,3,Denmark
+340,2,Denmark
+156,1,Denmark
+514,9,Indonesia
+450,8,Indonesia
+450,7,Indonesia
+369,6,Indonesia
+309,5,Indonesia
+227,4,Indonesia
+172,3,Indonesia
+134,2,Indonesia
+117,1,Indonesia
+455,23,Singapore
+432,22,Singapore
+385,21,Singapore
+385,20,Singapore
+313,19,Singapore
+266,18,Singapore
+243,17,Singapore
+226,16,Singapore
+212,15,Singapore
+200,14,Singapore
+187,13,Singapore
+178,12,Singapore
+166,11,Singapore
+160,10,Singapore
+150,9,Singapore
+138,8,Singapore
+130,7,Singapore
+117,6,Singapore
+112,5,Singapore
+110,4,Singapore
+108,3,Singapore
+106,2,Singapore
+102,1,Singapore
+202,2,Dominican Republic
+112,1,Dominican Republic
+153,6,United Arab Emirates
+153,5,United Arab Emirates
+140,4,United Arab Emirates
+140,3,United Arab Emirates
+113,2,United Arab Emirates
+113,1,United Arab Emirates
+126,1,Bosnia and Herzegovina
+21638,27,Iran
+20610,26,Iran
+20610,25,Iran
+19644,24,Iran
+18407,23,Iran
+17361,22,Iran
+14991,21,Iran
+13938,20,Iran
+12729,19,Iran
+12729,18,Iran
+10075,17,Iran
+10075,16,Iran
+9000,15,Iran
+7161,14,Iran
+7161,13,Iran
+6566,12,Iran
+4747,11,Iran
+3513,10,Iran
+3513,9,Iran
+2336,8,Iran
+2336,7,Iran
+1501,6,Iran
+593,5,Iran
+593,4,Iran
+388,3,Iran
+245,2,Iran
+139,1,Iran
+624,11,Greece
+530,10,Greece
+495,9,Greece
+464,8,Greece
+418,7,Greece
+387,6,Greece
+352,5,Greece
+331,4,Greece
+228,3,Greece
+190,2,Greece
+117,1,Greece
+3401,17,Belgium
+2815,16,Belgium
+2815,15,Belgium
+2257,14,Belgium
+1795,13,Belgium
+1486,12,Belgium
+1243,11,Belgium
+1058,10,Belgium
+886,9,Belgium
+559,8,Belgium
+399,7,Belgium
+314,6,Belgium
+267,5,Belgium
+239,4,Belgium
+239,3,Belgium
+169,2,Belgium
+109,1,Belgium
+906,9,Ireland
+785,8,Ireland
+683,7,Ireland
+557,6,Ireland
+366,5,Ireland
+292,4,Ireland
+223,3,Ireland
+170,2,Ireland
+129,1,Ireland
+1120,11,Czechia
+995,10,Czechia
+904,9,Czechia
+774,8,Czechia
+572,7,Czechia
+464,6,Czechia
+383,5,Czechia
+298,4,Czechia
+231,3,Czechia
+150,2,Czechia
+117,1,Czechia
+626,11,Finland
+594,10,Finland
+503,9,Finland
+430,8,Finland
+387,7,Finland
+333,6,Finland
+294,5,Finland
+269,4,Finland
+244,3,Finland
+156,2,Finland
+155,1,Finland
+113,1,Andorra
+433,9,Romania
+367,8,Romania
+308,7,Romania
+308,6,Romania
+277,5,Romania
+246,4,Romania
+184,3,Romania
+158,2,Romania
+123,1,Romania
+233,10,Iraq
+214,9,Iraq
+208,8,Iraq
+192,7,Iraq
+164,6,Iraq
+164,5,Iraq
+133,4,Iraq
+124,3,Iraq
+110,2,Iraq
+101,1,Iraq
+158,3,Uruguay
+135,2,Uruguay
+110,1,Uruguay
+248,8,Lebanon
+230,7,Lebanon
+187,6,Lebanon
+163,5,Lebanon
+139,4,Lebanon
+133,3,Lebanon
+120,2,Lebanon
+110,1,Lebanon
+102,1,New Zealand
+231,5,Colombia
+210,4,Colombia
+158,3,Colombia
+128,2,Colombia
+102,1,Colombia
+115,1,Morocco
+115,1,North Macedonia
+396,9,India
+332,8,India
+275,7,India
+206,6,India
+174,5,India
+152,4,India
+126,3,India
+117,2,India
+107,1,India
+414,10,Slovenia
+383,9,Slovenia
+341,8,Slovenia
+319,7,Slovenia
+286,6,Slovenia
+275,5,Slovenia
+253,4,Slovenia
+219,3,Slovenia
+181,2,Slovenia
+141,1,Slovenia
+1546,10,Brazil
+1178,9,Brazil
+977,8,Brazil
+647,7,Brazil
+529,6,Brazil
+349,5,Brazil
+234,4,Brazil
+203,3,Brazil
+151,2,Brazil
+151,1,Brazil
+599,9,Thailand
+599,8,Thailand
+411,7,Thailand
+322,6,Thailand
+272,5,Thailand
+212,4,Thailand
+177,3,Thailand
+114,2,Thailand
+114,1,Thailand
+7474,18,Switzerland
+6863,17,Switzerland
+5616,16,Switzerland
+4222,15,Switzerland
+3220,14,Switzerland
+2742,13,Switzerland
+2354,12,Switzerland
+2217,11,Switzerland
+1376,10,Switzerland
+1375,9,Switzerland
+868,8,Switzerland
+652,7,Switzerland
+516,6,Switzerland
+374,5,Switzerland
+332,4,Switzerland
+268,3,Switzerland
+216,2,Switzerland
+132,1,Switzerland
+568,11,Iceland
 473,10,Iceland
 409,9,Iceland
 409,8,Iceland
@@ -36,21 +302,81 @@ Confirmed,DayElapsed,Region
 161,3,Iceland
 138,2,Iceland
 117,1,Iceland
-332,8,India
-275,7,India
-206,6,India
-174,5,India
-152,4,India
-126,3,India
-117,2,India
-107,1,India
-190,4,Armenia
-160,3,Armenia
-136,2,Armenia
-122,1,Armenia
-163,3,Bulgaria
-142,2,Bulgaria
-112,1,Bulgaria
+511,9,Saudi Arabia
+392,8,Saudi Arabia
+344,7,Saudi Arabia
+274,6,Saudi Arabia
+238,5,Saudi Arabia
+171,4,Saudi Arabia
+133,3,Saudi Arabia
+118,2,Saudi Arabia
+103,1,Saudi Arabia
+143,2,Lithuania
+105,1,Lithuania
+112,2,Jordan
+100,1,Jordan
+59138,30,Italy
+53578,29,Italy
+47021,28,Italy
+41035,27,Italy
+35713,26,Italy
+31506,25,Italy
+27980,24,Italy
+24747,23,Italy
+21157,22,Italy
+17660,21,Italy
+15113,20,Italy
+12462,19,Italy
+10149,18,Italy
+9172,17,Italy
+7375,16,Italy
+5883,15,Italy
+4636,14,Italy
+3858,13,Italy
+3089,12,Italy
+2502,11,Italy
+2036,10,Italy
+1704,9,Italy
+1128,8,Italy
+889,7,Italy
+655,6,Italy
+470,5,Italy
+357,4,Italy
+270,3,Italy
+215,2,Italy
+117,1,Italy
+363,6,Peru
+318,5,Peru
+263,4,Peru
+234,3,Peru
+155,2,Peru
+117,1,Peru
+798,7,Luxembourg
+670,6,Luxembourg
+484,5,Luxembourg
+484,4,Luxembourg
+335,3,Luxembourg
+203,2,Luxembourg
+140,1,Luxembourg
+1071,12,Israel
+883,11,Israel
+883,10,Israel
+705,9,Israel
+529,8,Israel
+427,7,Israel
+304,6,Israel
+250,5,Israel
+200,4,Israel
+154,3,Israel
+126,2,Israel
+100,1,Israel
+185,6,Slovakia
+178,5,Slovakia
+137,4,Slovakia
+124,3,Slovakia
+105,2,Slovakia
+105,1,Slovakia
+16018,23,France
 14459,22,France
 12612,21,France
 10995,20,France
@@ -73,121 +399,14 @@ Confirmed,DayElapsed,Region
 191,3,France
 130,2,France
 100,1,France
-22364,21,Germany
-20142,20,Germany
-16626,19,Germany
-13083,18,Germany
-9919,17,Germany
-7610,16,Germany
-6215,15,Germany
-4649,14,Germany
-3758,13,Germany
-2750,12,Germany
-1966,11,Germany
-1613,10,Germany
-1224,9,Germany
-1151,8,Germany
-847,7,Germany
-692,6,Germany
-577,5,Germany
-349,4,Germany
-240,3,Germany
-165,2,Germany
-150,1,Germany
-785,8,Ireland
-683,7,Ireland
-557,6,Ireland
-366,5,Ireland
-292,4,Ireland
-223,3,Ireland
-170,2,Ireland
-129,1,Ireland
-251,4,Mexico
-203,3,Mexico
-164,2,Mexico
-118,1,Mexico
-112,1,Dominican Republic
-645,6,Pakistan
-534,5,Pakistan
-456,4,Pakistan
-331,3,Pakistan
-254,2,Pakistan
-194,1,Pakistan
-383,9,Slovenia
-341,8,Slovenia
-319,7,Slovenia
-286,6,Slovenia
-275,5,Slovenia
-253,4,Slovenia
-219,3,Slovenia
-181,2,Slovenia
-141,1,Slovenia
-1318,11,Canada
-1075,10,Canada
-862,9,Canada
-718,8,Canada
-589,7,Canada
-433,6,Canada
-337,5,Canada
-253,4,Canada
-198,3,Canada
-157,2,Canada
-117,1,Canada
-3024,15,Austria
-2695,14,Austria
-2203,13,Austria
-1843,12,Austria
-1471,11,Austria
-1211,10,Austria
-1018,9,Austria
-800,8,Austria
-602,7,Austria
-428,6,Austria
-302,5,Austria
-206,4,Austria
-157,3,Austria
-112,2,Austria
-104,1,Austria
-594,10,Finland
-503,9,Finland
-430,8,Finland
-387,7,Finland
-333,6,Finland
-294,5,Finland
-269,4,Finland
-244,3,Finland
-156,2,Finland
-155,1,Finland
-1178,9,Brazil
-977,8,Brazil
-647,7,Brazil
-529,6,Brazil
-349,5,Brazil
-234,4,Brazil
-203,3,Brazil
-151,2,Brazil
-151,1,Brazil
-1280,9,Portugal
-1020,8,Portugal
-786,7,Portugal
-642,6,Portugal
-448,5,Portugal
-331,4,Portugal
-245,3,Portugal
-169,2,Portugal
-112,1,Portugal
-536,8,Poland
-439,7,Poland
-378,6,Poland
-325,5,Poland
-246,4,Poland
-205,3,Poland
-150,2,Poland
-111,1,Poland
-206,4,Croatia
-168,3,Croatia
-113,2,Croatia
-102,1,Croatia
+632,7,Chile
+537,6,Chile
+434,5,Chile
+342,4,Chile
+238,3,Chile
+201,2,Chile
+156,1,Chile
+81057,63,China
 81057,62,China
 81013,61,China
 80977,60,China
@@ -250,40 +469,260 @@ Confirmed,DayElapsed,Region
 639,3,China
 549,2,China
 327,1,China
-20610,26,Iran
-20610,25,Iran
-19644,24,Iran
-18407,23,Iran
-17361,22,Iran
-14991,21,Iran
-13938,20,Iran
-12729,19,Iran
-12729,18,Iran
-10075,17,Iran
-10075,16,Iran
-9000,15,Iran
-7161,14,Iran
-7161,13,Iran
-6566,12,Iran
-4747,11,Iran
-3513,10,Iran
-3513,9,Iran
-2336,8,Iran
-2336,7,Iran
-1501,6,Iran
-593,5,Iran
-593,4,Iran
-388,3,Iran
-245,2,Iran
-139,1,Iran
-367,8,Romania
-308,7,Romania
-308,6,Romania
-277,5,Romania
-246,4,Romania
-184,3,Romania
-158,2,Romania
-123,1,Romania
+175,9,San Marino
+160,8,San Marino
+151,7,San Marino
+144,6,San Marino
+140,5,San Marino
+119,4,San Marino
+102,3,San Marino
+109,2,San Marino
+101,1,San Marino
+187,4,Bulgaria
+163,3,Bulgaria
+142,2,Bulgaria
+112,1,Bulgaria
+326,10,Estonia
+306,9,Estonia
+306,8,Estonia
+283,7,Estonia
+267,6,Estonia
+258,5,Estonia
+225,4,Estonia
+205,3,Estonia
+135,2,Estonia
+109,1,Estonia
+1600,10,Portugal
+1280,9,Portugal
+1020,8,Portugal
+786,7,Portugal
+642,6,Portugal
+448,5,Portugal
+331,4,Portugal
+245,3,Portugal
+169,2,Portugal
+112,1,Portugal
+334,15,Bahrain
+310,14,Bahrain
+298,13,Bahrain
+284,12,Bahrain
+268,11,Bahrain
+255,10,Bahrain
+228,9,Bahrain
+221,8,Bahrain
+212,7,Bahrain
+211,6,Bahrain
+197,5,Bahrain
+195,4,Bahrain
+189,3,Bahrain
+110,2,Bahrain
+109,1,Bahrain
+1607,14,Australia
+1352,13,Australia
+1069,12,Australia
+875,11,Australia
+707,10,Australia
+566,9,Australia
+453,8,Australia
+375,7,Australia
+297,6,Australia
+248,5,Australia
+197,4,Australia
+156,3,Australia
+127,2,Australia
+106,1,Australia
+1306,15,Malaysia
+1183,14,Malaysia
+1183,13,Malaysia
+1030,12,Malaysia
+900,11,Malaysia
+790,10,Malaysia
+673,9,Malaysia
+553,8,Malaysia
+428,7,Malaysia
+197,6,Malaysia
+158,5,Malaysia
+149,4,Malaysia
+129,3,Malaysia
+117,2,Malaysia
+117,1,Malaysia
+188,10,Kuwait
+176,9,Kuwait
+176,8,Kuwait
+159,7,Kuwait
+148,6,Kuwait
+142,5,Kuwait
+130,4,Kuwait
+123,3,Kuwait
+112,2,Kuwait
+100,1,Kuwait
+251,5,Mexico
+251,4,Mexico
+203,3,Mexico
+164,2,Mexico
+118,1,Mexico
+327,9,Egypt
+294,8,Egypt
+285,7,Egypt
+256,6,Egypt
+210,5,Egypt
+196,4,Egypt
+166,3,Egypt
+126,2,Egypt
+110,1,Egypt
+2263,18,Norway
+2216,17,Norway
+1995,16,Norway
+1802,15,Norway
+1631,14,Norway
+1523,13,Norway
+1366,12,Norway
+1263,11,Norway
+1133,10,Norway
+1003,9,Norway
+828,8,Norway
+648,7,Norway
+421,6,Norway
+239,5,Norway
+178,4,Norway
+157,3,Norway
+136,2,Norway
+101,1,Norway
+131,3,Hungary
+131,2,Hungary
+103,1,Hungary
+266,4,Argentina
+225,3,Argentina
+158,2,Argentina
+128,1,Argentina
+28603,21,Spain
+25496,20,Spain
+24926,19,Spain
+19980,18,Spain
+15014,17,Spain
+13716,16,Spain
+9942,15,Spain
+7988,14,Spain
+6391,13,Spain
+5232,12,Spain
+3779,11,Spain
+2277,10,Spain
+1736,9,Spain
+1235,8,Spain
+911,7,Spain
+525,6,Spain
+402,5,Spain
+329,4,Spain
+248,3,Spain
+165,2,Spain
+124,1,Spain
+494,12,Qatar
+481,11,Qatar
+470,10,Qatar
+460,9,Qatar
+452,8,Qatar
+442,7,Qatar
+439,6,Qatar
+401,5,Qatar
+337,4,Qatar
+320,3,Qatar
+262,2,Qatar
+262,1,Qatar
+274,6,South Africa
+240,5,South Africa
+240,4,South Africa
+202,3,South Africa
+116,2,South Africa
+116,1,South Africa
+5683,18,UK
+5018,17,UK
+3983,16,UK
+3269,15,UK
+2626,14,UK
+1950,13,UK
+1543,12,UK
+1391,11,UK
+1140,10,UK
+798,9,UK
+590,8,UK
+456,7,UK
+383,6,UK
+321,5,UK
+280,4,UK
+209,3,UK
+164,2,UK
+116,1,UK
+169,6,Taiwan
+153,5,Taiwan
+153,4,Taiwan
+135,3,Taiwan
+108,2,Taiwan
+100,1,Taiwan
+1931,18,Sweden
+1770,17,Sweden
+1657,16,Sweden
+1456,15,Sweden
+1302,14,Sweden
+1196,13,Sweden
+1125,12,Sweden
+1043,11,Sweden
+961,10,Sweden
+821,9,Sweden
+688,8,Sweden
+500,7,Sweden
+355,6,Sweden
+264,5,Sweden
+204,4,Sweden
+161,3,Sweden
+137,2,Sweden
+101,1,Sweden
+222,4,Serbia
+188,3,Serbia
+149,2,Serbia
+118,1,Serbia
+8897,33,South Korea
+8897,32,South Korea
+8799,31,South Korea
+8652,30,South Korea
+8565,29,South Korea
+8413,28,South Korea
+8320,27,South Korea
+8236,26,South Korea
+8162,25,South Korea
+8086,24,South Korea
+7979,23,South Korea
+7869,22,South Korea
+7755,21,South Korea
+7513,20,South Korea
+7478,19,South Korea
+7313,18,South Korea
+7041,17,South Korea
+6593,16,South Korea
+5766,15,South Korea
+5621,14,South Korea
+5186,13,South Korea
+4335,12,South Korea
+3526,11,South Korea
+3150,10,South Korea
+2337,9,South Korea
+1766,8,South Korea
+1261,7,South Korea
+977,6,South Korea
+833,5,South Korea
+602,4,South Korea
+433,3,South Korea
+204,2,South Korea
+104,1,South Korea
+115,1,Faeroe Islands
+789,6,Ecuador
+532,5,Ecuador
+426,4,Ecuador
+260,3,Ecuador
+168,2,Ecuador
+111,1,Ecuador
+201,2,Algeria
+139,1,Algeria
+317,21,Hong Kong
 274,20,Hong Kong
 273,19,Hong Kong
 256,18,Hong Kong
@@ -304,62 +743,7 @@ Confirmed,DayElapsed,Region
 104,3,Hong Kong
 102,2,Hong Kong
 100,1,Hong Kong
-294,8,Egypt
-285,7,Egypt
-256,6,Egypt
-210,5,Egypt
-196,4,Egypt
-166,3,Egypt
-126,2,Egypt
-110,1,Egypt
-153,5,Taiwan
-153,4,Taiwan
-135,3,Taiwan
-108,2,Taiwan
-100,1,Taiwan
-124,3,Latvia
-124,2,Latvia
-111,1,Latvia
-995,10,Czechia
-904,9,Czechia
-774,8,Czechia
-572,7,Czechia
-464,6,Czechia
-383,5,Czechia
-298,4,Czechia
-231,3,Czechia
-150,2,Czechia
-117,1,Czechia
-532,5,Ecuador
-426,4,Ecuador
-260,3,Ecuador
-168,2,Ecuador
-111,1,Ecuador
-135,2,Uruguay
-110,1,Uruguay
-139,1,Algeria
-178,5,Slovakia
-137,4,Slovakia
-124,3,Slovakia
-105,2,Slovakia
-105,1,Slovakia
-1326,13,Denmark
-1255,12,Denmark
-1226,11,Denmark
-1132,10,Denmark
-1044,9,Denmark
-960,8,Denmark
-898,7,Denmark
-864,6,Denmark
-827,5,Denmark
-785,4,Denmark
-615,3,Denmark
-340,2,Denmark
-156,1,Denmark
-100,1,Jordan
-188,3,Serbia
-149,2,Serbia
-118,1,Serbia
+380,9,Philippines
 380,8,Philippines
 307,7,Philippines
 230,6,Philippines
@@ -368,46 +752,31 @@ Confirmed,DayElapsed,Region
 187,3,Philippines
 140,2,Philippines
 140,1,Philippines
-230,7,Lebanon
-187,6,Lebanon
-163,5,Lebanon
-139,4,Lebanon
-133,3,Lebanon
-120,2,Lebanon
-110,1,Lebanon
-883,11,Israel
-883,10,Israel
-705,9,Israel
-529,8,Israel
-427,7,Israel
-304,6,Israel
-250,5,Israel
-200,4,Israel
-154,3,Israel
-126,2,Israel
-100,1,Israel
-450,8,Indonesia
-450,7,Indonesia
-369,6,Indonesia
-309,5,Indonesia
-227,4,Indonesia
-172,3,Indonesia
-134,2,Indonesia
-117,1,Indonesia
-310,14,Bahrain
-298,13,Bahrain
-284,12,Bahrain
-268,11,Bahrain
-255,10,Bahrain
-228,9,Bahrain
-221,8,Bahrain
-212,7,Bahrain
-211,6,Bahrain
-197,5,Bahrain
-195,4,Bahrain
-189,3,Bahrain
-110,2,Bahrain
-109,1,Bahrain
+134,3,Costa Rica
+117,2,Costa Rica
+113,1,Costa Rica
+776,7,Pakistan
+645,6,Pakistan
+534,5,Pakistan
+456,4,Pakistan
+331,3,Pakistan
+254,2,Pakistan
+194,1,Pakistan
+254,5,Croatia
+206,4,Croatia
+168,3,Croatia
+113,2,Croatia
+102,1,Croatia
+634,9,Poland
+536,8,Poland
+439,7,Poland
+378,6,Poland
+325,5,Poland
+246,4,Poland
+205,3,Poland
+150,2,Poland
+111,1,Poland
+1798,43,Japan
 1766,42,Japan
 1719,41,Japan
 1675,40,Japan
@@ -450,350 +819,61 @@ Confirmed,DayElapsed,Region
 203,3,Japan
 163,2,Japan
 161,1,Japan
-947,4,Turkey
-670,3,Turkey
-359,2,Turkey
-191,1,Turkey
-105,1,Lithuania
+113,1,Vietnam
+367,6,Russia
 306,5,Russia
 253,4,Russia
 199,3,Russia
 147,2,Russia
 147,1,Russia
-2216,17,Norway
-1995,16,Norway
-1802,15,Norway
-1631,14,Norway
-1523,13,Norway
-1366,12,Norway
-1263,11,Norway
-1133,10,Norway
-1003,9,Norway
-828,8,Norway
-648,7,Norway
-421,6,Norway
-239,5,Norway
-178,4,Norway
-157,3,Norway
-136,2,Norway
-101,1,Norway
-1770,17,Sweden
-1657,16,Sweden
-1456,15,Sweden
-1302,14,Sweden
-1196,13,Sweden
-1125,12,Sweden
-1043,11,Sweden
-961,10,Sweden
-821,9,Sweden
-688,8,Sweden
-500,7,Sweden
-355,6,Sweden
-264,5,Sweden
-204,4,Sweden
-161,3,Sweden
-137,2,Sweden
-101,1,Sweden
-530,10,Greece
-495,9,Greece
-464,8,Greece
-418,7,Greece
-387,6,Greece
-352,5,Greece
-331,4,Greece
-228,3,Greece
-190,2,Greece
-117,1,Greece
-537,6,Chile
-434,5,Chile
-342,4,Chile
-238,3,Chile
-201,2,Chile
-156,1,Chile
-306,9,Estonia
-306,8,Estonia
-283,7,Estonia
-267,6,Estonia
-258,5,Estonia
-225,4,Estonia
-205,3,Estonia
-135,2,Estonia
-109,1,Estonia
-53578,29,Italy
-47021,28,Italy
-41035,27,Italy
-35713,26,Italy
-31506,25,Italy
-27980,24,Italy
-24747,23,Italy
-21157,22,Italy
-17660,21,Italy
-15113,20,Italy
-12462,19,Italy
-10149,18,Italy
-9172,17,Italy
-7375,16,Italy
-5883,15,Italy
-4636,14,Italy
-3858,13,Italy
-3089,12,Italy
-2502,11,Italy
-2036,10,Italy
-1704,9,Italy
-1128,8,Italy
-889,7,Italy
-655,6,Italy
-470,5,Italy
-357,4,Italy
-270,3,Italy
-215,2,Italy
-117,1,Italy
-25496,20,Spain
-24926,19,Spain
-19980,18,Spain
-15014,17,Spain
-13716,16,Spain
-9942,15,Spain
-7988,14,Spain
-6391,13,Spain
-5232,12,Spain
-3779,11,Spain
-2277,10,Spain
-1736,9,Spain
-1235,8,Spain
-911,7,Spain
-525,6,Spain
-402,5,Spain
-329,4,Spain
-248,3,Spain
-165,2,Spain
-124,1,Spain
-176,9,Kuwait
-176,8,Kuwait
-159,7,Kuwait
-148,6,Kuwait
-142,5,Kuwait
-130,4,Kuwait
-123,3,Kuwait
-112,2,Kuwait
-100,1,Kuwait
-214,9,Iraq
-208,8,Iraq
-192,7,Iraq
-164,6,Iraq
-164,5,Iraq
-133,4,Iraq
-124,3,Iraq
-110,2,Iraq
-101,1,Iraq
-131,2,Hungary
-103,1,Hungary
-318,5,Peru
-263,4,Peru
-234,3,Peru
-155,2,Peru
-117,1,Peru
-599,8,Thailand
-411,7,Thailand
-322,6,Thailand
-272,5,Thailand
-212,4,Thailand
-177,3,Thailand
-114,2,Thailand
-114,1,Thailand
-5018,17,UK
-3983,16,UK
-3269,15,UK
-2626,14,UK
-1950,13,UK
-1543,12,UK
-1391,11,UK
-1140,10,UK
-798,9,UK
-590,8,UK
-456,7,UK
-383,6,UK
-321,5,UK
-280,4,UK
-209,3,UK
-164,2,UK
-116,1,UK
-670,6,Luxembourg
-484,5,Luxembourg
-484,4,Luxembourg
-335,3,Luxembourg
-203,2,Luxembourg
-140,1,Luxembourg
-117,2,Costa Rica
-113,1,Costa Rica
-1352,13,Australia
-1069,12,Australia
-875,11,Australia
-707,10,Australia
-566,9,Australia
-453,8,Australia
-375,7,Australia
-297,6,Australia
-248,5,Australia
-197,4,Australia
-156,3,Australia
-127,2,Australia
-106,1,Australia
-160,8,San Marino
-151,7,San Marino
-144,6,San Marino
-140,5,San Marino
-119,4,San Marino
-102,3,San Marino
-109,2,San Marino
-101,1,San Marino
-481,11,Qatar
-470,10,Qatar
-460,9,Qatar
-452,8,Qatar
-442,7,Qatar
-439,6,Qatar
-401,5,Qatar
-337,4,Qatar
-320,3,Qatar
-262,2,Qatar
-262,1,Qatar
-210,4,Colombia
-158,3,Colombia
-128,2,Colombia
-102,1,Colombia
-1183,14,Malaysia
-1183,13,Malaysia
-1030,12,Malaysia
-900,11,Malaysia
-790,10,Malaysia
-673,9,Malaysia
-553,8,Malaysia
-428,7,Malaysia
-197,6,Malaysia
-158,5,Malaysia
-149,4,Malaysia
-129,3,Malaysia
-117,2,Malaysia
-117,1,Malaysia
-240,5,South Africa
-240,4,South Africa
-202,3,South Africa
-116,2,South Africa
-116,1,South Africa
-432,22,Singapore
-385,21,Singapore
-385,20,Singapore
-313,19,Singapore
-266,18,Singapore
-243,17,Singapore
-226,16,Singapore
-212,15,Singapore
-200,14,Singapore
-187,13,Singapore
-178,12,Singapore
-166,11,Singapore
-160,10,Singapore
-150,9,Singapore
-138,8,Singapore
-130,7,Singapore
-117,6,Singapore
-112,5,Singapore
-110,4,Singapore
-108,3,Singapore
-106,2,Singapore
-102,1,Singapore
-153,5,United Arab Emirates
-140,4,United Arab Emirates
-140,3,United Arab Emirates
-113,2,United Arab Emirates
-113,1,United Arab Emirates
-6863,17,Switzerland
-5616,16,Switzerland
-4222,15,Switzerland
-3220,14,Switzerland
-2742,13,Switzerland
-2354,12,Switzerland
-2217,11,Switzerland
-1376,10,Switzerland
-1375,9,Switzerland
-868,8,Switzerland
-652,7,Switzerland
-516,6,Switzerland
-374,5,Switzerland
-332,4,Switzerland
-268,3,Switzerland
-216,2,Switzerland
-132,1,Switzerland
-3631,16,Netherlands
-2994,15,Netherlands
-2460,14,Netherlands
-2051,13,Netherlands
-1705,12,Netherlands
-1413,11,Netherlands
-1135,10,Netherlands
-959,9,Netherlands
-804,8,Netherlands
-614,7,Netherlands
-503,6,Netherlands
-382,5,Netherlands
-321,4,Netherlands
-265,3,Netherlands
-188,2,Netherlands
-128,1,Netherlands
-392,8,Saudi Arabia
-344,7,Saudi Arabia
-274,6,Saudi Arabia
-238,5,Saudi Arabia
-171,4,Saudi Arabia
-133,3,Saudi Arabia
-118,2,Saudi Arabia
-103,1,Saudi Arabia
-8897,32,South Korea
-8799,31,South Korea
-8652,30,South Korea
-8565,29,South Korea
-8413,28,South Korea
-8320,27,South Korea
-8236,26,South Korea
-8162,25,South Korea
-8086,24,South Korea
-7979,23,South Korea
-7869,22,South Korea
-7755,21,South Korea
-7513,20,South Korea
-7478,19,South Korea
-7313,18,South Korea
-7041,17,South Korea
-6593,16,South Korea
-5766,15,South Korea
-5621,14,South Korea
-5186,13,South Korea
-4335,12,South Korea
-3526,11,South Korea
-3150,10,South Korea
-2337,9,South Korea
-1766,8,South Korea
-1261,7,South Korea
-977,6,South Korea
-833,5,South Korea
-602,4,South Korea
-433,3,South Korea
-204,2,South Korea
-104,1,South Korea
-2815,16,Belgium
-2815,15,Belgium
-2257,14,Belgium
-1795,13,Belgium
-1486,12,Belgium
-1243,11,Belgium
-1058,10,Belgium
-886,9,Belgium
-559,8,Belgium
-399,7,Belgium
-314,6,Belgium
-267,5,Belgium
-239,4,Belgium
-239,3,Belgium
-169,2,Belgium
-109,1,Belgium
+33802,21,US
+26844,20,US
+19728,19,US
+14309,18,US
+9404,17,US
+6493,16,US
+4724,15,US
+3790,14,US
+3038,13,US
+2324,12,US
+1754,11,US
+1326,10,US
+1042,9,US
+751,8,US
+572,7,US
+460,6,US
+342,5,US
+234,4,US
+162,3,US
+129,2,US
+107,1,US
+194,5,Armenia
+190,4,Armenia
+160,3,Armenia
+136,2,Armenia
+122,1,Armenia
+1236,5,Turkey
+947,4,Turkey
+670,3,Turkey
+359,2,Turkey
+191,1,Turkey
+139,4,Latvia
+124,3,Latvia
+124,2,Latvia
+111,1,Latvia
+3580,16,Austria
+3024,15,Austria
+2695,14,Austria
+2203,13,Austria
+1843,12,Austria
+1471,11,Austria
+1211,10,Austria
+1018,9,Austria
+800,8,Austria
+602,7,Austria
+428,6,Austria
+302,5,Austria
+206,4,Austria
+157,3,Austria
+112,2,Austria
+104,1,Austria
