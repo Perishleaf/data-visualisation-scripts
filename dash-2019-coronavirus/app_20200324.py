@@ -24,10 +24,8 @@ def make_country_table(countryName):
     countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
     # Suppress SettingWithCopyWarning
     pd.options.mode.chained_assignment = None
-    countryTable['Remaining'] = countryTable['Confirmed'] - \
-        countryTable['Recovered'] - countryTable['Deaths']
-    countryTable = countryTable[[
-        'Province/State', 'Remaining', 'Confirmed', 'Recovered', 'Deaths', 'lat', 'lon']]
+    countryTable['Remaining'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+    countryTable = countryTable[['Province/State', 'Remaining', 'Confirmed', 'Recovered', 'Deaths', 'lat', 'lon']]
     countryTable = countryTable.sort_values(
         by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
     # Set row ids pass to selected_row_ids
@@ -37,6 +35,21 @@ def make_country_table(countryName):
     pd.options.mode.chained_assignment = 'warn'
     return countryTable
 
+def make_europe_table(europe_list):
+  '''This is the function for building df for Europe countries'''
+  europe_table = df_latest.loc[df_latest['Country/Region'].isin(europe_list)]
+  # Suppress SettingWithCopyWarning
+  pd.options.mode.chained_assignment = None
+  europe_table['Remaining'] = europe_table['Confirmed'] - europe_table['Recovered'] - europe_table['Deaths']
+  europe_table = europe_table[['Country/Region', 'Remaining', 'Confirmed', 'Recovered', 'Deaths', 'lat', 'lon']]
+  europe_table = europe_table.sort_values(
+        by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
+  # Set row ids pass to selected_row_ids
+  europe_table['id'] = europe_table['Country/Region']
+  europe_table.set_index('id', inplace=True, drop=False)
+  # Turn on SettingWithCopyWarning
+  pd.options.mode.chained_assignment = 'warn'
+  return europe_table
 
 def make_dcc_country_tab(countryName, dataframe):
     '''This is for generating tab component for country table'''
@@ -51,7 +64,7 @@ def make_dcc_country_tab(countryName, dataframe):
                         for i in dataframe.columns[0:5]],
                     # But still store coordinates in the table for interactivity
                     data=dataframe.to_dict("rows"),
-                    row_selectable="single" if countryName else False,
+                    row_selectable="single" if countryName != 'Schengen' else False,
                     sort_action="native",
                     style_as_list_view=True,
                     style_cell={'font_family': 'Arial',
@@ -65,23 +78,16 @@ def make_dcc_country_tab(countryName, dataframe):
                     style_header={'backgroundColor': '#f4f4f2',
                                     'fontWeight': 'bold'},
                     style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '28%'},
-                                              {'if': {'column_id': 'Remaining'},
-                                                  'width': '18%'},
-                                              {'if': {'column_id': 'Confirmed'},
-                                                  'width': '18%'},
-                                              {'if': {'column_id': 'Recovered'},
-                                                  'width': '18%'},
-                                              {'if': {'column_id': 'Deaths'},
-                                                  'width': '18%'},
-                                              {'if': {'column_id': 'Remaining'}, 
-                                                  'color':'#e36209'},
-                                              {'if': {'column_id': 'Confirmed'},
-                                                  'color': '#d7191c'},
-                                              {'if': {'column_id': 'Recovered'},
-                                                  'color': '#1a9622'},
-                                              {'if': {'column_id': 'Deaths'},
-                                                  'color': '#6c6c6c'},
-                                              {'textAlign': 'center'}],
+                                            {'if': {'column_id': 'Country/Region'}, 'width': '28%'},
+                                            {'if': {'column_id': 'Remaining'}, 'width': '18%'},
+                                            {'if': {'column_id': 'Confirmed'}, 'width': '18%'},
+                                            {'if': {'column_id': 'Recovered'}, 'width': '18%'},
+                                            {'if': {'column_id': 'Deaths'}, 'width': '18%'},
+                                            {'if': {'column_id': 'Remaining'}, 'color':'#e36209'},
+                                            {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                            {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                            {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                            {'textAlign': 'center'}],
                         )
             ]
           )
@@ -194,6 +200,13 @@ AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
 
+europe_list = ['Austria', 'Belgium', 'Czechia', 'Denmark', 'Estonia',
+                  'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland',
+                  'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg',
+                  'Malta', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Slovakia',
+                  'Slovenia', 'Spain', 'Sweden', 'Switzerland']
+EuroTable = make_europe_table(europe_list)
+
 # Remove dummy row of recovered case number in USTable
 USTable = USTable.dropna(subset=['Province/State'])
 
@@ -206,11 +219,11 @@ daysOutbreak = (df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d
 dfs_curve = pd.read_csv('./lineplot_data/dfs_curve.csv')
 
 # Pseduo data for logplot
-pseduoDay = np.arange(0, daysOutbreak+1)
-y1 = 100*(2)**(pseduoDay)  # 100% growth rate, double every day
-y2 = 100*(1.414214)**(pseduoDay)  # 41.4% growth rate, double every two days
-y3 = 100*(1.259921)**(pseduoDay)  # 26% growth rate, double every three days
-y4 = 100*(1.104089)**(pseduoDay)  # 12.24% growth rate. double every week
+pseduoDay = np.arange(1, daysOutbreak+1)
+y1 = 100*(1.85)**(pseduoDay-1)  # 85% growth rate
+y2 = 100*(1.35)**(pseduoDay-1)  # 35% growth rate
+y3 = 100*(1.15)**(pseduoDay-1)  # 15% growth rate
+y4 = 100*(1.05)**(pseduoDay-1)  # 5% growth rate
 
 #############################################################################################
 # Start to make plots
@@ -538,7 +551,7 @@ fig_cumulative_tab.update_layout(
             # Set tick label accordingly
             # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
-        xaxis_title="Select Country/Region From Table",
+        xaxis_title="Select A Location From Table",
         xaxis=dict(
             showline=False, linecolor='#272e3e',
             showgrid=False,
@@ -563,7 +576,7 @@ fig_curve_tab = go.Figure()
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y1,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['Double every day' for i in pseduoDay],
+                                   text=['85% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -571,7 +584,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y2,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['Double every two days' for i in pseduoDay],
+                                   text=['35% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -579,7 +592,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y3,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['Double every three days' for i in pseduoDay],
+                                   text=['15% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -587,7 +600,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y4,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['Double every week' for i in pseduoDay],
+                                   text=['5% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -978,6 +991,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                               'Mainland China', CNTable),
                                           make_dcc_country_tab(
                                               'United States', USTable),
+                                          make_dcc_country_tab(
+                                               'Schengen', EuroTable),
                                       ]
                                   )
                               ])
@@ -989,7 +1004,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                      html.P(style={'textAlign': 'center', 'margin': 'auto'},
                             children=[" 🙏 God Bless the World 🙏 |",
                                       " Developed by ", html.A('Jun', href='https://junye0798.com/'), " with ❤️ in Sydney | ",
-                                      html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus')])]),
+                                      html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
+                                      html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank')])]),
         ])
 
 
@@ -1437,7 +1453,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y1,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                       'Double every day' for i in pseduoDay],
+                                       '85% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1446,7 +1462,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y2,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                        'Double every two days' for i in pseduoDay],
+                                        '35% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1455,7 +1471,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y3,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                        'Double every three days' for i in pseduoDay],
+                                        '15% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1464,7 +1480,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y4,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                        'Double every week' for i in pseduoDay],
+                                        '5% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )

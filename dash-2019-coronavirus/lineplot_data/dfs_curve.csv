@@ -1627,7 +1627,7 @@ Confirmed,DayElapsed,Region
 241,3,Guangdong
 151,2,Guangdong
 146,1,Guangdong
-2625,19,Norway
+2647,19,Norway
 2415,18,Norway
 2216,17,Norway
 1995,16,Norway
@@ -1729,7 +1729,7 @@ Confirmed,DayElapsed,Region
 124,3,Iraq
 110,2,Iraq
 101,1,Iraq
-118,2,Faeroe Islands
+122,2,Faeroe Islands
 118,1,Faeroe Islands
 6650,19,UK
 5683,18,UK
@@ -1750,7 +1750,7 @@ Confirmed,DayElapsed,Region
 209,3,UK
 164,2,UK
 116,1,UK
-2146,15,Australia
+2138,15,Australia
 1716,14,Australia
 1351,13,Australia
 1069,12,Australia
@@ -1808,7 +1808,7 @@ Confirmed,DayElapsed,Region
 163,3,Bulgaria
 142,2,Bulgaria
 112,1,Bulgaria
-8795,19,Switzerland
+9117,19,Switzerland
 8234,18,Switzerland
 6863,17,Switzerland
 5616,16,Switzerland
@@ -1849,7 +1849,7 @@ Confirmed,DayElapsed,Region
 198,3,Canada
 157,2,Canada
 117,1,Canada
-29560,23,Germany
+30138,23,Germany
 26220,22,Germany
 22364,21,Germany
 20142,20,Germany
@@ -1872,7 +1872,7 @@ Confirmed,DayElapsed,Region
 240,3,Germany
 165,2,Germany
 150,1,Germany
-892,8,Pakistan
+908,8,Pakistan
 804,7,Pakistan
 645,6,Pakistan
 534,5,Pakistan
@@ -1880,7 +1880,7 @@ Confirmed,DayElapsed,Region
 331,3,Pakistan
 254,2,Pakistan
 194,1,Pakistan
-23049,28,Iran
+24811,28,Iran
 23049,27,Iran
 20610,26,Iran
 20610,25,Iran
@@ -1908,7 +1908,7 @@ Confirmed,DayElapsed,Region
 388,3,Iran
 245,2,Iran
 139,1,Iran
-267,9,Lebanon
+304,9,Lebanon
 256,8,Lebanon
 230,7,Lebanon
 187,6,Lebanon
@@ -1917,6 +1917,7 @@ Confirmed,DayElapsed,Region
 133,3,Lebanon
 120,2,Lebanon
 110,1,Lebanon
+104,1,Brunei
 576,10,Romania
 576,9,Romania
 367,8,Romania
@@ -2103,6 +2104,7 @@ Confirmed,DayElapsed,Region
 670,3,Turkey
 359,2,Turkey
 191,1,Turkey
+100,1,Sri Lanka
 746,8,Chile
 632,7,Chile
 537,6,Chile
@@ -2136,7 +2138,7 @@ Confirmed,DayElapsed,Region
 167,3,Hungary
 131,2,Hungary
 103,1,Hungary
-438,7,Russia
+444,7,Russia
 438,6,Russia
 306,5,Russia
 253,4,Russia
@@ -2279,6 +2281,7 @@ Confirmed,DayElapsed,Region
 123,3,Kuwait
 112,2,Kuwait
 100,1,Kuwait
+114,1,Burkina Faso
 198,7,United Arab Emirates
 153,6,United Arab Emirates
 153,5,United Arab Emirates
@@ -2287,7 +2290,7 @@ Confirmed,DayElapsed,Region
 113,2,United Arab Emirates
 113,1,United Arab Emirates
 109,1,Moldova
-700,12,Finland
+782,12,Finland
 686,11,Finland
 594,10,Finland
 503,9,Finland
@@ -2310,7 +2313,7 @@ Confirmed,DayElapsed,Region
 168,3,Croatia
 113,2,Croatia
 102,1,Croatia
-4668,17,Austria
+4767,17,Austria
 3759,16,Austria
 3024,15,Austria
 2695,14,Austria
@@ -2327,7 +2330,7 @@ Confirmed,DayElapsed,Region
 157,3,Austria
 112,2,Austria
 104,1,Austria
-35212,22,Spain
+35480,22,Spain
 33089,21,Spain
 25496,20,Spain
 24926,19,Spain
@@ -2349,7 +2352,7 @@ Confirmed,DayElapsed,Region
 248,3,Spain
 165,2,Spain
 124,1,Spain
-766,10,Poland
+774,10,Poland
 649,9,Poland
 536,8,Poland
 439,7,Poland
@@ -2374,7 +2377,7 @@ Confirmed,DayElapsed,Region
 129,1,Ireland
 150,2,Bosnia and Herzegovina
 128,1,Bosnia and Herzegovina
-3743,18,Belgium
+4269,18,Belgium
 3743,17,Belgium
 2815,16,Belgium
 2815,15,Belgium
@@ -2482,7 +2485,7 @@ Confirmed,DayElapsed,Region
 158,3,Colombia
 128,2,Colombia
 102,1,Colombia
-377,16,Bahrain
+390,16,Bahrain
 337,15,Bahrain
 310,14,Bahrain
 298,13,Bahrain
@@ -2530,7 +2533,7 @@ Confirmed,DayElapsed,Region
 133,3,Saudi Arabia
 118,2,Saudi Arabia
 103,1,Saudi Arabia
-104,1,Albania
+123,1,Albania
 509,24,Singapore
 455,23,Singapore
 432,22,Singapore
