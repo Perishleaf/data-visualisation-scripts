@@ -28,6 +28,7 @@ __To-do list:__
 - [x] Code optimisation for calling coordinates using opencage geocoder
 - [x] Code optimisation for scrapping data from various sources
 - [x] Code optimisation for generating overview lineplot/reduce response time
+- [x] Clicking table tab now triggers corresponding changes in the plots
 - [ ] Layout and design
 
 ![App screenshot](./app_screenshot.gif)

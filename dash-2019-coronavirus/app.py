@@ -45,12 +45,13 @@ def make_dcc_country_tab(countryName, dataframe):
             className='custom-tab',
             selected_className='custom-tab--selected',
             children=[dash_table.DataTable(
+                    id='datatable-interact-location-{}'.format(countryName),
                     # Don't show coordinates
                     columns=[{"name": i, "id": i}
                         for i in dataframe.columns[0:5]],
                     # But still store coordinates in the table for interactivity
                     data=dataframe.to_dict("rows"),
-                    # row_selectable="single",
+                    row_selectable="single" if countryName == 'Not Yet' else False,
                     sort_action="native",
                     style_as_list_view=True,
                     style_cell={'font_family': 'Arial',
@@ -72,6 +73,8 @@ def make_dcc_country_tab(countryName, dataframe):
                                                   'width': '18%'},
                                               {'if': {'column_id': 'Deaths'},
                                                   'width': '18%'},
+                                              {'if': {'column_id': 'Remaining'}, 
+                                                  'color':'#e36209'},
                                               {'if': {'column_id': 'Confirmed'},
                                                   'color': '#d7191c'},
                                               {'if': {'column_id': 'Recovered'},
@@ -214,7 +217,7 @@ y4 = 100*(1.05)**(pseduoDay-1)  # 5% growth rate
 #############################################################################################
 # Line plot for confirmed cases
 # Set up tick scale based on confirmed case number
-tickList = np.arange(0, df_confirmed['Other locations'].max()+5000, 20000)
+#tickList = np.arange(0, df_confirmed['Other locations'].max()+5000, 30000)
 
 # Create empty figure canvas
 fig_confirmed = go.Figure()
@@ -267,11 +270,11 @@ fig_confirmed.update_layout(
         # showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth=.1,
-        tickmode='array',
+        #tickmode='array',
         # Set tick range based on the maximum number
-        tickvals=tickList,
+        #tickvals=tickList,
         # Set tick label accordingly
-        ticktext=["{:.0f}k".format(i/1000) for i in tickList]
+        #ticktext=["{:.0f}k".format(i/1000) for i in tickList]
     ),
 #   yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
@@ -292,7 +295,7 @@ fig_confirmed.update_layout(
 
 # Line plot for combine recovered cases
 # Set up tick scale based on total recovered case number
-tickList = np.arange(0, df_remaining['Total'].max()+10000, 20000)
+#tickList = np.arange(0, df_remaining['Total'].max()+10000, 30000)
 
 # Create empty figure canvas
 fig_combine = go.Figure()
@@ -354,11 +357,11 @@ fig_combine.update_layout(
         # showgrid=False,
         gridcolor='rgba(203, 210, 211,.3)',
         gridwidth=.1,
-        tickmode='array',
+        #tickmode='array',
         # Set tick range based on the maximum number
-        tickvals=tickList,
+        #tickvals=tickList,
         # Set tick label accordingly
-        ticktext=["{:.0f}k".format(i/1000) for i in tickList]
+        #ticktext=["{:.0f}k".format(i/1000) for i in tickList]
     ),
 #    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
@@ -379,7 +382,7 @@ fig_combine.update_layout(
 
 # Line plot for death rate cases
 # Set up tick scale based on death case number of Mainland China
-tickList = np.arange(0, (df_deaths['Mainland China']/df_confirmed['Mainland China']*100).max()+0.2, 0.5)
+tickList = np.arange(0, (df_deaths['Other locations']/df_confirmed['Other locations']*100).max()+0.2, 0.5)
 
 # Create empty figure canvas
 fig_rate = go.Figure()
@@ -453,7 +456,8 @@ fig_rate.update_layout(
 
 # Default cumulative plot for tab
 # Read cumulative data of a given region from ./cumulative_data folder
-df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format('Australia'))
+# Default plot is the first country in the dfSum table
+df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format(dfSum['Country/Region'][0]))
 df_region_tab = df_region_tab.astype({'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
 
 
@@ -514,7 +518,7 @@ fig_cumulative_tab.update_layout(
                 y=.4,
                 xref="paper",
                 yref="paper",
-                text='Australia',
+                text=dfSum['Country/Region'][0],
                 opacity=0.5,
                 font=dict(family='Arial, sans-serif',
                           size=60,
@@ -641,7 +645,7 @@ fig_curve_tab.update_layout(
             y=.4,
             xref="paper",
             yref="paper",
-            text='Australia' if 'Australia' in set(dfs_curve['Region']) else "Not over 100 cases",
+            text=dfSum['Country/Region'][0] if dfSum['Country/Region'][0] in set(dfs_curve['Region']) else "Not over 100 cases",
             opacity=0.5,
             font=dict(family='Arial, sans-serif',
                       size=60,
@@ -680,21 +684,21 @@ app = dash.Dash(__name__,
                 assets_folder='./assets/',
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
-                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data for the global spread of coronavirus."},
+                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus."},
                     {"property": "og:title",
-                        "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
+                        "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"property": "og:type", "content": "website"},
                     {"property": "og:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"property": "og:url",
                         "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property": "og:description",
-                        "content": "The coronavirus COVID-19 monitor provides up-to-date data for the global spread of coronavirus."},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus."},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title",
-                        "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor"},
+                        "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"name": "twitter:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data for the global spread of coronavirus."},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus."},
                     {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport",
                         "content": "width=device-width, height=device-height, initial-scale=1.0"}
@@ -915,12 +919,12 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children='Cases by Country/Region'),
                                   dcc.Tabs(
                                       id="tabs-table",
-                                      value='tab-1',
+                                      value='The World',
                                       parent_className='custom-tabs',
                                       className='custom-tabs-container',
                                       children=[
                                           dcc.Tab(label='The World',
-                                              value='tab-1',
+                                              value='The World',
                                               className='custom-tab',
                                               selected_className='custom-tab--selected',
                                               children=[
@@ -956,6 +960,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                                               {'if': {
                                                                                   'column_id': 'Deaths'}, 'width': '18%'},
                                                                               {'if': {
+                                                                                  'column_id': 'Remaining'}, 'color':'#e36209'},
+                                                                              {'if': {
                                                                                   'column_id': 'Confirmed'}, 'color': '#d7191c'},
                                                                               {'if': {
                                                                                   'column_id': 'Recovered'}, 'color': '#1a9622'},
@@ -982,16 +988,32 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                  children=[
                      html.P(style={'textAlign': 'center', 'margin': 'auto'},
                             children=[" 🙏 God Bless the World 🙏 |",
-                                      " Developed by ", html.A('Jun', href='https://junye0798.com/'), " with ❤️ in Sydney"])]),
+                                      " Developed by ", html.A('Jun', href='https://junye0798.com/'), " with ❤️ in Sydney | ",
+                                      html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus')])]),
         ])
 
 
 @app.callback(
     Output('datatable-interact-map', 'figure'),
-    [Input('datatable-interact-location', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location', 'selected_row_ids')]
+    [Input('tabs-table', 'value'),
+     Input('datatable-interact-location', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
+     Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-United States', 'selected_row_ids'),
+     ]
 )
-def update_figures(derived_virtual_selected_rows, selected_row_ids):
+def update_figures(value, derived_virtual_selected_rows, selected_row_ids, 
+  Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
+  US_derived_virtual_selected_rows, US_selected_row_ids
+  ):
     # When the table is first rendered, `derived_virtual_data` and
     # `derived_virtual_selected_rows` will be `None`. This is due to an
     # idiosyncracy in Dash (unsupplied properties are always None and Dash
@@ -1002,10 +1024,51 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
     # `derived_virtual_data=df.to_rows('dict')` when you initialize
     # the component.
 
-    if derived_virtual_selected_rows is None:
+    if value == 'The World':
+      if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
-    dff = dfSum
+      dff = dfSum
+      latitude = 14.056159 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lat
+      longitude = 6.395626 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lon
+      zoom = 1.02 if len(derived_virtual_selected_rows) == 0 else 4
+
+    elif value == 'Australia':
+      if Australia_derived_virtual_selected_rows is None:
+        Australia_derived_virtual_selected_rows = []
+
+      dff = AUSTable
+      latitude = -25.931850 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lat
+      longitude = 134.024931 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lon
+      zoom = 3 if len(Australia_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'Canada':
+      if Canada_derived_virtual_selected_rows is None:
+        Canada_derived_virtual_selected_rows = []
+
+      dff = CANTable
+      latitude = 55.028781 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lat
+      longitude = -101.853919 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lon
+      zoom = 3 if len(Canada_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'Mainland China':
+      if CHN_derived_virtual_selected_rows is None:
+        CHN_derived_virtual_selected_rows = []
+
+      dff = CNTable
+      latitude = 33.471197 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lat
+      longitude = 106.206780 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lon
+      zoom = 2.5 if len(CHN_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'United States':
+      if US_derived_virtual_selected_rows is None:
+        US_derived_virtual_selected_rows = []
+
+      dff = USTable
+      latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
+      longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
+      zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
+
 
     mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
 
@@ -1071,13 +1134,11 @@ def update_figures(derived_virtual_selected_rows, selected_row_ids):
             # The direction you're facing, measured clockwise as an angle from true north on a compass
             bearing=0,
             center=go.layout.mapbox.Center(
-                lat=14.056159 if len(
-                    derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lat,
-                lon=6.395626 if len(
-                    derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lon
+                lat=latitude,
+                lon=longitude
             ),
             pitch=0,
-            zoom=1.02 if len(derived_virtual_selected_rows) == 0 else 4
+            zoom=zoom
         )
     )
 
@@ -1097,28 +1158,72 @@ def render_content(tab):
 
 @app.callback(
     Output('datatable-interact-lineplot', 'figure'),
-    [Input('datatable-interact-location', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location', 'selected_row_ids')]
+    [Input('tabs-table', 'value'),
+     Input('datatable-interact-location', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
+     Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-United States', 'selected_row_ids'),
+     ]
 )
-def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
+def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids, 
+  Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
+  US_derived_virtual_selected_rows, US_selected_row_ids
+  ):
 
-    if derived_virtual_selected_rows is None:
+    if value == 'The World':
+      if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
-    dff = dfSum
+      dff = dfSum
 
-    if selected_row_ids:
+      if selected_row_ids:
         if dff.loc[selected_row_ids[0]]['Country/Region'] == 'Mainland China':
-            Region = 'China'
+          Region = 'China'
         else:
-            Region = dff.loc[selected_row_ids[0]]['Country/Region']
-    else:
-        Region = 'Australia'
+          Region = dff.loc[selected_row_ids[0]]['Country/Region']
+      else:
+        Region = dff['Country/Region'][0] # Display country with the highest case numbers
+
+    elif value == 'Australia':
+      if Australia_derived_virtual_selected_rows is None:
+        Australia_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      Region = 'Australia'
+
+    elif value == 'Canada':
+      if Canada_derived_virtual_selected_rows is None:
+        Canada_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      Region = 'Canada'
+
+    elif value == 'Mainland China':
+      if Canada_derived_virtual_selected_rows is None:
+        Canada_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      Region = 'China'
+
+    elif value == 'United States':
+      if Canada_derived_virtual_selected_rows is None:
+        Canada_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      Region = 'US'
 
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
     df_region = df_region.astype(
-        {'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
+      {'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
 
     # Line plot for confirmed cases
     # Set up tick scale based on confirmed case number
@@ -1228,28 +1333,74 @@ def update_lineplot(derived_virtual_selected_rows, selected_row_ids):
 
     return fig3
 
-
 @app.callback(
     Output('datatable-interact-logplot', 'figure'),
-    [Input('datatable-interact-location', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location', 'selected_row_ids')]
+    [Input('tabs-table', 'value'),
+     Input('datatable-interact-location', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
+     Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-United States', 'selected_row_ids'),
+     ]
 )
-def update_logplot(derived_virtual_selected_rows, selected_row_ids):
-
-    if derived_virtual_selected_rows is None:
+def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
+  Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
+  US_derived_virtual_selected_rows, US_selected_row_ids
+  ):
+   
+    if value == 'The World':
+      if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
-    dff = dfSum
+      dff = dfSum
+      elapseDay = daysOutbreak
 
-    elapseDay = daysOutbreak
-
-    if selected_row_ids:
+      if selected_row_ids:
         if dff.loc[selected_row_ids[0]]['Country/Region'] == 'Mainland China':
-            Region = 'China'
+          Region = 'China'
         else:
-            Region = dff.loc[selected_row_ids[0]]['Country/Region']
-    else:
-        Region = 'Australia'
+          Region = dff.loc[selected_row_ids[0]]['Country/Region']
+      else:
+        Region = dff['Country/Region'][0]
+    
+    elif value == 'Australia':
+      if Australia_derived_virtual_selected_rows is None:
+        Australia_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      elapseDay = daysOutbreak
+      Region = 'Australia'
+
+    elif value == 'Canada':
+      if Canada_derived_virtual_selected_rows is None:
+        Canada_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      elapseDay = daysOutbreak
+      Region = 'Canada'
+
+    elif value == 'Mainland China':
+      if CHN_derived_virtual_selected_rows is None:
+        CHN_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      elapseDay = daysOutbreak
+      Region = 'China'
+
+    elif value == 'United States':
+      if US_derived_virtual_selected_rows is None:
+        US_derived_virtual_selected_rows = []
+
+      dff = dfSum
+      elapseDay = daysOutbreak
+      Region = 'US'
 
     # Create empty figure canvas
     fig_curve = go.Figure()
