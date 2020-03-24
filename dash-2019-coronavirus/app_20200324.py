@@ -206,11 +206,11 @@ daysOutbreak = (df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d
 dfs_curve = pd.read_csv('./lineplot_data/dfs_curve.csv')
 
 # Pseduo data for logplot
-pseduoDay = np.arange(1, daysOutbreak+1)
-y1 = 100*(1.85)**(pseduoDay-1)  # 85% growth rate
-y2 = 100*(1.35)**(pseduoDay-1)  # 35% growth rate
-y3 = 100*(1.15)**(pseduoDay-1)  # 15% growth rate
-y4 = 100*(1.05)**(pseduoDay-1)  # 5% growth rate
+pseduoDay = np.arange(0, daysOutbreak+1)
+y1 = 100*(2)**(pseduoDay)  # 100% growth rate, double every day
+y2 = 100*(1.414214)**(pseduoDay)  # 41.4% growth rate, double every two days
+y3 = 100*(1.259921)**(pseduoDay)  # 26% growth rate, double every three days
+y4 = 100*(1.104089)**(pseduoDay)  # 12.24% growth rate. double every week
 
 #############################################################################################
 # Start to make plots
@@ -563,7 +563,7 @@ fig_curve_tab = go.Figure()
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y1,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['85% growth rate' for i in pseduoDay],
+                                   text=['Double every day' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -571,7 +571,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y2,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['35% growth rate' for i in pseduoDay],
+                                   text=['Double every two days' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -579,7 +579,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y3,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['15% growth rate' for i in pseduoDay],
+                                   text=['Double every three days' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -587,7 +587,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
 fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    y=y4,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
-                                   text=['5% growth rate' for i in pseduoDay],
+                                   text=['Double every week' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1437,7 +1437,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y1,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                       '85% growth rate' for i in pseduoDay],
+                                       'Double every day' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1446,7 +1446,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y2,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                        '35% growth rate' for i in pseduoDay],
+                                        'Double every two days' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1455,7 +1455,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y3,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                        '15% growth rate' for i in pseduoDay],
+                                        'Double every three days' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )
@@ -1464,7 +1464,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    y=y4,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=[
-                                        '5% growth rate' for i in pseduoDay],
+                                        'Double every week' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
                                                  '<extra></extra>'
                             )

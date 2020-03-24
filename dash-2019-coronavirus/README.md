@@ -22,13 +22,14 @@ Additional details about how to build this dashboard can be accessed from [here]
 
 __To-do list:__
 
-- [x] Code optimisation for importing excel sheets data
-- [x] Add donation widge
-- [x] Add share slide
-- [x] Code optimisation for calling coordinates using opencage geocoder
-- [x] Code optimisation for scrapping data from various sources
-- [x] Code optimisation for generating overview lineplot/reduce response time
-- [x] Clicking table tab now triggers corresponding changes in the plots
+- [x] Code optimisation for importing excel sheets data 2020/03/01
+- [x] Add donation widge 2020/03/02
+- [x] Add share slide 2020/03/03
+- [x] Code optimisation for calling coordinates using opencage geocoder 2020/03/05
+- [x] Code optimisation for scrapping data from various sources 2020/03/15
+- [x] Code optimisation for generating overview lineplot/reduce response time 2020/03/18
+- [x] Clicking table tab now triggers corresponding changes in the plots 2020/03/24
+- [x] Adding support for plots of Province/States 2020/03/24
 - [ ] Layout and design
 
 ![App screenshot](./app_screenshot.gif)

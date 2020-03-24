@@ -989,7 +989,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                      html.P(style={'textAlign': 'center', 'margin': 'auto'},
                             children=[" 🙏 God Bless the World 🙏 |",
                                       " Developed by ", html.A('Jun', href='https://junye0798.com/'), " with ❤️ in Sydney | ",
-                                      html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus')])]),
+                                      html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus'), " | ",
+                                      html.A('Report a bug', href='twitter.com/perishleaf')])]),
         ])
 
 
