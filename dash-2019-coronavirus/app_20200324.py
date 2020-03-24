@@ -1325,7 +1325,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
             # Set tick label accordingly
             # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
-        xaxis_title="Select Country/Region From Table",
+        xaxis_title="Select A Location From Table",
         xaxis=dict(
             showline=False, linecolor='#272e3e',
             showgrid=False,
