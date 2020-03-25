@@ -226,7 +226,7 @@ html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
     font-size: 50%;
-    background-color: #1f2630;
+    background-color: #f4f4f2;
     max-width: 100% !important;
     width: 100% !important;
     margin: 0;
@@ -377,13 +377,14 @@ blockquote {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-    color: #1EAEDB;
-    text-decoration: underline;
+    color: #20b6e6;
+    text-decoration: none;
     cursor: pointer;
 }
 
 a:hover {
     color: #0FA0CE;
+    text-decoration: underline;
 }
 
 
@@ -797,6 +798,12 @@ hr {
         font-size: 2rem;
     }
 
+    #my-footer p {
+        font-family: Arial;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
     #dcc-plot h5 {
         font-size: 2rem;
         font-weight: bold;
@@ -845,6 +852,12 @@ hr {
     #number-plate h5{
         font-family: Arial;
         font-size: 2.5rem;
+    }
+
+    #my-footer p {
+        font-family: Arial;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 
     #dcc-plot h5 {
@@ -913,7 +926,9 @@ hr {
     }
 
     #my-footer p {
+        font-family: Arial;
         font-size: 1rem;
+        font-weight: bold;
     }
 
     #dcc-plot h5 {

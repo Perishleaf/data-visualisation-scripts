@@ -210,6 +210,9 @@ EuroTable = make_europe_table(europe_list)
 # Remove dummy row of recovered case number in USTable
 USTable = USTable.dropna(subset=['Province/State'])
 
+# Remove dummy row of recovered case number in CANTable
+CANTable = CANTable.dropna(subset=['Province/State'])
+
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
@@ -468,54 +471,52 @@ fig_rate.update_layout(
 )
 
 # Default cumulative plot for tab
-# Read cumulative data of a given region from ./cumulative_data folder
-# Default plot is the first country in the dfSum table
-df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format(dfSum['Country/Region'][0]))
-df_region_tab = df_region_tab.astype({'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
-
+# Default plot is an empty canvas
+#df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format('The World'))
+#df_region_tab = df_region_tab.astype({'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
 
 # Create empty figure canvas
 fig_cumulative_tab = go.Figure()
 # Add trace to the figure
-fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
-                                        y=df_region_tab['Confirmed'],
-                                        mode='lines+markers',
-                                        # line_shape='spline',
-                                        name='Confirmed case',
-                                        line=dict(color='#d7191c', width=2),
-                                        # marker=dict(size=4, color='#f4f4f2',
-                                        #            line=dict(width=1,color='#921113')),
-                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
-                                        hovertext=['{} Confirmed<br>{:,d} cases<br>'.format('Australia', i) for i in df_region_tab['Confirmed']],
-                                        hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                      '<extra></extra>'))
-fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
-                                        y=df_region_tab['Recovered'],
-                                        mode='lines+markers',
-                                        # line_shape='spline',
-                                        name='Recovered case',
-                                        line=dict(color='#1a9622', width=2),
-                                        # marker=dict(size=4, color='#f4f4f2',
-                                        #            line=dict(width=1,color='#168038')),
-                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
-                                        hovertext=['{} Recovered<br>{:,d} cases<br>'.format('Australia', i) for i in df_region_tab['Recovered']],
-                                        hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                      '<extra></extra>'))
-fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
-                                        y=df_region_tab['Deaths'],
-                                        mode='lines+markers',
-                                        # line_shape='spline',
-                                        name='Death case',
-                                        line=dict(color='#626262', width=2),
-                                        # marker=dict(size=4, color='#f4f4f2',
-                                        #            line=dict(width=1,color='#626262')),
-                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
-                                        hovertext=['{} Deaths<br>{:,d} cases<br>'.format('Australia', i) for i in df_region_tab['Deaths']],
-                                        hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                      '<extra></extra>'))
+#fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
+#                                        y=df_region_tab['Confirmed'],
+#                                        mode='lines+markers',
+#                                        # line_shape='spline',
+#                                        name='Confirmed case',
+#                                        line=dict(color='#d7191c', width=2),
+#                                        # marker=dict(size=4, color='#f4f4f2',
+#                                        #            line=dict(width=1,color='#921113')),
+#                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
+#                                        hovertext=['{} Confirmed<br>{:,d} cases<br>'.format('The World', i) for i in df_region_tab['Confirmed']],
+#                                        hovertemplate='<b>%{text}</b><br></br>' +
+#                                                      '%{hovertext}' +
+#                                                      '<extra></extra>'))
+#fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
+#                                        y=df_region_tab['Recovered'],
+#                                        mode='lines+markers',
+#                                        # line_shape='spline',
+#                                        name='Recovered case',
+#                                        line=dict(color='#1a9622', width=2),
+#                                        # marker=dict(size=4, color='#f4f4f2',
+#                                        #            line=dict(width=1,color='#168038')),
+#                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
+#                                        hovertext=['{} Recovered<br>{:,d} cases<br>'.format('The World', i) for i in df_region_tab['Recovered']],
+#                                        hovertemplate='<b>%{text}</b><br></br>' +
+#                                                      '%{hovertext}' +
+#                                                      '<extra></extra>'))
+#fig_cumulative_tab.add_trace(go.Scatter(x=df_region_tab['date_day'],
+#                                        y=df_region_tab['Deaths'],
+#                                        mode='lines+markers',
+#                                        # line_shape='spline',
+#                                        name='Death case',
+#                                        line=dict(color='#626262', width=2),
+#                                        # marker=dict(size=4, color='#f4f4f2',
+#                                        #            line=dict(width=1,color='#626262')),
+#                                        text=[datetime.strftime(d, '%b %d %Y AEDT') for d in df_region_tab['date_day']],
+#                                        hovertext=['{} Deaths<br>{:,d} cases<br>'.format('The World', i) for i in df_region_tab['Deaths']],
+#                                        hovertemplate='<b>%{text}</b><br></br>' +
+#                                                      '%{hovertext}' +
+#                                                      '<extra></extra>'))
 # Customise layout
 fig_cumulative_tab.update_layout(
         margin=go.layout.Margin(
@@ -525,19 +526,19 @@ fig_cumulative_tab.update_layout(
             t=5,
             pad=0
         ),
-        annotations=[
-            dict(
-                x=.5,
-                y=.4,
-                xref="paper",
-                yref="paper",
-                text=dfSum['Country/Region'][0],
-                opacity=0.5,
-                font=dict(family='Arial, sans-serif',
-                          size=60,
-                          color="grey"),
-            )
-        ],
+#        annotations=[
+#            dict(
+#                x=.5,
+#                y=.4,
+#                xref="paper",
+#                yref="paper",
+#                text='The World',
+#                opacity=0.5,
+#                font=dict(family='Arial, sans-serif',
+#                          size=60,
+#                          color="grey"),
+#            )
+#        ],
         yaxis_title="Cumulative cases numbers",
         yaxis=dict(
             showline=False, linecolor='#272e3e',
@@ -605,7 +606,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                                  '<extra></extra>'
                             )
 )
-for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'US']:
+for regionName in ['The World', 'China', 'Japan', 'Italy', 'South Korea', 'US']:
 
   dotgrayx_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
   dotgrayy_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -642,7 +643,7 @@ for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'US']:
 
 # Customise layout
 fig_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
-fig_curve_tab.update_yaxes(range=[1.9, 5.1])
+fig_curve_tab.update_yaxes(range=[1.9, 6])
 fig_curve_tab.update_layout(
         xaxis_title="Number of day since 100th confirmed cases",
         yaxis_title="Confirmed cases (Logarithmic)",
@@ -653,18 +654,18 @@ fig_curve_tab.update_layout(
             t=5,
             pad=0
             ),
-        annotations=[dict(
-            x=.5,
-            y=.4,
-            xref="paper",
-            yref="paper",
-            text=dfSum['Country/Region'][0] if dfSum['Country/Region'][0] in set(dfs_curve['Region']) else "Not over 100 cases",
-            opacity=0.5,
-            font=dict(family='Arial, sans-serif',
-                      size=60,
-                      color="grey"),
-                    )
-        ],
+        #annotations=[dict(
+        #    x=.5,
+        #    y=.4,
+        #    xref="paper",
+        #    yref="paper",
+        #    text=dfSum['Country/Region'][0] if dfSum['Country/Region'][0] in set(dfs_curve['Region']) else "Not over 100 cases",
+        #    opacity=0.5,
+        #    font=dict(family='Arial, sans-serif',
+        #              size=60,
+        #              color="grey"),
+        #            )
+        #],
         yaxis_type="log",
         yaxis=dict(
             showline=False, 
@@ -991,8 +992,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                               'Mainland China', CNTable),
                                           make_dcc_country_tab(
                                               'United States', USTable),
-                                          make_dcc_country_tab(
-                                               'Schengen', EuroTable),
+                                          #make_dcc_country_tab(
+                                          #     'Schengen', EuroTable),
                                       ]
                                   )
                               ])
@@ -1206,7 +1207,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         else:
           Region = dff.loc[selected_row_ids[0]]['Country/Region']
       else:
-        Region = dff['Country/Region'][0] # Display country with the highest case numbers
+        Region = 'The World' # Display the global total case number 
 
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -1396,7 +1397,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         else:
           Region = dff.loc[selected_row_ids[0]]['Country/Region']
       else:
-        Region = dff['Country/Region'][0]
+        Region = 'The World'
     
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -1492,7 +1493,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'DayElapsed'])[0]]
         doty = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'Confirmed'])[0]]
 
-        for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'US']:
+        for regionName in ['The World', 'China', 'Japan', 'Italy', 'South Korea', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -1555,7 +1556,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['China', 'Japan', 'Italy', 'South Korea', 'US']:
+        for regionName in ['The World','China', 'Japan', 'Italy', 'South Korea', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -1592,7 +1593,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
 
     # Customise layout
     fig_curve.update_xaxes(range=[0, elapseDay-19])
-    fig_curve.update_yaxes(range=[1.9, 5.1])
+    fig_curve.update_yaxes(range=[1.9, 6])
     fig_curve.update_layout(
         xaxis_title="Number of day since 100th confirmed cases",
         yaxis_title="Confirmed cases (Logarithmic)",
