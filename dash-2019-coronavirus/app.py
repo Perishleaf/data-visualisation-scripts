@@ -699,6 +699,7 @@ app = dash.Dash(__name__,
                 assets_folder='./assets/',
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
+                    {"name": "keywords", "content": "COVID-19, dashborad, global cases, coronavirus, monitor"},
                     {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
@@ -804,7 +805,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                 html.P(
                   id='time-stamp',
                   # style={'fontWeight':'bold'},
-                       children="🔴 Last update: {}".format(latestDate))
+                       children="🔴 Last update: {}. (👷Safari user may experience issue in displaying tables, I am working on it.🔧)".format(latestDate))
                     ]
                 ),
         html.Div(
@@ -934,7 +935,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                               children=[
                                   html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
-                                               children='Cases by Country/Region'),
+                                               children='Cases Summary by Location'),
                                   dcc.Tabs(
                                       id="tabs-table",
                                       value='The World',
@@ -993,11 +994,11 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                           make_dcc_country_tab(
                                               'Canada', CANTable),
                                           make_dcc_country_tab(
+                                               'Europe', EuroTable),
+                                          make_dcc_country_tab(
                                               'Mainland China', CNTable),
                                           make_dcc_country_tab(
                                               'United States', USTable),
-                                          #make_dcc_country_tab(
-                                          #     'Schengen', EuroTable),
                                       ]
                                   )
                               ])
@@ -1035,6 +1036,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
@@ -1044,6 +1047,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
 def update_figures(value, derived_virtual_selected_rows, selected_row_ids, 
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
@@ -1101,6 +1105,15 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
       longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
       zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'Europe':
+      if Europe_derived_virtual_selected_rows is None:
+        Europe_derived_virtual_selected_rows = []
+
+      dff = EuroTable
+      latitude = 52.405175 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lat
+      longitude = 11.403996 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lon
+      zoom = 2.5 if len(Europe_derived_virtual_selected_rows) == 0 else 5
 
 
     mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
@@ -1198,6 +1211,8 @@ def render_content(tab):
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
@@ -1207,6 +1222,7 @@ def render_content(tab):
 def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids, 
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
@@ -1264,6 +1280,16 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = dff.loc[US_selected_row_ids[0]]['Province/State']
       else:
         Region = 'US'
+
+    elif value == 'Europe':
+      if Europe_derived_virtual_selected_rows is None:
+        Europe_derived_virtual_selected_rows = []
+
+      dff = EuroTable
+      if Europe_selected_row_ids:
+        Region = dff.loc[Europe_selected_row_ids[0]]['Country/Region']
+      else:
+        Region = 'Europe' # Display the Europe total case number 
 
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
@@ -1387,6 +1413,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
@@ -1396,6 +1424,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
 def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
@@ -1462,6 +1491,18 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = dff.loc[US_selected_row_ids[0]]['Province/State']
       else:
         Region = 'US'
+
+    elif value == 'Europe':
+      if Europe_derived_virtual_selected_rows is None:
+        Europe_derived_virtual_selected_rows = []
+
+      dff = EuroTable
+      elapseDay = daysOutbreak
+
+      if Europe_selected_row_ids:
+        Region = dff.loc[Europe_selected_row_ids[0]]['Country/Region']
+      else:
+        Region = 'Europe'
 
     # Create empty figure canvas
     fig_curve = go.Figure()
