@@ -15,6 +15,7 @@ Data sourced from
 * [National Health Commission of the People's Republic of China](http://www.nhc.gov.cn/)
 * [JCU-CSSE](https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#)
 * [2020 coronavirus pandemic in Australia](https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Australia)
+* [COVID-19 in US and Canada by 1Point3Acres](https://coronavirus.1point3acres.com/en)
 
 Dashboard is deployed on Heroku and can be accessed from https://dash-coronavirus-2020.herokuapp.com/
 
