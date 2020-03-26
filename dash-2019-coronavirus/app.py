@@ -211,6 +211,9 @@ EuroTable = make_europe_table(europe_list)
 # Remove dummy row of recovered case number in USTable
 USTable = USTable.dropna(subset=['Province/State'])
 
+# Remove dummy row of recovered case number in USTable
+CANTable = CANTable.dropna(subset=['Province/State'])
+
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
@@ -396,7 +399,7 @@ fig_combine.update_layout(
 
 # Line plot for death rate cases
 # Set up tick scale based on death case number of Mainland China
-tickList = np.arange(0, (df_deaths['Other locations']/df_confirmed['Other locations']*100).max()+0.2, 0.5)
+tickList = np.arange(0, (df_deaths['Other locations']/df_confirmed['Other locations']*100).max()+0.5, 0.5)
 
 # Create empty figure canvas
 fig_rate = go.Figure()
@@ -696,7 +699,7 @@ app = dash.Dash(__name__,
                 assets_folder='./assets/',
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
-                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus."},
+                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"property": "og:type", "content": "website"},
@@ -704,13 +707,13 @@ app = dash.Dash(__name__,
                     {"property": "og:url",
                         "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property": "og:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus."},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"name": "twitter:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus."},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
                     {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport",
                         "content": "width=device-width, height=device-height, initial-scale=1.0"}
