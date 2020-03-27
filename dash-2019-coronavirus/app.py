@@ -11,6 +11,7 @@ from plotly.subplots import make_subplots
 
 import dash
 import dash_table
+import dash_table.FormatTemplate as FormatTemplate
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
@@ -25,10 +26,11 @@ def make_country_table(countryName):
     countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
     # Suppress SettingWithCopyWarning
     pd.options.mode.chained_assignment = None
-    countryTable['Remaining'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
-    countryTable = countryTable[['Province/State', 'Remaining', 'Confirmed', 'Recovered', 'Deaths', 'lat', 'lon']]
+    countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+    countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
+    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'lat', 'lon']]
     countryTable = countryTable.sort_values(
-        by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
+        by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
     # Set row ids pass to selected_row_ids
     countryTable['id'] = countryTable['Province/State']
     countryTable.set_index('id', inplace=True, drop=False)
@@ -41,10 +43,11 @@ def make_europe_table(europe_list):
   europe_table = df_latest.loc[df_latest['Country/Region'].isin(europe_list)]
   # Suppress SettingWithCopyWarning
   pd.options.mode.chained_assignment = None
-  europe_table['Remaining'] = europe_table['Confirmed'] - europe_table['Recovered'] - europe_table['Deaths']
-  europe_table = europe_table[['Country/Region', 'Remaining', 'Confirmed', 'Recovered', 'Deaths', 'lat', 'lon']]
+  europe_table['Active'] = europe_table['Confirmed'] - europe_table['Recovered'] - europe_table['Deaths']
+  europe_table['Death rate'] = europe_table['Deaths']/europe_table['Confirmed']
+  europe_table = europe_table[['Country/Region', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'lat', 'lon']]
   europe_table = europe_table.sort_values(
-        by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
+        by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
   # Set row ids pass to selected_row_ids
   europe_table['id'] = europe_table['Country/Region']
   europe_table.set_index('id', inplace=True, drop=False)
@@ -61,30 +64,34 @@ def make_dcc_country_tab(countryName, dataframe):
             children=[dash_table.DataTable(
                     id='datatable-interact-location-{}'.format(countryName),
                     # Don't show coordinates
-                    columns=[{"name": i, "id": i}
-                        for i in dataframe.columns[0:5]],
+                    columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                             if i == 'Death rate' else {"name": i, "id": i}
+                             for i in dataframe.columns[0:6]],
                     # But still store coordinates in the table for interactivity
                     data=dataframe.to_dict("rows"),
                     row_selectable="single" if countryName != 'Schengen' else False,
                     sort_action="native",
                     style_as_list_view=True,
                     style_cell={'font_family': 'Arial',
-                                  'font_size': '1.2rem',
+                                  'font_size': '1.1rem',
                                   'padding': '.1rem',
                                   'backgroundColor': '#f4f4f2', },
                     fixed_rows={'headers': True, 'data': 0},
                     style_table={'minHeight': '800px',
-                                   'height': '800px',
-                                   'maxHeight': '800px'},
+                                 'height': '800px',
+                                 'maxHeight': '800px',
+                                 #'overflowX': 'scroll'
+                                 },
                     style_header={'backgroundColor': '#f4f4f2',
                                     'fontWeight': 'bold'},
-                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '28%'},
-                                            {'if': {'column_id': 'Country/Region'}, 'width': '28%'},
-                                            {'if': {'column_id': 'Remaining'}, 'width': '18%'},
-                                            {'if': {'column_id': 'Confirmed'}, 'width': '18%'},
-                                            {'if': {'column_id': 'Recovered'}, 'width': '18%'},
-                                            {'if': {'column_id': 'Deaths'}, 'width': '18%'},
-                                            {'if': {'column_id': 'Remaining'}, 'color':'#e36209'},
+                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
+                                            {'if': {'column_id': 'Country/Region'}, 'width': '26%'},
+                                            {'if': {'column_id': 'Active'}, 'width': '14.2%'},
+                                            {'if': {'column_id': 'Confirmed'}, 'width': '15.8%'},
+                                            {'if': {'column_id': 'Recovered'}, 'width': '15.8%'},
+                                            {'if': {'column_id': 'Deaths'}, 'width': '14.2%'},
+                                            {'if': {'column_id': 'Death rate'}, 'width': '14%'},
+                                            {'if': {'column_id': 'Active'}, 'color':'#e36209'},
                                             {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
                                             {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
                                             {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
@@ -131,7 +138,7 @@ sheet_name.sort(reverse=True)
 #    # Convert time as Australian eastern daylight time
 #    dfs[key]['Date_last_updated_AEDT'] = [datetime.strptime(d, '%m/%d/%Y %H:%M') for d in dfs[key]['Last Update']]
 #    dfs[key]['Date_last_updated_AEDT'] = dfs[key]['Date_last_updated_AEDT'] + timedelta(hours=16)
-#   #dfs[key]['Remaining'] = dfs[key]['Confirmed'] - dfs[key]['Recovered'] - dfs[key]['Deaths']
+#   #dfs[key]['Active'] = dfs[key]['Confirmed'] - dfs[key]['Recovered'] - dfs[key]['Deaths']
 
 # Add coordinates for each area in the list for the latest table sheet
 # To save time, coordinates calling was done seperately
@@ -184,13 +191,14 @@ dfGPS = dfGPS[['Country/Region', 'lat', 'lon']]
 # Merge two dataframes
 dfSum = pd.merge(dfCase, dfGPS, how='inner', on='Country/Region')
 dfSum = dfSum.replace({'Country/Region': 'China'}, 'Mainland China')
-dfSum['Remaining'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
+dfSum['Active'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
+dfSum['Death rate'] = dfSum['Deaths']/dfSum['Confirmed']
 # Rearrange columns to correspond to the number plate order
-dfSum = dfSum[['Country/Region', 'Remaining',
-    'Confirmed', 'Recovered', 'Deaths', 'lat', 'lon']]
-# Sort value based on Remaining cases and then Confirmed cases
+dfSum = dfSum[['Country/Region', 'Active',
+    'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'lat', 'lon']]
+# Sort value based on Active cases and then Confirmed cases
 dfSum = dfSum.sort_values(
-    by=['Remaining', 'Confirmed'], ascending=False).reset_index(drop=True)
+    by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
 # Set row ids pass to selected_row_ids
 dfSum['id'] = dfSum['Country/Region']
 dfSum.set_index('id', inplace=True, drop=False)
@@ -348,13 +356,13 @@ fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
 fig_combine.add_trace(go.Scatter(x=df_remaining['Date'], y=df_remaining['Total'],
                                 mode='lines+markers',
                                 line_shape='spline',
-                                name='Total Remaining Cases',
+                                name='Total Active Cases',
                                 line=dict(color='#e36209', width=4),
                                 marker=dict(size=4, color='#f4f4f2',
                                             line=dict(width=1, color='#e36209')),
                                 text=[datetime.strftime(
                                     d, '%b %d %Y AEDT') for d in df_deaths['Date']],
-                                hovertext=['Total remaining<br>{:,d} cases<br>'.format(
+                                hovertext=['Total active<br>{:,d} cases<br>'.format(
                                     i) for i in df_remaining['Total']],
                                 hovertemplate='<b>%{text}</b><br></br>' +
                                               '%{hovertext}' +
@@ -892,7 +900,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                               children=[
                                   html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
-                                               children='Remaining/Recovered/Death Case Timeline'),
+                                               children='Active/Recovered/Death Case Timeline'),
                                   dcc.Graph(style={'height': '300px'}, figure=fig_combine)]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
@@ -950,8 +958,9 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                   dash_table.DataTable(
                                                       id='datatable-interact-location',
                                                       # Don't show coordinates
-                                                      columns=[{"name": i, "id": i}
-                                                          for i in dfSum.columns[0:5]],
+                                                      columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                                                               if i == 'Death rate' else {"name": i, "id": i}
+                                                               for i in dfSum.columns[0:6]],
                                                       # But still store coordinates in the table for interactivity
                                                       data=dfSum.to_dict(
                                                           "rows"),
@@ -959,7 +968,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                       sort_action="native",
                                                       style_as_list_view=True,
                                                       style_cell={'font_family': 'Arial',
-                                                                  'font_size': '1.2rem',
+                                                                  'font_size': '1.1rem',
                                                                   'padding': '.1rem',
                                                                   'backgroundColor': '#f4f4f2', },
                                                       fixed_rows={
@@ -969,17 +978,20 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                                    'maxHeight': '800px'},
                                                       style_header={'backgroundColor': '#f4f4f2',
                                                                     'fontWeight': 'bold'},
-                                                      style_cell_conditional=[{'if': {'column_id': 'Country/Regions'}, 'width': '28%'},
+                                                      style_cell_conditional=[{'if': {
+                                                                                  'column_id': 'Country/Regions'}, 'width': '26%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Remaining'}, 'width': '18%'},
+                                                                                  'column_id': 'Active'}, 'width': '14.2%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Confirmed'}, 'width': '18%'},
+                                                                                  'column_id': 'Confirmed'}, 'width': '15.8%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Recovered'}, 'width': '18%'},
+                                                                                  'column_id': 'Recovered'}, 'width': '15.8%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Deaths'}, 'width': '18%'},
+                                                                                  'column_id': 'Deaths'}, 'width': '14.2%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Remaining'}, 'color':'#e36209'},
+                                                                                  'column_id': 'Death rate'}, 'width': '14%'},
+                                                                              {'if': {
+                                                                                  'column_id': 'Active'}, 'color':'#e36209'},
                                                                               {'if': {
                                                                                   'column_id': 'Confirmed'}, 'color': '#d7191c'},
                                                                               {'if': {
@@ -1150,9 +1162,10 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
                            for i in df_latest['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}'.format(i, j, k) for i, j, k in zip(df_latest['Confirmed'],
-                                                                                                             df_latest['Recovered'],
-                                                                                                             df_latest['Deaths'])],
+        hovertext=['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}'.format(i, j, k, t) for i, j, k, t in zip(df_latest['Confirmed'],
+                                                                                                                                         df_latest['Recovered'],
+                                                                                                                                         df_latest['Deaths'],
+                                                                                                                                         df_latest['Deaths']/df_latest['Confirmed'])],
         hovertemplate="<b>%{text}</b><br><br>" +
                         "%{hovertext}<br>" +
                         "<extra></extra>")
@@ -1304,6 +1317,22 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
     fig3 = go.Figure()
     # Add trace to the figure
     fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                             y=df_region['New'],
+                             fill='tozeroy',
+                             mode='lines',
+                             line_shape='spline',
+                             name='Daily confirmed case',
+                             line=dict(color='rgba(215, 25, 28, .2)', width=2),
+                             # marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#626262')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT')
+                                                     for d in df_region['date_day']],
+                             hovertext=['Daily confirmed cases {:,d} <br>'.format(
+                                 i) for i in df_region['New']],
+                             hovertemplate='<b>%{text}</b><br></br>' +
+                                                     '%{hovertext}' +
+                                                     '<extra></extra>'))
+    fig3.add_trace(go.Scatter(x=df_region['date_day'],
                              y=df_region['Confirmed'],
                              mode='lines+markers',
                              # line_shape='spline',
@@ -1348,7 +1377,6 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                              hovertemplate='<b>%{text}</b><br></br>' +
                                                      '%{hovertext}' +
                                                      '<extra></extra>'))
-
     # Customise layout
     fig3.update_layout(
         margin=go.layout.Margin(
@@ -1384,7 +1412,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
             # Set tick label accordingly
             # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
-        xaxis_title="Select A Location From Table",
+        xaxis_title="Select a location from the table (Toggle the legend to see specific curves)",
         xaxis=dict(
             showline=False, linecolor='#272e3e',
             showgrid=False,
