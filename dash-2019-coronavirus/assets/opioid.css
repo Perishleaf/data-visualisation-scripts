@@ -226,10 +226,11 @@ html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
     font-size: 50%;
-    background-color: #f4f4f2;
+    background-color: #fafbfd;
     max-width: 100% !important;
     width: 100% !important;
     margin: 0;
+
 }
 
 body {
@@ -567,6 +568,12 @@ table {
     border-collapse: collapse;
 }
 
+.dash-spreadsheet .row {
+  flex-wrap: nowrap;
+  margin-right:0px;
+  margin-left:0px
+}
+
 th,
 td {
     padding: 12px 15px;
@@ -638,7 +645,7 @@ ol {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 hr {
     margin-top: 3rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
     border-width: 0;
     border-top: 1px solid #E1E1E1;
 }
@@ -912,7 +919,7 @@ hr {
     }
 
     #number-plate h3 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     #number-plate h5 {

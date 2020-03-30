@@ -28,7 +28,8 @@ def make_country_table(countryName):
     pd.options.mode.chained_assignment = None
     countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
     countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
-    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'lat', 'lon']]
+    countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
+    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
     countryTable = countryTable.sort_values(
         by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
     # Set row ids pass to selected_row_ids
@@ -45,7 +46,8 @@ def make_europe_table(europe_list):
   pd.options.mode.chained_assignment = None
   europe_table['Active'] = europe_table['Confirmed'] - europe_table['Recovered'] - europe_table['Deaths']
   europe_table['Death rate'] = europe_table['Deaths']/europe_table['Confirmed']
-  europe_table = europe_table[['Country/Region', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'lat', 'lon']]
+  europe_table['Confirmed/100k'] = ((europe_table['Confirmed']/europe_table['Population'])*100000).round()
+  europe_table = europe_table[['Country/Region', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
   europe_table = europe_table.sort_values(
         by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
   # Set row ids pass to selected_row_ids
@@ -57,16 +59,66 @@ def make_europe_table(europe_list):
 
 def make_dcc_country_tab(countryName, dataframe):
     '''This is for generating tab component for country table'''
-    return dcc.Tab(label=countryName,
-            value=countryName,
-            className='custom-tab',
-            selected_className='custom-tab--selected',
-            children=[dash_table.DataTable(
+
+    if countryName == 'United States' or countryName == 'Canada':
+      return dcc.Tab(
+               id='tab-datatable-interact-location-{}'.format(countryName) if countryName == 'Canada' else 'tab-datatable-interact-location-US',
+               label=countryName,
+               value=countryName,
+               className='custom-tab',
+               selected_className='custom-tab--selected',
+               children=[dash_table.DataTable(
                     id='datatable-interact-location-{}'.format(countryName),
                     # Don't show coordinates
                     columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
                              if i == 'Death rate' else {"name": i, "id": i}
-                             for i in dataframe.columns[0:6]],
+                             for i in [dataframe.columns[0], dataframe.columns[2]]+ list(dataframe.columns[4:7])],
+                    # But still store coordinates in the table for interactivity
+                    data=dataframe.to_dict("rows"),
+                    row_selectable="single" if countryName != 'Schengen' else False,
+                    sort_action="native",
+                    style_as_list_view=True,
+                    style_cell={'font_family': 'Arial',
+                                'font_size': '1.1rem',
+                                'padding': '.1rem',
+                                'backgroundColor': '#ffffff', },
+                    fixed_rows={'headers': True, 'data': 0},
+                    style_table={'minHeight': '800px',
+                                 'height': '800px',
+                                 'maxHeight': '800px',
+                                 #'overflowX': 'scroll',
+                                 },
+                    style_header={'backgroundColor': '#ffffff',
+                                  'fontWeight': 'bold'},
+                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '36%'},
+                                            {'if': {'column_id': 'Country/Region'}, 'width': '36%'},
+                                            #{'if': {'column_id': 'Active'}, 'width': '15.6%'},
+                                            {'if': {'column_id': 'Confirmed'}, 'width': '15%'},
+                                            #{'if': {'column_id': 'Recovered'}, 'width': '15.6%'},
+                                            {'if': {'column_id': 'Deaths'}, 'width': '15%'},
+                                            {'if': {'column_id': 'Death rate'}, 'width': '15%'},
+                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '19%'},
+                                            {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                            {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                            #{'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                            {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                            {'textAlign': 'center'}],
+                        ),
+            ]
+          )
+    else:
+      return dcc.Tab(
+               id='tab-datatable-interact-location-{}'.format(countryName),
+               label=countryName,
+               value=countryName,
+               className='custom-tab',
+               selected_className='custom-tab--selected',
+               children=[dash_table.DataTable(
+                    id='datatable-interact-location-{}'.format(countryName),
+                    # Don't show coordinates
+                    columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                             if i == 'Death rate' else {"name": i, "id": i}
+                             for i in dataframe.columns[0:7]],
                     # But still store coordinates in the table for interactivity
                     data=dataframe.to_dict("rows"),
                     row_selectable="single" if countryName != 'Schengen' else False,
@@ -75,30 +127,32 @@ def make_dcc_country_tab(countryName, dataframe):
                     style_cell={'font_family': 'Arial',
                                   'font_size': '1.1rem',
                                   'padding': '.1rem',
-                                  'backgroundColor': '#f4f4f2', },
+                                  'backgroundColor': '#ffffff', },
                     fixed_rows={'headers': True, 'data': 0},
                     style_table={'minHeight': '800px',
                                  'height': '800px',
                                  'maxHeight': '800px',
-                                 #'overflowX': 'scroll'
+                                 #'overflowX': 'scroll',
                                  },
-                    style_header={'backgroundColor': '#f4f4f2',
+                    style_header={'backgroundColor': '#ffffff',
                                     'fontWeight': 'bold'},
                     style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
                                             {'if': {'column_id': 'Country/Region'}, 'width': '26%'},
-                                            {'if': {'column_id': 'Active'}, 'width': '14.2%'},
-                                            {'if': {'column_id': 'Confirmed'}, 'width': '15.8%'},
-                                            {'if': {'column_id': 'Recovered'}, 'width': '15.8%'},
-                                            {'if': {'column_id': 'Deaths'}, 'width': '14.2%'},
-                                            {'if': {'column_id': 'Death rate'}, 'width': '14%'},
+                                            {'if': {'column_id': 'Active'}, 'width': '10%'},
+                                            {'if': {'column_id': 'Confirmed'}, 'width': '12.3%'},
+                                            {'if': {'column_id': 'Recovered'}, 'width': '12.3%'},
+                                            {'if': {'column_id': 'Deaths'}, 'width': '10%'},
+                                            {'if': {'column_id': 'Death rate'}, 'width': '12.3%'},
+                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '17%'},
                                             {'if': {'column_id': 'Active'}, 'color':'#e36209'},
                                             {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
                                             {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
                                             {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
                                             {'textAlign': 'center'}],
-                        )
+                        ),
             ]
           )
+
 
 
 ################################################################################
@@ -193,9 +247,10 @@ dfSum = pd.merge(dfCase, dfGPS, how='inner', on='Country/Region')
 dfSum = dfSum.replace({'Country/Region': 'China'}, 'Mainland China')
 dfSum['Active'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
 dfSum['Death rate'] = dfSum['Deaths']/dfSum['Confirmed']
+dfSum['Confirmed/100k'] = ((dfSum['Confirmed']/dfSum['Population'])*100000).round()
 # Rearrange columns to correspond to the number plate order
 dfSum = dfSum[['Country/Region', 'Active',
-    'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'lat', 'lon']]
+    'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
 # Sort value based on Active cases and then Confirmed cases
 dfSum = dfSum.sort_values(
     by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
@@ -313,8 +368,8 @@ fig_confirmed.update_layout(
     hovermode='x',
     legend_orientation="h",
 #   legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-    plot_bgcolor='#f4f4f2',
-    paper_bgcolor='#cbd2d3',
+    plot_bgcolor='#ffffff',
+    paper_bgcolor='#ffffff',
     font=dict(color='#292929', size=10)
 )
 
@@ -400,8 +455,8 @@ fig_combine.update_layout(
     hovermode='x',
     legend_orientation="h",
     # legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-    plot_bgcolor='#f4f4f2',
-    paper_bgcolor='#cbd2d3',
+    plot_bgcolor='#ffffff',
+    paper_bgcolor='#ffffff',
     font=dict(color='#292929', size=10)
 )
 
@@ -474,8 +529,8 @@ fig_rate.update_layout(
     hovermode='x',
     legend_orientation="h",
     # legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-    plot_bgcolor='#f4f4f2',
-    paper_bgcolor='#cbd2d3',
+    plot_bgcolor='#ffffff',
+    paper_bgcolor='#ffffff',
     font=dict(color='#292929', size=10)
 )
 
@@ -574,8 +629,8 @@ fig_cumulative_tab.update_layout(
         hovermode='x',
         legend_orientation="h",
         legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-        plot_bgcolor='#f4f4f2',
-        paper_bgcolor='#cbd2d3',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
         font=dict(color='#292929', size=10)
     )
 
@@ -615,7 +670,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                                  '<extra></extra>'
                             )
 )
-for regionName in ['The World', 'China', 'Japan', 'Italy', 'South Korea', 'US']:
+for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
 
   dotgrayx_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
   dotgrayy_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -694,21 +749,23 @@ fig_curve_tab.update_layout(
         ),
         showlegend=False,
         # hovermode = 'x',
-        plot_bgcolor='#f4f4f2',
-        paper_bgcolor='#cbd2d3',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
         font=dict(color='#292929', size=10)
     )
 
 ##################################################################################################
 # Start dash app
 ##################################################################################################
+BS = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 
 app = dash.Dash(__name__,
                 assets_folder='./assets/',
+                external_stylesheets=[BS],
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
                     {"name": "keywords", "content": "COVID-19, dashborad, global cases, coronavirus, monitor"},
-                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
+                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwhile, please keep calm, stay home and wash your hand!"},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"property": "og:type", "content": "website"},
@@ -716,13 +773,13 @@ app = dash.Dash(__name__,
                     {"property": "og:url",
                         "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property": "og:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwhile, please keep calm, stay home and wash your hand!"},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"name": "twitter:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwile, please keep calm, stay home and wash your hand!"},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwhile, please keep calm, stay home and wash your hand!"},
                     {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport",
                         "content": "width=device-width, height=device-height, initial-scale=1.0"}
@@ -768,9 +825,9 @@ server = app.server
 
 app.config['suppress_callback_exceptions'] = True
 
-app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
+app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
     children=[
-        html.Div(
+        html.Div(style={'marginRight': '1.5%',},
             id="header",
             children=[
                 html.H4(
@@ -813,23 +870,26 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                 html.P(
                   id='time-stamp',
                   # style={'fontWeight':'bold'},
-                       children="🔴 Last update: {}. (👷Safari user may experience issue in displaying tables, I am working on it.🔧)".format(latestDate))
+                       children="🔴 Last update: {}. (👷Safari user may experience issue in displaying tables, I am working on it.🔧)".format(latestDate)
+                       ),
+                html.Hr(style={'marginTop': '.5%'},),
                     ]
                 ),
         html.Div(
             id="number-plate",
             style={'marginLeft': '1.5%',
-                'marginRight': '1.5%', 'marginBottom': '.5%'},
+                'marginRight': '1.5%', 'marginBottom': '.8%'},
                  children=[
                      #html.Hr(),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top'},
+                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                                'marginRight': '.8%', 'verticalAlign': 'top', 
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                  'fontWeight': 'bold', 'color': '#2674f6'},
                                                children=[
-                                                   html.P(style={'color': '#cbd2d3', 'padding': '.5rem'},
+                                                   html.P(style={'color': '#ffffff', 'padding': '.5rem'},
                                                               children='xxxx xx xxx xxxx xxx xxxxx'),
                                                    '{}'.format(daysOutbreak),
                                                ]),
@@ -837,8 +897,9 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children="Days Since Outbreak")
                                        ]),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top'},
+                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                                'marginRight': '.8%', 'verticalAlign': 'top', 
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                  'fontWeight': 'bold', 'color': '#d7191c'},
@@ -852,8 +913,9 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children="Confirmed Cases")
                                        ]),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top'},
+                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                                'marginRight': '.8%', 'verticalAlign': 'top', 
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                        'fontWeight': 'bold', 'color': '#1a9622'},
@@ -867,8 +929,9 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children="Recovered Cases")
                                        ]),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
-                                'verticalAlign': 'top'},
+                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                                'verticalAlign': 'top', 
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                        'fontWeight': 'bold', 'color': '#6c6c6c'},
@@ -883,41 +946,64 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                           ]),
         html.Div(
             id='dcc-plot',
-            style={'marginLeft': '1.5%', 'marginRight': '1.5%',
-                'marginBottom': '.35%', 'marginTop': '.5%'},
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'backgroundColor': '#ffffff',
+                   'marginBottom': '.8%', 'marginTop': '.5%',
+                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                },
                  children=[
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                             'marginRight': '.8%', 'verticalAlign': 'top'},
-                              children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
-                                               children='Confirmed Case Timeline'),
-                                  dcc.Graph(style={'height': '300px'}, figure=fig_confirmed)]),
+                                'marginRight': '.8%', 'verticalAlign': 'top',
+                                #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                                },
+                         children=[
+                                  html.H5(
+                                    style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
+                                    children='Confirmed Case Timeline'),
+                                  dcc.Graph(
+                                    style={'height': '300px'}, 
+                                    figure=fig_confirmed),
+                                  ]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                             'marginRight': '.8%', 'verticalAlign': 'top'},
-                              children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
-                                               children='Active/Recovered/Death Case Timeline'),
-                                  dcc.Graph(style={'height': '300px'}, figure=fig_combine)]),
+                                'marginRight': '.8%', 'verticalAlign': 'top',
+                                #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                                },
+                         children=[
+                                  html.H5(
+                                    style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
+                                    children='Active/Recovered/Death Case Timeline'),
+                                  dcc.Graph(
+                                    style={'height': '300px'}, 
+                                    figure=fig_combine),
+                                  ]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                             'verticalAlign': 'top'},
-                              children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
-                                               children='Death Rate (%) Timeline'),
-                                  dcc.Graph(style={'height': '300px'}, figure=fig_rate)])]),
+                                'verticalAlign': 'top',
+                                #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                                },
+                         children=[
+                                  html.H5(
+                                    style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
+                                    children='Death Rate (%) Timeline'),
+                                  dcc.Graph(
+                                    style={'height': '300px'}, 
+                                    figure=fig_rate),
+                                  ]),
+                     ]),
         html.Div(
             id='dcc-map',
             style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.5%'},
                  children=[
-                     html.Div(style={'width': '66.41%', 'marginRight': '.8%', 'display': 'inline-block', 'verticalAlign': 'top'},
+                     html.Div(style={'width': '61.31%', 'marginRight': '.8%', 'display': 'inline-block', 'verticalAlign': 'top',
+                                     'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                                     },
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
                                                children='Latest Coronavirus Outbreak Map'),
                                   dcc.Graph(
                                       id='datatable-interact-map',
@@ -939,10 +1025,11 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                   ),
                                   html.Div(id='tabs-content-plots'),
                               ]),
-                     html.Div(style={'width': '32.79%', 'display': 'inline-block', 'verticalAlign': 'top'},
+                     html.Div(style={'width': '37.89%', 'display': 'inline-block', 'verticalAlign': 'top',
+                                     'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
                                                children='Cases Summary by Location'),
                                   dcc.Tabs(
                                       id="tabs-table",
@@ -960,7 +1047,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                       # Don't show coordinates
                                                       columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
                                                                if i == 'Death rate' else {"name": i, "id": i}
-                                                               for i in dfSum.columns[0:6]],
+                                                               for i in dfSum.columns[0:7]],
                                                       # But still store coordinates in the table for interactivity
                                                       data=dfSum.to_dict(
                                                           "rows"),
@@ -970,26 +1057,30 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                       style_cell={'font_family': 'Arial',
                                                                   'font_size': '1.1rem',
                                                                   'padding': '.1rem',
-                                                                  'backgroundColor': '#f4f4f2', },
+                                                                  'backgroundColor': '#ffffff', },
                                                       fixed_rows={
                                                           'headers': True, 'data': 0},
                                                       style_table={'minHeight': '800px',
                                                                    'height': '800px',
-                                                                   'maxHeight': '800px'},
-                                                      style_header={'backgroundColor': '#f4f4f2',
+                                                                   'maxHeight': '800px',
+                                                                   #'overflowX': 'scroll',
+                                                                   },
+                                                      style_header={'backgroundColor': '#ffffff',
                                                                     'fontWeight': 'bold'},
                                                       style_cell_conditional=[{'if': {
-                                                                                  'column_id': 'Country/Regions'}, 'width': '26%'},
+                                                                                  'column_id': 'Country/Regions'}, 'width': '20%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Active'}, 'width': '14.2%'},
+                                                                                  'column_id': 'Active'}, 'width': '11%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Confirmed'}, 'width': '15.8%'},
+                                                                                  'column_id': 'Confirmed'}, 'width': '13.3%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Recovered'}, 'width': '15.8%'},
+                                                                                  'column_id': 'Recovered'}, 'width': '13.3%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Deaths'}, 'width': '14.2%'},
+                                                                                  'column_id': 'Deaths'}, 'width': '11%'},
                                                                               {'if': {
-                                                                                  'column_id': 'Death rate'}, 'width': '14%'},
+                                                                                  'column_id': 'Death rate'}, 'width': '13.3%'},
+                                                                              {'if': {
+                                                                                  'column_id': 'Confirmed/100k'}, 'width': '17.9%'},
                                                                               {'if': {
                                                                                   'column_id': 'Active'}, 'color':'#e36209'},
                                                                               {'if': {
@@ -1000,7 +1091,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                                                   'column_id': 'Deaths'}, 'color': '#6c6c6c'},
                                                                               {'textAlign': 'center'}],
                                                   )
-                                          ]),
+                                            ]),
                                           make_dcc_country_tab(
                                               'Australia', AUSTable),
                                           make_dcc_country_tab(
@@ -1011,10 +1102,33 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                               'Mainland China', CNTable),
                                           make_dcc_country_tab(
                                               'United States', USTable),
-                                      ]
-                                  )
-                              ])
-                 ]),
+                                          ]
+                                       )
+                                    ]),
+                                  dbc.Tooltip("Note that under National Notifiable Diseases Surveillance \
+                                               System reporting requirements, cases are reported based on their Australian \
+                                               jurisdiction of residence rather than where they were detected.\
+                                               Additionally, the recovered cases in NSW, QLD, SA, TAS, NT are not actively reported.",
+                                              target='tab-datatable-interact-location-Australia',
+                                              style={"font-size":"1.5em"},
+                                             ),
+                                  dbc.Tooltip("Since there are no reliable sources for recovered cases on Province/State level, \
+                                               the number of active cases and recovered cases were removed from the United States \
+                                               and Canada tables. Only their national sum of recovered cases are provided.",
+                                              target='tab-datatable-interact-location-Canada',
+                                              style={"font-size":"1.5em"},
+                                             ),
+                                  dbc.Tooltip("Since there are no reliable sources for recovered cases on Province/State level, \
+                                               the number of active cases and recovered cases were removed from the United States \
+                                               and Canada tables. Only their national sum of recovered cases are provided.",
+                                              target='tab-datatable-interact-location-US',
+                                              style={"font-size":"1.5em"},
+                                             ),
+                                  dbc.Tooltip("This list comprises 26 European countries within Schengen Area.",
+                                              target='tab-datatable-interact-location-Europe',
+                                              style={"font-size":"1.5em"},
+                                             ),
+                              ]),
         html.Div(
           id='my-footer',
           style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '1%', 'marginTop': '.5%'},
@@ -1025,6 +1139,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                       html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
                                       html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank')
+
                             ]
                       ),
                      html.P(style={'textAlign': 'center', 'margin': 'auto', 'marginTop': '.5%'},
@@ -1081,6 +1196,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 14.056159 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lat
       longitude = 6.395626 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lon
       zoom = 1.02 if len(derived_virtual_selected_rows) == 0 else 4
+      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -1090,6 +1207,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = -25.931850 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lat
       longitude = 134.024931 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lon
       zoom = 3 if len(Australia_derived_virtual_selected_rows) == 0 else 5
+      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
@@ -1099,6 +1218,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 55.474012 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lat
       longitude = -97.344913 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lon
       zoom = 3 if len(Canada_derived_virtual_selected_rows) == 0 else 5
+      hovertext_value = ['Confirmed: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, k, t, q) 
+                          for i, k, t, q in zip(df_latest['Confirmed'], df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'Mainland China':
       if CHN_derived_virtual_selected_rows is None:
@@ -1108,6 +1229,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 33.471197 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lat
       longitude = 106.206780 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lon
       zoom = 2.5 if len(CHN_derived_virtual_selected_rows) == 0 else 5
+      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'United States':
       if US_derived_virtual_selected_rows is None:
@@ -1117,6 +1240,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
       longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
       zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
+      hovertext_value = ['Confirmed: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, k, t, q) 
+                          for i, k, t, q in zip(df_latest['Confirmed'], df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'Europe':
       if Europe_derived_virtual_selected_rows is None:
@@ -1126,7 +1251,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 52.405175 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lat
       longitude = 11.403996 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lon
       zoom = 2.5 if len(Europe_derived_virtual_selected_rows) == 0 else 5
-
+      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
 
@@ -1162,24 +1288,21 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
                            for i in df_latest['Confirmed']])/(100.**2),
         ),
         text=textList,
-        hovertext=['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}'.format(i, j, k, t) for i, j, k, t in zip(df_latest['Confirmed'],
-                                                                                                                                         df_latest['Recovered'],
-                                                                                                                                         df_latest['Deaths'],
-                                                                                                                                         df_latest['Deaths']/df_latest['Confirmed'])],
+        hovertext=hovertext_value,
         hovertemplate="<b>%{text}</b><br><br>" +
                         "%{hovertext}<br>" +
                         "<extra></extra>")
     )
     fig2.update_layout(
-        plot_bgcolor='#151920',
-        paper_bgcolor='#cbd2d3',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
         margin=go.layout.Margin(l=10, r=10, b=10, t=0, pad=40),
         hovermode='closest',
         transition={'duration': 50},
         annotations=[
         dict(
             x=.5,
-            y=-.01,
+            y=-.0,
             align='center',
             showarrow=False,
             text="Points are placed based on data geolocation levels.<br>Province/State level - Australia, China, Canada, and United States; Country level- other countries.",
@@ -1275,8 +1398,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = 'Canada'
 
     elif value == 'Mainland China':
-      if Canada_derived_virtual_selected_rows is None:
-        Canada_derived_virtual_selected_rows = []
+      if CHN_derived_virtual_selected_rows is None:
+        CHN_derived_virtual_selected_rows = []
 
       dff = CNTable
       if CHN_selected_row_ids:
@@ -1285,8 +1408,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = 'China'
 
     elif value == 'United States':
-      if Canada_derived_virtual_selected_rows is None:
-        Canada_derived_virtual_selected_rows = []
+      if US_derived_virtual_selected_rows is None:
+        US_derived_virtual_selected_rows = []
 
       dff = USTable
       if US_selected_row_ids:
@@ -1309,30 +1432,27 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
     df_region = df_region.astype(
       {'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
 
-    # Line plot for confirmed cases
-    # Set up tick scale based on confirmed case number
-    # tickList = list(np.arange(0, df_confirmed['Mainland China'].max()+1000, 10000))
-
-    # Create empty figure canvas
-    fig3 = go.Figure()
-    # Add trace to the figure
-    fig3.add_trace(go.Scatter(x=df_region['date_day'],
-                             y=df_region['New'],
-                             fill='tozeroy',
-                             mode='lines',
-                             line_shape='spline',
-                             name='Daily confirmed case',
-                             line=dict(color='rgba(215, 25, 28, .2)', width=2),
-                             # marker=dict(size=4, color='#f4f4f2',
-                             #            line=dict(width=1,color='#626262')),
-                             text=[datetime.strftime(d, '%b %d %Y AEDT')
+    if dff is USTable or dff is CANTable:
+      # Create empty figure canvas
+      fig3 = go.Figure()
+      # Add trace to the figure
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                                y=df_region['New'],
+                                fill='tozeroy',
+                                mode='lines',
+                                line_shape='spline',
+                                name='Daily confirmed case',
+                                line=dict(color='rgba(215, 25, 28, .2)', width=2),
+                                # marker=dict(size=4, color='#f4f4f2',
+                                #            line=dict(width=1,color='#626262')),
+                                text=[datetime.strftime(d, '%b %d %Y AEDT')
                                                      for d in df_region['date_day']],
-                             hovertext=['Daily confirmed cases {:,d} <br>'.format(
-                                 i) for i in df_region['New']],
-                             hovertemplate='<b>%{text}</b><br></br>' +
-                                                     '%{hovertext}' +
+                                hovertext=['Daily confirmed cases {:,d} <br>'.format(
+                                  i) for i in df_region['New']],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                                      '%{hovertext}' +
                                                      '<extra></extra>'))
-    fig3.add_trace(go.Scatter(x=df_region['date_day'],
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
                              y=df_region['Confirmed'],
                              mode='lines+markers',
                              # line_shape='spline',
@@ -1347,22 +1467,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                              hovertemplate='<b>%{text}</b><br></br>' +
                                                      '%{hovertext}' +
                                                      '<extra></extra>'))
-    fig3.add_trace(go.Scatter(x=df_region['date_day'],
-                             y=df_region['Recovered'],
-                             mode='lines+markers',
-                             # line_shape='spline',
-                             name='Recovered case',
-                             line=dict(color='#1a9622', width=2),
-                             # marker=dict(size=4, color='#f4f4f2',
-                             #            line=dict(width=1,color='#168038')),
-                             text=[datetime.strftime(d, '%b %d %Y AEDT')
-                                                     for d in df_region['date_day']],
-                             hovertext=['{} Recovered<br>{:,d} cases<br>'.format(
-                                 Region, i) for i in df_region['Recovered']],
-                             hovertemplate='<b>%{text}</b><br></br>' +
-                                                     '%{hovertext}' +
-                                                     '<extra></extra>'))
-    fig3.add_trace(go.Scatter(x=df_region['date_day'],
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
                              y=df_region['Deaths'],
                              mode='lines+markers',
                              # line_shape='spline',
@@ -1377,8 +1482,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                              hovertemplate='<b>%{text}</b><br></br>' +
                                                      '%{hovertext}' +
                                                      '<extra></extra>'))
-    # Customise layout
-    fig3.update_layout(
+      # Customise layout
+      fig3.update_layout(
         margin=go.layout.Margin(
             l=10,
             r=10,
@@ -1425,12 +1530,131 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         hovermode='x',
         legend_orientation="h",
         legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-        plot_bgcolor='#f4f4f2',
-        paper_bgcolor='#cbd2d3',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
         font=dict(color='#292929', size=10)
-    )
+      )
 
-    return fig3
+      return fig3
+    else:
+      # Create empty figure canvas
+      fig3 = go.Figure()
+      # Add trace to the figure
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                                y=df_region['New'],
+                                fill='tozeroy',
+                                mode='lines',
+                                line_shape='spline',
+                                name='Daily confirmed case',
+                                line=dict(color='rgba(215, 25, 28, .2)', width=2),
+                                # marker=dict(size=4, color='#f4f4f2',
+                                #            line=dict(width=1,color='#626262')),
+                                text=[datetime.strftime(d, '%b %d %Y AEDT')
+                                                     for d in df_region['date_day']],
+                                hovertext=['Daily confirmed cases {:,d} <br>'.format(
+                                  i) for i in df_region['New']],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                                      '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                             y=df_region['Confirmed'],
+                             mode='lines+markers',
+                             # line_shape='spline',
+                             name='Confirmed case',
+                             line=dict(color='#d7191c', width=2),
+                             # marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#921113')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT')
+                                                     for d in df_region['date_day']],
+                             hovertext=['{} Confirmed<br>{:,d} cases<br>'.format(
+                                 Region, i) for i in df_region['Confirmed']],
+                             hovertemplate='<b>%{text}</b><br></br>' +
+                                                     '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                             y=df_region['Recovered'],
+                             mode='lines+markers',
+                             # line_shape='spline',
+                             name='Recovered case',
+                             line=dict(color='#1a9622', width=2),
+                             # marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#168038')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT')
+                                                     for d in df_region['date_day']],
+                             hovertext=['{} Recovered<br>{:,d} cases<br>'.format(
+                                 Region, i) for i in df_region['Recovered']],
+                             hovertemplate='<b>%{text}</b><br></br>' +
+                                                     '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                             y=df_region['Deaths'],
+                             mode='lines+markers',
+                             # line_shape='spline',
+                             name='Death case',
+                             line=dict(color='#626262', width=2),
+                             # marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#626262')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT')
+                                                     for d in df_region['date_day']],
+                             hovertext=['{} Deaths<br>{:,d} cases<br>'.format(
+                                 Region, i) for i in df_region['Deaths']],
+                             hovertemplate='<b>%{text}</b><br></br>' +
+                                                     '%{hovertext}' +
+                                                     '<extra></extra>'))
+      # Customise layout
+      fig3.update_layout(
+        margin=go.layout.Margin(
+            l=10,
+            r=10,
+            b=10,
+            t=5,
+            pad=0
+        ),
+        annotations=[
+            dict(
+                x=.5,
+                y=.4,
+                xref="paper",
+                yref="paper",
+                text=Region,
+                opacity=0.5,
+                font=dict(family='Arial, sans-serif',
+                          size=60,
+                          color="grey"),
+            )
+        ],
+        yaxis_title="Cumulative cases numbers",
+        yaxis=dict(
+            showline=False, linecolor='#272e3e',
+            zeroline=False,
+            # showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth=.1,
+            tickmode='array',
+            # Set tick range based on the maximum number
+            # tickvals=tickList,
+            # Set tick label accordingly
+            # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
+        ),
+        xaxis_title="Select a location from the table (Toggle the legend to see specific curves)",
+        xaxis=dict(
+            showline=False, linecolor='#272e3e',
+            showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth=.1,
+            zeroline=False
+        ),
+        xaxis_tickformat='%b %d',
+        # transition = {'duration':500},
+        hovermode='x',
+        legend_orientation="h",
+        legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
+        font=dict(color='#292929', size=10)
+      )
+
+      return fig3
 
 @app.callback(
     Output('datatable-interact-logplot', 'figure'),
@@ -1578,7 +1802,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'DayElapsed'])[0]]
         doty = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'Confirmed'])[0]]
 
-        for regionName in ['The World', 'China', 'Japan', 'Italy', 'South Korea', 'US']:
+        for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -1641,7 +1865,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['The World','China', 'Japan', 'Italy', 'South Korea', 'US']:
+        for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -1720,8 +1944,8 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         ),
         showlegend=False,
         # hovermode = 'x',
-        plot_bgcolor='#f4f4f2',
-        paper_bgcolor='#cbd2d3',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
         font=dict(color='#292929', size=10)
     )
 

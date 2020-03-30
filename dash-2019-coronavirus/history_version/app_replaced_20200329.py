@@ -80,7 +80,8 @@ def make_dcc_country_tab(countryName, dataframe):
                     style_table={'minHeight': '800px',
                                  'height': '800px',
                                  'maxHeight': '800px',
-                                 'overflowX': 'scroll'},
+                                 #'overflowX': 'scroll'
+                                 },
                     style_header={'backgroundColor': '#f4f4f2',
                                     'fontWeight': 'bold'},
                     style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
@@ -312,8 +313,8 @@ fig_confirmed.update_layout(
     hovermode='x',
     legend_orientation="h",
 #   legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-    plot_bgcolor='#ffffff',
-    paper_bgcolor='#ffffff',
+    plot_bgcolor='#f4f4f2',
+    paper_bgcolor='#cbd2d3',
     font=dict(color='#292929', size=10)
 )
 
@@ -399,8 +400,8 @@ fig_combine.update_layout(
     hovermode='x',
     legend_orientation="h",
     # legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-    plot_bgcolor='#ffffff',
-    paper_bgcolor='#ffffff',
+    plot_bgcolor='#f4f4f2',
+    paper_bgcolor='#cbd2d3',
     font=dict(color='#292929', size=10)
 )
 
@@ -473,8 +474,8 @@ fig_rate.update_layout(
     hovermode='x',
     legend_orientation="h",
     # legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-    plot_bgcolor='#ffffff',
-    paper_bgcolor='#ffffff',
+    plot_bgcolor='#f4f4f2',
+    paper_bgcolor='#cbd2d3',
     font=dict(color='#292929', size=10)
 )
 
@@ -573,8 +574,8 @@ fig_cumulative_tab.update_layout(
         hovermode='x',
         legend_orientation="h",
         legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-        plot_bgcolor='#ffffff',
-        paper_bgcolor='#ffffff',
+        plot_bgcolor='#f4f4f2',
+        paper_bgcolor='#cbd2d3',
         font=dict(color='#292929', size=10)
     )
 
@@ -693,8 +694,8 @@ fig_curve_tab.update_layout(
         ),
         showlegend=False,
         # hovermode = 'x',
-        plot_bgcolor='#ffffff',
-        paper_bgcolor='#ffffff',
+        plot_bgcolor='#f4f4f2',
+        paper_bgcolor='#cbd2d3',
         font=dict(color='#292929', size=10)
     )
 
@@ -822,13 +823,13 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                  children=[
                      #html.Hr(),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 'border-radius': '.5rem'},
+                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
+                                'marginRight': '.8%', 'verticalAlign': 'top'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                  'fontWeight': 'bold', 'color': '#2674f6'},
                                                children=[
-                                                   html.P(style={'color': '#ffffff', 'padding': '.5rem'},
+                                                   html.P(style={'color': '#cbd2d3', 'padding': '.5rem'},
                                                               children='xxxx xx xxx xxxx xxx xxxxx'),
                                                    '{}'.format(daysOutbreak),
                                                ]),
@@ -836,8 +837,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children="Days Since Outbreak")
                                        ]),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 'border-radius': '.5rem'},
+                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
+                                'marginRight': '.8%', 'verticalAlign': 'top'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                  'fontWeight': 'bold', 'color': '#d7191c'},
@@ -851,8 +852,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children="Confirmed Cases")
                                        ]),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 'border-radius': '.5rem'},
+                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
+                                'marginRight': '.8%', 'verticalAlign': 'top'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                        'fontWeight': 'bold', 'color': '#1a9622'},
@@ -866,8 +867,8 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                children="Recovered Cases")
                                        ]),
                      html.Div(
-                         style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'verticalAlign': 'top', 'border-radius': '.5rem'},
+                         style={'width': '24.4%', 'backgroundColor': '#cbd2d3', 'display': 'inline-block',
+                                'verticalAlign': 'top'},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                        'fontWeight': 'bold', 'color': '#6c6c6c'},
@@ -887,25 +888,25 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                  children=[
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                             'marginRight': '.8%', 'verticalAlign': 'top', 'border-radius': '.5rem'},
+                             'marginRight': '.8%', 'verticalAlign': 'top'},
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
                                                children='Confirmed Case Timeline'),
                                   dcc.Graph(style={'height': '300px'}, figure=fig_confirmed)]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                             'marginRight': '.8%', 'verticalAlign': 'top', 'border-radius': '.5rem'},
+                             'marginRight': '.8%', 'verticalAlign': 'top'},
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
                                                children='Active/Recovered/Death Case Timeline'),
                                   dcc.Graph(style={'height': '300px'}, figure=fig_combine)]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                             'verticalAlign': 'top', 'border-radius': '.5rem'},
+                             'verticalAlign': 'top'},
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
                                                children='Death Rate (%) Timeline'),
                                   dcc.Graph(style={'height': '300px'}, figure=fig_rate)])]),
@@ -915,7 +916,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                  children=[
                      html.Div(style={'width': '66.41%', 'marginRight': '.8%', 'display': 'inline-block', 'verticalAlign': 'top'},
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
                                                children='Latest Coronavirus Outbreak Map'),
                                   dcc.Graph(
@@ -940,7 +941,7 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                               ]),
                      html.Div(style={'width': '32.79%', 'display': 'inline-block', 'verticalAlign': 'top'},
                               children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#cbd2d3',
                                                  'color': '#292929', 'padding': '1rem', 'marginBottom': '0'},
                                                children='Cases Summary by Location'),
                                   dcc.Tabs(
@@ -969,13 +970,13 @@ app.layout = html.Div(style={'backgroundColor': '#f4f4f2'},
                                                       style_cell={'font_family': 'Arial',
                                                                   'font_size': '1.1rem',
                                                                   'padding': '.1rem',
-                                                                  'backgroundColor': '#ffffff', },
+                                                                  'backgroundColor': '#f4f4f2', },
                                                       fixed_rows={
                                                           'headers': True, 'data': 0},
                                                       style_table={'minHeight': '800px',
                                                                    'height': '800px',
                                                                    'maxHeight': '800px'},
-                                                      style_header={'backgroundColor': '#ffffff',
+                                                      style_header={'backgroundColor': '#f4f4f2',
                                                                     'fontWeight': 'bold'},
                                                       style_cell_conditional=[{'if': {
                                                                                   'column_id': 'Country/Regions'}, 'width': '26%'},
@@ -1171,7 +1172,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
     )
     fig2.update_layout(
         plot_bgcolor='#151920',
-        paper_bgcolor='#ffffff',
+        paper_bgcolor='#cbd2d3',
         margin=go.layout.Margin(l=10, r=10, b=10, t=0, pad=40),
         hovermode='closest',
         transition={'duration': 50},
@@ -1424,8 +1425,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         hovermode='x',
         legend_orientation="h",
         legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
-        plot_bgcolor='#ffffff',
-        paper_bgcolor='#ffffff',
+        plot_bgcolor='#f4f4f2',
+        paper_bgcolor='#cbd2d3',
         font=dict(color='#292929', size=10)
     )
 
@@ -1719,8 +1720,8 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         ),
         showlegend=False,
         # hovermode = 'x',
-        plot_bgcolor='#ffffff',
-        paper_bgcolor='#ffffff',
+        plot_bgcolor='#f4f4f2',
+        paper_bgcolor='#cbd2d3',
         font=dict(color='#292929', size=10)
     )
 
