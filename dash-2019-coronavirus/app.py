@@ -764,8 +764,10 @@ app = dash.Dash(__name__,
                 external_stylesheets=[BS],
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
-                    {"name": "keywords", "content": "COVID-19, dashborad, global cases, coronavirus, monitor"},
-                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwhile, please keep calm, stay home and wash your hand!"},
+                    {"name": "keywords", "content": "COVID-19, dashborad, global cases, coronavirus, monitor, 世界，疫情, 冠状病毒, 肺炎, 新型肺炎"},
+                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus.\
+                      Until {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                     In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"property": "og:type", "content": "website"},
@@ -773,21 +775,22 @@ app = dash.Dash(__name__,
                     {"property": "og:url",
                         "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property": "og:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwhile, please keep calm, stay home and wash your hand!"},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus.\
+                      Until {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                     In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"name": "twitter:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus. In the meanwhile, please keep calm, stay home and wash your hand!"},
+                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus.\
+                      Until {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                     In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport",
                         "content": "width=device-width, height=device-height, initial-scale=1.0"}
                 ]
       )
-
-image_filename = './assets/TypeHuman.png'
-encoded_image = base64.b64encode(open(image_filename, 'rb').read())
 
 app.title = 'Coronavirus COVID-19 Global Monitor'
 
@@ -823,7 +826,7 @@ app.index_string = """<!DOCTYPE html>
 
 server = app.server
 
-app.config['suppress_callback_exceptions'] = True
+app.config['suppress_callback_exceptions'] = True # This is to prevent app crash when loading since we have plot that only render when user clicks.
 
 app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
     children=[
@@ -836,7 +839,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     id="description",
                     children="On Dec 31, 2019, the World Health Organization (WHO) was informed of \
                     an outbreak of “pneumonia of unknown cause” detected in Wuhan City, Hubei Province, China – the \
-                    seventh-largest city in China with 11 million residents. As of {}, there are over {:,d} cases \
+                    seventh-largest city in China with 11 million residents. As of {}, there are {:,d} cases \
                     of COVID-19 confirmed globally.\
                     This dash board is developed to visualise and track the recent reported \
                     cases on a hourly timescale.".format(latestDate, confirmedCases),
@@ -894,7 +897,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                    '{}'.format(daysOutbreak),
                                                ]),
                                   html.H5(style={'textAlign': 'center', 'color': '#2674f6', 'padding': '.1rem'},
-                                               children="Days Since Outbreak")
+                                               children="days since outbreak")
                                        ]),
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
@@ -910,7 +913,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                         confirmedCases)
                                                          ]),
                                   html.H5(style={'textAlign': 'center', 'color': '#d7191c', 'padding': '.1rem'},
-                                               children="Confirmed Cases")
+                                               children="confirmed cases")
                                        ]),
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
@@ -926,7 +929,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                        recoveredCases),
                                                ]),
                                   html.H5(style={'textAlign': 'center', 'color': '#1a9622', 'padding': '.1rem'},
-                                               children="Recovered Cases")
+                                               children="recovered cases")
                                        ]),
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
@@ -941,7 +944,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                     '{:,d}'.format(deathsCases)
                                                 ]),
                                   html.H5(style={'textAlign': 'center', 'color': '#6c6c6c', 'padding': '.1rem'},
-                                               children="Death Cases")
+                                               children="death cases")
                                        ])
                           ]),
         html.Div(
@@ -1105,13 +1108,21 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                           ]
                                        )
                                     ]),
-                                  dbc.Tooltip("Note that under National Notifiable Diseases Surveillance \
-                                               System reporting requirements, cases are reported based on their Australian \
-                                               jurisdiction of residence rather than where they were detected.\
-                                               Additionally, the recovered cases in NSW, QLD, SA, TAS, NT are not actively reported.",
-                                              target='tab-datatable-interact-location-Australia',
-                                              style={"font-size":"1.5em"},
-                                             ),
+                                  dbc.Tooltip(
+                                    target='tab-datatable-interact-location-Australia',
+                                    style={"font-size":"1.5em"},
+                                    children=dcc.Markdown(
+                                      children=(
+                                        '''
+                                        Note that under _National Notifiable Diseases Surveillance
+                                        System_ reporting requirements, cases are reported based on their Australian
+                                        jurisdiction of residence rather than where they were detected.
+
+                                        Additionally, the recovered cases in NSW, QLD, SA, TAS, NT are not actively reported.
+                                        '''
+                                        )
+                                      )                                              
+                                    ),
                                   dbc.Tooltip("Since there are no reliable sources for recovered cases on Province/State level, \
                                                the number of active cases and recovered cases were removed from the United States \
                                                and Canada tables. Only their national sum of recovered cases are provided.",
@@ -1136,7 +1147,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                      html.Hr(style={'marginBottom': '.5%'},),
                      html.P(style={'textAlign': 'center', 'margin': 'auto'},
                             children=['Keep calm and stay home | ',
-                                      html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/'), ' | ',
+                                      html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
                                       html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank')
 
