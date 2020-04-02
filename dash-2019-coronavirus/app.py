@@ -72,7 +72,7 @@ def make_dcc_country_tab(countryName, dataframe):
                     # Don't show coordinates
                     columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
                              if i == 'Death rate' else {"name": i, "id": i}
-                             for i in [dataframe.columns[0], dataframe.columns[2]]+ list(dataframe.columns[4:7])],
+                             for i in dataframe.columns[0:7]],
                     # But still store coordinates in the table for interactivity
                     data=dataframe.to_dict("rows"),
                     row_selectable="single" if countryName != 'Schengen' else False,
@@ -90,17 +90,17 @@ def make_dcc_country_tab(countryName, dataframe):
                                  },
                     style_header={'backgroundColor': '#ffffff',
                                   'fontWeight': 'bold'},
-                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '36%'},
-                                            {'if': {'column_id': 'Country/Region'}, 'width': '36%'},
-                                            #{'if': {'column_id': 'Active'}, 'width': '15.6%'},
-                                            {'if': {'column_id': 'Confirmed'}, 'width': '15%'},
-                                            #{'if': {'column_id': 'Recovered'}, 'width': '15.6%'},
-                                            {'if': {'column_id': 'Deaths'}, 'width': '15%'},
-                                            {'if': {'column_id': 'Death rate'}, 'width': '15%'},
-                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '19%'},
+                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
+                                            {'if': {'column_id': 'Country/Region'}, 'width': '26%'},
+                                            {'if': {'column_id': 'Active'}, 'width': '10%'},
+                                            {'if': {'column_id': 'Confirmed'}, 'width': '12.3%'},
+                                            {'if': {'column_id': 'Recovered'}, 'width': '12.3%'},
+                                            {'if': {'column_id': 'Deaths'}, 'width': '10%'},
+                                            {'if': {'column_id': 'Death rate'}, 'width': '12.3%'},
+                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '17%'},
                                             {'if': {'column_id': 'Active'}, 'color':'#e36209'},
                                             {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
-                                            #{'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                            {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
                                             {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
                                             {'textAlign': 'center'}],
                         ),
@@ -272,13 +272,13 @@ europe_list = ['Austria', 'Belgium', 'Czechia', 'Denmark', 'Estonia',
 EuroTable = make_europe_table(europe_list)
 
 # Remove dummy row of recovered case number in USTable
-USTable = USTable.dropna(subset=['Province/State'])
+#USTable = USTable.dropna(subset=['Province/State'])
 
 # Remove dummy row of recovered case number in USTable
-CANTable = CANTable.dropna(subset=['Province/State'])
+#CANTable = CANTable.dropna(subset=['Province/State'])
 
 # Save numbers into variables to use in the app
-latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M AEDT')
+latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M GMT+11')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
 daysOutbreak = (df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
@@ -707,7 +707,7 @@ for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
 
 # Customise layout
 fig_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
-fig_curve_tab.update_yaxes(range=[1.9, 6])
+fig_curve_tab.update_yaxes(range=[1.9, 7])
 fig_curve_tab.update_layout(
         xaxis_title="Number of day since 100th confirmed cases",
         yaxis_title="Confirmed cases (Logarithmic)",
@@ -764,9 +764,9 @@ app = dash.Dash(__name__,
                 external_stylesheets=[BS],
                 meta_tags=[
                     {"name": "author", "content": "Jun Ye"},
-                    {"name": "keywords", "content": "COVID-19, dashborad, global cases, coronavirus, monitor, 世界，疫情, 冠状病毒, 肺炎, 新型肺炎"},
-                    {"name": "description", "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus.\
-                      Until {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                    {"name": "keywords", "content": "coronavirus dashboard, COVID-19, dashborad, global cases, coronavirus, monitor, real time, 世界，疫情, 冠状病毒, 肺炎, 新型肺炎, 最新疫情, 实时疫情, 疫情地图, 疫情"},
+                    {"name": "description", "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data, map, cumulative curve, growth trajectory for the global spread of coronavirus.\
+                      As of {}, there are {:,d} cases of COVID-19 confirmed globally.\
                      In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
@@ -775,16 +775,16 @@ app = dash.Dash(__name__,
                     {"property": "og:url",
                         "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property": "og:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus.\
-                      Until {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                        "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data and map for the global spread of coronavirus.\
+                      As of {}, there are {:,d} cases of COVID-19 confirmed globally.\
                      In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
                     {"name": "twitter:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"name": "twitter:description",
-                        "content": "The coronavirus COVID-19 monitor/dashboard provides up-to-date data and map for the global spread of coronavirus.\
-                      Until {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                        "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data and map for the global spread of coronavirus.\
+                      As of {}, there are {:,d} cases of COVID-19 confirmed globally.\
                      In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport",
@@ -837,12 +837,19 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     children="Coronavirus (COVID-19) Outbreak Global Cases Monitor"),
                 html.P(
                     id="description",
-                    children="On Dec 31, 2019, the World Health Organization (WHO) was informed of \
-                    an outbreak of “pneumonia of unknown cause” detected in Wuhan City, Hubei Province, China – the \
-                    seventh-largest city in China with 11 million residents. As of {}, there are {:,d} cases \
-                    of COVID-19 confirmed globally.\
-                    This dash board is developed to visualise and track the recent reported \
-                    cases on a hourly timescale.".format(latestDate, confirmedCases),
+                    children=dcc.Markdown(
+                      children=(
+                        '''
+                        On Dec 31, 2019, the World Health Organization (WHO) was informed 
+                        an outbreak of “pneumonia of unknown cause” detected in Wuhan, Hubei Province, China. 
+                        The virus that caused the outbreak of COVID-19 was lately known as _severe acute respiratory syndrome coronavirus 2_ (SARS-CoV-2). 
+                        The WHO declared the outbreak to be a Public Health Emergency of International Concern on 
+                        Jan 30, 2020 and recognized it as a pandemic on Mar 11, 2020. As of {}, there are {:,d} cases of COVID-19 confirmed globally.
+                        
+                        This dash board is developed to visualise and track the recent reported 
+                        cases on a hourly timescale.'''.format(latestDate, confirmedCases),
+                      )
+                    )
                 ),
  #              html.P(
  #                id="note",
@@ -873,7 +880,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 html.P(
                   id='time-stamp',
                   # style={'fontWeight':'bold'},
-                       children="🔴 Last update: {}. (👷Safari user may experience issue in displaying tables, I am working on it.🔧)".format(latestDate)
+                       children="Last update: {}. (👷Safari user may experience issue in displaying tables, I am working on it.🔧)".format(latestDate)
                        ),
                 html.Hr(style={'marginTop': '.5%'},),
                     ]
@@ -1123,15 +1130,11 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         )
                                       )                                              
                                     ),
-                                  dbc.Tooltip("Since there are no reliable sources for recovered cases on Province/State level, \
-                                               the number of active cases and recovered cases were removed from the United States \
-                                               and Canada tables. Only their national sum of recovered cases are provided.",
+                                  dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
                                               target='tab-datatable-interact-location-Canada',
                                               style={"font-size":"1.5em"},
                                              ),
-                                  dbc.Tooltip("Since there are no reliable sources for recovered cases on Province/State level, \
-                                               the number of active cases and recovered cases were removed from the United States \
-                                               and Canada tables. Only their national sum of recovered cases are provided.",
+                                  dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
                                               target='tab-datatable-interact-location-US',
                                               style={"font-size":"1.5em"},
                                              ),
@@ -1229,8 +1232,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 55.474012 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lat
       longitude = -97.344913 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lon
       zoom = 3 if len(Canada_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, k, t, q) 
-                          for i, k, t, q in zip(df_latest['Confirmed'], df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
+      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'Mainland China':
       if CHN_derived_virtual_selected_rows is None:
@@ -1251,8 +1254,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
       longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
       zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, k, t, q) 
-                          for i, k, t, q in zip(df_latest['Confirmed'], df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
+      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     elif value == 'Europe':
       if Europe_derived_virtual_selected_rows is None:
@@ -1475,6 +1478,21 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                                                      for d in df_region['date_day']],
                              hovertext=['{} Confirmed<br>{:,d} cases<br>'.format(
                                  Region, i) for i in df_region['Confirmed']],
+                             hovertemplate='<b>%{text}</b><br></br>' +
+                                                     '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig3.add_trace(go.Scatter(x=df_region['date_day'],
+                             y=df_region['Recovered'],
+                             mode='lines+markers',
+                             # line_shape='spline',
+                             name='Recovered case',
+                             line=dict(color='#1a9622', width=2),
+                             # marker=dict(size=4, color='#f4f4f2',
+                             #            line=dict(width=1,color='#168038')),
+                             text=[datetime.strftime(d, '%b %d %Y AEDT')
+                                                     for d in df_region['date_day']],
+                             hovertext=['{} Recovered<br>{:,d} cases<br>'.format(
+                                 Region, i) for i in df_region['Recovered']],
                              hovertemplate='<b>%{text}</b><br></br>' +
                                                      '%{hovertext}' +
                                                      '<extra></extra>'))
@@ -1913,7 +1931,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
 
     # Customise layout
     fig_curve.update_xaxes(range=[0, elapseDay-19])
-    fig_curve.update_yaxes(range=[1.9, 6])
+    fig_curve.update_yaxes(range=[1.9, 7])
     fig_curve.update_layout(
         xaxis_title="Number of day since 100th confirmed cases",
         yaxis_title="Confirmed cases (Logarithmic)",

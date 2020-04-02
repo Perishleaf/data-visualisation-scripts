@@ -329,8 +329,16 @@ p {
     font-size: 1.5rem;
     border-left: #2674f6 solid 1rem;
     padding-left: 1rem;
-    max-width: 100rem;
+    max-width: 150rem;
     margin: 2rem 0 1rem 0;
+}
+
+#time-stamp {
+    border-left: #d7191c solid 1rem;
+    padding-left: 1rem;
+    font-family: Arial;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 #note {
@@ -767,12 +775,19 @@ hr {
     align-items: center;
     justify-content: center;
 }
+
+.custom-tab :hover{
+    color: #e36209;
+    border-color: whitesmoke;
+}
+
 .custom-tab--selected {
     color: black;
     box-shadow: 1px 1px 0px white;
     border-left: 1px solid lightgrey !important;
     border-right: 1px solid lightgrey !important;
     border-top: 3px solid #e36209 !important;
+    font-weight: bold;
 }
 
 /* Graph
@@ -792,7 +807,7 @@ hr {
 
     #number-plate h3 {
         font-family: Impact;
-        font-size: 6rem;
+        font-size: 4rem;
     }
 
     #number-plate p {
