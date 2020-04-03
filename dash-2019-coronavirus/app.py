@@ -766,7 +766,7 @@ app = dash.Dash(__name__,
                     {"name": "author", "content": "Jun Ye"},
                     {"name": "keywords", "content": "coronavirus dashboard, COVID-19, dashborad, global cases, coronavirus, monitor, real time, 世界，疫情, 冠状病毒, 肺炎, 新型肺炎, 最新疫情, 实时疫情, 疫情地图, 疫情"},
                     {"name": "description", "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data, map, cumulative curve, growth trajectory for the global spread of coronavirus.\
-                      As of {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                      As of {}, there are {:,d} confirmed cases globally.\
                      In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
@@ -776,7 +776,7 @@ app = dash.Dash(__name__,
                         "content": "https://dash-coronavirus-2020.herokuapp.com/"},
                     {"property": "og:description",
                         "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data and map for the global spread of coronavirus.\
-                      As of {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                      As of {}, there are {:,d} confirmed cases globally.\
                      In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"name": "twitter:card", "content": "summary_large_image"},
                     {"name": "twitter:site", "content": "@perishleaf"},
@@ -784,7 +784,7 @@ app = dash.Dash(__name__,
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"name": "twitter:description",
                         "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data and map for the global spread of coronavirus.\
-                      As of {}, there are {:,d} cases of COVID-19 confirmed globally.\
+                      As of {}, there are {:,d} confirmed cases globally.\
                      In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
                     {"name": "twitter:image", "content": "https://junye0798.com/post/build-a-dashboard-to-track-the-spread-of-coronavirus-using-dash/featured_hu031431b9019186307c923e911320563b_1304417_1200x0_resize_lanczos_2.png"},
                     {"name": "viewport",
@@ -844,7 +844,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         an outbreak of “pneumonia of unknown cause” detected in Wuhan, Hubei Province, China. 
                         The virus that caused the outbreak of COVID-19 was lately known as _severe acute respiratory syndrome coronavirus 2_ (SARS-CoV-2). 
                         The WHO declared the outbreak to be a Public Health Emergency of International Concern on 
-                        Jan 30, 2020 and recognized it as a pandemic on Mar 11, 2020. As of {}, there are {:,d} cases of COVID-19 confirmed globally.
+                        Jan 30, 2020 and recognized it as a pandemic on Mar 11, 2020. As of {}, there are {:,d} confirmed cases globally.
                         
                         This dashboard is developed to visualise and track the recent reported 
                         cases on a hourly timescale.'''.format(latestDate, confirmedCases),

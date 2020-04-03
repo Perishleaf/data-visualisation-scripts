@@ -796,8 +796,8 @@ hr {
 .custom-tab--selected {
     color: black;
     box-shadow: 1px 1px 0px white;
-    border-left: 1px solid lightgrey !important;
-    border-right: 1px solid lightgrey !important;
+    border-left: 0px solid lightgrey !important;
+    border-right: 0px solid lightgrey !important;
     border-top: 3px solid #e36209 !important;
     font-weight: bold;
 }
