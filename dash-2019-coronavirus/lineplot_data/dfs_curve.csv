@@ -2489,7 +2489,7 @@ Confirmed,DayElapsed,Region
 169,3,Minnesota
 137,2,Minnesota
 115,1,Minnesota
-426,17,Slovakia
+450,17,Slovakia
 426,16,Slovakia
 400,15,Slovakia
 363,14,Slovakia
@@ -2805,7 +2805,7 @@ Confirmed,DayElapsed,Region
 177,3,North Macedonia
 136,2,North Macedonia
 115,1,North Macedonia
-184,5,Nigeria
+190,5,Nigeria
 174,4,Nigeria
 139,3,Nigeria
 135,2,Nigeria
@@ -2847,7 +2847,7 @@ Confirmed,DayElapsed,Region
 152,3,Oman
 131,2,Oman
 109,1,Oman
-195,9,Senegal
+207,9,Senegal
 195,8,Senegal
 190,7,Senegal
 175,6,Senegal
@@ -3299,7 +3299,7 @@ Confirmed,DayElapsed,Region
 163,3,Bulgaria
 142,2,Bulgaria
 112,1,Bulgaria
-84794,33,Germany
+85063,33,Germany
 77981,32,Germany
 72383,31,Germany
 67051,30,Germany
@@ -3367,7 +3367,7 @@ Confirmed,DayElapsed,Region
 161,3,Sweden
 137,2,Sweden
 101,1,Sweden
-50468,38,Iran
+53183,38,Iran
 50468,37,Iran
 47593,36,Iran
 44605,35,Iran
@@ -3556,7 +3556,7 @@ Confirmed,DayElapsed,Region
 331,3,Pakistan
 254,2,Pakistan
 194,1,Pakistan
-11238,27,Austria
+11251,27,Austria
 10877,26,Austria
 10387,25,Austria
 9851,24,Austria
@@ -3724,7 +3724,7 @@ Confirmed,DayElapsed,Region
 135,3,Taiwan
 108,2,Taiwan
 100,1,Taiwan
-196,11,Malta
+202,11,Malta
 196,10,Malta
 188,9,Malta
 169,8,Malta
@@ -3948,7 +3948,7 @@ Confirmed,DayElapsed,Region
 205,3,Poland
 150,2,Poland
 111,1,Poland
-277,11,Albania
+304,11,Albania
 277,10,Albania
 259,9,Albania
 243,8,Albania
@@ -4180,7 +4180,7 @@ Confirmed,DayElapsed,Region
 199,3,Russia
 147,2,Russia
 147,1,Russia
-2738,20,Romania
+3183,20,Romania
 2738,19,Romania
 2460,18,Romania
 2245,17,Romania
@@ -4405,7 +4405,7 @@ Confirmed,DayElapsed,Region
 228,3,Greece
 190,2,Greece
 117,1,Greece
-112065,32,Spain
+117710,32,Spain
 110238,31,Spain
 102136,30,Spain
 94417,29,Spain
@@ -4525,7 +4525,7 @@ Confirmed,DayElapsed,Region
 123,3,Bolivia
 115,2,Bolivia
 107,1,Bolivia
-474896,41,Europe
+480853,41,Europe
 452039,40,Europe
 421005,39,Europe
 390205,38,Europe
@@ -4566,7 +4566,7 @@ Confirmed,DayElapsed,Region
 304,3,Europe
 248,2,Europe
 150,1,Europe
-1021070,74,The World
+1030232,74,The World
 951790,73,The World
 873968,72,The World
 800041,71,The World
