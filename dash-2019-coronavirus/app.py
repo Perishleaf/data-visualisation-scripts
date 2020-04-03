@@ -846,7 +846,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         The WHO declared the outbreak to be a Public Health Emergency of International Concern on 
                         Jan 30, 2020 and recognized it as a pandemic on Mar 11, 2020. As of {}, there are {:,d} cases of COVID-19 confirmed globally.
                         
-                        This dash board is developed to visualise and track the recent reported 
+                        This dashboard is developed to visualise and track the recent reported 
                         cases on a hourly timescale.'''.format(latestDate, confirmedCases),
                       )
                     )
