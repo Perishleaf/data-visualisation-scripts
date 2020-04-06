@@ -282,6 +282,9 @@ EuroTable = make_europe_table(europe_list)
 # Remove dummy row of recovered case number in USTable
 #CANTable = CANTable.dropna(subset=['Province/State'])
 
+# Remove dummy row of recovered case number in AUSTable
+AUSTable = AUSTable.dropna(subset=['Province/State'])
+
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M GMT+10')
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
@@ -1119,6 +1122,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         jurisdiction of residence rather than where they were detected.
 
                                         Additionally, the recovered cases in NSW, QLD, TAS are not actively reported.
+                                        Total recovered number is provided by Australian Department of Health. 
                                         '''
                                         )
                                       )                                              
