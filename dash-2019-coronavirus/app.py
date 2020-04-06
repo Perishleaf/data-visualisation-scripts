@@ -264,11 +264,16 @@ AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
 
-europe_list = ['Austria', 'Belgium', 'Czechia', 'Denmark', 'Estonia',
-                  'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland',
-                  'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg',
-                  'Malta', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Slovakia',
-                  'Slovenia', 'Spain', 'Sweden', 'Switzerland']
+europe_list = ['Albania','Andorra','Austria','Belarus','Belgium',
+               'Bosnia and Herzegovina','Bulgaria','Croatia','Czechia',
+               'Denmark','Estonia','Finland','France','Germany',
+               'Greece','Hungary','Iceland','Ireland','Italy',
+               'Latvia','Liechtenstein','Lithuania','Luxembourg',
+               'Malta','Moldova','Monaco','Montenegro','Netherlands',
+               'North Macedonia','Norway','Poland','Portugal',
+               'Romania','Russia','San Marino','Serbia','Slovakia',
+               'Slovenia','Spain','Sweden','Switzerland','UK',
+               'Ukraine','Vatican City']
 EuroTable = make_europe_table(europe_list)
 
 # Remove dummy row of recovered case number in USTable
@@ -1126,7 +1131,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                               target='tab-datatable-interact-location-US',
                                               style={"font-size":"1.5em"},
                                              ),
-                                  dbc.Tooltip("This list comprises 26 European countries within Schengen Area.",
+                                  dbc.Tooltip("This list comprises 44 European countries according to United Nation.",
                                               target='tab-datatable-interact-location-Europe',
                                               style={"font-size":"1.5em"},
                                              ),
