@@ -166,34 +166,6 @@ sheet_name = [i.replace('.csv', '')
                         for i in filename if 'data' not in i and i.endswith('.csv')]
 sheet_name.sort(reverse=True)
 
-# dfs = {sheet_name: pd.read_csv('./raw_data/{}.csv'.format(sheet_name))
-#          for sheet_name in sheet_name}
-
-# Method #2
-# Import xls file and store each sheet in to a df list
-# xl_file = pd.ExcelFile('./data.xls')
-
-# dfs = {sheet_name: xl_file.parse(sheet_name)
-#          for sheet_name in xl_file.sheet_names}
-
-# Data from each sheet can be accessed via key
-# keyList = list(dfs.keys())
-
-# Data cleansing
-# for key, df in dfs.items():
-#    dfs[key].loc[:,'Confirmed'].fillna(value=0, inplace=True)
-#    dfs[key].loc[:,'Deaths'].fillna(value=0, inplace=True)
-#    dfs[key].loc[:,'Recovered'].fillna(value=0, inplace=True)
-#    dfs[key]=dfs[key].astype({'Confirmed':'int64', 'Deaths':'int64', 'Recovered':'int64'})
-#    # Change as China for coordinate search
-#    dfs[key]=dfs[key].replace({'Country/Region':'Mainland China'}, 'China')
-#    # Add a zero to the date so can be convert by datetime.strptime as 0-padded date
-#    dfs[key]['Last Update'] = '0' + dfs[key]['Last Update']
-#    # Convert time as Australian eastern daylight time
-#    dfs[key]['Date_last_updated_AEDT'] = [datetime.strptime(d, '%m/%d/%Y %H:%M') for d in dfs[key]['Last Update']]
-#    dfs[key]['Date_last_updated_AEDT'] = dfs[key]['Date_last_updated_AEDT'] + timedelta(hours=16)
-#   #dfs[key]['Active'] = dfs[key]['Confirmed'] - dfs[key]['Recovered'] - dfs[key]['Deaths']
-
 # Add coordinates for each area in the list for the latest table sheet
 # To save time, coordinates calling was done seperately
 # Import the data with coordinates
@@ -1780,6 +1752,20 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 hovertemplate='<b>%{text}</b><br></br>' +
                                                       '%{hovertext}' +
                                                      '<extra></extra>'))
+      fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
+                                y=df_region['New_recover'],
+                                fill='tozeroy',
+                                mode='lines',
+                                line_shape='spline',
+                                name='Daily recovered case',
+                                line=dict(color='rgba(26, 150, 34, 1)', width=2),
+                                text=[datetime.strftime(d, '%b %d %Y GMT+10')
+                                                     for d in df_region['date_day']],
+                                hovertext=['Daily recovered cases {:,d} <br>'.format(
+                                  i) for i in df_region['New_recover']],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                                      '%{hovertext}' +
+                                                     '<extra></extra>'))
       
       # Customise layout
       fig_daily.update_layout(
@@ -1866,6 +1852,20 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                                      for d in df_region['date_day']],
                                 hovertext=['Daily death cases {:,d} <br>'.format(
                                   i) for i in df_region['New_death']],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                                      '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
+                                y=df_region['New_recover'],
+                                fill='tozeroy',
+                                mode='lines',
+                                line_shape='spline',
+                                name='Daily recovered case',
+                                line=dict(color='rgba(26, 150, 34, 1)', width=2),
+                                text=[datetime.strftime(d, '%b %d %Y GMT+10')
+                                                     for d in df_region['date_day']],
+                                hovertext=['Daily recovered cases {:,d} <br>'.format(
+                                  i) for i in df_region['New_recover']],
                                 hovertemplate='<b>%{text}</b><br></br>' +
                                                       '%{hovertext}' +
                                                      '<extra></extra>'))
