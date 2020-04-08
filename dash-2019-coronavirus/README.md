@@ -35,4 +35,5 @@ __To-do list:__
 
 ![App screenshot](./app_screenshot.gif)
 
-
+#### DISCLAIMER
+##### This website and its contents herein, including all data, mapping, and analysis, is provided to the public strictly for general information purposes only. All the information was collected from multiple publicly available data sources that do not always agree. While I'll try my best to keep the information up to date and correct, I make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, with respect to the website or the information. I do not bear any legal responsibility for any consequence caused by the use of the information provided. Reliance on the website for medical guidance or use of the website in commerce is strongly not recommended. Any action you take upon the information on this website is strictly at your own risk. and I will not be liable for any losses and damages in connection with the use of our website. Screenshots of the website are permissible so long as you provide appropriate credit.

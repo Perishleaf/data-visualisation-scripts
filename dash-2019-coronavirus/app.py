@@ -1739,20 +1739,6 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                                       '%{hovertext}' +
                                                      '<extra></extra>'))
       fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
-                                y=df_region['New_death'],
-                                fill='tozeroy',
-                                mode='lines',
-                                line_shape='spline',
-                                name='Daily death case',
-                                line=dict(color='rgba(98, 98, 98, 1)', width=2),
-                                text=[datetime.strftime(d, '%b %d %Y GMT+10')
-                                                     for d in df_region['date_day']],
-                                hovertext=['Daily death cases {:,d} <br>'.format(
-                                  i) for i in df_region['New_death']],
-                                hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                     '<extra></extra>'))
-      fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
                                 y=df_region['New_recover'],
                                 fill='tozeroy',
                                 mode='lines',
@@ -1763,6 +1749,20 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                                      for d in df_region['date_day']],
                                 hovertext=['Daily recovered cases {:,d} <br>'.format(
                                   i) for i in df_region['New_recover']],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                                      '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
+                                y=df_region['New_death'],
+                                fill='tozeroy',
+                                mode='lines',
+                                line_shape='spline',
+                                name='Daily death case',
+                                line=dict(color='rgba(98, 98, 98, 1)', width=2),
+                                text=[datetime.strftime(d, '%b %d %Y GMT+10')
+                                                     for d in df_region['date_day']],
+                                hovertext=['Daily death cases {:,d} <br>'.format(
+                                  i) for i in df_region['New_death']],
                                 hovertemplate='<b>%{text}</b><br></br>' +
                                                       '%{hovertext}' +
                                                      '<extra></extra>'))
@@ -1842,20 +1842,6 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                                       '%{hovertext}' +
                                                      '<extra></extra>'))
       fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
-                                y=df_region['New_death'],
-                                fill='tozeroy',
-                                mode='lines',
-                                line_shape='spline',
-                                name='Daily death case',
-                                line=dict(color='rgba(98, 98, 98, 1)', width=2),
-                                text=[datetime.strftime(d, '%b %d %Y GMT+10')
-                                                     for d in df_region['date_day']],
-                                hovertext=['Daily death cases {:,d} <br>'.format(
-                                  i) for i in df_region['New_death']],
-                                hovertemplate='<b>%{text}</b><br></br>' +
-                                                      '%{hovertext}' +
-                                                     '<extra></extra>'))
-      fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
                                 y=df_region['New_recover'],
                                 fill='tozeroy',
                                 mode='lines',
@@ -1866,6 +1852,20 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                                      for d in df_region['date_day']],
                                 hovertext=['Daily recovered cases {:,d} <br>'.format(
                                   i) for i in df_region['New_recover']],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                                      '%{hovertext}' +
+                                                     '<extra></extra>'))
+      fig_daily.add_trace(go.Scatter(x=df_region['date_day'],
+                                y=df_region['New_death'],
+                                fill='tozeroy',
+                                mode='lines',
+                                line_shape='spline',
+                                name='Daily death case',
+                                line=dict(color='rgba(98, 98, 98, 1)', width=2),
+                                text=[datetime.strftime(d, '%b %d %Y GMT+10')
+                                                     for d in df_region['date_day']],
+                                hovertext=['Daily death cases {:,d} <br>'.format(
+                                  i) for i in df_region['New_death']],
                                 hovertemplate='<b>%{text}</b><br></br>' +
                                                       '%{hovertext}' +
                                                      '<extra></extra>'))
