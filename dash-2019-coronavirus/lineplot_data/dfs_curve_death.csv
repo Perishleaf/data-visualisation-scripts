@@ -1,0 +1,4237 @@
+DayElapsed_death,Deaths,Region
+23,3,Shaanxi
+22,3,Shaanxi
+21,3,Shaanxi
+20,3,Shaanxi
+19,3,Shaanxi
+18,3,Shaanxi
+17,3,Shaanxi
+16,3,Shaanxi
+15,3,Shaanxi
+14,3,Shaanxi
+13,3,Shaanxi
+12,3,Shaanxi
+11,3,Shaanxi
+10,3,Shaanxi
+9,3,Shaanxi
+8,3,Shaanxi
+7,3,Shaanxi
+6,3,Shaanxi
+5,3,Shaanxi
+4,3,Shaanxi
+3,3,Shaanxi
+2,3,Shaanxi
+1,3,Shaanxi
+18,433,Massachusetts
+17,356,Massachusetts
+16,260,Massachusetts
+15,231,Massachusetts
+14,216,Massachusetts
+13,192,Massachusetts
+12,154,Massachusetts
+11,122,Massachusetts
+10,89,Massachusetts
+9,56,Massachusetts
+8,48,Massachusetts
+7,44,Massachusetts
+6,35,Massachusetts
+5,25,Massachusetts
+4,15,Massachusetts
+3,11,Massachusetts
+2,9,Massachusetts
+1,5,Massachusetts
+14,67,North Carolina
+13,58,North Carolina
+12,50,North Carolina
+11,41,North Carolina
+10,35,North Carolina
+9,30,North Carolina
+8,21,North Carolina
+7,16,North Carolina
+6,12,North Carolina
+5,8,North Carolina
+4,6,North Carolina
+3,5,North Carolina
+2,5,North Carolina
+1,3,North Carolina
+15,27,Washington DC
+14,22,Washington DC
+13,24,Washington DC
+12,22,Washington DC
+11,21,Washington DC
+10,15,Washington DC
+9,12,Washington DC
+8,11,Washington DC
+7,9,Washington DC
+6,9,Washington DC
+5,9,Washington DC
+4,4,Washington DC
+3,4,Washington DC
+2,3,Washington DC
+1,3,Washington DC
+57,6,Hebei
+56,6,Hebei
+55,6,Hebei
+54,6,Hebei
+53,6,Hebei
+52,6,Hebei
+51,6,Hebei
+50,6,Hebei
+49,6,Hebei
+48,6,Hebei
+47,6,Hebei
+46,6,Hebei
+45,6,Hebei
+44,6,Hebei
+43,6,Hebei
+42,6,Hebei
+41,6,Hebei
+40,6,Hebei
+39,6,Hebei
+38,6,Hebei
+37,6,Hebei
+36,6,Hebei
+35,6,Hebei
+34,6,Hebei
+33,6,Hebei
+32,6,Hebei
+31,6,Hebei
+30,6,Hebei
+29,6,Hebei
+28,6,Hebei
+27,6,Hebei
+26,6,Hebei
+25,6,Hebei
+24,6,Hebei
+23,6,Hebei
+22,6,Hebei
+21,6,Hebei
+20,6,Hebei
+19,6,Hebei
+18,6,Hebei
+17,6,Hebei
+16,6,Hebei
+15,6,Hebei
+14,6,Hebei
+13,6,Hebei
+12,6,Hebei
+11,6,Hebei
+10,6,Hebei
+9,5,Hebei
+8,5,Hebei
+7,4,Hebei
+6,4,Hebei
+5,3,Hebei
+4,3,Hebei
+3,3,Hebei
+2,3,Hebei
+1,3,Hebei
+11,35,Rhode Island
+10,30,Rhode Island
+9,27,Rhode Island
+8,25,Rhode Island
+7,17,Rhode Island
+6,14,Rhode Island
+5,12,Rhode Island
+4,10,Rhode Island
+3,8,Rhode Island
+2,4,Rhode Island
+1,3,Rhode Island
+20,203,Indiana
+19,173,Indiana
+18,143,Indiana
+17,127,Indiana
+16,116,Indiana
+15,102,Indiana
+14,78,Indiana
+13,65,Indiana
+12,49,Indiana
+11,35,Indiana
+10,32,Indiana
+9,31,Indiana
+8,25,Indiana
+7,17,Indiana
+6,14,Indiana
+5,12,Indiana
+4,7,Indiana
+3,7,Indiana
+2,4,Indiana
+1,3,Indiana
+21,959,Michigan
+20,845,Michigan
+19,727,Michigan
+18,617,Michigan
+17,540,Michigan
+16,479,Michigan
+15,417,Michigan
+14,337,Michigan
+13,259,Michigan
+12,185,Michigan
+11,132,Michigan
+10,112,Michigan
+9,92,Michigan
+8,61,Michigan
+7,43,Michigan
+6,24,Michigan
+5,15,Michigan
+4,9,Michigan
+3,8,Michigan
+2,3,Michigan
+1,3,Michigan
+24,1504,New Jersey
+23,1232,New Jersey
+22,1003,New Jersey
+21,917,New Jersey
+20,846,New Jersey
+19,646,New Jersey
+18,537,New Jersey
+17,355,New Jersey
+16,267,New Jersey
+15,198,New Jersey
+14,161,New Jersey
+13,140,New Jersey
+12,108,New Jersey
+11,81,New Jersey
+10,62,New Jersey
+9,44,New Jersey
+8,27,New Jersey
+7,21,New Jersey
+6,16,New Jersey
+5,11,New Jersey
+4,9,New Jersey
+3,5,New Jersey
+2,3,New Jersey
+1,3,New Jersey
+27,323,Florida
+26,296,Florida
+25,254,Florida
+24,221,Florida
+23,195,Florida
+22,170,Florida
+21,144,Florida
+20,101,Florida
+19,85,Florida
+18,71,Florida
+17,60,Florida
+16,54,Florida
+15,46,Florida
+14,29,Florida
+13,23,Florida
+12,23,Florida
+11,18,Florida
+10,13,Florida
+9,13,Florida
+8,11,Florida
+7,9,Florida
+6,8,Florida
+5,7,Florida
+4,5,Florida
+3,5,Florida
+2,4,Florida
+1,3,Florida
+24,48,British Columbia
+23,43,British Columbia
+22,39,British Columbia
+21,38,British Columbia
+20,38,British Columbia
+19,35,British Columbia
+18,31,British Columbia
+17,25,British Columbia
+16,24,British Columbia
+15,19,British Columbia
+14,17,British Columbia
+13,17,British Columbia
+12,16,British Columbia
+11,14,British Columbia
+10,14,British Columbia
+9,13,British Columbia
+8,13,British Columbia
+7,10,British Columbia
+6,10,British Columbia
+5,8,British Columbia
+4,8,British Columbia
+3,7,British Columbia
+2,7,British Columbia
+1,4,British Columbia
+6,5,Hawaii
+5,5,Hawaii
+4,5,Hawaii
+3,4,Hawaii
+2,3,Hawaii
+1,3,Hawaii
+15,12,Victoria
+14,12,Victoria
+13,11,Victoria
+12,10,Victoria
+11,8,Victoria
+10,8,Victoria
+9,7,Victoria
+8,6,Victoria
+7,4,Victoria
+6,4,Victoria
+5,4,Victoria
+4,4,Victoria
+3,3,Victoria
+2,3,Victoria
+1,3,Victoria
+13,39,Minnesota
+12,34,Minnesota
+11,30,Minnesota
+10,29,Minnesota
+9,24,Minnesota
+8,22,Minnesota
+7,18,Minnesota
+6,17,Minnesota
+5,12,Minnesota
+4,10,Minnesota
+3,9,Minnesota
+2,5,Minnesota
+1,4,Minnesota
+11,29,Alberta
+10,26,Alberta
+9,24,Alberta
+8,23,Alberta
+7,20,Alberta
+6,18,Alberta
+5,13,Alberta
+4,11,Alberta
+3,9,Alberta
+2,8,Alberta
+1,3,Alberta
+19,175,Quebec
+18,150,Quebec
+17,121,Quebec
+16,94,Quebec
+15,75,Quebec
+14,61,Quebec
+13,36,Quebec
+12,33,Quebec
+11,31,Quebec
+10,25,Quebec
+9,22,Quebec
+8,22,Quebec
+7,18,Quebec
+6,8,Quebec
+5,6,Quebec
+4,4,Quebec
+3,4,Quebec
+2,4,Quebec
+1,5,Quebec
+3,6,South Dakota
+2,6,South Dakota
+1,4,South Dakota
+2,3,Manitoba
+1,3,Manitoba
+22,370,Georgia
+21,348,Georgia
+20,294,Georgia
+19,219,Georgia
+18,208,Georgia
+17,198,Georgia
+16,176,Georgia
+15,154,Georgia
+14,125,Georgia
+13,102,Georgia
+12,84,Georgia
+11,79,Georgia
+10,65,Georgia
+9,56,Georgia
+8,47,Georgia
+7,38,Georgia
+6,26,Georgia
+5,25,Georgia
+4,20,Georgia
+3,14,Georgia
+2,10,Georgia
+1,4,Georgia
+21,193,Colorado
+20,179,Colorado
+19,150,Colorado
+18,140,Colorado
+17,126,Colorado
+16,111,Colorado
+15,97,Colorado
+14,80,Colorado
+13,69,Colorado
+12,51,Colorado
+11,47,Colorado
+10,44,Colorado
+9,31,Colorado
+8,19,Colorado
+7,20,Colorado
+6,11,Colorado
+5,7,Colorado
+4,7,Colorado
+3,6,Colorado
+2,4,Colorado
+1,4,Colorado
+19,174,Ontario
+18,153,Ontario
+17,132,Ontario
+16,119,Ontario
+15,94,Ontario
+14,67,Ontario
+13,53,Ontario
+12,37,Ontario
+11,33,Ontario
+10,32,Ontario
+9,21,Ontario
+8,18,Ontario
+7,18,Ontario
+6,15,Ontario
+5,12,Ontario
+4,8,Ontario
+3,6,Ontario
+2,5,Ontario
+1,3,Ontario
+30,507,California
+29,452,California
+28,388,California
+27,350,California
+26,324,California
+25,280,California
+24,244,California
+23,216,California
+22,182,California
+21,149,California
+20,132,California
+19,120,California
+18,102,California
+17,82,California
+16,67,California
+15,54,California
+14,43,California
+13,35,California
+12,28,California
+11,24,California
+10,19,California
+9,17,California
+8,13,California
+7,11,California
+6,6,California
+5,5,California
+4,5,California
+3,4,California
+2,4,California
+1,3,California
+16,79,Oklahoma
+15,67,Oklahoma
+14,51,Oklahoma
+13,46,Oklahoma
+12,42,Oklahoma
+11,38,Oklahoma
+10,34,Oklahoma
+9,30,Oklahoma
+8,23,Oklahoma
+7,17,Oklahoma
+6,16,Oklahoma
+5,15,Oklahoma
+4,8,Oklahoma
+3,7,Oklahoma
+2,6,Oklahoma
+1,3,Oklahoma
+15,80,Tennessee
+14,72,Tennessee
+13,65,Tennessee
+12,53,Tennessee
+11,50,Tennessee
+10,44,Tennessee
+9,36,Tennessee
+8,24,Tennessee
+7,23,Tennessee
+6,14,Tennessee
+5,12,Tennessee
+4,7,Tennessee
+3,6,Tennessee
+2,3,Tennessee
+1,3,Tennessee
+80,3215,Hubei
+79,3213,Hubei
+78,3212,Hubei
+77,3212,Hubei
+76,3210,Hubei
+75,3207,Hubei
+74,3203,Hubei
+73,3199,Hubei
+72,3187,Hubei
+71,3187,Hubei
+70,3186,Hubei
+69,3182,Hubei
+68,3177,Hubei
+67,3174,Hubei
+66,3169,Hubei
+65,3163,Hubei
+64,3160,Hubei
+63,3153,Hubei
+62,3144,Hubei
+61,3139,Hubei
+60,3133,Hubei
+59,3130,Hubei
+58,3122,Hubei
+57,3111,Hubei
+56,3099,Hubei
+55,3085,Hubei
+54,3075,Hubei
+53,3062,Hubei
+52,3056,Hubei
+51,3046,Hubei
+50,3024,Hubei
+49,3007,Hubei
+48,2986,Hubei
+47,2959,Hubei
+46,2931,Hubei
+45,2902,Hubei
+44,2871,Hubei
+43,2834,Hubei
+42,2803,Hubei
+41,2761,Hubei
+40,2727,Hubei
+39,2682,Hubei
+38,2641,Hubei
+37,2615,Hubei
+36,2563,Hubei
+35,2495,Hubei
+34,2346,Hubei
+33,2250,Hubei
+32,2144,Hubei
+31,2029,Hubei
+30,1921,Hubei
+29,1789,Hubei
+28,1696,Hubei
+27,1596,Hubei
+26,1457,Hubei
+25,1318,Hubei
+24,1310,Hubei
+23,1068,Hubei
+22,974,Hubei
+21,871,Hubei
+20,780,Hubei
+19,699,Hubei
+18,618,Hubei
+17,549,Hubei
+16,479,Hubei
+15,414,Hubei
+14,350,Hubei
+13,294,Hubei
+12,249,Hubei
+11,204,Hubei
+10,162,Hubei
+9,125,Hubei
+8,100,Hubei
+7,76,Hubei
+6,52,Hubei
+5,39,Hubei
+4,24,Hubei
+3,17,Hubei
+2,17,Hubei
+1,6,Hubei
+61,6,Hainan
+60,6,Hainan
+59,6,Hainan
+58,6,Hainan
+57,6,Hainan
+56,6,Hainan
+55,6,Hainan
+54,6,Hainan
+53,6,Hainan
+52,6,Hainan
+51,6,Hainan
+50,6,Hainan
+49,6,Hainan
+48,6,Hainan
+47,6,Hainan
+46,6,Hainan
+45,6,Hainan
+44,6,Hainan
+43,6,Hainan
+42,6,Hainan
+41,6,Hainan
+40,6,Hainan
+39,6,Hainan
+38,6,Hainan
+37,6,Hainan
+36,6,Hainan
+35,6,Hainan
+34,6,Hainan
+33,6,Hainan
+32,6,Hainan
+31,6,Hainan
+30,6,Hainan
+29,6,Hainan
+28,6,Hainan
+27,6,Hainan
+26,5,Hainan
+25,5,Hainan
+24,5,Hainan
+23,5,Hainan
+22,5,Hainan
+21,5,Hainan
+20,5,Hainan
+19,5,Hainan
+18,5,Hainan
+17,5,Hainan
+16,5,Hainan
+15,4,Hainan
+14,4,Hainan
+13,4,Hainan
+12,4,Hainan
+11,4,Hainan
+10,4,Hainan
+9,4,Hainan
+8,4,Hainan
+7,4,Hainan
+6,4,Hainan
+5,4,Hainan
+4,3,Hainan
+3,3,Hainan
+2,3,Hainan
+1,3,Hainan
+54,3,Sichuan
+53,3,Sichuan
+52,3,Sichuan
+51,3,Sichuan
+50,3,Sichuan
+49,3,Sichuan
+48,3,Sichuan
+47,3,Sichuan
+46,3,Sichuan
+45,3,Sichuan
+44,3,Sichuan
+43,3,Sichuan
+42,3,Sichuan
+41,3,Sichuan
+40,3,Sichuan
+39,3,Sichuan
+38,3,Sichuan
+37,3,Sichuan
+36,3,Sichuan
+35,3,Sichuan
+34,3,Sichuan
+33,3,Sichuan
+32,3,Sichuan
+31,3,Sichuan
+30,3,Sichuan
+29,3,Sichuan
+28,3,Sichuan
+27,3,Sichuan
+26,3,Sichuan
+25,3,Sichuan
+24,3,Sichuan
+23,3,Sichuan
+22,3,Sichuan
+21,3,Sichuan
+20,3,Sichuan
+19,3,Sichuan
+18,3,Sichuan
+17,3,Sichuan
+16,3,Sichuan
+15,3,Sichuan
+14,3,Sichuan
+13,3,Sichuan
+12,3,Sichuan
+11,3,Sichuan
+10,3,Sichuan
+9,3,Sichuan
+8,3,Sichuan
+7,3,Sichuan
+6,3,Sichuan
+5,3,Sichuan
+4,3,Sichuan
+3,3,Sichuan
+2,3,Sichuan
+1,3,Sichuan
+8,3,Saskatchewan
+7,3,Saskatchewan
+6,3,Saskatchewan
+5,3,Saskatchewan
+4,3,Saskatchewan
+3,3,Saskatchewan
+2,3,Saskatchewan
+1,3,Saskatchewan
+20,193,Ohio
+19,167,Ohio
+18,142,Ohio
+17,119,Ohio
+16,102,Ohio
+15,91,Ohio
+14,81,Ohio
+13,65,Ohio
+12,55,Ohio
+11,40,Ohio
+10,29,Ohio
+9,25,Ohio
+8,19,Ohio
+7,15,Ohio
+6,11,Ohio
+5,8,Ohio
+4,6,Ohio
+3,3,Ohio
+2,3,Ohio
+1,3,Ohio
+19,73,Kentucky
+18,65,Kentucky
+17,60,Kentucky
+16,45,Kentucky
+15,40,Kentucky
+14,37,Kentucky
+13,31,Kentucky
+12,20,Kentucky
+11,18,Kentucky
+10,11,Kentucky
+9,9,Kentucky
+8,9,Kentucky
+7,7,Kentucky
+6,5,Kentucky
+5,5,Kentucky
+4,4,Kentucky
+3,4,Kentucky
+2,3,Kentucky
+1,3,Kentucky
+60,6,Anhui
+59,6,Anhui
+58,6,Anhui
+57,6,Anhui
+56,6,Anhui
+55,6,Anhui
+54,6,Anhui
+53,6,Anhui
+52,6,Anhui
+51,6,Anhui
+50,6,Anhui
+49,6,Anhui
+48,6,Anhui
+47,6,Anhui
+46,6,Anhui
+45,6,Anhui
+44,6,Anhui
+43,6,Anhui
+42,6,Anhui
+41,6,Anhui
+40,6,Anhui
+39,6,Anhui
+38,6,Anhui
+37,6,Anhui
+36,6,Anhui
+35,6,Anhui
+34,6,Anhui
+33,6,Anhui
+32,6,Anhui
+31,6,Anhui
+30,6,Anhui
+29,6,Anhui
+28,6,Anhui
+27,6,Anhui
+26,6,Anhui
+25,6,Anhui
+24,6,Anhui
+23,6,Anhui
+22,6,Anhui
+21,6,Anhui
+20,6,Anhui
+19,6,Anhui
+18,6,Anhui
+17,6,Anhui
+16,6,Anhui
+15,6,Anhui
+14,6,Anhui
+13,6,Anhui
+12,6,Anhui
+11,6,Anhui
+10,6,Anhui
+9,6,Anhui
+8,6,Anhui
+7,6,Anhui
+6,6,Anhui
+5,6,Anhui
+4,5,Anhui
+3,4,Anhui
+2,4,Anhui
+1,3,Anhui
+14,3,Grand Princess
+13,3,Grand Princess
+12,3,Grand Princess
+11,3,Grand Princess
+10,3,Grand Princess
+9,3,Grand Princess
+8,3,Grand Princess
+7,3,Grand Princess
+6,3,Grand Princess
+5,3,Grand Princess
+4,3,Grand Princess
+3,3,Grand Princess
+2,3,Grand Princess
+1,3,Grand Princess
+19,124,Maryland
+18,103,Maryland
+17,91,Maryland
+16,67,Maryland
+15,54,Maryland
+14,43,Maryland
+13,36,Maryland
+12,31,Maryland
+11,19,Maryland
+10,15,Maryland
+9,15,Maryland
+8,10,Maryland
+7,5,Maryland
+6,4,Maryland
+5,4,Maryland
+4,4,Maryland
+3,3,Maryland
+2,3,Maryland
+1,3,Maryland
+10,6,Montana
+9,6,Montana
+8,6,Montana
+7,6,Montana
+6,6,Montana
+5,5,Montana
+4,5,Montana
+3,6,Montana
+2,5,Montana
+1,5,Montana
+13,24,Puerto Rico
+12,23,Puerto Rico
+11,21,Puerto Rico
+10,20,Puerto Rico
+9,18,Puerto Rico
+8,15,Puerto Rico
+7,12,Puerto Rico
+6,11,Puerto Rico
+5,8,Puerto Rico
+4,7,Puerto Rico
+3,5,Puerto Rico
+2,3,Puerto Rico
+1,3,Puerto Rico
+59,8,Beijing
+58,8,Beijing
+57,8,Beijing
+56,8,Beijing
+55,8,Beijing
+54,8,Beijing
+53,8,Beijing
+52,8,Beijing
+51,8,Beijing
+50,8,Beijing
+49,8,Beijing
+48,8,Beijing
+47,8,Beijing
+46,8,Beijing
+45,8,Beijing
+44,8,Beijing
+43,8,Beijing
+42,8,Beijing
+41,8,Beijing
+40,8,Beijing
+39,8,Beijing
+38,8,Beijing
+37,8,Beijing
+36,8,Beijing
+35,8,Beijing
+34,8,Beijing
+33,8,Beijing
+32,8,Beijing
+31,8,Beijing
+30,8,Beijing
+29,8,Beijing
+28,8,Beijing
+27,8,Beijing
+26,8,Beijing
+25,8,Beijing
+24,8,Beijing
+23,8,Beijing
+22,8,Beijing
+21,8,Beijing
+20,8,Beijing
+19,8,Beijing
+18,7,Beijing
+17,5,Beijing
+16,4,Beijing
+15,4,Beijing
+14,4,Beijing
+13,4,Beijing
+12,4,Beijing
+11,4,Beijing
+10,4,Beijing
+9,4,Beijing
+8,4,Beijing
+7,4,Beijing
+6,4,Beijing
+5,4,Beijing
+4,3,Beijing
+3,3,Beijing
+2,3,Beijing
+1,3,Beijing
+54,4,Hunan
+53,4,Hunan
+52,4,Hunan
+51,4,Hunan
+50,4,Hunan
+49,4,Hunan
+48,4,Hunan
+47,4,Hunan
+46,4,Hunan
+45,4,Hunan
+44,4,Hunan
+43,4,Hunan
+42,4,Hunan
+41,4,Hunan
+40,4,Hunan
+39,4,Hunan
+38,4,Hunan
+37,4,Hunan
+36,4,Hunan
+35,4,Hunan
+34,4,Hunan
+33,4,Hunan
+32,4,Hunan
+31,4,Hunan
+30,4,Hunan
+29,4,Hunan
+28,4,Hunan
+27,4,Hunan
+26,4,Hunan
+25,4,Hunan
+24,4,Hunan
+23,4,Hunan
+22,4,Hunan
+21,4,Hunan
+20,4,Hunan
+19,4,Hunan
+18,4,Hunan
+17,4,Hunan
+16,4,Hunan
+15,4,Hunan
+14,4,Hunan
+13,4,Hunan
+12,4,Hunan
+11,4,Hunan
+10,4,Hunan
+9,4,Hunan
+8,4,Hunan
+7,4,Hunan
+6,4,Hunan
+5,4,Hunan
+4,4,Hunan
+3,4,Hunan
+2,3,Hunan
+1,3,Hunan
+12,19,Delaware
+11,16,Delaware
+10,15,Delaware
+9,14,Delaware
+8,14,Delaware
+7,14,Delaware
+6,12,Delaware
+5,11,Delaware
+4,10,Delaware
+3,7,Delaware
+2,6,Delaware
+1,5,Delaware
+3,3,Tasmania
+2,3,Tasmania
+1,3,Tasmania
+18,319,Pennsylvania
+17,250,Pennsylvania
+16,179,Pennsylvania
+15,151,Pennsylvania
+14,139,Pennsylvania
+13,102,Pennsylvania
+12,92,Pennsylvania
+11,74,Pennsylvania
+10,67,Pennsylvania
+9,51,Pennsylvania
+8,43,Pennsylvania
+7,35,Pennsylvania
+6,23,Pennsylvania
+5,18,Pennsylvania
+4,15,Pennsylvania
+3,8,Pennsylvania
+2,7,Pennsylvania
+1,5,Pennsylvania
+21,462,Illinois
+20,380,Illinois
+19,308,Illinois
+18,276,Illinois
+17,245,Illinois
+16,210,Illinois
+15,167,Illinois
+14,146,Illinois
+13,100,Illinois
+12,74,Illinois
+11,66,Illinois
+10,47,Illinois
+9,34,Illinois
+8,26,Illinois
+7,19,Illinois
+6,16,Illinois
+5,12,Illinois
+4,9,Illinois
+3,6,Illinois
+2,5,Illinois
+1,4,Illinois
+1,3,South Australia
+20,63,South Carolina
+19,51,South Carolina
+18,48,South Carolina
+17,44,South Carolina
+16,40,South Carolina
+15,34,South Carolina
+14,31,South Carolina
+13,26,South Carolina
+12,22,South Carolina
+11,18,South Carolina
+10,16,South Carolina
+9,15,South Carolina
+8,13,South Carolina
+7,9,South Carolina
+6,7,South Carolina
+5,7,South Carolina
+4,5,South Carolina
+3,3,South Carolina
+2,3,South Carolina
+1,3,South Carolina
+46,11,Yokohama
+45,11,Yokohama
+44,11,Yokohama
+43,11,Yokohama
+42,11,Yokohama
+41,11,Yokohama
+40,11,Yokohama
+39,11,Yokohama
+38,11,Yokohama
+37,10,Yokohama
+36,10,Yokohama
+35,10,Yokohama
+34,10,Yokohama
+33,10,Yokohama
+32,10,Yokohama
+31,10,Yokohama
+30,10,Yokohama
+29,8,Yokohama
+28,8,Yokohama
+27,8,Yokohama
+26,7,Yokohama
+25,7,Yokohama
+24,7,Yokohama
+23,7,Yokohama
+22,7,Yokohama
+21,7,Yokohama
+20,7,Yokohama
+19,7,Yokohama
+18,7,Yokohama
+17,7,Yokohama
+16,7,Yokohama
+15,7,Yokohama
+14,6,Yokohama
+13,6,Yokohama
+12,6,Yokohama
+11,6,Yokohama
+10,6,Yokohama
+9,6,Yokohama
+8,6,Yokohama
+7,6,Yokohama
+6,6,Yokohama
+5,4,Yokohama
+4,4,Yokohama
+3,4,Yokohama
+2,4,Yokohama
+1,3,Yokohama
+64,13,Heilongjiang
+63,13,Heilongjiang
+62,13,Heilongjiang
+61,13,Heilongjiang
+60,13,Heilongjiang
+59,13,Heilongjiang
+58,13,Heilongjiang
+57,13,Heilongjiang
+56,13,Heilongjiang
+55,13,Heilongjiang
+54,13,Heilongjiang
+53,13,Heilongjiang
+52,13,Heilongjiang
+51,13,Heilongjiang
+50,13,Heilongjiang
+49,13,Heilongjiang
+48,13,Heilongjiang
+47,13,Heilongjiang
+46,13,Heilongjiang
+45,13,Heilongjiang
+44,13,Heilongjiang
+43,13,Heilongjiang
+42,13,Heilongjiang
+41,13,Heilongjiang
+40,13,Heilongjiang
+39,13,Heilongjiang
+38,13,Heilongjiang
+37,13,Heilongjiang
+36,13,Heilongjiang
+35,13,Heilongjiang
+34,13,Heilongjiang
+33,13,Heilongjiang
+32,13,Heilongjiang
+31,13,Heilongjiang
+30,13,Heilongjiang
+29,13,Heilongjiang
+28,13,Heilongjiang
+27,13,Heilongjiang
+26,13,Heilongjiang
+25,13,Heilongjiang
+24,13,Heilongjiang
+23,13,Heilongjiang
+22,13,Heilongjiang
+21,12,Heilongjiang
+20,12,Heilongjiang
+19,12,Heilongjiang
+18,12,Heilongjiang
+17,12,Heilongjiang
+16,12,Heilongjiang
+15,12,Heilongjiang
+14,12,Heilongjiang
+13,11,Heilongjiang
+12,11,Heilongjiang
+11,11,Heilongjiang
+10,11,Heilongjiang
+9,11,Heilongjiang
+8,9,Heilongjiang
+7,8,Heilongjiang
+6,8,Heilongjiang
+5,7,Heilongjiang
+4,6,Heilongjiang
+3,5,Heilongjiang
+2,3,Heilongjiang
+1,3,Heilongjiang
+25,6269,New York
+24,5489,New York
+23,4758,New York
+22,4159,New York
+21,3565,New York
+20,2935,New York
+19,2468,New York
+18,2220,New York
+17,1714,New York
+16,1342,New York
+15,966,New York
+14,834,New York
+13,605,New York
+12,461,New York
+11,366,New York
+10,271,New York
+9,188,New York
+8,153,New York
+7,76,New York
+6,56,New York
+5,38,New York
+4,20,New York
+3,16,New York
+2,10,New York
+1,6,New York
+38,432,WA
+37,408,WA
+36,383,WA
+35,343,WA
+34,318,WA
+33,295,WA
+32,272,WA
+31,254,WA
+30,225,WA
+29,219,WA
+28,204,WA
+27,189,WA
+26,175,WA
+25,150,WA
+24,133,WA
+23,125,WA
+22,111,WA
+21,95,WA
+20,94,WA
+19,83,WA
+18,74,WA
+17,68,WA
+16,55,WA
+15,48,WA
+14,42,WA
+13,40,WA
+12,37,WA
+11,31,WA
+10,29,WA
+9,24,WA
+8,22,WA
+7,19,WA
+6,16,WA
+5,12,WA
+4,12,WA
+3,10,WA
+2,9,WA
+1,6,WA
+7,6,Western Australia
+6,6,Western Australia
+5,6,Western Australia
+4,4,Western Australia
+3,3,Western Australia
+2,3,Western Australia
+1,3,Western Australia
+51,7,Shandong
+50,7,Shandong
+49,7,Shandong
+48,7,Shandong
+47,7,Shandong
+46,7,Shandong
+45,7,Shandong
+44,7,Shandong
+43,7,Shandong
+42,7,Shandong
+41,7,Shandong
+40,7,Shandong
+39,7,Shandong
+38,7,Shandong
+37,7,Shandong
+36,7,Shandong
+35,7,Shandong
+34,7,Shandong
+33,7,Shandong
+32,7,Shandong
+31,7,Shandong
+30,7,Shandong
+29,7,Shandong
+28,7,Shandong
+27,7,Shandong
+26,7,Shandong
+25,7,Shandong
+24,7,Shandong
+23,6,Shandong
+22,6,Shandong
+21,6,Shandong
+20,6,Shandong
+19,6,Shandong
+18,6,Shandong
+17,6,Shandong
+16,6,Shandong
+15,6,Shandong
+14,6,Shandong
+13,6,Shandong
+12,6,Shandong
+11,6,Shandong
+10,6,Shandong
+9,6,Shandong
+8,6,Shandong
+7,6,Shandong
+6,4,Shandong
+5,4,Shandong
+4,4,Shandong
+3,4,Shandong
+2,4,Shandong
+1,3,Shandong
+24,652,Louisiana
+23,582,Louisiana
+22,512,Louisiana
+21,477,Louisiana
+20,409,Louisiana
+19,370,Louisiana
+18,310,Louisiana
+17,273,Louisiana
+16,239,Louisiana
+15,185,Louisiana
+14,151,Louisiana
+13,137,Louisiana
+12,119,Louisiana
+11,83,Louisiana
+10,65,Louisiana
+9,46,Louisiana
+8,35,Louisiana
+7,20,Louisiana
+6,20,Louisiana
+5,14,Louisiana
+4,10,Louisiana
+3,8,Louisiana
+2,4,Louisiana
+1,3,Louisiana
+20,93,Missouri
+19,86,Missouri
+18,65,Missouri
+17,47,Missouri
+16,43,Missouri
+15,33,Missouri
+14,22,Missouri
+13,22,Missouri
+12,15,Missouri
+11,13,Missouri
+10,13,Missouri
+9,11,Missouri
+8,9,Missouri
+7,9,Missouri
+6,8,Missouri
+5,8,Missouri
+4,5,Missouri
+3,3,Missouri
+2,3,Missouri
+1,3,Missouri
+17,80,Arizona
+16,73,Arizona
+15,65,Arizona
+14,64,Arizona
+13,52,Arizona
+12,41,Arizona
+11,32,Arizona
+10,29,Arizona
+9,24,Arizona
+8,20,Arizona
+7,17,Arizona
+6,15,Arizona
+5,13,Arizona
+4,8,Arizona
+3,6,Arizona
+2,6,Arizona
+1,3,Arizona
+13,67,Alabama
+12,64,Alabama
+11,53,Alabama
+10,45,Alabama
+9,44,Alabama
+8,38,Alabama
+7,32,Alabama
+6,28,Alabama
+5,24,Alabama
+4,11,Alabama
+3,10,Alabama
+2,9,Alabama
+1,4,Alabama
+15,67,Mississippi
+14,60,Mississippi
+13,51,Mississippi
+12,43,Mississippi
+11,35,Mississippi
+10,29,Mississippi
+9,26,Mississippi
+8,22,Mississippi
+7,20,Mississippi
+6,16,Mississippi
+5,14,Mississippi
+4,13,Mississippi
+3,8,Mississippi
+2,6,Mississippi
+1,5,Mississippi
+13,27,Iowa
+12,26,Iowa
+11,24,Iowa
+10,22,Iowa
+9,14,Iowa
+8,11,Iowa
+7,11,Iowa
+6,9,Iowa
+5,7,Iowa
+4,6,Iowa
+3,4,Iowa
+2,3,Iowa
+1,3,Iowa
+42,3,Xinjiang
+41,3,Xinjiang
+40,3,Xinjiang
+39,3,Xinjiang
+38,3,Xinjiang
+37,3,Xinjiang
+36,3,Xinjiang
+35,3,Xinjiang
+34,3,Xinjiang
+33,3,Xinjiang
+32,3,Xinjiang
+31,3,Xinjiang
+30,3,Xinjiang
+29,3,Xinjiang
+28,3,Xinjiang
+27,3,Xinjiang
+26,3,Xinjiang
+25,3,Xinjiang
+24,3,Xinjiang
+23,3,Xinjiang
+22,3,Xinjiang
+21,3,Xinjiang
+20,3,Xinjiang
+19,3,Xinjiang
+18,3,Xinjiang
+17,3,Xinjiang
+16,3,Xinjiang
+15,3,Xinjiang
+14,3,Xinjiang
+13,3,Xinjiang
+12,3,Xinjiang
+11,3,Xinjiang
+10,3,Xinjiang
+9,3,Xinjiang
+8,3,Xinjiang
+7,3,Xinjiang
+6,3,Xinjiang
+5,3,Xinjiang
+4,3,Xinjiang
+3,3,Xinjiang
+2,3,Xinjiang
+1,3,Xinjiang
+21,335,Connecticut
+20,277,Connecticut
+19,206,Connecticut
+18,189,Connecticut
+17,165,Connecticut
+16,131,Connecticut
+15,112,Connecticut
+14,85,Connecticut
+13,69,Connecticut
+12,36,Connecticut
+11,34,Connecticut
+10,33,Connecticut
+9,27,Connecticut
+8,21,Connecticut
+7,19,Connecticut
+6,12,Connecticut
+5,10,Connecticut
+4,8,Connecticut
+3,5,Connecticut
+2,4,Connecticut
+1,3,Connecticut
+17,74,Nevada
+16,72,Nevada
+15,46,Nevada
+14,46,Nevada
+13,46,Nevada
+12,43,Nevada
+11,38,Nevada
+10,32,Nevada
+9,26,Nevada
+8,18,Nevada
+7,15,Nevada
+6,14,Nevada
+5,10,Nevada
+4,10,Nevada
+3,10,Nevada
+2,6,Nevada
+1,4,Nevada
+58,6,Chongqing
+57,6,Chongqing
+56,6,Chongqing
+55,6,Chongqing
+54,6,Chongqing
+53,6,Chongqing
+52,6,Chongqing
+51,6,Chongqing
+50,6,Chongqing
+49,6,Chongqing
+48,6,Chongqing
+47,6,Chongqing
+46,6,Chongqing
+45,6,Chongqing
+44,6,Chongqing
+43,6,Chongqing
+42,6,Chongqing
+41,6,Chongqing
+40,6,Chongqing
+39,6,Chongqing
+38,6,Chongqing
+37,6,Chongqing
+36,6,Chongqing
+35,6,Chongqing
+34,6,Chongqing
+33,6,Chongqing
+32,6,Chongqing
+31,6,Chongqing
+30,6,Chongqing
+29,6,Chongqing
+28,6,Chongqing
+27,6,Chongqing
+26,6,Chongqing
+25,6,Chongqing
+24,6,Chongqing
+23,6,Chongqing
+22,6,Chongqing
+21,6,Chongqing
+20,6,Chongqing
+19,6,Chongqing
+18,6,Chongqing
+17,6,Chongqing
+16,6,Chongqing
+15,6,Chongqing
+14,6,Chongqing
+13,6,Chongqing
+12,6,Chongqing
+11,6,Chongqing
+10,6,Chongqing
+9,5,Chongqing
+8,5,Chongqing
+7,5,Chongqing
+6,5,Chongqing
+5,5,Chongqing
+4,5,Chongqing
+3,5,Chongqing
+2,3,Chongqing
+1,3,Chongqing
+10,4,North Dakota
+9,4,North Dakota
+8,3,North Dakota
+7,3,North Dakota
+6,3,North Dakota
+5,3,North Dakota
+4,3,North Dakota
+3,3,North Dakota
+2,3,North Dakota
+1,3,North Dakota
+57,3,Tianjin
+56,3,Tianjin
+55,3,Tianjin
+54,3,Tianjin
+53,3,Tianjin
+52,3,Tianjin
+51,3,Tianjin
+50,3,Tianjin
+49,3,Tianjin
+48,3,Tianjin
+47,3,Tianjin
+46,3,Tianjin
+45,3,Tianjin
+44,3,Tianjin
+43,3,Tianjin
+42,3,Tianjin
+41,3,Tianjin
+40,3,Tianjin
+39,3,Tianjin
+38,3,Tianjin
+37,3,Tianjin
+36,3,Tianjin
+35,3,Tianjin
+34,3,Tianjin
+33,3,Tianjin
+32,3,Tianjin
+31,3,Tianjin
+30,3,Tianjin
+29,3,Tianjin
+28,3,Tianjin
+27,3,Tianjin
+26,3,Tianjin
+25,3,Tianjin
+24,3,Tianjin
+23,3,Tianjin
+22,3,Tianjin
+21,3,Tianjin
+20,3,Tianjin
+19,3,Tianjin
+18,3,Tianjin
+17,3,Tianjin
+16,3,Tianjin
+15,3,Tianjin
+14,3,Tianjin
+13,3,Tianjin
+12,3,Tianjin
+11,3,Tianjin
+10,3,Tianjin
+9,3,Tianjin
+8,3,Tianjin
+7,3,Tianjin
+6,3,Tianjin
+5,3,Tianjin
+4,3,Tianjin
+3,3,Tianjin
+2,3,Tianjin
+1,3,Tianjin
+17,23,Vermont
+16,23,Vermont
+15,23,Vermont
+14,22,Vermont
+13,20,Vermont
+12,17,Vermont
+11,17,Vermont
+10,16,Vermont
+9,13,Vermont
+8,12,Vermont
+7,12,Vermont
+6,12,Vermont
+5,10,Vermont
+4,9,Vermont
+3,8,Vermont
+2,7,Vermont
+1,5,Vermont
+11,18,New Hampshire
+10,13,New Hampshire
+9,9,New Hampshire
+8,9,New Hampshire
+7,9,New Hampshire
+6,7,New Hampshire
+5,5,New Hampshire
+4,4,New Hampshire
+3,3,New Hampshire
+2,3,New Hampshire
+1,3,New Hampshire
+13,18,Arkansas
+12,18,Arkansas
+11,16,Arkansas
+10,16,Arkansas
+9,14,Arkansas
+8,12,Arkansas
+7,12,Arkansas
+6,10,Arkansas
+5,8,Arkansas
+4,7,Arkansas
+3,6,Arkansas
+2,5,Arkansas
+1,3,Arkansas
+22,193,Texas
+21,176,Texas
+20,153,Texas
+19,140,Texas
+18,122,Texas
+17,104,Texas
+16,86,Texas
+15,68,Texas
+14,58,Texas
+13,48,Texas
+12,37,Texas
+11,34,Texas
+10,26,Texas
+9,24,Texas
+8,17,Texas
+7,13,Texas
+6,9,Texas
+5,8,Texas
+4,5,Texas
+3,5,Texas
+2,5,Texas
+1,3,Texas
+10,12,Nebraska
+9,10,Nebraska
+8,9,Nebraska
+7,8,Nebraska
+6,8,Nebraska
+5,6,Nebraska
+4,6,Nebraska
+3,4,Nebraska
+2,4,Nebraska
+1,3,Nebraska
+19,75,Virginia
+18,66,Virginia
+17,66,Virginia
+16,52,Virginia
+15,52,Virginia
+14,47,Virginia
+13,41,Virginia
+12,35,Virginia
+11,27,Virginia
+10,25,Virginia
+9,24,Virginia
+8,17,Virginia
+7,16,Virginia
+6,14,Virginia
+5,13,Virginia
+4,9,Virginia
+3,7,Virginia
+2,6,Virginia
+1,3,Virginia
+15,34,Kansas
+14,29,Kansas
+13,25,Kansas
+12,22,Kansas
+11,21,Kansas
+10,18,Kansas
+9,14,Kansas
+8,10,Kansas
+7,9,Kansas
+6,8,Kansas
+5,7,Kansas
+4,5,Kansas
+3,4,Kansas
+2,3,Kansas
+1,3,Kansas
+12,13,Utah
+11,13,Utah
+10,13,Utah
+9,8,Utah
+8,8,Utah
+7,7,Utah
+6,7,Utah
+5,7,Utah
+4,5,Utah
+3,4,Utah
+2,4,Utah
+1,3,Utah
+4,4,West Virginia
+3,4,West Virginia
+2,4,West Virginia
+1,3,West Virginia
+2,17,Navajo Nation
+1,17,Navajo Nation
+8,4,Guam
+7,4,Guam
+6,4,Guam
+5,4,Guam
+4,4,Guam
+3,4,Guam
+2,3,Guam
+1,3,Guam
+26,20,New South Wales
+25,20,New South Wales
+24,20,New South Wales
+23,18,New South Wales
+22,16,New South Wales
+21,11,New South Wales
+20,11,New South Wales
+19,9,New South Wales
+18,9,New South Wales
+17,7,New South Wales
+16,7,New South Wales
+15,7,New South Wales
+14,7,New South Wales
+13,6,New South Wales
+12,6,New South Wales
+11,6,New South Wales
+10,6,New South Wales
+9,5,New South Wales
+8,5,New South Wales
+7,5,New South Wales
+6,5,New South Wales
+5,4,New South Wales
+4,4,New South Wales
+3,3,New South Wales
+2,3,New South Wales
+1,3,New South Wales
+11,14,Maine
+10,12,Maine
+9,10,Maine
+8,10,Maine
+7,10,Maine
+6,9,Maine
+5,7,Maine
+4,7,Maine
+3,5,Maine
+2,3,Maine
+1,3,Maine
+22,37,Oregon
+21,33,Oregon
+20,29,Oregon
+19,27,Oregon
+18,26,Oregon
+17,22,Oregon
+16,21,Oregon
+15,19,Oregon
+14,18,Oregon
+13,16,Oregon
+12,13,Oregon
+11,13,Oregon
+10,12,Oregon
+9,11,Oregon
+8,10,Oregon
+7,8,Oregon
+6,5,Oregon
+5,5,Oregon
+4,4,Oregon
+3,4,Oregon
+2,3,Oregon
+1,3,Oregon
+11,7,Alaska
+10,6,Alaska
+9,6,Alaska
+8,6,Alaska
+7,5,Alaska
+6,3,Alaska
+5,3,Alaska
+4,3,Alaska
+3,3,Alaska
+2,3,Alaska
+1,3,Alaska
+53,8,Guangdong
+52,8,Guangdong
+51,8,Guangdong
+50,8,Guangdong
+49,8,Guangdong
+48,8,Guangdong
+47,8,Guangdong
+46,8,Guangdong
+45,8,Guangdong
+44,8,Guangdong
+43,8,Guangdong
+42,8,Guangdong
+41,8,Guangdong
+40,8,Guangdong
+39,8,Guangdong
+38,8,Guangdong
+37,8,Guangdong
+36,8,Guangdong
+35,8,Guangdong
+34,8,Guangdong
+33,8,Guangdong
+32,8,Guangdong
+31,8,Guangdong
+30,8,Guangdong
+29,8,Guangdong
+28,8,Guangdong
+27,8,Guangdong
+26,8,Guangdong
+25,8,Guangdong
+24,8,Guangdong
+23,8,Guangdong
+22,8,Guangdong
+21,7,Guangdong
+20,7,Guangdong
+19,7,Guangdong
+18,7,Guangdong
+17,7,Guangdong
+16,7,Guangdong
+15,7,Guangdong
+14,7,Guangdong
+13,7,Guangdong
+12,7,Guangdong
+11,7,Guangdong
+10,7,Guangdong
+9,7,Guangdong
+8,6,Guangdong
+7,6,Guangdong
+6,5,Guangdong
+5,5,Guangdong
+4,5,Guangdong
+3,5,Guangdong
+2,4,Guangdong
+1,4,Guangdong
+12,5,Queensland
+11,5,Queensland
+10,5,Queensland
+9,5,Queensland
+8,5,Queensland
+7,4,Queensland
+6,4,Queensland
+5,4,Queensland
+4,3,Queensland
+3,3,Queensland
+2,3,Queensland
+1,3,Queensland
+10,16,New Mexico
+9,13,New Mexico
+8,12,New Mexico
+7,12,New Mexico
+6,11,New Mexico
+5,10,New Mexico
+4,7,New Mexico
+3,6,New Mexico
+2,5,New Mexico
+1,4,New Mexico
+20,103,Wisconsin
+19,93,Wisconsin
+18,85,Wisconsin
+17,75,Wisconsin
+16,60,Wisconsin
+15,51,Wisconsin
+14,38,Wisconsin
+13,28,Wisconsin
+12,25,Wisconsin
+11,24,Wisconsin
+10,18,Wisconsin
+9,17,Wisconsin
+8,14,Wisconsin
+7,10,Wisconsin
+6,7,Wisconsin
+5,5,Wisconsin
+4,5,Wisconsin
+3,4,Wisconsin
+2,4,Wisconsin
+1,3,Wisconsin
+14,18,Idaho
+13,15,Idaho
+12,13,Idaho
+11,10,Idaho
+10,10,Idaho
+9,10,Idaho
+8,9,Idaho
+7,9,Idaho
+6,8,Idaho
+5,8,Idaho
+4,6,Idaho
+3,5,Idaho
+2,4,Idaho
+1,3,Idaho
+63,22,Henan
+62,22,Henan
+61,22,Henan
+60,22,Henan
+59,22,Henan
+58,22,Henan
+57,22,Henan
+56,22,Henan
+55,22,Henan
+54,22,Henan
+53,22,Henan
+52,22,Henan
+51,22,Henan
+50,22,Henan
+49,22,Henan
+48,22,Henan
+47,22,Henan
+46,22,Henan
+45,22,Henan
+44,22,Henan
+43,22,Henan
+42,22,Henan
+41,22,Henan
+40,22,Henan
+39,22,Henan
+38,22,Henan
+37,22,Henan
+36,22,Henan
+35,22,Henan
+34,22,Henan
+33,22,Henan
+32,22,Henan
+31,22,Henan
+30,22,Henan
+29,22,Henan
+28,22,Henan
+27,22,Henan
+26,22,Henan
+25,22,Henan
+24,22,Henan
+23,21,Henan
+22,20,Henan
+21,20,Henan
+20,19,Henan
+19,19,Henan
+18,19,Henan
+17,19,Henan
+16,19,Henan
+15,19,Henan
+14,19,Henan
+13,19,Henan
+12,19,Henan
+11,16,Henan
+10,13,Henan
+9,13,Henan
+8,11,Henan
+7,10,Henan
+6,8,Henan
+5,7,Henan
+4,6,Henan
+3,6,Henan
+2,4,Henan
+1,3,Henan
+48,7,Shanghai
+47,6,Shanghai
+46,6,Shanghai
+45,6,Shanghai
+44,6,Shanghai
+43,6,Shanghai
+42,6,Shanghai
+41,6,Shanghai
+40,6,Shanghai
+39,5,Shanghai
+38,5,Shanghai
+37,5,Shanghai
+36,5,Shanghai
+35,5,Shanghai
+34,5,Shanghai
+33,5,Shanghai
+32,4,Shanghai
+31,4,Shanghai
+30,4,Shanghai
+29,3,Shanghai
+28,3,Shanghai
+27,3,Shanghai
+26,3,Shanghai
+25,3,Shanghai
+24,3,Shanghai
+23,3,Shanghai
+22,3,Shanghai
+21,3,Shanghai
+20,3,Shanghai
+19,3,Shanghai
+18,3,Shanghai
+17,3,Shanghai
+16,3,Shanghai
+15,3,Shanghai
+14,3,Shanghai
+13,3,Shanghai
+12,3,Shanghai
+11,3,Shanghai
+10,3,Shanghai
+9,3,Shanghai
+8,3,Shanghai
+7,3,Shanghai
+6,3,Shanghai
+5,3,Shanghai
+4,3,Shanghai
+3,3,Shanghai
+2,3,Shanghai
+1,3,Shanghai
+80,3335,China
+79,3332,China
+78,3331,China
+77,3331,China
+76,3329,China
+75,3326,China
+74,3322,China
+73,3318,China
+72,3306,China
+71,3305,China
+70,3304,China
+69,3300,China
+68,3295,China
+67,3292,China
+66,3287,China
+65,3281,China
+64,3277,China
+63,3270,China
+62,3261,China
+61,3255,China
+60,3249,China
+59,3245,China
+58,3237,China
+57,3225,China
+56,3213,China
+55,3199,China
+54,3189,China
+53,3176,China
+52,3169,China
+51,3158,China
+50,3136,China
+49,3119,China
+48,3097,China
+47,3070,China
+46,3042,China
+45,3012,China
+44,2981,China
+43,2943,China
+42,2912,China
+41,2870,China
+40,2835,China
+39,2788,China
+38,2744,China
+37,2715,China
+36,2663,China
+35,2592,China
+34,2442,China
+33,2345,China
+32,2236,China
+31,2118,China
+30,2006,China
+29,1868,China
+28,1770,China
+27,1665,China
+26,1523,China
+25,1381,China
+24,1367,China
+23,1114,China
+22,1016,China
+21,908,China
+20,812,China
+19,723,China
+18,636,China
+17,563,China
+16,492,China
+15,425,China
+14,361,China
+13,304,China
+12,259,China
+11,213,China
+10,170,China
+9,132,China
+8,106,China
+7,80,China
+6,56,China
+5,41,China
+4,26,China
+3,18,China
+2,17,China
+1,6,China
+6,7,Bahamas
+5,6,Bahamas
+4,5,Bahamas
+3,5,Bahamas
+2,4,Bahamas
+1,3,Bahamas
+15,8,Azerbaijan
+14,8,Azerbaijan
+13,7,Azerbaijan
+12,7,Azerbaijan
+11,5,Azerbaijan
+10,5,Azerbaijan
+9,5,Azerbaijan
+8,5,Azerbaijan
+7,5,Azerbaijan
+6,4,Azerbaijan
+5,4,Azerbaijan
+4,4,Azerbaijan
+3,3,Azerbaijan
+2,3,Azerbaijan
+1,3,Azerbaijan
+29,2349,Germany
+28,2016,Germany
+27,1810,Germany
+26,1584,Germany
+25,1446,Germany
+24,1275,Germany
+23,1111,Germany
+22,931,Germany
+21,788,Germany
+20,650,Germany
+19,541,Germany
+18,455,Germany
+17,395,Germany
+16,281,Germany
+15,222,Germany
+14,175,Germany
+13,130,Germany
+12,111,Germany
+11,84,Germany
+10,70,Germany
+9,44,Germany
+8,31,Germany
+7,26,Germany
+6,17,Germany
+5,13,Germany
+4,9,Germany
+3,8,Germany
+2,6,Germany
+1,3,Germany
+4,3,Ivory Coast
+3,3,Ivory Coast
+2,3,Ivory Coast
+1,3,Ivory Coast
+31,913,Switzerland
+30,858,Switzerland
+29,787,Switzerland
+28,734,Switzerland
+27,666,Switzerland
+26,604,Switzerland
+25,565,Switzerland
+24,505,Switzerland
+23,433,Switzerland
+22,359,Switzerland
+21,312,Switzerland
+20,282,Switzerland
+19,240,Switzerland
+18,197,Switzerland
+17,165,Switzerland
+16,145,Switzerland
+15,122,Switzerland
+14,107,Switzerland
+13,80,Switzerland
+12,57,Switzerland
+11,43,Switzerland
+10,36,Switzerland
+9,27,Switzerland
+8,21,Switzerland
+7,14,Switzerland
+6,14,Switzerland
+5,13,Switzerland
+4,7,Switzerland
+3,4,Switzerland
+2,3,Switzerland
+1,3,Switzerland
+29,2523,Belgium
+28,2240,Belgium
+27,2035,Belgium
+26,1632,Belgium
+25,1447,Belgium
+24,1283,Belgium
+23,1143,Belgium
+22,1011,Belgium
+21,828,Belgium
+20,705,Belgium
+19,513,Belgium
+18,431,Belgium
+17,353,Belgium
+16,289,Belgium
+15,220,Belgium
+14,178,Belgium
+13,122,Belgium
+12,88,Belgium
+11,67,Belgium
+10,67,Belgium
+9,37,Belgium
+8,21,Belgium
+7,10,Belgium
+6,10,Belgium
+5,5,Belgium
+4,4,Belgium
+3,3,Belgium
+2,3,Belgium
+1,3,Belgium
+4,3,Guatemala
+3,3,Guatemala
+2,3,Guatemala
+1,3,Guatemala
+16,40,Finland
+15,40,Finland
+14,27,Finland
+13,28,Finland
+12,28,Finland
+11,20,Finland
+10,19,Finland
+9,17,Finland
+8,17,Finland
+7,13,Finland
+6,11,Finland
+5,9,Finland
+4,7,Finland
+3,5,Finland
+2,5,Finland
+1,3,Finland
+32,4,Hong Kong
+31,4,Hong Kong
+30,4,Hong Kong
+29,4,Hong Kong
+28,4,Hong Kong
+27,4,Hong Kong
+26,4,Hong Kong
+25,4,Hong Kong
+24,4,Hong Kong
+23,4,Hong Kong
+22,4,Hong Kong
+21,4,Hong Kong
+20,4,Hong Kong
+19,4,Hong Kong
+18,4,Hong Kong
+17,4,Hong Kong
+16,4,Hong Kong
+15,4,Hong Kong
+14,4,Hong Kong
+13,4,Hong Kong
+12,4,Hong Kong
+11,4,Hong Kong
+10,4,Hong Kong
+9,4,Hong Kong
+8,4,Hong Kong
+7,4,Hong Kong
+6,4,Hong Kong
+5,4,Hong Kong
+4,3,Hong Kong
+3,3,Hong Kong
+2,3,Hong Kong
+1,3,Hong Kong
+9,7,Kazakhstan
+8,7,Kazakhstan
+7,6,Kazakhstan
+6,6,Kazakhstan
+5,6,Kazakhstan
+4,5,Kazakhstan
+3,3,Kazakhstan
+2,3,Kazakhstan
+1,3,Kazakhstan
+12,10,Armenia
+11,9,Armenia
+10,8,Armenia
+9,8,Armenia
+8,7,Armenia
+7,7,Armenia
+6,7,Armenia
+5,4,Armenia
+4,3,Armenia
+3,3,Armenia
+2,3,Armenia
+1,3,Armenia
+50,105,Japan
+49,104,Japan
+48,103,Japan
+47,96,Japan
+46,88,Japan
+45,80,Japan
+44,74,Japan
+43,68,Japan
+42,68,Japan
+41,66,Japan
+40,64,Japan
+39,62,Japan
+38,59,Japan
+37,57,Japan
+36,55,Japan
+35,53,Japan
+34,52,Japan
+33,49,Japan
+32,44,Japan
+31,43,Japan
+30,40,Japan
+29,39,Japan
+28,36,Japan
+27,35,Japan
+26,32,Japan
+25,29,Japan
+24,28,Japan
+23,26,Japan
+22,23,Japan
+21,19,Japan
+20,17,Japan
+19,14,Japan
+18,12,Japan
+17,12,Japan
+16,12,Japan
+15,12,Japan
+14,12,Japan
+13,12,Japan
+12,12,Japan
+11,12,Japan
+10,11,Japan
+9,9,Japan
+8,8,Japan
+7,6,Japan
+6,5,Japan
+5,4,Japan
+4,3,Japan
+3,3,Japan
+2,3,Japan
+1,3,Japan
+17,55,Colombia
+16,50,Colombia
+15,46,Colombia
+14,35,Colombia
+13,32,Colombia
+12,25,Colombia
+11,19,Colombia
+10,17,Colombia
+9,16,Colombia
+8,14,Colombia
+7,10,Colombia
+6,6,Colombia
+5,6,Colombia
+4,6,Colombia
+3,4,Colombia
+2,3,Colombia
+1,3,Colombia
+24,295,Austria
+23,273,Austria
+22,243,Austria
+21,220,Austria
+20,204,Austria
+19,186,Austria
+18,168,Austria
+17,158,Austria
+16,146,Austria
+15,128,Austria
+14,108,Austria
+13,86,Austria
+12,68,Austria
+11,58,Austria
+10,42,Austria
+9,30,Austria
+8,25,Austria
+7,16,Austria
+6,8,Austria
+5,7,Austria
+4,6,Austria
+3,5,Austria
+2,4,Austria
+1,3,Austria
+11,7,Mauritius
+10,7,Mauritius
+9,7,Mauritius
+8,7,Mauritius
+7,7,Mauritius
+6,7,Mauritius
+5,7,Mauritius
+4,7,Mauritius
+3,5,Mauritius
+2,3,Mauritius
+1,3,Mauritius
+24,435,Canada
+23,380,Canada
+22,322,Canada
+21,280,Canada
+20,233,Canada
+19,187,Canada
+18,138,Canada
+17,111,Canada
+16,101,Canada
+15,88,Canada
+14,64,Canada
+13,60,Canada
+12,55,Canada
+11,39,Canada
+10,34,Canada
+9,27,Canada
+8,24,Canada
+7,20,Canada
+6,19,Canada
+5,12,Canada
+4,12,Canada
+3,9,Canada
+2,8,Canada
+1,4,Canada
+11,11,Niger
+10,11,Niger
+9,10,Niger
+8,10,Niger
+7,8,Niger
+6,5,Niger
+5,5,Niger
+4,5,Niger
+3,3,Niger
+2,3,Niger
+1,3,Niger
+22,370,Georgia
+21,348,Georgia
+20,294,Georgia
+19,219,Georgia
+18,208,Georgia
+17,198,Georgia
+16,176,Georgia
+15,154,Georgia
+14,125,Georgia
+13,102,Georgia
+12,84,Georgia
+11,79,Georgia
+10,65,Georgia
+9,56,Georgia
+8,47,Georgia
+7,38,Georgia
+6,26,Georgia
+5,25,Georgia
+4,20,Georgia
+3,14,Georgia
+2,10,Georgia
+1,4,Georgia
+11,5,Taiwan
+10,5,Taiwan
+9,5,Taiwan
+8,5,Taiwan
+7,5,Taiwan
+6,5,Taiwan
+5,5,Taiwan
+4,5,Taiwan
+3,5,Taiwan
+2,5,Taiwan
+1,5,Taiwan
+8,7,Mali
+7,5,Mali
+6,5,Mali
+5,5,Mali
+4,3,Mali
+3,3,Mali
+2,3,Mali
+1,3,Mali
+20,67,Malaysia
+19,65,Malaysia
+18,63,Malaysia
+17,62,Malaysia
+16,61,Malaysia
+15,57,Malaysia
+14,53,Malaysia
+13,50,Malaysia
+12,45,Malaysia
+11,43,Malaysia
+10,37,Malaysia
+9,34,Malaysia
+8,27,Malaysia
+7,26,Malaysia
+6,23,Malaysia
+5,19,Malaysia
+4,15,Malaysia
+3,14,Malaysia
+2,9,Malaysia
+1,4,Malaysia
+6,5,El Salvador
+5,5,El Salvador
+4,4,El Salvador
+3,3,El Salvador
+2,3,El Salvador
+1,3,El Salvador
+7,7,Uruguay
+6,7,Uruguay
+5,6,Uruguay
+4,6,Uruguay
+3,5,Uruguay
+2,4,Uruguay
+1,4,Uruguay
+10,18,South Africa
+9,13,South Africa
+8,12,South Africa
+7,11,South Africa
+6,9,South Africa
+5,9,South Africa
+4,5,South Africa
+3,5,South Africa
+2,5,South Africa
+1,3,South Africa
+14,41,Saudi Arabia
+13,41,Saudi Arabia
+12,38,Saudi Arabia
+11,34,Saudi Arabia
+10,29,Saudi Arabia
+9,25,Saudi Arabia
+8,21,Saudi Arabia
+7,16,Saudi Arabia
+6,10,Saudi Arabia
+5,8,Saudi Arabia
+4,8,Saudi Arabia
+3,4,Saudi Arabia
+2,3,Saudi Arabia
+1,3,Saudi Arabia
+7,6,Kenya
+6,6,Kenya
+5,6,Kenya
+4,4,Kenya
+3,4,Kenya
+2,4,Kenya
+1,3,Kenya
+24,103,Egypt
+23,94,Egypt
+22,85,Egypt
+21,78,Egypt
+20,71,Egypt
+19,66,Egypt
+18,58,Egypt
+17,52,Egypt
+16,46,Egypt
+15,41,Egypt
+14,40,Egypt
+13,36,Egypt
+12,30,Egypt
+11,24,Egypt
+10,21,Egypt
+9,20,Egypt
+8,19,Egypt
+7,14,Egypt
+6,10,Egypt
+5,8,Egypt
+4,7,Egypt
+3,6,Egypt
+2,6,Egypt
+1,4,Egypt
+6,3,Togo
+5,3,Togo
+4,3,Togo
+3,3,Togo
+2,3,Togo
+1,3,Togo
+12,6,Singapore
+11,6,Singapore
+10,6,Singapore
+9,6,Singapore
+8,6,Singapore
+7,6,Singapore
+6,5,Singapore
+5,4,Singapore
+4,3,Singapore
+3,3,Singapore
+2,3,Singapore
+1,3,Singapore
+27,83,Greece
+26,81,Greece
+25,79,Greece
+24,73,Greece
+23,68,Greece
+22,67,Greece
+21,53,Greece
+20,51,Greece
+19,49,Greece
+18,46,Greece
+17,39,Greece
+16,32,Greece
+15,28,Greece
+14,27,Greece
+13,23,Greece
+12,20,Greece
+11,17,Greece
+10,17,Greece
+9,13,Greece
+8,10,Greece
+7,6,Greece
+6,6,Greece
+5,5,Greece
+4,4,Greece
+3,4,Greece
+2,4,Greece
+1,3,Greece
+18,21,Bangladesh
+17,20,Bangladesh
+16,17,Bangladesh
+15,12,Bangladesh
+14,9,Bangladesh
+13,8,Bangladesh
+12,6,Bangladesh
+11,6,Bangladesh
+10,6,Bangladesh
+9,5,Bangladesh
+8,5,Bangladesh
+7,5,Bangladesh
+6,5,Bangladesh
+5,5,Bangladesh
+4,5,Bangladesh
+3,5,Bangladesh
+2,4,Bangladesh
+1,3,Bangladesh
+11,8,Guadeloupe
+10,7,Guadeloupe
+9,7,Guadeloupe
+8,7,Guadeloupe
+7,7,Guadeloupe
+6,7,Guadeloupe
+5,6,Guadeloupe
+4,6,Guadeloupe
+3,4,Guadeloupe
+2,4,Guadeloupe
+1,4,Guadeloupe
+21,96,Morocco
+20,91,Morocco
+19,83,Morocco
+18,71,Morocco
+17,66,Morocco
+16,50,Morocco
+15,47,Morocco
+14,39,Morocco
+13,36,Morocco
+12,33,Morocco
+11,27,Morocco
+10,26,Morocco
+9,23,Morocco
+8,11,Morocco
+7,6,Morocco
+6,5,Morocco
+5,4,Morocco
+4,4,Morocco
+3,3,Morocco
+2,3,Morocco
+1,3,Morocco
+21,812,Turkey
+20,725,Turkey
+19,649,Turkey
+18,574,Turkey
+17,501,Turkey
+16,425,Turkey
+15,356,Turkey
+14,277,Turkey
+13,214,Turkey
+12,168,Turkey
+11,131,Turkey
+10,108,Turkey
+9,92,Turkey
+8,75,Turkey
+7,59,Turkey
+6,44,Turkey
+5,37,Turkey
+4,30,Turkey
+3,21,Turkey
+2,9,Turkey
+1,4,Turkey
+26,101,Norway
+25,93,Norway
+24,83,Norway
+23,73,Norway
+22,66,Norway
+21,59,Norway
+20,54,Norway
+19,45,Norway
+18,40,Norway
+17,34,Norway
+16,29,Norway
+15,23,Norway
+14,20,Norway
+13,15,Norway
+12,14,Norway
+11,14,Norway
+10,11,Norway
+9,8,Norway
+8,7,Norway
+7,7,Norway
+6,7,Norway
+5,6,Norway
+4,4,Norway
+3,3,Norway
+2,3,Norway
+1,3,Norway
+8,4,Jamaica
+7,3,Jamaica
+6,3,Jamaica
+5,3,Jamaica
+4,3,Jamaica
+3,3,Jamaica
+2,3,Jamaica
+1,3,Jamaica
+21,380,Portugal
+20,380,Portugal
+19,345,Portugal
+18,311,Portugal
+17,295,Portugal
+16,246,Portugal
+15,209,Portugal
+14,187,Portugal
+13,160,Portugal
+12,140,Portugal
+11,119,Portugal
+10,100,Portugal
+9,76,Portugal
+8,60,Portugal
+7,43,Portugal
+6,43,Portugal
+5,23,Portugal
+4,14,Portugal
+3,12,Portugal
+2,7,Portugal
+1,5,Portugal
+2,3,Uzbekistan
+1,3,Uzbekistan
+25,218,Denmark
+24,218,Denmark
+23,203,Denmark
+22,187,Denmark
+21,179,Denmark
+20,139,Denmark
+19,123,Denmark
+18,104,Denmark
+17,90,Denmark
+16,77,Denmark
+15,72,Denmark
+14,65,Denmark
+13,52,Denmark
+12,41,Denmark
+11,34,Denmark
+10,34,Denmark
+9,24,Denmark
+8,13,Denmark
+7,13,Denmark
+6,9,Denmark
+5,9,Denmark
+4,6,Denmark
+3,4,Denmark
+2,4,Denmark
+1,4,Denmark
+21,66,Hungary
+20,58,Hungary
+19,47,Hungary
+18,38,Hungary
+17,34,Hungary
+16,32,Hungary
+15,26,Hungary
+14,21,Hungary
+13,20,Hungary
+12,16,Hungary
+11,15,Hungary
+10,13,Hungary
+9,11,Hungary
+8,10,Hungary
+7,10,Hungary
+6,10,Hungary
+5,9,Hungary
+4,7,Hungary
+3,6,Hungary
+2,4,Hungary
+1,3,Hungary
+7,6,Qatar
+6,6,Qatar
+5,4,Qatar
+4,4,Qatar
+3,3,Qatar
+2,3,Qatar
+1,3,Qatar
+33,51,Australia
+32,50,Australia
+31,48,Australia
+30,41,Australia
+29,36,Australia
+28,30,Australia
+27,28,Australia
+26,24,Australia
+25,21,Australia
+24,19,Australia
+23,19,Australia
+22,16,Australia
+21,14,Australia
+20,12,Australia
+19,12,Australia
+18,8,Australia
+17,8,Australia
+16,7,Australia
+15,7,Australia
+14,7,Australia
+13,7,Australia
+12,6,Australia
+11,6,Australia
+10,5,Australia
+9,5,Australia
+8,5,Australia
+7,3,Australia
+6,3,Australia
+5,3,Australia
+4,3,Australia
+3,3,Australia
+2,3,Australia
+1,3,Australia
+19,108,Dominican Republic
+18,98,Dominican Republic
+17,86,Dominican Republic
+16,82,Dominican Republic
+15,77,Dominican Republic
+14,68,Dominican Republic
+13,60,Dominican Republic
+12,57,Dominican Republic
+11,51,Dominican Republic
+10,42,Dominican Republic
+9,39,Dominican Republic
+8,28,Dominican Republic
+7,20,Dominican Republic
+6,10,Dominican Republic
+5,10,Dominican Republic
+4,6,Dominican Republic
+3,3,Dominican Republic
+2,3,Dominican Republic
+1,3,Dominican Republic
+1,3,Zimbabwe
+22,242,Ecuador
+21,220,Ecuador
+20,191,Ecuador
+19,180,Ecuador
+18,172,Ecuador
+17,145,Ecuador
+16,120,Ecuador
+15,98,Ecuador
+14,79,Ecuador
+13,62,Ecuador
+12,58,Ecuador
+11,48,Ecuador
+10,41,Ecuador
+9,34,Ecuador
+8,29,Ecuador
+7,27,Ecuador
+6,18,Ecuador
+5,14,Ecuador
+4,7,Ecuador
+3,7,Ecuador
+2,4,Ecuador
+1,3,Ecuador
+14,19,Croatia
+13,19,Croatia
+12,16,Croatia
+11,15,Croatia
+10,12,Croatia
+9,12,Croatia
+8,7,Croatia
+7,6,Croatia
+6,6,Croatia
+5,6,Croatia
+4,6,Croatia
+3,5,Croatia
+2,4,Croatia
+1,3,Croatia
+15,76,Russia
+14,63,Russia
+13,58,Russia
+12,47,Russia
+11,45,Russia
+10,43,Russia
+9,34,Russia
+8,30,Russia
+7,24,Russia
+6,17,Russia
+5,9,Russia
+4,8,Russia
+3,4,Russia
+2,3,Russia
+1,3,Russia
+38,10869,France
+37,10328,France
+36,8911,France
+35,8078,France
+34,7560,France
+33,6507,France
+32,5387,France
+31,4032,France
+30,3523,France
+29,3024,France
+28,2606,France
+27,2314,France
+26,1995,France
+25,1696,France
+24,1331,France
+23,1100,France
+22,860,France
+21,674,France
+20,562,France
+19,450,France
+18,372,France
+17,264,France
+16,175,France
+15,148,France
+14,127,France
+13,91,France
+12,79,France
+11,61,France
+10,48,France
+9,33,France
+8,30,France
+7,19,France
+6,16,France
+5,9,France
+4,7,France
+3,4,France
+2,4,France
+1,3,France
+5,5,Congo
+4,5,Congo
+3,5,Congo
+2,5,Congo
+1,5,Congo
+22,823,Brazil
+21,691,Brazil
+20,566,Brazil
+19,487,Brazil
+18,445,Brazil
+17,365,Brazil
+16,327,Brazil
+15,244,Brazil
+14,202,Brazil
+13,165,Brazil
+12,136,Brazil
+11,114,Brazil
+10,93,Brazil
+9,77,Brazil
+8,60,Brazil
+7,47,Brazil
+6,34,Brazil
+5,25,Brazil
+4,18,Brazil
+3,11,Brazil
+2,7,Brazil
+1,4,Brazil
+1,3,Costa Rica
+47,204,South Korea
+46,200,South Korea
+45,192,South Korea
+44,186,South Korea
+43,183,South Korea
+42,177,South Korea
+41,174,South Korea
+40,169,South Korea
+39,165,South Korea
+38,162,South Korea
+37,158,South Korea
+36,152,South Korea
+35,144,South Korea
+34,139,South Korea
+33,131,South Korea
+32,126,South Korea
+31,120,South Korea
+30,111,South Korea
+29,104,South Korea
+28,102,South Korea
+27,94,South Korea
+26,91,South Korea
+25,84,South Korea
+24,81,South Korea
+23,75,South Korea
+22,75,South Korea
+21,72,South Korea
+20,71,South Korea
+19,66,South Korea
+18,61,South Korea
+17,54,South Korea
+16,53,South Korea
+15,50,South Korea
+14,48,South Korea
+13,42,South Korea
+12,35,South Korea
+11,33,South Korea
+10,28,South Korea
+9,26,South Korea
+8,17,South Korea
+7,17,South Korea
+6,13,South Korea
+5,13,South Korea
+4,12,South Korea
+3,11,South Korea
+2,8,South Korea
+1,5,South Korea
+12,24,Estonia
+11,24,Estonia
+10,21,Estonia
+9,19,Estonia
+8,15,Estonia
+7,13,Estonia
+6,12,Estonia
+5,11,Estonia
+4,5,Estonia
+3,4,Estonia
+2,3,Estonia
+1,3,Estonia
+36,15238,Spain
+35,14555,Spain
+34,13798,Spain
+33,13055,Spain
+32,12418,Spain
+31,11744,Spain
+30,10935,Spain
+29,10003,Spain
+28,9053,Spain
+27,8189,Spain
+26,7340,Spain
+25,6528,Spain
+24,5690,Spain
+23,4365,Spain
+22,4089,Spain
+21,3434,Spain
+20,2696,Spain
+19,2182,Spain
+18,1381,Spain
+17,1326,Spain
+16,1002,Spain
+15,640,Spain
+14,598,Spain
+13,342,Spain
+12,294,Spain
+11,196,Spain
+10,133,Spain
+9,87,Spain
+8,55,Spain
+7,37,Spain
+6,31,Spain
+5,17,Spain
+4,10,Spain
+3,8,Spain
+2,3,Spain
+1,3,Spain
+6,6,Nigeria
+5,6,Nigeria
+4,5,Nigeria
+3,5,Nigeria
+2,5,Nigeria
+1,4,Nigeria
+21,235,Ireland
+20,210,Ireland
+19,174,Ireland
+18,158,Ireland
+17,137,Ireland
+16,120,Ireland
+15,98,Ireland
+14,85,Ireland
+13,71,Ireland
+12,54,Ireland
+11,46,Ireland
+10,36,Ireland
+9,22,Ireland
+8,19,Ireland
+7,9,Ireland
+6,7,Ireland
+5,6,Ireland
+4,4,Ireland
+3,3,Ireland
+2,3,Ireland
+1,3,Ireland
+14,23,Andorra
+13,22,Andorra
+12,21,Andorra
+11,18,Andorra
+10,18,Andorra
+9,16,Andorra
+8,15,Andorra
+7,14,Andorra
+6,12,Andorra
+5,8,Andorra
+4,6,Andorra
+3,3,Andorra
+2,3,Andorra
+1,3,Andorra
+11,12,United Arab Emirates
+10,12,United Arab Emirates
+9,11,United Arab Emirates
+8,10,United Arab Emirates
+7,10,United Arab Emirates
+6,9,United Arab Emirates
+5,8,United Arab Emirates
+4,8,United Arab Emirates
+3,6,United Arab Emirates
+2,5,United Arab Emirates
+1,3,United Arab Emirates
+21,57,Ukraine
+20,52,Ukraine
+19,45,Ukraine
+18,38,Ukraine
+17,32,Ukraine
+16,28,Ukraine
+15,23,Ukraine
+14,20,Ukraine
+13,17,Ukraine
+12,13,Ukraine
+11,11,Ukraine
+10,9,Ukraine
+9,8,Ukraine
+8,5,Ukraine
+7,5,Ukraine
+6,4,Ukraine
+5,3,Ukraine
+4,3,Ukraine
+3,3,Ukraine
+2,3,Ukraine
+1,3,Ukraine
+16,5,Paraguay
+15,5,Paraguay
+14,5,Paraguay
+13,5,Paraguay
+12,3,Paraguay
+11,3,Paraguay
+10,3,Paraguay
+9,3,Paraguay
+8,3,Paraguay
+7,3,Paraguay
+6,3,Paraguay
+5,3,Paraguay
+4,3,Paraguay
+3,3,Paraguay
+2,3,Paraguay
+1,3,Paraguay
+46,17669,Italy
+45,17127,Italy
+44,16523,Italy
+43,15887,Italy
+42,15362,Italy
+41,14681,Italy
+40,13915,Italy
+39,13155,Italy
+38,12428,Italy
+37,11591,Italy
+36,10779,Italy
+35,10023,Italy
+34,9134,Italy
+33,8215,Italy
+32,7503,Italy
+31,6820,Italy
+30,6077,Italy
+29,5476,Italy
+28,4825,Italy
+27,4032,Italy
+26,3405,Italy
+25,2978,Italy
+24,2503,Italy
+23,2158,Italy
+22,1809,Italy
+21,1441,Italy
+20,1266,Italy
+19,1016,Italy
+18,827,Italy
+17,631,Italy
+16,463,Italy
+15,366,Italy
+14,233,Italy
+13,197,Italy
+12,148,Italy
+11,107,Italy
+10,79,Italy
+9,52,Italy
+8,41,Italy
+7,29,Italy
+6,21,Italy
+5,17,Italy
+4,12,Italy
+3,11,Italy
+2,7,Italy
+1,4,Italy
+24,186,India
+23,164,India
+22,137,India
+21,118,India
+20,99,India
+19,86,India
+18,72,India
+17,58,India
+16,45,India
+15,32,India
+14,29,India
+13,25,India
+12,20,India
+11,20,India
+10,14,India
+9,10,India
+8,10,India
+7,8,India
+6,5,India
+5,5,India
+4,5,India
+3,3,India
+2,3,India
+1,3,India
+27,280,Indonesia
+26,240,Indonesia
+25,221,Indonesia
+24,209,Indonesia
+23,198,Indonesia
+22,191,Indonesia
+21,181,Indonesia
+20,170,Indonesia
+19,157,Indonesia
+18,136,Indonesia
+17,122,Indonesia
+16,114,Indonesia
+15,102,Indonesia
+14,87,Indonesia
+13,78,Indonesia
+12,58,Indonesia
+11,55,Indonesia
+10,49,Indonesia
+9,38,Indonesia
+8,38,Indonesia
+7,32,Indonesia
+6,25,Indonesia
+5,19,Indonesia
+4,5,Indonesia
+3,5,Indonesia
+2,5,Indonesia
+1,4,Indonesia
+22,65,Argentina
+21,60,Argentina
+20,53,Argentina
+19,46,Argentina
+18,43,Argentina
+17,42,Argentina
+16,37,Argentina
+15,33,Argentina
+14,27,Argentina
+13,24,Argentina
+12,20,Argentina
+11,19,Argentina
+10,17,Argentina
+9,12,Argentina
+8,8,Argentina
+7,6,Argentina
+6,4,Argentina
+5,4,Argentina
+4,4,Argentina
+3,3,Argentina
+2,3,Argentina
+1,3,Argentina
+21,63,Pakistan
+20,58,Pakistan
+19,55,Pakistan
+18,50,Pakistan
+17,45,Pakistan
+16,40,Pakistan
+15,35,Pakistan
+14,31,Pakistan
+13,26,Pakistan
+12,25,Pakistan
+11,18,Pakistan
+10,13,Pakistan
+9,11,Pakistan
+8,9,Pakistan
+7,8,Pakistan
+6,8,Pakistan
+5,7,Pakistan
+4,6,Pakistan
+3,3,Pakistan
+2,3,Pakistan
+1,3,Pakistan
+15,29,North Macedonia
+14,26,North Macedonia
+13,23,North Macedonia
+12,18,North Macedonia
+11,17,North Macedonia
+10,12,North Macedonia
+9,11,North Macedonia
+8,11,North Macedonia
+7,9,North Macedonia
+6,7,North Macedonia
+5,6,North Macedonia
+4,4,North Macedonia
+3,3,North Macedonia
+2,3,North Macedonia
+1,3,North Macedonia
+7,13,Belarus
+6,13,Belarus
+5,13,Belarus
+4,13,Belarus
+3,8,Belarus
+2,4,Belarus
+1,4,Belarus
+22,24,Bulgaria
+21,23,Bulgaria
+20,22,Bulgaria
+19,21,Bulgaria
+18,18,Bulgaria
+17,15,Bulgaria
+16,12,Bulgaria
+15,10,Bulgaria
+14,8,Bulgaria
+13,8,Bulgaria
+12,8,Bulgaria
+11,8,Bulgaria
+10,5,Bulgaria
+9,3,Bulgaria
+8,3,Bulgaria
+7,3,Bulgaria
+6,3,Bulgaria
+5,3,Bulgaria
+4,3,Bulgaria
+3,3,Bulgaria
+2,3,Bulgaria
+1,3,Bulgaria
+17,174,Mexico
+16,141,Mexico
+15,125,Mexico
+14,94,Mexico
+13,79,Mexico
+12,60,Mexico
+11,50,Mexico
+10,37,Mexico
+9,29,Mexico
+8,28,Mexico
+7,20,Mexico
+6,16,Mexico
+5,12,Mexico
+4,8,Mexico
+3,6,Mexico
+2,5,Mexico
+1,4,Mexico
+35,69,Iraq
+34,65,Iraq
+33,64,Iraq
+32,61,Iraq
+31,56,Iraq
+30,54,Iraq
+29,54,Iraq
+28,52,Iraq
+27,50,Iraq
+26,46,Iraq
+25,42,Iraq
+24,42,Iraq
+23,40,Iraq
+22,36,Iraq
+21,29,Iraq
+20,27,Iraq
+19,23,Iraq
+18,20,Iraq
+17,17,Iraq
+16,17,Iraq
+15,13,Iraq
+14,12,Iraq
+13,12,Iraq
+12,10,Iraq
+11,10,Iraq
+10,10,Iraq
+9,9,Iraq
+8,8,Iraq
+7,8,Iraq
+6,7,Iraq
+5,7,Iraq
+4,6,Iraq
+3,4,Iraq
+2,4,Iraq
+1,3,Iraq
+7,6,Iceland
+6,6,Iceland
+5,6,Iceland
+4,4,Iceland
+3,4,Iceland
+2,4,Iceland
+1,4,Iceland
+29,19,Lebanon
+28,19,Lebanon
+27,19,Lebanon
+26,19,Lebanon
+25,18,Lebanon
+24,17,Lebanon
+23,17,Lebanon
+22,16,Lebanon
+21,12,Lebanon
+20,12,Lebanon
+19,11,Lebanon
+18,10,Lebanon
+17,8,Lebanon
+16,6,Lebanon
+15,6,Lebanon
+14,4,Lebanon
+13,4,Lebanon
+12,4,Lebanon
+11,4,Lebanon
+10,4,Lebanon
+9,4,Lebanon
+8,4,Lebanon
+7,4,Lebanon
+6,3,Lebanon
+5,3,Lebanon
+4,3,Lebanon
+3,3,Lebanon
+2,3,Lebanon
+1,3,Lebanon
+38,14823,US
+37,12926,US
+36,10992,US
+35,9652,US
+34,8502,US
+33,7158,US
+32,6058,US
+31,5142,US
+30,4081,US
+29,3180,US
+28,2517,US
+27,2196,US
+26,1716,US
+25,1304,US
+24,1050,US
+23,802,US
+22,593,US
+21,472,US
+20,346,US
+19,273,US
+18,212,US
+17,153,US
+16,115,US
+15,92,US
+14,69,US
+13,60,US
+12,50,US
+11,40,US
+10,37,US
+9,31,US
+8,26,US
+7,22,US
+6,19,US
+5,15,US
+4,13,US
+3,11,US
+2,9,US
+1,6,US
+9,6,Martinique
+8,4,Martinique
+7,4,Martinique
+6,4,Martinique
+5,3,Martinique
+4,3,Martinique
+3,3,Martinique
+2,3,Martinique
+1,3,Martinique
+18,24,Tunisia
+17,23,Tunisia
+16,22,Tunisia
+15,22,Tunisia
+14,18,Tunisia
+13,18,Tunisia
+12,14,Tunisia
+11,12,Tunisia
+10,10,Tunisia
+9,9,Tunisia
+8,8,Tunisia
+7,8,Tunisia
+6,7,Tunisia
+5,6,Tunisia
+4,6,Tunisia
+3,4,Tunisia
+2,3,Tunisia
+1,3,Tunisia
+4,4,Liberia
+3,3,Liberia
+2,3,Liberia
+1,3,Liberia
+11,10,Cameroon
+10,9,Cameroon
+9,9,Cameroon
+8,9,Cameroon
+7,9,Cameroon
+6,8,Cameroon
+5,7,Cameroon
+4,6,Cameroon
+3,6,Cameroon
+2,6,Cameroon
+1,6,Cameroon
+9,28,Moldova
+8,24,Moldova
+7,21,Moldova
+6,17,Moldova
+5,14,Moldova
+4,8,Moldova
+3,6,Moldova
+2,5,Moldova
+1,4,Moldova
+4,4,Kyrgyzstan
+3,4,Kyrgyzstan
+2,4,Kyrgyzstan
+1,4,Kyrgyzstan
+16,9,Cyprus
+15,9,Cyprus
+14,9,Cyprus
+13,9,Cyprus
+12,9,Cyprus
+11,11,Cyprus
+10,10,Cyprus
+9,9,Cyprus
+8,8,Cyprus
+7,7,Cyprus
+6,6,Cyprus
+5,5,Cyprus
+4,5,Cyprus
+3,3,Cyprus
+2,3,Cyprus
+1,3,Cyprus
+26,164,Poland
+25,136,Poland
+24,111,Poland
+23,98,Poland
+22,84,Poland
+21,73,Poland
+20,59,Poland
+19,45,Poland
+18,35,Poland
+17,31,Poland
+16,26,Poland
+15,19,Poland
+14,16,Poland
+13,16,Poland
+12,14,Poland
+11,13,Poland
+10,9,Poland
+9,7,Poland
+8,5,Poland
+7,5,Poland
+6,6,Poland
+5,5,Poland
+4,5,Poland
+3,5,Poland
+2,3,Poland
+1,3,Poland
+49,3993,Iran
+48,3993,Iran
+47,3872,Iran
+46,3739,Iran
+45,3603,Iran
+44,3452,Iran
+43,3294,Iran
+42,3160,Iran
+41,3036,Iran
+40,2898,Iran
+39,2757,Iran
+38,2640,Iran
+37,2517,Iran
+36,2378,Iran
+35,2234,Iran
+34,2077,Iran
+33,1934,Iran
+32,1812,Iran
+31,1556,Iran
+30,1556,Iran
+29,1433,Iran
+28,1284,Iran
+27,1135,Iran
+26,853,Iran
+25,724,Iran
+24,611,Iran
+23,611,Iran
+22,429,Iran
+21,429,Iran
+20,354,Iran
+19,237,Iran
+18,237,Iran
+17,194,Iran
+16,124,Iran
+15,108,Iran
+14,107,Iran
+13,77,Iran
+12,77,Iran
+11,66,Iran
+10,43,Iran
+9,43,Iran
+8,34,Iran
+7,26,Iran
+6,19,Iran
+5,15,Iran
+4,12,Iran
+3,8,Iran
+2,5,Iran
+1,4,Iran
+29,34,San Marino
+28,34,San Marino
+27,32,San Marino
+26,32,San Marino
+25,32,San Marino
+24,32,San Marino
+23,30,San Marino
+22,28,San Marino
+21,26,San Marino
+20,25,San Marino
+19,22,San Marino
+18,22,San Marino
+17,21,San Marino
+16,21,San Marino
+15,21,San Marino
+14,21,San Marino
+13,20,San Marino
+12,20,San Marino
+11,20,San Marino
+10,14,San Marino
+9,14,San Marino
+8,14,San Marino
+7,11,San Marino
+6,9,San Marino
+5,7,San Marino
+4,5,San Marino
+3,5,San Marino
+2,5,San Marino
+1,3,San Marino
+12,8,Trinidad and Tobago
+11,8,Trinidad and Tobago
+10,8,Trinidad and Tobago
+9,7,Trinidad and Tobago
+8,6,Trinidad and Tobago
+7,6,Trinidad and Tobago
+6,6,Trinidad and Tobago
+5,5,Trinidad and Tobago
+4,4,Trinidad and Tobago
+3,3,Trinidad and Tobago
+2,3,Trinidad and Tobago
+1,3,Trinidad and Tobago
+11,9,Venezuela
+10,7,Venezuela
+9,7,Venezuela
+8,7,Venezuela
+7,7,Venezuela
+6,7,Venezuela
+5,5,Venezuela
+4,3,Venezuela
+3,3,Venezuela
+2,3,Venezuela
+1,3,Venezuela
+19,23,Burkina Faso
+18,19,Burkina Faso
+17,18,Burkina Faso
+16,17,Burkina Faso
+15,16,Burkina Faso
+14,16,Burkina Faso
+13,16,Burkina Faso
+12,16,Burkina Faso
+11,14,Burkina Faso
+10,12,Burkina Faso
+9,12,Burkina Faso
+8,11,Burkina Faso
+7,9,Burkina Faso
+6,7,Burkina Faso
+5,4,Burkina Faso
+4,4,Burkina Faso
+3,4,Burkina Faso
+2,4,Burkina Faso
+1,3,Burkina Faso
+8,6,Guyana
+7,5,Guyana
+6,5,Guyana
+5,4,Guyana
+4,4,Guyana
+3,4,Guyana
+2,4,Guyana
+1,4,Guyana
+16,35,Bosnia and Herzegovina
+15,33,Bosnia and Herzegovina
+14,33,Bosnia and Herzegovina
+13,27,Bosnia and Herzegovina
+12,21,Bosnia and Herzegovina
+11,19,Bosnia and Herzegovina
+10,16,Bosnia and Herzegovina
+9,15,Bosnia and Herzegovina
+8,13,Bosnia and Herzegovina
+7,10,Bosnia and Herzegovina
+6,6,Bosnia and Herzegovina
+5,6,Bosnia and Herzegovina
+4,4,Bosnia and Herzegovina
+3,3,Bosnia and Herzegovina
+2,3,Bosnia and Herzegovina
+1,3,Bosnia and Herzegovina
+21,121,Peru
+20,107,Peru
+19,92,Peru
+18,83,Peru
+17,73,Peru
+16,61,Peru
+15,55,Peru
+14,47,Peru
+13,30,Peru
+12,24,Peru
+11,18,Peru
+10,16,Peru
+9,11,Peru
+8,9,Peru
+7,9,Peru
+6,7,Peru
+5,5,Peru
+4,5,Peru
+3,5,Peru
+2,4,Peru
+1,3,Peru
+12,12,Cuba
+11,11,Cuba
+10,9,Cuba
+9,8,Cuba
+8,6,Cuba
+7,6,Cuba
+6,6,Cuba
+5,6,Cuba
+4,6,Cuba
+3,4,Cuba
+2,3,Cuba
+1,3,Cuba
+22,46,Luxembourg
+21,44,Luxembourg
+20,41,Luxembourg
+19,36,Luxembourg
+18,31,Luxembourg
+17,31,Luxembourg
+16,30,Luxembourg
+15,29,Luxembourg
+14,23,Luxembourg
+13,22,Luxembourg
+12,21,Luxembourg
+11,18,Luxembourg
+10,15,Luxembourg
+9,9,Luxembourg
+8,8,Luxembourg
+7,8,Luxembourg
+6,8,Luxembourg
+5,8,Luxembourg
+4,8,Luxembourg
+3,5,Luxembourg
+2,4,Luxembourg
+1,4,Luxembourg
+8,7,Sri Lanka
+7,6,Sri Lanka
+6,6,Sri Lanka
+5,5,Sri Lanka
+4,5,Sri Lanka
+3,5,Sri Lanka
+2,4,Sri Lanka
+1,3,Sri Lanka
+14,15,Afghanistan
+13,14,Afghanistan
+12,11,Afghanistan
+11,7,Afghanistan
+10,7,Afghanistan
+9,7,Afghanistan
+8,6,Afghanistan
+7,4,Afghanistan
+6,4,Afghanistan
+5,4,Afghanistan
+4,4,Afghanistan
+3,4,Afghanistan
+2,4,Afghanistan
+1,4,Afghanistan
+6,6,Sint Maarten
+5,6,Sint Maarten
+4,6,Sint Maarten
+3,6,Sint Maarten
+2,4,Sint Maarten
+1,4,Sint Maarten
+18,229,Romania
+17,210,Romania
+16,184,Romania
+15,157,Romania
+14,148,Romania
+13,141,Romania
+12,116,Romania
+11,94,Romania
+10,85,Romania
+9,69,Romania
+8,44,Romania
+7,38,Romania
+6,29,Romania
+5,24,Romania
+4,17,Romania
+3,13,Romania
+2,8,Romania
+1,4,Romania
+19,63,Panama
+18,59,Panama
+17,55,Panama
+16,54,Panama
+15,46,Panama
+14,41,Panama
+13,37,Panama
+12,32,Panama
+11,30,Panama
+10,27,Panama
+9,24,Panama
+8,17,Panama
+7,14,Panama
+6,9,Panama
+5,8,Panama
+4,6,Panama
+3,6,Panama
+2,3,Panama
+1,3,Panama
+27,205,Algeria
+26,193,Algeria
+25,173,Algeria
+24,152,Algeria
+23,130,Algeria
+22,105,Algeria
+21,86,Algeria
+20,58,Algeria
+19,44,Algeria
+18,35,Algeria
+17,31,Algeria
+16,29,Algeria
+15,26,Algeria
+14,25,Algeria
+13,21,Algeria
+12,19,Algeria
+11,17,Algeria
+10,17,Algeria
+9,15,Algeria
+8,11,Algeria
+7,10,Algeria
+6,8,Algeria
+5,5,Algeria
+4,4,Algeria
+3,4,Algeria
+2,3,Algeria
+1,3,Algeria
+2,3,Myanmar
+1,3,Myanmar
+32,7097,UK
+31,6159,UK
+30,5373,UK
+29,4934,UK
+28,4313,UK
+27,3605,UK
+26,2921,UK
+25,2352,UK
+24,1789,UK
+23,1408,UK
+22,1228,UK
+21,1019,UK
+20,759,UK
+19,578,UK
+18,465,UK
+17,427,UK
+16,335,UK
+15,281,UK
+14,233,UK
+13,177,UK
+12,144,UK
+11,104,UK
+10,71,UK
+9,55,UK
+8,35,UK
+7,21,UK
+6,11,UK
+5,10,UK
+4,8,UK
+3,6,UK
+2,5,UK
+1,3,UK
+11,23,Honduras
+10,22,Honduras
+9,22,Honduras
+8,22,Honduras
+7,22,Honduras
+6,15,Honduras
+5,15,Honduras
+4,14,Honduras
+3,10,Honduras
+2,7,Honduras
+1,3,Honduras
+16,5,Bahrain
+15,5,Bahrain
+14,4,Bahrain
+13,4,Bahrain
+12,4,Bahrain
+11,4,Bahrain
+10,4,Bahrain
+9,4,Bahrain
+8,4,Bahrain
+7,4,Bahrain
+6,4,Bahrain
+5,4,Bahrain
+4,4,Bahrain
+3,4,Bahrain
+2,4,Bahrain
+1,3,Bahrain
+17,32,Thailand
+16,30,Thailand
+15,27,Thailand
+14,26,Thailand
+13,23,Thailand
+12,20,Thailand
+11,19,Thailand
+10,15,Thailand
+9,12,Thailand
+8,10,Thailand
+7,9,Thailand
+6,7,Thailand
+5,6,Thailand
+4,5,Thailand
+3,4,Thailand
+2,4,Thailand
+1,4,Thailand
+16,6,Ghana
+15,5,Ghana
+14,5,Ghana
+13,5,Ghana
+12,5,Ghana
+11,5,Ghana
+10,5,Ghana
+9,5,Ghana
+8,5,Ghana
+7,5,Ghana
+6,5,Ghana
+5,5,Ghana
+4,4,Ghana
+3,4,Ghana
+2,4,Ghana
+1,3,Ghana
+15,48,Chile
+14,43,Chile
+13,37,Chile
+12,34,Chile
+11,27,Chile
+10,22,Chile
+9,18,Chile
+8,16,Chile
+7,12,Chile
+6,8,Chile
+5,7,Chile
+4,6,Chile
+3,5,Chile
+2,4,Chile
+1,3,Chile
+16,104,Czechia
+15,91,Czechia
+14,80,Czechia
+13,72,Czechia
+12,62,Czechia
+11,56,Czechia
+10,46,Czechia
+9,40,Czechia
+8,32,Czechia
+7,25,Czechia
+6,17,Czechia
+5,13,Czechia
+4,9,Czechia
+3,9,Czechia
+2,6,Czechia
+1,5,Czechia
+16,15,Lithuania
+15,15,Lithuania
+14,15,Lithuania
+13,14,Lithuania
+12,11,Lithuania
+11,9,Lithuania
+10,9,Lithuania
+9,8,Lithuania
+8,8,Lithuania
+7,7,Lithuania
+6,7,Lithuania
+5,7,Lithuania
+4,5,Lithuania
+3,5,Lithuania
+2,4,Lithuania
+1,4,Lithuania
+16,79,Israel
+15,72,Israel
+14,59,Israel
+13,51,Israel
+12,46,Israel
+11,43,Israel
+10,37,Israel
+9,31,Israel
+8,21,Israel
+7,17,Israel
+6,16,Israel
+5,13,Israel
+4,12,Israel
+3,10,Israel
+2,6,Israel
+1,5,Israel
+15,18,DRC
+14,18,DRC
+13,18,DRC
+12,18,DRC
+11,18,DRC
+10,16,DRC
+9,13,DRC
+8,11,DRC
+7,8,DRC
+6,8,DRC
+5,8,DRC
+4,6,DRC
+3,3,DRC
+2,3,DRC
+1,3,DRC
+32,2248,Netherlands
+31,2248,Netherlands
+30,1867,Netherlands
+29,1766,Netherlands
+28,1651,Netherlands
+27,1487,Netherlands
+26,1339,Netherlands
+25,1173,Netherlands
+24,1039,Netherlands
+23,864,Netherlands
+22,771,Netherlands
+21,639,Netherlands
+20,546,Netherlands
+19,434,Netherlands
+18,356,Netherlands
+17,276,Netherlands
+16,213,Netherlands
+15,179,Netherlands
+14,136,Netherlands
+13,106,Netherlands
+12,76,Netherlands
+11,58,Netherlands
+10,43,Netherlands
+9,24,Netherlands
+8,20,Netherlands
+7,12,Netherlands
+6,10,Netherlands
+5,5,Netherlands
+4,5,Netherlands
+3,4,Netherlands
+2,4,Netherlands
+1,3,Netherlands
+18,43,Slovenia
+17,40,Slovenia
+16,30,Slovenia
+15,30,Slovenia
+14,28,Slovenia
+13,22,Slovenia
+12,17,Slovenia
+11,16,Slovenia
+10,15,Slovenia
+9,15,Slovenia
+8,11,Slovenia
+7,11,Slovenia
+6,9,Slovenia
+5,6,Slovenia
+4,5,Slovenia
+3,5,Slovenia
+2,3,Slovenia
+1,3,Slovenia
+18,22,Albania
+17,22,Albania
+16,22,Albania
+15,21,Albania
+14,20,Albania
+13,18,Albania
+12,16,Albania
+11,16,Albania
+10,15,Albania
+9,13,Albania
+8,11,Albania
+7,10,Albania
+6,8,Albania
+5,8,Albania
+4,6,Albania
+3,5,Albania
+2,5,Albania
+1,5,Albania
+1,3,Bermuda
+10,8,Channel Islands
+9,7,Channel Islands
+8,7,Channel Islands
+7,6,Channel Islands
+6,5,Channel Islands
+5,4,Channel Islands
+4,3,Channel Islands
+3,3,Channel Islands
+2,3,Channel Islands
+1,3,Channel Islands
+17,65,Serbia
+16,61,Serbia
+15,58,Serbia
+14,51,Serbia
+13,44,Serbia
+12,39,Serbia
+11,31,Serbia
+10,28,Serbia
+9,23,Serbia
+8,16,Serbia
+7,14,Serbia
+6,11,Serbia
+5,8,Serbia
+4,7,Serbia
+3,6,Serbia
+2,4,Serbia
+1,3,Serbia
+2,3,Barbados
+1,3,Barbados
+10,18,Bolivia
+9,15,Bolivia
+8,14,Bolivia
+7,11,Bolivia
+6,10,Bolivia
+5,10,Bolivia
+4,9,Bolivia
+3,7,Bolivia
+2,7,Bolivia
+1,6,Bolivia
+11,6,Jordan
+10,6,Jordan
+9,6,Jordan
+8,5,Jordan
+7,5,Jordan
+6,5,Jordan
+5,5,Jordan
+4,5,Jordan
+3,5,Jordan
+2,5,Jordan
+1,4,Jordan
+28,203,Philippines
+27,182,Philippines
+26,177,Philippines
+25,163,Philippines
+24,152,Philippines
+23,144,Philippines
+22,136,Philippines
+21,107,Philippines
+20,96,Philippines
+19,88,Philippines
+18,78,Philippines
+17,71,Philippines
+16,68,Philippines
+15,54,Philippines
+14,45,Philippines
+13,38,Philippines
+12,35,Philippines
+11,33,Philippines
+10,25,Philippines
+9,19,Philippines
+8,18,Philippines
+7,17,Philippines
+6,17,Philippines
+5,12,Philippines
+4,12,Philippines
+3,11,Philippines
+2,8,Philippines
+1,5,Philippines
+25,687,Sweden
+24,687,Sweden
+23,477,Sweden
+22,401,Sweden
+21,373,Sweden
+20,358,Sweden
+19,308,Sweden
+18,239,Sweden
+17,180,Sweden
+16,146,Sweden
+15,110,Sweden
+14,105,Sweden
+13,105,Sweden
+12,77,Sweden
+11,64,Sweden
+10,41,Sweden
+9,33,Sweden
+8,25,Sweden
+7,20,Sweden
+6,16,Sweden
+5,11,Sweden
+4,10,Sweden
+3,8,Sweden
+2,7,Sweden
+1,3,Sweden
+48,62077,Europe
+47,58537,Europe
+46,53642,Europe
+45,49913,Europe
+44,46917,Europe
+43,43013,Europe
+42,38877,Europe
+41,34503,Europe
+40,31021,Europe
+39,27746,Europe
+38,24873,Europe
+37,22361,Europe
+36,19658,Europe
+35,16501,Europe
+34,14706,Europe
+33,12854,Europe
+32,10779,Europe
+31,9269,Europe
+30,7500,Europe
+29,6386,Europe
+28,5209,Europe
+27,4204,Europe
+26,3509,Europe
+25,2820,Europe
+24,2352,Europe
+23,1815,Europe
+22,1543,Europe
+21,1208,Europe
+20,962,Europe
+19,718,Europe
+18,540,Europe
+17,411,Europe
+16,264,Europe
+15,219,Europe
+14,161,Europe
+13,115,Europe
+12,84,Europe
+11,55,Europe
+10,43,Europe
+9,31,Europe
+8,23,Europe
+7,19,Europe
+6,14,Europe
+5,13,Europe
+4,8,Europe
+3,5,Europe
+2,3,Europe
+1,3,Europe
+80,89454,The World
+79,83468,The World
+78,76009,The World
+77,70379,The World
+76,65713,The World
+75,59881,The World
+74,54126,The World
+73,48287,The World
+72,43291,The World
+71,38724,The World
+70,34832,The World
+69,31704,The World
+68,28241,The World
+67,24368,The World
+66,22038,The World
+65,19660,The World
+64,17146,The World
+63,15314,The World
+62,13068,The World
+61,11818,The World
+60,10401,The World
+59,9147,The World
+58,8225,The World
+57,7180,The World
+56,6526,The World
+55,5846,The World
+54,5542,The World
+53,4988,The World
+52,4715,The World
+51,4365,The World
+50,4030,The World
+49,3873,The World
+48,3649,The World
+47,3499,The World
+46,3388,The World
+45,3300,The World
+44,3203,The World
+43,3127,The World
+42,3067,The World
+41,2979,The World
+40,2933,The World
+39,2867,The World
+38,2809,The World
+37,2769,The World
+36,2706,The World
+35,2625,The World
+34,2465,The World
+33,2362,The World
+32,2249,The World
+31,2129,The World
+30,2012,The World
+29,1873,The World
+28,1775,The World
+27,1669,The World
+26,1527,The World
+25,1384,The World
+24,1369,The World
+23,1116,The World
+22,1018,The World
+21,910,The World
+20,814,The World
+19,725,The World
+18,638,The World
+17,565,The World
+16,494,The World
+15,427,The World
+14,362,The World
+13,305,The World
+12,259,The World
+11,213,The World
+10,170,The World
+9,132,The World
+8,106,The World
+7,80,The World
+6,56,The World
+5,41,The World
+4,26,The World
+3,18,The World
+2,17,The World
+1,6,The World

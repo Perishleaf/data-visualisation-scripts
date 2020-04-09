@@ -15,7 +15,7 @@ import dash_table.FormatTemplate as FormatTemplate
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 ###################################
 # Private function
@@ -271,6 +271,9 @@ y1 = 100*(1.85)**(pseduoDay-1)  # 85% growth rate
 y2 = 100*(1.35)**(pseduoDay-1)  # 35% growth rate
 y3 = 100*(1.15)**(pseduoDay-1)  # 15% growth rate
 y4 = 100*(1.05)**(pseduoDay-1)  # 5% growth rate
+
+# Read death growth data of a given region from ./cumulative_data folder
+dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
 
 #############################################################################################
 # Start to make plots
@@ -598,7 +601,7 @@ fig_daily_tab.update_layout(
     )
 
 
-# Default curve plot for tab
+# Default log curve plot for confirmed cases
 # Create empty figure canvas
 fig_curve_tab = go.Figure()
 
@@ -634,7 +637,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                                  '<extra></extra>'
                             )
 )
-for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
+for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
 
   dotgrayx_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
   dotgrayy_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -673,7 +676,7 @@ for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
 fig_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
 fig_curve_tab.update_yaxes(range=[1.9, 7])
 fig_curve_tab.update_layout(
-        xaxis_title="Number of day since 100th confirmed cases",
+        xaxis_title="Number of day since 3rd death case",
         yaxis_title="Confirmed cases (Logarithmic)",
         margin=go.layout.Margin(
             l=10,
@@ -703,6 +706,81 @@ fig_curve_tab.update_layout(
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth = .1,
         ),
+        xaxis=dict(
+            showline=False, 
+            linecolor='#272e3e',
+            # showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth = .1,
+            zeroline=False
+        ),
+        showlegend=False,
+        # hovermode = 'x',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
+        font=dict(color='#292929', size=10)
+    )
+
+# Default curve plot for death toll curve
+# Create empty figure canvas
+fig_death_curve_tab = go.Figure()
+
+for regionName in ['The World', 'Japan', 'Italy', 'UK', 'US']:
+
+  dotgrayx_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
+  dotgrayy_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
+
+  fig_death_curve_tab.add_trace(go.Scatter(x=dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['DayElapsed_death'],
+                                     y=dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Deaths'],
+                                     mode='lines',
+                                     line_shape='spline',
+                                     name=regionName,
+                                     opacity=0.3,
+                                     line=dict(color='#636363', width=1.5),
+                                     text=[
+                                            i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Region']],
+                                     hovertemplate='<b>%{text}</b><br>' +
+                                                   '<br>%{x} days since 3rd death cases<br>' +
+                                                   'with %{y:,d} death cases<br>'
+                                                   '<extra></extra>'
+                             )
+  )
+
+  fig_death_curve_tab.add_trace(go.Scatter(x=dotgrayx_tab_death,
+                                     y=dotgrayy_tab_death,
+                                     mode='markers',
+                                     marker=dict(size=6, color='#636363',
+                                     line=dict(width=1, color='#636363')),
+                                     opacity=0.5,
+                                     text=[regionName],
+                                     hovertemplate='<b>%{text}</b><br>' +
+                                                   '<br>%{x} days since 3rd death cases<br>' +
+                                                   'with %{y:,d} death cases<br>'
+                                                   '<extra></extra>'
+                            )
+  )
+
+# Customise layout
+fig_death_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
+fig_death_curve_tab.update_layout(
+        xaxis_title="Number of days since 3 deaths recorded",
+        yaxis_title="Death cases (Logarithmic)",
+        margin=go.layout.Margin(
+            l=10,
+            r=10,
+            b=10,
+            t=5,
+            pad=0
+            ),
+        yaxis=dict(
+            showline=False, 
+            linecolor='#272e3e',
+            zeroline=False,
+            # showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth = .1,
+        ),
+        yaxis_type="log",
         xaxis=dict(
             showline=False, 
             linecolor='#272e3e',
@@ -844,7 +922,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 html.P(
                   id='time-stamp',
                   # style={'fontWeight':'bold'},
-                       children="Last update: {}. (👷Safari user may experience issue in displaying tables, I am working on it.🔧)".format(latestDate)
+                       children="Last update: {}. (👷Safari user may experience issue in displaying tables)".format(latestDate)
                        ),
                 html.Hr(style={'marginTop': '.5%'},),
                     ]
@@ -999,6 +1077,10 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                         selected_className='custom-tab--selected',
                                                         label='Confirmed Case Trajectories', 
                                                         value='Confirmed Case Trajectories'),
+                                                dcc.Tab(className='custom-tab',
+                                                        selected_className='custom-tab--selected',
+                                                        label='Death Toll Trajectories', 
+                                                        value='Death Toll Trajectories')
                                       ]
                                   ),
                                   html.Div(id='tabs-content-plots'),
@@ -1093,7 +1175,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         System_ reporting requirements, cases are reported based on their Australian
                                         jurisdiction of residence rather than where they were detected.
 
-                                        Additionally, the recovered cases in NSW, QLD, TAS are not actively reported.
+                                        Additionally, the recovered cases in NSW, TAS are not actively reported.
                                         Total recovered number is provided by Australian Department of Health. 
                                         '''
                                         )
@@ -1121,7 +1203,8 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                             children=['Keep calm and stay home | ',
                                       html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
-                                      html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank')
+                                      html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank'), ' | ',
+                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_4.pdf', target='_blank'),
 
                             ]
                       ),
@@ -1131,11 +1214,52 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                      html.P(style={'textAlign': 'center', 'margin': 'auto', 'marginTop': '.5%'},
                             children=[html.A(html.Img(style={'height' : '10%', 'width' : '10%',}, src=app.get_asset_url('TypeHuman.png')),
                             href='https://www.typehuman.com/', target='_blank')]
-                      )
+                      ),
+                     html.Div(
+                            style={'textAlign': 'center', 'margin': 'auto','marginTop': '.5%'},
+                            children=[dbc.Button("Disclaimer", id="open", color="info", className="mr-1", 
+                                                 style={'font-size': '1rem', 'background-color':'#20b6e6', 'font-weight':'bold'}),
+                                      dbc.Modal(id='modal',
+                                                children=[dbc.ModalHeader("Disclaimer"),
+                                                          dbc.ModalBody(
+                                                            '''
+                                                            This website and its contents herein, including all data, 
+                                                            mapping, and analysis, is provided to the public strictly 
+                                                            for general information purposes only. All the information was 
+                                                            collected from multiple publicly available data sources that do 
+                                                            not always agree. While I will try my best to keep the information up 
+                                                            to date and correct, I make no representations or warranties of any kind, 
+                                                            express or implied, about the completeness, accuracy, reliability, with 
+                                                            respect to the website or the information. I do not bear any legal responsibility 
+                                                            for any consequence caused by the use of the information provided. Reliance on 
+                                                            the website for medical guidance or use of the website in commerce is strongly 
+                                                            not recommended. Any action you take upon the information on this website is 
+                                                            strictly at your own risk. and I will not be liable for any losses and damages 
+                                                            in connection with the use of this website. Screenshots of the website are 
+                                                            permissible so long as you provide appropriate credit.
+                                                            '''),
+                                                          dbc.ModalFooter(children=dbc.Button("Close", id="close", className="ml-auto",
+                                                                                              style={'background-color':'#20b6e6', 'font-weight':'bold'}
+                                                                                              )            
+                                                                           ),
+                                                           ],
+                                                  ),
+                                        ]
+                             ),
                   ]
               ),
         ])
 
+
+@app.callback(
+    Output("modal", "is_open"),
+    [Input("open", "n_clicks"), Input("close", "n_clicks")],
+    [State("modal", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
 
 @app.callback(
     Output('datatable-interact-map', 'figure'),
@@ -1324,6 +1448,10 @@ def render_content(tab):
         return dcc.Graph(id='datatable-interact-logplot',
                          style={'height': '300px'},
                          figure=fig_curve_tab,)
+    elif tab == 'Death Toll Trajectories':
+        return dcc.Graph(id='datatable-interact-deathplot',
+                         style={'height': '300px'},
+                         figure=fig_death_curve_tab,)
 
 @app.callback(
     Output('datatable-interact-lineplot', 'figure'),
@@ -1954,8 +2082,6 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
       if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
-      dff = dfSum
-
       if selected_row_ids:
         if selected_row_ids[0] == 'Mainland China':
           Region = 'China'
@@ -1968,8 +2094,6 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
       if Australia_derived_virtual_selected_rows is None:
         Australia_derived_virtual_selected_rows = []
 
-      dff = AUSTable
-
       if Australia_selected_row_ids:
         Region = Australia_selected_row_ids[0]
       else:
@@ -1978,8 +2102,6 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
         Canada_derived_virtual_selected_rows = []
-
-      dff = CANTable
 
       if Canada_selected_row_ids:
         Region = Canada_selected_row_ids[0]
@@ -1990,8 +2112,6 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
       if CHN_derived_virtual_selected_rows is None:
         CHN_derived_virtual_selected_rows = []
 
-      dff = CNTable
-
       if CHN_selected_row_ids:
         Region = CHN_selected_row_ids[0]
       else:
@@ -2001,8 +2121,6 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
       if US_derived_virtual_selected_rows is None:
         US_derived_virtual_selected_rows = []
 
-      dff = USTable
-
       if US_selected_row_ids:
         Region = US_selected_row_ids[0]
       else:
@@ -2011,8 +2129,6 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
     elif value == 'Europe':
       if Europe_derived_virtual_selected_rows is None:
         Europe_derived_virtual_selected_rows = []
-
-      dff = EuroTable
 
       if Europe_selected_row_ids:
         Region = Europe_selected_row_ids[0]
@@ -2066,7 +2182,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'DayElapsed'])[0]]
         doty = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'Confirmed'])[0]]
 
-        for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
+        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -2129,7 +2245,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['The World', 'Japan', 'Italy', 'Turkey', 'US']:
+        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -2214,6 +2330,246 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
     )
 
     return fig_curve
+
+@app.callback(
+    Output('datatable-interact-deathplot', 'figure'),
+    [Input('tabs-table', 'value'),
+     Input('datatable-interact-location', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Canada', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
+     Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
+     Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-United States', 'selected_row_ids'),
+     ]
+)
+def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
+  Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
+  CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
+  US_derived_virtual_selected_rows, US_selected_row_ids
+  ):
+   
+    if value == 'The World':
+      if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
+
+      if selected_row_ids:
+        if selected_row_ids[0] == 'Mainland China':
+          Region = 'China'
+        else:
+          Region = selected_row_ids[0]
+      else:
+        Region = 'The World'
+    
+    elif value == 'Australia':
+      if Australia_derived_virtual_selected_rows is None:
+        Australia_derived_virtual_selected_rows = []
+
+      if Australia_selected_row_ids:
+        Region = Australia_selected_row_ids[0]
+      else:
+        Region = 'Australia'
+
+    elif value == 'Canada':
+      if Canada_derived_virtual_selected_rows is None:
+        Canada_derived_virtual_selected_rows = []
+
+      if Canada_selected_row_ids:
+        Region = Canada_selected_row_ids[0]
+      else:
+        Region = 'Canada'
+
+    elif value == 'Mainland China':
+      if CHN_derived_virtual_selected_rows is None:
+        CHN_derived_virtual_selected_rows = []
+
+      if CHN_selected_row_ids:
+        Region = CHN_selected_row_ids[0]
+      else:
+        Region = 'China'
+
+    elif value == 'United States':
+      if US_derived_virtual_selected_rows is None:
+        US_derived_virtual_selected_rows = []
+
+      if US_selected_row_ids:
+        Region = US_selected_row_ids[0]
+      else:
+        Region = 'US'
+
+    elif value == 'Europe':
+      if Europe_derived_virtual_selected_rows is None:
+        Europe_derived_virtual_selected_rows = []
+
+      if Europe_selected_row_ids:
+        Region = Europe_selected_row_ids[0]
+      else:
+        Region = 'Europe'
+
+    elapseDay = daysOutbreak
+    # Create empty figure canvas
+    fig_curve_death = go.Figure()
+
+    # Add trace to the figure
+    if Region in set(dfs_curve_death['Region']):
+
+        dotx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == Region,'DayElapsed_death'])[0]]
+        doty_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == Region,'Deaths'])[0]]
+
+        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+
+          dotgrayx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
+          dotgrayy_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
+
+
+          fig_curve_death.add_trace(go.Scatter(x=dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['DayElapsed_death'],
+                                         y=dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Deaths'],
+                                         mode='lines',
+                                         line_shape='spline',
+                                         name=regionName,
+                                         opacity=0.3,
+                                         line=dict(color='#636363', width=1.5),
+                                         text=[
+                                            i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Region']],
+                                         hovertemplate='<b>%{text}</b><br>' +
+                                                       '<br>%{x} days since 3rd death cases<br>' +
+                                                       'with %{y:,d} death cases<br>'
+                                                       '<extra></extra>'
+                             )
+          )
+          fig_curve_death.add_trace(go.Scatter(x=dotgrayx_death,
+                                         y=dotgrayy_death,
+                                         mode='markers',
+                                         marker=dict(size=6, color='#636363',
+                                         line=dict(width=1, color='#636363')),
+                                         opacity=0.5,
+                                         text=[regionName],
+                                         hovertemplate='<b>%{text}</b><br>' +
+                                                       '<br>%{x} days since 3rd death cases<br>' +
+                                                       'with %{y:,d} death cases<br>'
+                                                       '<extra></extra>'
+                            )
+          )
+          
+        fig_curve_death.add_trace(go.Scatter(x=dfs_curve_death.loc[dfs_curve_death['Region'] == Region]['DayElapsed_death'],
+                                       y=dfs_curve_death.loc[dfs_curve_death['Region'] == Region]['Deaths'],
+                                       mode='lines',
+                                       line_shape='spline',
+                                       name=Region,
+                                       line=dict(color='#626262', width=3),
+                                       text=[
+                                           i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == Region]['Region']],
+                                       hovertemplate='<b>%{text}</b><br>' +
+                                                     '<br>%{x} days since 3rd death cases<br>' +
+                                                     'with %{y:,d} death cases<br>'
+                                                     '<extra></extra>'
+                            )
+          )
+        fig_curve_death.add_trace(go.Scatter(x=dotx_death,
+                                       y=doty_death,
+                                       mode='markers',
+                                       marker=dict(size=7, color='#626262',
+                                       line=dict(width=1, color='#626262')),
+                                       text=[Region],
+                                       hovertemplate='<b>%{text}</b><br>' +
+                                                     '<br>%{x} days since 3rd death cases<br>' +
+                                                     'with %{y:,d} death cases<br>'
+                                                     '<extra></extra>'
+                            )
+        )
+
+    else:
+        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+
+          dotgrayx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
+          dotgrayy_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
+
+          fig_curve_death.add_trace(go.Scatter(x=dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['DayElapsed_death'],
+                                         y=dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Deaths'],
+                                         mode='lines',
+                                         line_shape='spline',
+                                         name=regionName,
+                                         opacity=0.3,
+                                         line=dict(color='#636363', width=1.5),
+                                         text=[
+                                            i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Region']],
+                                         hovertemplate='<b>%{text}</b><br>' +
+                                                       '<br>%{x} days since 3rd death cases<br>' +
+                                                       'with %{y:,d} death cases<br>'
+                                                       '<extra></extra>'
+                             )
+          )
+
+          fig_curve_death.add_trace(go.Scatter(x=dotgrayx_death,
+                                         y=dotgrayy_death,
+                                         mode='markers',
+                                         marker=dict(size=6, color='#636363',
+                                         line=dict(width=1, color='#636363')),
+                                         opacity=0.5,
+                                         text=[regionName],
+                                         hovertemplate='<b>%{text}</b><br>' +
+                                                       '<br>%{x} days since 3rd death cases<br>' +
+                                                       'with %{y:,d} death cases<br>'
+                                                       '<extra></extra>'
+                            )
+          )
+
+    # Customise layout
+    fig_curve_death.update_xaxes(range=[0, elapseDay-19])
+    fig_curve_death.update_layout(
+        xaxis_title="Number of days since 3 deaths recorded",
+        yaxis_title="Death cases (Logarithmic)",
+        margin=go.layout.Margin(
+            l=10,
+            r=10,
+            b=10,
+            t=5,
+            pad=0
+            ),
+        annotations=[dict(
+            x=.5,
+            y=.4,
+            xref="paper",
+            yref="paper",
+            text=Region if Region in set(dfs_curve['Region']) else "Not over 3 death cases",
+            opacity=0.5,
+            font=dict(family='Arial, sans-serif',
+                      size=60,
+                      color="grey"),
+                    )
+        ],
+        yaxis_type="log",
+        yaxis=dict(
+            showline=False, 
+            linecolor='#272e3e',
+            zeroline=False,
+            # showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth = .1,
+        ),
+        xaxis=dict(
+            showline=False, 
+            linecolor='#272e3e',
+            # showgrid=False,
+            gridcolor='rgba(203, 210, 211,.3)',
+            gridwidth = .1,
+            zeroline=False
+        ),
+        showlegend=False,
+        # hovermode = 'x',
+        plot_bgcolor='#ffffff',
+        paper_bgcolor='#ffffff',
+        font=dict(color='#292929', size=10)
+    )
+
+    return fig_curve_death
 
 
 
