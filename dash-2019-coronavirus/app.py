@@ -86,7 +86,7 @@ def make_dcc_country_tab(countryName, dataframe):
                     style_table={'minHeight': '800px',
                                  'height': '800px',
                                  'maxHeight': '800px',
-                                 #'overflowX': 'scroll',
+                                 'overflowX': 'auto',
                                  },
                     style_header={'backgroundColor': '#ffffff',
                                   'fontWeight': 'bold'},
@@ -132,7 +132,7 @@ def make_dcc_country_tab(countryName, dataframe):
                     style_table={'minHeight': '800px',
                                  'height': '800px',
                                  'maxHeight': '800px',
-                                 #'overflowX': 'scroll',
+                                 'overflowX': 'auto',
                                  },
                     style_header={'backgroundColor': '#ffffff',
                                     'fontWeight': 'bold'},
@@ -255,7 +255,7 @@ EuroTable = make_europe_table(europe_list)
 #CANTable = CANTable.dropna(subset=['Province/State'])
 
 # Remove dummy row of recovered case number in AUSTable
-AUSTable = AUSTable.dropna(subset=['Province/State'])
+#AUSTable = AUSTable.dropna(subset=['Province/State'])
 
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M GMT+10')
@@ -271,6 +271,11 @@ y1 = 100*(1.85)**(pseduoDay-1)  # 85% growth rate
 y2 = 100*(1.35)**(pseduoDay-1)  # 35% growth rate
 y3 = 100*(1.15)**(pseduoDay-1)  # 15% growth rate
 y4 = 100*(1.05)**(pseduoDay-1)  # 5% growth rate
+# Pseduo data for deathplot
+z1 = 3*(1.85)**(pseduoDay-1)  # 85% growth rate
+z2 = 3*(1.35)**(pseduoDay-1)  # 35% growth rate
+z3 = 3*(1.15)**(pseduoDay-1)  # 15% growth rate
+z4 = 3*(1.05)**(pseduoDay-1)  # 5% growth rate
 
 # Read death growth data of a given region from ./cumulative_data folder
 dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
@@ -610,6 +615,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=['85% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 1.1 days<br>' +
                                                  '<extra></extra>'
                             )
 )
@@ -618,6 +624,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=['35% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 2.3 days<br>' +
                                                  '<extra></extra>'
                             )
 )
@@ -626,6 +633,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=['15% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 5 days<br>' +
                                                  '<extra></extra>'
                             )
 )
@@ -634,6 +642,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                    line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
                                    text=['5% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 14.2 days<br>' +
                                                  '<extra></extra>'
                             )
 )
@@ -725,6 +734,43 @@ fig_curve_tab.update_layout(
 # Create empty figure canvas
 fig_death_curve_tab = go.Figure()
 
+fig_death_curve_tab.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z1,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=['85% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 1.1 days<br>' +
+                                                 '<extra></extra>'
+                            )
+)
+fig_death_curve_tab.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z2,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=['35% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 2.3 days<br>' +
+                                                 '<extra></extra>'
+                            )
+)
+fig_death_curve_tab.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z3,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=['15% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 5 days<br>' +
+                                                 '<extra></extra>'
+                            )
+)
+fig_death_curve_tab.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z4,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=['5% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 14.2 days<br>' +
+                                                 '<extra></extra>'
+                            )
+)
+
 for regionName in ['The World', 'Japan', 'Italy', 'UK', 'US']:
 
   dotgrayx_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
@@ -762,6 +808,7 @@ for regionName in ['The World', 'Japan', 'Italy', 'UK', 'US']:
 
 # Customise layout
 fig_death_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
+fig_death_curve_tab.update_yaxes(range=[0.477, 5.5])
 fig_death_curve_tab.update_layout(
         xaxis_title="Number of days since 3 deaths recorded",
         yaxis_title="Death cases (Logarithmic)",
@@ -929,14 +976,13 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 ),
         html.Div(
             id="number-plate",
-            style={'marginLeft': '1.5%',
-                'marginRight': '1.5%', 'marginBottom': '.8%'},
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%'},
                  children=[
                      #html.Hr(),
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                                 'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#2674f6 solid .2rem',},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                  'fontWeight': 'bold', 'color': '#2674f6'},
@@ -951,7 +997,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                                 'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#d7191c solid .2rem',},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                  'fontWeight': 'bold', 'color': '#d7191c'},
@@ -967,7 +1013,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                                 'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#1a9622 solid .2rem',},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                        'fontWeight': 'bold', 'color': '#1a9622'},
@@ -983,7 +1029,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                      html.Div(
                          style={'width': '24.4%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                                 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
+                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#6c6c6c solid .2rem',},
                               children=[
                                   html.H3(style={'textAlign': 'center',
                                                        'fontWeight': 'bold', 'color': '#6c6c6c'},
@@ -1005,7 +1051,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                  children=[
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top',
+                                'marginRight': '.8%', 
                                 #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
                                 },
                          children=[
@@ -1019,7 +1065,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                   ]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top',
+                                'marginRight': '.8%', 
                                 #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
                                 },
                          children=[
@@ -1033,7 +1079,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                   ]),
                      html.Div(
                          style={'width': '32.79%', 'display': 'inline-block',
-                                'verticalAlign': 'top',
+                                
                                 #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
                                 },
                          children=[
@@ -1123,7 +1169,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                       style_table={'minHeight': '800px',
                                                                    'height': '800px',
                                                                    'maxHeight': '800px',
-                                                                   #'overflowX': 'scroll',
+                                                                   'overflowX': 'auto',
                                                                    },
                                                       style_header={'backgroundColor': '#ffffff',
                                                                     'fontWeight': 'bold'},
@@ -1175,8 +1221,8 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         System_ reporting requirements, cases are reported based on their Australian
                                         jurisdiction of residence rather than where they were detected.
 
-                                        Additionally, the recovered cases in NSW, TAS are not actively reported.
-                                        Total recovered number is provided by Australian Department of Health. 
+                                        The recovered cases in NSW is calculated based on federal and other states'
+                                        recovered number. 
                                         '''
                                         )
                                       )                                              
@@ -1204,7 +1250,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                       html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
                                       html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank'), ' | ',
-                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_4.pdf', target='_blank'),
+                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_6.pdf', target='_blank'),
 
                             ]
                       ),
@@ -1912,7 +1958,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                 yref="paper",
                 text=Region,
                 opacity=0.5,
-                font=dict(family='Arial, sans-serif',
+                font=dict(family='Roboto, Helvetica, Arial, sans-serif',
                           size=60,
                           color="grey"),
             )
@@ -2015,7 +2061,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                 yref="paper",
                 text=Region,
                 opacity=0.5,
-                font=dict(family='Arial, sans-serif',
+                font=dict(family='Roboto, Helvetica, Arial, sans-serif',
                           size=60,
                           color="grey"),
             )
@@ -2145,6 +2191,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    text=[
                                        '85% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 1.1 days<br>' +
                                                  '<extra></extra>'
                             )
     )
@@ -2154,6 +2201,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    text=[
                                         '35% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 2.3 days<br>' +
                                                  '<extra></extra>'
                             )
     )
@@ -2163,6 +2211,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    text=[
                                         '15% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 5 days<br>' +
                                                  '<extra></extra>'
                             )
     )
@@ -2172,6 +2221,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                    text=[
                                         '5% growth rate' for i in pseduoDay],
                                    hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 14.2 days<br>' +
                                                  '<extra></extra>'
                             )
     )
@@ -2199,7 +2249,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                             i for i in dfs_curve.loc[dfs_curve['Region'] == regionName]['Region']],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
+                                                       'with %{y:,d} cases in total<br>'
                                                        '<extra></extra>'
                              )
           )
@@ -2212,7 +2262,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                          text=[regionName],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
+                                                       'with %{y:,d} cases in total<br>'
                                                        '<extra></extra>'
                             )
           )
@@ -2227,7 +2277,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                            i for i in dfs_curve.loc[dfs_curve['Region'] == Region]['Region']],
                                        hovertemplate='<b>%{text}</b><br>' +
                                                      '<br>%{x} days after 100 cases<br>' +
-                                                     'with %{y:,d} cases<br>'
+                                                     'with %{y:,d} cases in total<br>'
                                                      '<extra></extra>'
                             )
           )
@@ -2239,7 +2289,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                        text=[Region],
                                        hovertemplate='<b>%{text}</b><br>' +
                                                      '<br>%{x} days after 100 cases<br>' +
-                                                     'with %{y:,d} cases<br>'
+                                                     'with %{y:,d} cases in total<br>'
                                                      '<extra></extra>'
                             )
         )
@@ -2261,7 +2311,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                             i for i in dfs_curve.loc[dfs_curve['Region'] == regionName]['Region']],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
+                                                       'with %{y:,d} cases in total<br>'
                                                        '<extra></extra>'
                              )
           )
@@ -2275,7 +2325,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
                                          text=[regionName],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days after 100 cases<br>' +
-                                                       'with %{y:,d} cases<br>'
+                                                       'with %{y:,d} cases in total<br>'
                                                        '<extra></extra>'
                             )
           )
@@ -2417,6 +2467,47 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
     # Create empty figure canvas
     fig_curve_death = go.Figure()
 
+    fig_curve_death.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z1,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=[
+                                       '85% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 1.1 days<br>' +
+                                                 '<extra></extra>'
+                            )
+    )
+    fig_curve_death.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z2,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=[
+                                        '35% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 2.3 days<br>' +
+                                                 '<extra></extra>'
+                            )
+    )
+    fig_curve_death.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z3,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=[
+                                        '15% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 5 days<br>' +
+                                                 '<extra></extra>'
+                            )
+    )
+    fig_curve_death.add_trace(go.Scatter(x=pseduoDay,
+                                   y=z4,
+                                   line=dict(color='rgba(0, 0, 0, .3)', width=1, dash='dot'),
+                                   text=[
+                                        '5% growth rate' for i in pseduoDay],
+                                   hovertemplate='<b>%{text}</b><br>' +
+                                                 'Doubles every 14.2 days<br>' +
+                                                 '<extra></extra>'
+                            )
+    )
+
     # Add trace to the figure
     if Region in set(dfs_curve_death['Region']):
 
@@ -2440,7 +2531,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
                                             i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Region']],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days since 3rd death cases<br>' +
-                                                       'with %{y:,d} death cases<br>'
+                                                       'with %{y:,d} death cases in total<br>'
                                                        '<extra></extra>'
                              )
           )
@@ -2453,7 +2544,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
                                          text=[regionName],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days since 3rd death cases<br>' +
-                                                       'with %{y:,d} death cases<br>'
+                                                       'with %{y:,d} death cases in total<br>'
                                                        '<extra></extra>'
                             )
           )
@@ -2468,7 +2559,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
                                            i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == Region]['Region']],
                                        hovertemplate='<b>%{text}</b><br>' +
                                                      '<br>%{x} days since 3rd death cases<br>' +
-                                                     'with %{y:,d} death cases<br>'
+                                                     'with %{y:,d} death cases in total<br>'
                                                      '<extra></extra>'
                             )
           )
@@ -2480,7 +2571,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
                                        text=[Region],
                                        hovertemplate='<b>%{text}</b><br>' +
                                                      '<br>%{x} days since 3rd death cases<br>' +
-                                                     'with %{y:,d} death cases<br>'
+                                                     'with %{y:,d} death cases in total<br>'
                                                      '<extra></extra>'
                             )
         )
@@ -2502,7 +2593,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
                                             i for i in dfs_curve_death.loc[dfs_curve_death['Region'] == regionName]['Region']],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days since 3rd death cases<br>' +
-                                                       'with %{y:,d} death cases<br>'
+                                                       'with %{y:,d} death cases in total<br>'
                                                        '<extra></extra>'
                              )
           )
@@ -2516,13 +2607,14 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
                                          text=[regionName],
                                          hovertemplate='<b>%{text}</b><br>' +
                                                        '<br>%{x} days since 3rd death cases<br>' +
-                                                       'with %{y:,d} death cases<br>'
+                                                       'with %{y:,d} death cases in total<br>'
                                                        '<extra></extra>'
                             )
           )
 
     # Customise layout
     fig_curve_death.update_xaxes(range=[0, elapseDay-19])
+    fig_curve_death.update_yaxes(range=[0.477, 5.5])
     fig_curve_death.update_layout(
         xaxis_title="Number of days since 3 deaths recorded",
         yaxis_title="Death cases (Logarithmic)",
