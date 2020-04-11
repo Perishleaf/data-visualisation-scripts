@@ -1250,7 +1250,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                       html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
                                       html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank'), ' | ',
-                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_6.pdf', target='_blank'),
+                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_7.pdf', target='_blank'),
 
                             ]
                       ),
