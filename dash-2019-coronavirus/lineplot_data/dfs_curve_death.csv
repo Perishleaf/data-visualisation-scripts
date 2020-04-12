@@ -123,7 +123,7 @@ DayElapsed_death,Deaths,Region
 3,11,Massachusetts
 2,9,Massachusetts
 1,5,Massachusetts
-30,438,Florida
+30,446,Florida
 29,419,Florida
 28,371,Florida
 27,323,Florida
@@ -171,7 +171,7 @@ DayElapsed_death,Deaths,Region
 3,4,Washington DC
 2,3,Washington DC
 1,3,Washington DC
-29,22,New South Wales
+29,23,New South Wales
 28,22,New South Wales
 27,21,New South Wales
 26,20,New South Wales
@@ -222,7 +222,7 @@ DayElapsed_death,Deaths,Region
 3,4,Quebec
 2,4,Quebec
 1,5,Quebec
-13,19,New Mexico
+13,20,New Mexico
 12,19,New Mexico
 11,17,New Mexico
 10,16,New Mexico
@@ -511,7 +511,7 @@ DayElapsed_death,Deaths,Region
 3,3,Hebei
 2,3,Hebei
 1,3,Hebei
-24,448,Connecticut
+24,494,Connecticut
 23,448,Connecticut
 22,380,Connecticut
 21,335,Connecticut
@@ -535,7 +535,7 @@ DayElapsed_death,Deaths,Region
 3,5,Connecticut
 2,4,Connecticut
 1,3,Connecticut
-25,265,Texas
+25,273,Texas
 24,248,Texas
 23,223,Texas
 22,193,Texas
@@ -656,7 +656,7 @@ DayElapsed_death,Deaths,Region
 3,3,North Dakota
 2,3,North Dakota
 1,3,North Dakota
-33,601,California
+33,634,California
 32,599,California
 31,547,California
 30,507,California
@@ -689,7 +689,7 @@ DayElapsed_death,Deaths,Region
 3,4,California
 2,4,California
 1,3,California
-25,429,Georgia
+25,433,Georgia
 24,425,Georgia
 23,412,Georgia
 22,370,Georgia
@@ -763,7 +763,7 @@ DayElapsed_death,Deaths,Region
 3,4,Yokohama
 2,4,Yokohama
 1,3,Yokohama
-24,250,Colorado
+24,274,Colorado
 23,250,Colorado
 22,226,Colorado
 21,193,Colorado
@@ -892,7 +892,7 @@ DayElapsed_death,Deaths,Region
 3,4,Nebraska
 2,4,Nebraska
 1,3,Nebraska
-25,48,Oregon
+25,51,Oregon
 24,48,Oregon
 23,44,Oregon
 22,37,Oregon
@@ -1061,7 +1061,7 @@ DayElapsed_death,Deaths,Region
 3,3,Saskatchewan
 2,3,Saskatchewan
 1,3,Saskatchewan
-14,22,New Hampshire
+14,23,New Hampshire
 13,22,New Hampshire
 12,21,New Hampshire
 11,18,New Hampshire
@@ -1167,7 +1167,7 @@ DayElapsed_death,Deaths,Region
 3,8,Louisiana
 2,4,Louisiana
 1,3,Louisiana
-4,3,South Australia
+4,4,South Australia
 3,3,South Australia
 2,3,South Australia
 1,3,South Australia
@@ -1234,7 +1234,7 @@ DayElapsed_death,Deaths,Region
 3,4,Anhui
 2,4,Anhui
 1,3,Anhui
-20,102,Nevada
+20,111,Nevada
 19,102,Nevada
 18,81,Nevada
 17,74,Nevada
@@ -1355,7 +1355,7 @@ DayElapsed_death,Deaths,Region
 3,6,Tennessee
 2,3,Tennessee
 1,3,Tennessee
-16,91,Alabama
+16,93,Alabama
 15,80,Alabama
 14,78,Alabama
 13,67,Alabama
@@ -1432,7 +1432,7 @@ DayElapsed_death,Deaths,Region
 3,5,Chongqing
 2,3,Chongqing
 1,3,Chongqing
-17,25,Idaho
+17,27,Idaho
 16,25,Idaho
 15,24,Idaho
 14,18,Idaho
@@ -1508,7 +1508,7 @@ DayElapsed_death,Deaths,Region
 3,3,Newfoundland and Labrador
 2,3,Newfoundland and Labrador
 1,3,Newfoundland and Labrador
-22,90,Kentucky
+22,94,Kentucky
 21,90,Kentucky
 20,73,Kentucky
 19,73,Kentucky
@@ -1530,7 +1530,7 @@ DayElapsed_death,Deaths,Region
 3,4,Kentucky
 2,3,Kentucky
 1,3,Kentucky
-23,105,Missouri
+23,116,Missouri
 22,105,Missouri
 21,92,Missouri
 20,93,Missouri
@@ -1655,7 +1655,7 @@ DayElapsed_death,Deaths,Region
 3,6,Illinois
 2,5,Illinois
 1,4,Illinois
-41,487,WA
+41,496,WA
 40,484,WA
 39,457,WA
 38,432,WA
@@ -1696,7 +1696,7 @@ DayElapsed_death,Deaths,Region
 3,10,WA
 2,9,WA
 1,6,WA
-28,8627,New York
+28,8650,New York
 27,7887,New York
 26,7067,New York
 25,6269,New York
@@ -1826,7 +1826,7 @@ DayElapsed_death,Deaths,Region
 3,8,Rhode Island
 2,4,Rhode Island
 1,3,Rhode Island
-21,503,Pennsylvania
+21,530,Pennsylvania
 20,449,Pennsylvania
 19,365,Pennsylvania
 18,319,Pennsylvania
@@ -1870,7 +1870,7 @@ DayElapsed_death,Deaths,Region
 3,4,Wisconsin
 2,4,Wisconsin
 1,3,Wisconsin
-16,24,Arkansas
+16,25,Arkansas
 15,24,Arkansas
 14,21,Arkansas
 13,18,Arkansas
@@ -1897,7 +1897,7 @@ DayElapsed_death,Deaths,Region
 3,4,Guam
 2,3,Guam
 1,3,Guam
-15,32,Delaware
+15,33,Delaware
 14,32,Delaware
 13,23,Delaware
 12,19,Delaware
@@ -1912,7 +1912,7 @@ DayElapsed_death,Deaths,Region
 3,7,Delaware
 2,6,Delaware
 1,5,Delaware
-7,5,West Virginia
+7,6,West Virginia
 6,5,West Virginia
 5,5,West Virginia
 4,4,West Virginia
@@ -2248,7 +2248,7 @@ DayElapsed_death,Deaths,Region
 3,4,Bahrain
 2,4,Bahrain
 1,3,Bahrain
-24,86,Pakistan
+24,88,Pakistan
 23,77,Pakistan
 22,66,Pakistan
 21,63,Pakistan
@@ -2272,7 +2272,7 @@ DayElapsed_death,Deaths,Region
 3,3,Pakistan
 2,3,Pakistan
 1,3,Pakistan
-36,56,Australia
+36,58,Australia
 35,56,Australia
 34,54,Australia
 33,51,Australia
@@ -2308,7 +2308,7 @@ DayElapsed_death,Deaths,Region
 3,3,Australia
 2,3,Australia
 1,3,Australia
-19,37,Bosnia and Herzegovina
+19,38,Bosnia and Herzegovina
 18,37,Bosnia and Herzegovina
 17,35,Bosnia and Herzegovina
 16,35,Bosnia and Herzegovina
@@ -2400,7 +2400,7 @@ DayElapsed_death,Deaths,Region
 3,11,Italy
 2,7,Italy
 1,4,Italy
-30,327,Indonesia
+30,373,Indonesia
 29,327,Indonesia
 28,306,Indonesia
 27,280,Indonesia
@@ -2444,7 +2444,7 @@ DayElapsed_death,Deaths,Region
 3,5,Taiwan
 2,5,Taiwan
 1,5,Taiwan
-25,1124,Brazil
+25,1141,Brazil
 24,1074,Brazil
 23,957,Brazil
 22,823,Brazil
@@ -2469,7 +2469,7 @@ DayElapsed_death,Deaths,Region
 3,11,Brazil
 2,7,Brazil
 1,4,Brazil
-10,6,Qatar
+10,7,Qatar
 9,6,Qatar
 8,6,Qatar
 7,6,Qatar
@@ -2540,7 +2540,7 @@ DayElapsed_death,Deaths,Region
 3,3,El Salvador
 2,3,El Salvador
 1,3,El Salvador
-21,50,Slovenia
+21,53,Slovenia
 20,50,Slovenia
 19,45,Slovenia
 18,43,Slovenia
@@ -2568,7 +2568,7 @@ DayElapsed_death,Deaths,Region
 3,3,Guatemala
 2,3,Guatemala
 1,3,Guatemala
-22,74,Panama
+22,79,Panama
 21,74,Panama
 20,66,Panama
 19,63,Panama
@@ -2767,7 +2767,7 @@ DayElapsed_death,Deaths,Region
 3,5,Poland
 2,3,Poland
 1,3,Poland
-25,429,Georgia
+25,433,Georgia
 24,425,Georgia
 23,412,Georgia
 22,370,Georgia
@@ -2792,7 +2792,7 @@ DayElapsed_death,Deaths,Region
 3,14,Georgia
 2,10,Georgia
 1,4,Georgia
-20,233,Mexico
+20,273,Mexico
 19,233,Mexico
 18,194,Mexico
 17,174,Mexico
@@ -2812,7 +2812,7 @@ DayElapsed_death,Deaths,Region
 3,6,Mexico
 2,5,Mexico
 1,4,Mexico
-13,20,Bolivia
+13,24,Bolivia
 12,19,Bolivia
 11,19,Bolivia
 10,18,Bolivia
@@ -2825,7 +2825,7 @@ DayElapsed_death,Deaths,Region
 3,7,Bolivia
 2,7,Bolivia
 1,6,Bolivia
-19,49,Finland
+19,56,Finland
 18,49,Finland
 17,48,Finland
 16,40,Finland
@@ -2940,7 +2940,7 @@ DayElapsed_death,Deaths,Region
 3,4,Algeria
 2,3,Algeria
 1,3,Algeria
-3,3,Latvia
+3,5,Latvia
 2,3,Latvia
 1,3,Latvia
 1,3,Mayotte
@@ -2967,7 +2967,7 @@ DayElapsed_death,Deaths,Region
 3,3,Cyprus
 2,3,Cyprus
 1,3,Cyprus
-19,129,Czechia
+19,132,Czechia
 18,123,Czechia
 17,113,Czechia
 16,104,Czechia
@@ -2991,7 +2991,7 @@ DayElapsed_death,Deaths,Region
 3,3,Uzbekistan
 2,3,Uzbekistan
 1,3,Uzbekistan
-21,30,Bangladesh
+21,34,Bangladesh
 20,30,Bangladesh
 19,27,Bangladesh
 18,21,Bangladesh
@@ -3012,7 +3012,7 @@ DayElapsed_death,Deaths,Region
 3,5,Bangladesh
 2,4,Bangladesh
 1,3,Bangladesh
-32,2736,Germany
+32,2871,Germany
 31,2736,Germany
 30,2607,Germany
 29,2349,Germany
@@ -3064,7 +3064,7 @@ DayElapsed_death,Deaths,Region
 1,3,DRC
 2,3,Tanzania
 1,3,Tanzania
-39,16480,Spain
+39,16972,Spain
 38,16353,Spain
 37,15843,Spain
 36,15238,Spain
@@ -3149,7 +3149,7 @@ DayElapsed_death,Deaths,Region
 3,5,Peru
 2,4,Peru
 1,3,Peru
-10,23,Belarus
+10,26,Belarus
 9,23,Belarus
 8,19,Belarus
 7,13,Belarus
@@ -3193,7 +3193,7 @@ DayElapsed_death,Deaths,Region
 3,3,Myanmar
 2,3,Myanmar
 1,3,Myanmar
-24,111,Morocco
+24,113,Morocco
 23,110,Morocco
 22,105,Morocco
 21,96,Morocco
@@ -3232,7 +3232,7 @@ DayElapsed_death,Deaths,Region
 3,3,Armenia
 2,3,Armenia
 1,3,Armenia
-32,3346,Belgium
+32,3600,Belgium
 31,3346,Belgium
 30,3019,Belgium
 29,2523,Belgium
@@ -3299,7 +3299,7 @@ DayElapsed_death,Deaths,Region
 3,4,Netherlands
 2,4,Netherlands
 1,3,Netherlands
-20,35,Thailand
+20,38,Thailand
 19,35,Thailand
 18,33,Thailand
 17,32,Thailand
@@ -3333,7 +3333,7 @@ DayElapsed_death,Deaths,Region
 3,4,Guadeloupe
 2,4,Guadeloupe
 1,4,Guadeloupe
-7,3,Ivory Coast
+7,4,Ivory Coast
 6,3,Ivory Coast
 5,3,Ivory Coast
 4,3,Ivory Coast
@@ -3398,7 +3398,7 @@ DayElapsed_death,Deaths,Region
 3,3,Trinidad and Tobago
 2,3,Trinidad and Tobago
 1,3,Trinidad and Tobago
-27,337,Austria
+27,350,Austria
 26,337,Austria
 25,319,Austria
 24,295,Austria
@@ -3425,7 +3425,7 @@ DayElapsed_death,Deaths,Region
 3,5,Austria
 2,4,Austria
 1,3,Austria
-14,24,Honduras
+14,25,Honduras
 13,24,Honduras
 12,23,Honduras
 11,23,Honduras
@@ -3464,7 +3464,7 @@ DayElapsed_death,Deaths,Region
 3,5,Luxembourg
 2,4,Luxembourg
 1,4,Luxembourg
-22,26,Burkina Faso
+22,27,Burkina Faso
 21,26,Burkina Faso
 20,24,Burkina Faso
 19,23,Burkina Faso
@@ -3499,7 +3499,7 @@ DayElapsed_death,Deaths,Region
 3,5,South Africa
 2,5,South Africa
 1,3,South Africa
-23,73,Malaysia
+23,76,Malaysia
 22,73,Malaysia
 21,70,Malaysia
 20,67,Malaysia
@@ -3522,7 +3522,7 @@ DayElapsed_death,Deaths,Region
 3,14,Malaysia
 2,9,Malaysia
 1,4,Malaysia
-15,24,Estonia
+15,25,Estonia
 14,24,Estonia
 13,24,Estonia
 12,24,Estonia
@@ -3537,7 +3537,7 @@ DayElapsed_death,Deaths,Region
 3,4,Estonia
 2,3,Estonia
 1,3,Estonia
-31,247,Philippines
+31,297,Philippines
 30,247,Philippines
 29,221,Philippines
 28,203,Philippines
@@ -3749,7 +3749,7 @@ DayElapsed_death,Deaths,Region
 3,3,Martinique
 2,3,Martinique
 1,3,Martinique
-24,85,Hungary
+24,99,Hungary
 23,85,Hungary
 22,77,Hungary
 21,66,Hungary
@@ -3788,7 +3788,7 @@ DayElapsed_death,Deaths,Region
 3,4,Cuba
 2,3,Cuba
 1,3,Cuba
-21,291,Romania
+21,306,Romania
 20,282,Romania
 19,265,Romania
 18,229,Romania
@@ -3809,7 +3809,7 @@ DayElapsed_death,Deaths,Region
 3,13,Romania
 2,8,Romania
 1,4,Romania
-19,101,Israel
+19,103,Israel
 18,95,Israel
 17,92,Israel
 16,79,Israel
@@ -3884,7 +3884,7 @@ DayElapsed_death,Deaths,Region
 3,3,Azerbaijan
 2,3,Azerbaijan
 1,3,Azerbaijan
-41,20418,US
+41,20636,US
 40,18802,US
 39,16706,US
 38,14823,US
@@ -4025,7 +4025,7 @@ DayElapsed_death,Deaths,Region
 3,3,Venezuela
 2,3,Venezuela
 1,3,Venezuela
-24,73,Ukraine
+24,83,Ukraine
 23,73,Ukraine
 22,69,Ukraine
 21,57,Ukraine
@@ -4049,7 +4049,7 @@ DayElapsed_death,Deaths,Region
 3,3,Ukraine
 2,3,Ukraine
 1,3,Ukraine
-18,106,Russia
+18,130,Russia
 17,106,Russia
 16,94,Russia
 15,76,Russia
@@ -4105,7 +4105,7 @@ DayElapsed_death,Deaths,Region
 3,4,Kenya
 2,4,Kenya
 1,3,Kenya
-25,28,Bulgaria
+25,29,Bulgaria
 24,26,Bulgaria
 23,24,Bulgaria
 22,24,Bulgaria
@@ -4147,7 +4147,7 @@ DayElapsed_death,Deaths,Region
 3,5,Croatia
 2,4,Croatia
 1,3,Croatia
-50,211,South Korea
+50,214,South Korea
 49,211,South Korea
 48,208,South Korea
 47,204,South Korea
@@ -4197,7 +4197,7 @@ DayElapsed_death,Deaths,Region
 3,11,South Korea
 2,8,South Korea
 1,5,South Korea
-52,4357,Iran
+52,4474,Iran
 51,4232,Iran
 50,4232,Iran
 49,3993,Iran
@@ -4260,7 +4260,7 @@ DayElapsed_death,Deaths,Region
 3,3,Jamaica
 2,3,Jamaica
 1,3,Jamaica
-27,288,India
+27,289,India
 26,249,India
 25,228,India
 24,186,India
@@ -4416,7 +4416,7 @@ DayElapsed_death,Deaths,Region
 3,3,Paraguay
 2,3,Paraguay
 1,3,Paraguay
-20,80,Colombia
+20,100,Colombia
 19,80,Colombia
 18,69,Colombia
 17,55,Colombia
@@ -4517,7 +4517,7 @@ DayElapsed_death,Deaths,Region
 3,4,Kyrgyzstan
 2,4,Kyrgyzstan
 1,4,Kyrgyzstan
-25,83,Argentina
+25,89,Argentina
 24,82,Argentina
 23,79,Argentina
 22,65,Argentina
@@ -4562,7 +4562,7 @@ DayElapsed_death,Deaths,Region
 3,5,Sri Lanka
 2,4,Sri Lanka
 1,3,Sri Lanka
-29,119,Norway
+29,123,Norway
 28,113,Norway
 27,108,Norway
 26,101,Norway
@@ -4591,7 +4591,7 @@ DayElapsed_death,Deaths,Region
 3,3,Norway
 2,3,Norway
 1,3,Norway
-53,110,Japan
+53,119,Japan
 52,110,Japan
 51,110,Japan
 50,105,Japan
@@ -4734,7 +4734,7 @@ DayElapsed_death,Deaths,Region
 3,5,Chile
 2,4,Chile
 1,3,Chile
-51,73353,Europe
+51,74335,Europe
 50,70739,Europe
 49,66812,Europe
 48,62077,Europe
@@ -4785,7 +4785,7 @@ DayElapsed_death,Deaths,Region
 3,5,Europe
 2,3,Europe
 1,3,Europe
-83,108303,The World
+83,109843,The World
 82,103556,The World
 81,96951,The World
 80,89454,The World
