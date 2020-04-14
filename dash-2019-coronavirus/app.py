@@ -295,9 +295,9 @@ fig_combine.add_trace(go.Scatter(x=df_remaining['Date'], y=df_remaining['Total']
                                 mode='lines+markers',
                                 line_shape='spline',
                                 name='Active',
-                                line=dict(color='#e36209', width=4),
-                                marker=dict(size=4, color='#e36209',
-                                            line=dict(width=1, color='#e36209')),
+                                line=dict(color='#e36209', width=2),
+                                marker=dict(size=2, color='#e36209',
+                                            line=dict(width=.5, color='#e36209')),
                                 text=[datetime.strftime(
                                     d, '%b %d %Y GMT+10') for d in df_deaths['Date']],
                                 hovertext=['Total active<br>{:,d} cases<br>'.format(
@@ -309,9 +309,9 @@ fig_combine.add_trace(go.Scatter(x=df_confirmed['Date'], y=df_confirmed['Total']
                                    mode='lines+markers',
                                    line_shape='spline',
                                    name='Confirmed',
-                                   line=dict(color='#d7191c', width=4),
-                                   marker=dict(size=4, color='#d7191c',
-                                               line=dict(width=1, color='#d7191c')),
+                                   line=dict(color='#d7191c', width=2),
+                                   marker=dict(size=2, color='#d7191c',
+                                               line=dict(width=.5, color='#d7191c')),
                                    text=[datetime.strftime(
                                        d, '%b %d %Y GMT+10') for d in df_confirmed['Date']],
                                    hovertext=['Total confirmed<br>{:,d} cases<br>'.format(
@@ -323,9 +323,9 @@ fig_combine.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Total']
                                    mode='lines+markers',
                                    line_shape='spline',
                                    name='Recovered',
-                                   line=dict(color='#168038', width=4),
-                                   marker=dict(size=4, color='#168038',
-                                               line=dict(width=1, color='#168038')),
+                                   line=dict(color='#168038', width=2),
+                                   marker=dict(size=2, color='#168038',
+                                               line=dict(width=.5, color='#168038')),
                                    text=[datetime.strftime(
                                        d, '%b %d %Y GMT+10') for d in df_recovered['Date']],
                                    hovertext=['Total recovered<br>{:,d} cases<br>'.format(
@@ -337,9 +337,9 @@ fig_combine.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total'],
                                 mode='lines+markers',
                                 line_shape='spline',
                                 name='Death',
-                                line=dict(color='#626262', width=4),
-                                marker=dict(size=4, color='#626262',
-                                            line=dict(width=1, color='#626262')),
+                                line=dict(color='#626262', width=2),
+                                marker=dict(size=2, color='#626262',
+                                            line=dict(width=.5, color='#626262')),
                                 text=[datetime.strftime(
                                     d, '%b %d %Y GMT+10') for d in df_deaths['Date']],
                                 hovertext=['Total death<br>{:,d} cases<br>'.format(
@@ -388,7 +388,7 @@ fig_combine.update_layout(
 
 # Line plot for death rate cases
 # Set up tick scale based on death case number of Mainland China
-tickList = np.arange(0, (df_deaths['Total']/df_confirmed['Total']*100).max()+0.5, 0.5)
+#tickList = np.arange(0, (df_recovered['Total']/df_confirmed['Total']*100).max()+0.5, 0.5)
 
 # Create empty figure canvas
 fig_rate = go.Figure()
@@ -396,10 +396,10 @@ fig_rate = go.Figure()
 fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total']/df_confirmed['Total']*100,
                                 mode='lines+markers',
                                 line_shape='spline',
-                                name='The World',
-                                line=dict(color='#626262', width=4),
-                                marker=dict(size=4, color='#626262',
-                                            line=dict(width=1, color='#626262')),
+                                name='Death Rate',
+                                line=dict(color='#626262', width=2),
+                                marker=dict(size=2, color='#626262',
+                                            line=dict(width=.5, color='#626262')),
                                 text=[datetime.strftime(
                                     d, '%b %d %Y GMT+10') for d in df_deaths['Date']],
                                 hovertext=['Global death rate<br>{:.2f}%'.format(
@@ -407,21 +407,20 @@ fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Total']/df_confi
                                 hovertemplate='<b>%{text}</b><br></br>' +
                                               '%{hovertext}' +
                                               '<extra></extra>'))
-#fig_rate.add_trace(go.Scatter(x=df_deaths['Date'], y=df_deaths['Other locations']/df_confirmed['Other locations']*100,
-#                                mode='lines+markers',
-#                                line_shape='spline',
-#                                name='Other Region',
-#                                line=dict(color='#a7a7a7', width=4),
-#                                marker=dict(size=4, color='#f4f4f2',
-#                                            line=dict(width=1, color='#a7a7a7')),
-#                                text=[datetime.strftime(
-#                                    d, '%b %d %Y GMT+10') for d in df_deaths['Date']],
-#                                hovertext=['Other region death rate<br>{:.2f}%'.format(
-#                                    i) for i in df_deaths['Other locations']/df_confirmed['Other locations']*100],
-#                                hovertemplate='<b>%{text}</b><br></br>' +
-#                                              '%{hovertext}' +
-#                                              '<extra></extra>'))
-
+fig_rate.add_trace(go.Scatter(x=df_recovered['Date'], y=df_recovered['Total']/df_confirmed['Total']*100,
+                                mode='lines+markers',
+                                line_shape='spline',
+                                name='Recovery Rate',
+                                line=dict(color='#168038', width=2),
+                                marker=dict(size=2, color='#168038',
+                                            line=dict(width=.5, color='#168038')),
+                                text=[datetime.strftime(
+                                    d, '%b %d %Y GMT+10') for d in df_recovered['Date']],
+                                hovertext=['Global recovery rate<br>{:.2f}%'.format(
+                                    i) for i in df_recovered['Total']/df_confirmed['Total']*100],
+                                hovertemplate='<b>%{text}</b><br></br>' +
+                                              '%{hovertext}' +
+                                              '<extra></extra>'))
 # Customise layout
 fig_rate.update_layout(
     margin=go.layout.Margin(
@@ -439,9 +438,9 @@ fig_rate.update_layout(
         gridwidth=.1,
         tickmode='array',
         # Set tick range based on the maximum number
-        tickvals=tickList,
+        #tickvals=tickList,
         # Set tick label accordingly
-        ticktext=['{:.1f}'.format(i) for i in tickList]
+        #ticktext=['{:.1f}'.format(i) for i in tickList]
     ),
 #    yaxis_title="Total Confirmed Case Number",
     xaxis=dict(
@@ -463,7 +462,7 @@ fig_rate.update_layout(
 
 # Default cumulative plot for tab
 # Default plot is an empty canvas
-#df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format('The World'))
+#df_region_tab = pd.read_csv('./cumulative_data/{}.csv'.format('Worldwide'))
 #df_region_tab = df_region_tab.astype({'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
 
 # Create empty figure canvas
@@ -583,7 +582,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                                  '<extra></extra>'
                             )
 )
-for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
 
   dotgrayx_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
   dotgrayy_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -708,7 +707,7 @@ fig_death_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                             )
 )
 
-for regionName in ['The World', 'Japan', 'Italy', 'UK', 'US']:
+for regionName in ['Worldwide', 'Japan', 'Italy', 'UK', 'US']:
 
   dotgrayx_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
   dotgrayy_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
@@ -1023,12 +1022,22 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                 },
                          children=[
                                   html.H5(
+                                    id='dcc-death-graph-head',
                                     style={'textAlign': 'center', 'backgroundColor': '#ffffff',
                                            'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
-                                    children='Death Rate (%) Timeline'),
+                                    children='Recovery/Death Rate (%) Timeline'),
                                   dcc.Graph(
                                     style={'height': '300px'}, 
                                     figure=fig_rate),
+                                  dbc.Tooltip(
+                                    '''
+                                    The death rate is calculated using the formula: deaths/confirmed cases.
+                                    Note that this is only a conservative estimation. The real death rate can only be 
+                                    revealed as all cases are resolved. 
+                                    ''',
+                                              target='dcc-death-graph-head',
+                                              style={"font-size":"1.5em"},
+                                             ),
                                   ]),
                      ]),
         html.Div(
@@ -1078,12 +1087,12 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                children='Cases Summary by Location'),
                                   dcc.Tabs(
                                       id="tabs-table",
-                                      value='The World',
+                                      value='Worldwide',
                                       parent_className='custom-tabs',
                                       className='custom-tabs-container',
                                       children=[
-                                          dcc.Tab(label='The World',
-                                              value='The World',
+                                          dcc.Tab(label='Worldwide',
+                                              value='Worldwide',
                                               className='custom-tab',
                                               selected_className='custom-tab--selected',
                                               children=[
@@ -1189,7 +1198,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                       html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
                                       html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank'), ' | ',
-                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_10.pdf', target='_blank'),
+                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_11.pdf', target='_blank'),
 
                             ]
                       ),
@@ -1280,7 +1289,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
     # `derived_virtual_data=df.to_rows('dict')` when you initialize
     # the component.
 
-    if value == 'The World':
+    if value == 'Worldwide':
       if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
@@ -1463,7 +1472,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
 
-    if value == 'The World':
+    if value == 'Worldwide':
       if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
@@ -1475,7 +1484,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         else:
           Region = selected_row_ids[0]
       else:
-        Region = 'The World' # Display the global total case number 
+        Region = 'Worldwide' # Display the global total case number 
 
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -1764,7 +1773,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
 
-    if value == 'The World':
+    if value == 'Worldwide':
       if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
@@ -1776,7 +1785,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
         else:
           Region = selected_row_ids[0]
       else:
-        Region = 'The World' # Display the global total case number 
+        Region = 'Worldwide' # Display the global total case number 
 
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -2063,7 +2072,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
    
-    if value == 'The World':
+    if value == 'Worldwide':
       if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
@@ -2073,7 +2082,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         else:
           Region = selected_row_ids[0]
       else:
-        Region = 'The World'
+        Region = 'Worldwide'
     
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -2171,7 +2180,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'DayElapsed'])[0]]
         doty = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'Confirmed'])[0]]
 
-        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -2234,7 +2243,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -2345,7 +2354,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids
   ):
    
-    if value == 'The World':
+    if value == 'Worldwide':
       if derived_virtual_selected_rows is None:
         derived_virtual_selected_rows = []
 
@@ -2355,7 +2364,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         else:
           Region = selected_row_ids[0]
       else:
-        Region = 'The World'
+        Region = 'Worldwide'
     
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
@@ -2453,7 +2462,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == Region,'DayElapsed_death'])[0]]
         doty_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == Region,'Deaths'])[0]]
 
-        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
 
           dotgrayx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
           dotgrayy_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
@@ -2516,7 +2525,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['The World', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
 
           dotgrayx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
           dotgrayy_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]

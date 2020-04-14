@@ -845,60 +845,6 @@ hr {
     margin: 0;
 }
 
-@media (max-width: 1250px) {
-    /*For smaller screens*/
-    #header h4 {
-        text-align: center;
-    }
-
-    #number-plate h3 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
-        font-size: 4rem;
-    }
-
-    #number-plate p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.5rem;
-    }
-
-    #number-plate h5{
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-    }
-
-    #my-footer p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-    #dcc-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    #dcc-map h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    #dcc-table h5 {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    #graph-container {
-        margin-top: 5rem;
-    }
-
-    #selected-data {
-        height: 55rem;
-    }
-}
-
 @media (min-width: 1251px) {
     /*For desktop*/
     #logo {
@@ -912,18 +858,18 @@ hr {
 
     #number-plate h3 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
-        font-size: 6rem;
+        /*font-weight: bold;*/
+        font-size: 4rem;
     }
 
     #number-plate p {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     #number-plate h5 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     #my-footer p {
@@ -963,7 +909,61 @@ hr {
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 1250px) {
+    /*For smaller screens*/
+    #header h4 {
+        text-align: center;
+    }
+
+    #number-plate h3 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        /*font-weight: bold;*/
+        font-size: 3rem;
+    }
+
+    #number-plate p {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 1.35rem;
+    }
+
+    #number-plate h5{
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 1.5rem;
+    }
+
+    #my-footer p {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    #dcc-plot h5 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #dcc-map h5 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #dcc-table h5 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #graph-container {
+        margin-top: 5rem;
+    }
+
+    #selected-data {
+        height: 55rem;
+    }
+}
+
+@media (max-width: 850px) {
     /*For mobile screens*/
     #graph-container {
         padding: 2.5rem;
@@ -981,15 +981,15 @@ hr {
         font-size: 1rem;
     }
 
-    #number-plate p {
-    	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1rem;
+    #number-plate h3 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        /*font-weight: bold;*/
+        font-size: 2rem;
     }
 
-    #number-plate h3 {
+    #number-plate p {
     	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
-        font-size: 2.5rem;
+        font-size: .9rem;
     }
 
     #number-plate h5 {
