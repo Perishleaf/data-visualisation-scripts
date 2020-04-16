@@ -8,6 +8,7 @@ import base64
 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import plotly.express as px
 
 import dash
 import dash_table
@@ -265,6 +266,15 @@ z4 = 3*(1.05)**(pseduoDay-1)  # 5% growth rate
 
 # Read death growth data of a given region from ./cumulative_data folder
 dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
+
+# Generate data for SUnburst plot
+df_sunburst = df_latest
+# Since child node cannot be mixture of None and string, so replace 'Yokohoma' as 'Diamond Princess' and 
+# All as 'other'
+df_sunburst.at[df_sunburst.loc[df_sunburst['Country/Region'] == 'Japan',].index[0], 'Province/State'] = 'Other'
+# Require n/a as None type 
+df_sunburst = df_sunburst.where(pd.notnull(df_sunburst), None)
+df_sunburst['Province/State'].replace({'Yokohama':'Diamond Princess', 'Brussels':None}, inplace=True)
 
 #############################################################################################
 # Start to make plots
@@ -662,6 +672,13 @@ fig_death_curve_tab.update_layout(
         font=dict(color='#292929', size=10)
     )
 
+# Sunburst plot
+
+fig_sunburst = px.sunburst(df_sunburst, path=['Continent','Country/Region', 'Province/State'], values='Confirmed',
+                  hover_data=['Confirmed']           
+                 )
+fig_sunburst.update_traces(hovertemplate='<b>%{label} </b> <br>Confirmed: %{value} cases')
+
 ##################################################################################################
 # Start dash app
 ##################################################################################################
@@ -937,6 +954,20 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                              ),
                                   ]),
                      ]),
+        html.Div(
+          id='sunburst-chart',
+          style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%',
+                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                  },
+          children=[
+              html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                                               children='Sunburst Chart Worldwide'),
+              dcc.Graph(
+                        style={'height': '500px'},
+                        figure=fig_sunburst),
+              ]
+          ),
         html.Div(
             id='dcc-map',
             style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%',

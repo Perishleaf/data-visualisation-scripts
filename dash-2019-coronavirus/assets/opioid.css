@@ -333,7 +333,7 @@ h4 {
 }
 
 h5 {
-    font-family: "Playfair Display", sans-serif;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 2.2rem;
     line-height: 1.5;
     letter-spacing: -.05rem;
@@ -899,6 +899,12 @@ hr {
         font-weight: bold;
     }
 
+    #sunburst-chart h5 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
     #dcc-table-plot h5 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         font-size: 2rem;
@@ -963,6 +969,12 @@ hr {
     }
 
     #dcc-map h5 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    #sunburst-chart h5 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         font-size: 2rem;
         font-weight: bold;
@@ -1040,6 +1052,12 @@ hr {
     }
 
     #dcc-map h5 {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    #sunburst-chart h5 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         font-size: 1.5rem;
         font-weight: bold;
