@@ -12,6 +12,7 @@ import plotly.express as px
 
 import dash
 import dash_table
+from dash_table.Format import Format
 import dash_table.FormatTemplate as FormatTemplate
 import dash_core_components as dcc
 import dash_html_components as html
@@ -24,91 +25,48 @@ from dash.dependencies import Input, Output, State
 ###################################
 
 def make_country_table(countryName):
-    '''This is the function for building df for Province/State of a given country'''
-    countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
+  '''This is the function for building df for Province/State of a given country'''
+  countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
+
+  if countryName == 'Australia':
+
     # Suppress SettingWithCopyWarning
     pd.options.mode.chained_assignment = None
     countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
     countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
     countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
-    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
-    countryTable = countryTable.sort_values(
-        by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
-    # Set row ids pass to selected_row_ids
-    countryTable['id'] = countryTable['Province/State']
-    countryTable.set_index('id', inplace=True, drop=False)
-    # Turn on SettingWithCopyWarning
-    pd.options.mode.chained_assignment = 'warn'
-    return countryTable
+    countryTable['Positive rate'] = countryTable['Confirmed']/countryTable['Tests']
+    countryTable['Tests/100k'] = ((countryTable['Tests']/countryTable['Population'])*100000).round()
 
-def make_europe_table(europe_list):
-  '''This is the function for building df for Europe countries'''
-  europe_table = df_latest.loc[df_latest['Country/Region'].isin(europe_list)]
-  # Suppress SettingWithCopyWarning
-  pd.options.mode.chained_assignment = None
-  europe_table['Active'] = europe_table['Confirmed'] - europe_table['Recovered'] - europe_table['Deaths']
-  europe_table['Death rate'] = europe_table['Deaths']/europe_table['Confirmed']
-  europe_table['Confirmed/100k'] = ((europe_table['Confirmed']/europe_table['Population'])*100000).round()
-  europe_table = europe_table[['Country/Region', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
-  europe_table = europe_table.sort_values(
+    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Tests','Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
+  else:
+
+    # Suppress SettingWithCopyWarning
+    pd.options.mode.chained_assignment = None
+    countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+    countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
+    countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
+
+    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
+  countryTable = countryTable.sort_values(
         by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
   # Set row ids pass to selected_row_ids
-  europe_table['id'] = europe_table['Country/Region']
-  europe_table.set_index('id', inplace=True, drop=False)
+  countryTable['id'] = countryTable['Province/State']
+  countryTable.set_index('id', inplace=True, drop=False)
   # Turn on SettingWithCopyWarning
   pd.options.mode.chained_assignment = 'warn'
-  return europe_table
+
+  return countryTable
+
+def make_continent_table(continent_list):
+    '''This is the function for building df for Europe countries'''
+    continent_table = dfSum.loc[dfSum['Country/Region'].isin(continent_list)]
+    return continent_table
 
 def make_dcc_country_tab(countryName, dataframe):
     '''This is for generating tab component for country table'''
 
-    if countryName == 'United States' or countryName == 'Canada':
-      return dcc.Tab(
-               id='tab-datatable-interact-location-{}'.format(countryName) if countryName == 'Canada' else 'tab-datatable-interact-location-US',
-               label=countryName,
-               value=countryName,
-               className='custom-tab',
-               selected_className='custom-tab--selected',
-               children=[dash_table.DataTable(
-                    id='datatable-interact-location-{}'.format(countryName),
-                    # Don't show coordinates
-                    columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
-                             if i == 'Death rate' else {"name": i, "id": i}
-                             for i in dataframe.columns[0:7]],
-                    # But still store coordinates in the table for interactivity
-                    data=dataframe.to_dict("rows"),
-                    row_selectable="single" if countryName != 'Schengen' else False,
-                    sort_action="native",
-                    style_as_list_view=True,
-                    style_cell={'font_family': 'Arial',
-                                'font_size': '1.2rem',
-                                'padding': '.1rem',
-                                'backgroundColor': '#ffffff', },
-                    fixed_rows={'headers': True, 'data': 0},
-                    style_table={'minHeight': '820px',
-                                 'height': '820px',
-                                 'maxHeight': '820px',
-                                 'overflowX': 'auto',
-                                 },
-                    style_header={'backgroundColor': '#ffffff',
-                                  'fontWeight': 'bold'},
-                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
-                                            {'if': {'column_id': 'Country/Region'}, 'width': '26%'},
-                                            {'if': {'column_id': 'Active'}, 'width': '10%'},
-                                            {'if': {'column_id': 'Confirmed'}, 'width': '12.3%'},
-                                            {'if': {'column_id': 'Recovered'}, 'width': '12.3%'},
-                                            {'if': {'column_id': 'Deaths'}, 'width': '10%'},
-                                            {'if': {'column_id': 'Death rate'}, 'width': '12.3%'},
-                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '17%'},
-                                            {'if': {'column_id': 'Active'}, 'color':'#e36209'},
-                                            {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
-                                            {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
-                                            {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
-                                            {'textAlign': 'center'}],
-                        ),
-            ]
-          )
-    else:
+    if countryName in ['Australia','Asia', 'Oceania', 'North America', 'Europe', 'South America', 'Africa']:
       return dcc.Tab(
                id='tab-datatable-interact-location-{}'.format(countryName),
                label=countryName,
@@ -118,22 +76,78 @@ def make_dcc_country_tab(countryName, dataframe):
                children=[dash_table.DataTable(
                     id='datatable-interact-location-{}'.format(countryName),
                     # Don't show coordinates
-                    columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
-                             if i == 'Death rate' else {"name": i, "id": i}
-                             for i in dataframe.columns[0:7]],
+                    columns=[{"name": 'Province/State', "id": 'Province/State'}
+                             if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
+                               for i in dataframe.columns[0:1]] +
+                            [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                             if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                for i in dataframe.columns[1:10]],
                     # But still store coordinates in the table for interactivity
                     data=dataframe.to_dict("rows"),
-                    row_selectable="single" if countryName != 'Schengen' else False,
+                    row_selectable="single",
                     sort_action="native",
                     style_as_list_view=True,
                     style_cell={'font_family': 'Arial',
-                                  'font_size': '1.2rem',
+                                'font_size': '1.3rem',
+                                'padding': '.1rem',
+                                'backgroundColor': '#ffffff', },
+                    fixed_rows={'headers': True, 'data': 0},
+                    style_table={'minHeight': '400px',
+                                 'height': '400px',
+                                 'maxHeight': '400px',
+                                 'overflowX': 'auto',
+                                 },
+                    style_header={'backgroundColor': '#ffffff',
+                                  'fontWeight': 'bold'},
+                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '22%'},
+                                            {'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
+                                            {'if': {'column_id': 'Active'}, 'width': '8%'},
+                                            {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
+                                            {'if': {'column_id': 'Recovered'}, 'width': '8%'},
+                                            {'if': {'column_id': 'Deaths'}, 'width': '8%'},
+                                            {'if': {'column_id': 'Death rate'}, 'width': '8%'},
+                                            {'if': {'column_id': 'Tests'}, 'width': '8%'},
+                                            {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
+                                            {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
+                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
+                                            {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                            {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                            {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                            {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                            {'textAlign': 'center'}
+                                  ],
+                           ),
+                     ]
+                )
+    else:
+      return dcc.Tab(
+               id='tab-datatable-interact-location-{}'.format(countryName) if countryName != 'United States' else 'tab-datatable-interact-location-US',
+               label=countryName,
+               value=countryName,
+               className='custom-tab',
+               selected_className='custom-tab--selected',
+               children=[dash_table.DataTable(
+                    id='datatable-interact-location-{}'.format(countryName),
+                    # Don't show coordinates
+                    columns=[{"name": 'Province/State', "id": 'Province/State'}
+                             if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
+                               for i in dataframe.columns[0:1]] +
+                            [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                             if i == 'Death rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                for i in dataframe.columns[1:7]],
+                    # But still store coordinates in the table for interactivity
+                    data=dataframe.to_dict("rows"),
+                    row_selectable="single",
+                    sort_action="native",
+                    style_as_list_view=True,
+                    style_cell={'font_family': 'Arial',
+                                  'font_size': '1.3rem',
                                   'padding': '.1rem',
                                   'backgroundColor': '#ffffff', },
                     fixed_rows={'headers': True, 'data': 0},
-                    style_table={'minHeight': '820px',
-                                 'height': '820px',
-                                 'maxHeight': '820px',
+                    style_table={'minHeight': '400px',
+                                 'height': '400px',
+                                 'maxHeight': '400px',
                                  'overflowX': 'auto',
                                  },
                     style_header={'backgroundColor': '#ffffff',
@@ -223,9 +237,11 @@ dfSum = dfSum.replace({'Country/Region': 'China'}, 'Mainland China')
 dfSum['Active'] = dfSum['Confirmed'] - dfSum['Recovered'] - dfSum['Deaths']
 dfSum['Death rate'] = dfSum['Deaths']/dfSum['Confirmed']
 dfSum['Confirmed/100k'] = ((dfSum['Confirmed']/dfSum['Population'])*100000).round()
+dfSum['Positive rate'] = dfSum['Confirmed']/dfSum['Tests']
+dfSum['Tests/100k'] = ((dfSum['Tests']/dfSum['Population'])*100000).round()
 # Rearrange columns to correspond to the number plate order
 dfSum = dfSum[['Country/Region', 'Active',
-    'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon','Population']]
+    'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Tests', 'Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
 # Sort value based on Active cases and then Confirmed cases
 dfSum = dfSum.sort_values(
     by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
@@ -233,32 +249,35 @@ dfSum = dfSum.sort_values(
 dfSum['id'] = dfSum['Country/Region']
 dfSum.set_index('id', inplace=True, drop=False)
 
+# Replace 0s in 'Tests' column as 'N/A'
+dfSum = dfSum.replace({'Tests': 0, 'Positive rate':0, 'Tests/100k':0}, 'N/A')
+
 # Create tables for tabs
 CNTable = make_country_table('China')
 AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
 
-europe_list = ['Albania','Andorra','Austria','Belarus','Belgium',
-               'Bosnia and Herzegovina','Bulgaria','Croatia','Czechia',
-               'Denmark','Estonia','Finland','France','Germany',
-               'Greece','Hungary','Iceland','Ireland','Italy',
-               'Latvia','Liechtenstein','Lithuania','Luxembourg',
-               'Malta','Moldova','Monaco','Montenegro','Netherlands',
-               'North Macedonia','Norway','Poland','Portugal',
-               'Romania','Russia','San Marino','Serbia','Slovakia',
-               'Slovenia','Spain','Sweden','Switzerland','UK',
-               'Ukraine','Vatican City']
-EuroTable = make_europe_table(europe_list)
+# Remove dummy row of test number in USTable
+USTable = USTable.dropna(subset=['Province/State'])
 
-# Remove dummy row of recovered case number in USTable
-#USTable = USTable.dropna(subset=['Province/State'])
-
-# Remove dummy row of recovered case number in USTable
-#CANTable = CANTable.dropna(subset=['Province/State'])
+# Remove dummy row of test number in USTable
+CANTable = CANTable.dropna(subset=['Province/State'])
 
 # Remove dummy row of recovered case number in AUSTable
 #AUSTable = AUSTable.dropna(subset=['Province/State'])
+
+# Generate country lists for different continents
+list_dict = {}
+table_dict = {}
+for i in df_latest.Continent.unique():
+  if i =='Asia':
+    list_dict['{}'.format(i)] = list(df_latest[df_latest['Continent'] == i]['Country/Region'].unique())
+    list_dict['{}'.format(i)] = ['Mainland China' if x == 'China' else x for x in list_dict['{}'.format(i)]]
+  else:
+    list_dict['{}'.format(i)] = list(df_latest[df_latest['Continent'] == i]['Country/Region'].unique())
+
+  table_dict['{}Table'.format(i.replace(' ', ''))] = make_continent_table(list_dict[i])
 
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M GMT+10')
@@ -285,6 +304,8 @@ dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
 
 # Generate data for SUnburst plot
 df_sunburst = df_latest
+# Remove tests row for US and Canada
+df_sunburst = df_sunburst.drop(df_sunburst[df_sunburst['Confirmed'] == 0].index, axis=0)
 # Since child node cannot be mixture of None and string, so replace 'Yokohoma' as 'Diamond Princess' and 
 # All as 'other'
 df_sunburst.at[df_sunburst.loc[df_sunburst['Country/Region'] == 'Japan',].index[0], 'Province/State'] = 'Other'
@@ -824,7 +845,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 html.P(
                   id='time-stamp',
                   # style={'fontWeight':'bold'},
-                       children="Last update: {}. (👷Safari user may experience issue in displaying tables)".format(latestDate)
+                       children="Last update: {}. (Hover over items for additional information)".format(latestDate)
                        ),
                 html.Hr(style={'marginTop': '.5%'},),
                     ]
@@ -979,73 +1000,8 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                   ]),
                      ]),
         html.Div(
-          id='sunburst-chart',
-          style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%','backgroundColor': '#ffffff',
-                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
-                   'display':'flex', 'flex-wrap':'row wrap', 'justify-content':'center',
-                  },
-          children=[
-              html.Div(
-                    style={'width': '49.18%',
-                                'marginRight': '.8%', 
-                                #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
-                          },
-                    children=[html.Div(
-                                   style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
-                                   children=[
-                                         html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                        'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                                 children='Sunburst Chart | Worldwide'),
-                                         html.P(children='(Click to unfold segment)')
-                                       ]
-                                   ),
-                              dcc.Dropdown(id="sunburst-dropdown",
-                                           placeholder="Select a metric",
-                                           value='Confirmed',
-                                           searchable=False,
-                                           clearable=False,
-                                           options=[{'label':'Active cases', 'value':'Remaining'},
-                                                    {'label':'Confirmed cases', 'value':'Confirmed'},
-                                                    {'label':'Recovered cases', 'value':'Recovered'},
-                                                    {'label':'Deaths', 'value':'Deaths'},
-                                                ]
-                                  ),                                  
-                              dcc.Graph(id='dropdown-sunburst-plots',
-                                        style={'height': '500px'},
-                                  ),
-                         ]
-                  ),
-              html.Div(
-                    style={'width': '49.18%',
-                           #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
-                         },
-                    children=[html.Div(
-                                   style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
-                                   children=[
-                                         html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                        'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                                 children='Ternary Chart | Worldwide'),
-                                         html.P(children='(Double click the chart to reset view after zoom in)')
-                                       ]
-                                   ),
-                              dcc.Dropdown(id="ternary-dropdown",
-                                           placeholder="Select/type a location name",
-                                           value='All',
-                                           #searchable=False,
-                                           #clearable=False,
-                                           options=optionList,
-                                  ),                 
-                              dcc.Graph(
-                                   id='ternary-dropdown-chart',
-                                   style={'height': '540px'}, 
-                                   ),
-                          ]
-                  )
-            ]
-          ),
-        html.Div(
             id='dcc-map',
-            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.5%',
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%',
                    'display':'flex', 'flex-wrap':'row wrap', 'justify-content':'center',
                 },
                  children=[
@@ -1058,11 +1014,20 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                children='Latest Coronavirus Outbreak Map'),
                                   dcc.Graph(
                                       id='datatable-interact-map',
-                                      style={'height': '500px'},),
+                                      style={'height': '400px'},),
+                              ]
+                          ),
+                     html.Div(style={'width': '49.6%',
+                                     'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                                     },
+                              children=[
+                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                                               children='Summary Graph'),
                                   dcc.Dropdown(
                                     id="dcc-dropdown",
                                     placeholder="Select a graph type",
-                                    value='Cumulative Cases',
+                                    value='Daily Cases',
                                     options=[
                                         {'label':'Cumulative Cases', 'value':'Cumulative Cases'},
                                         {'label':'Daily Cases', 'value':'Daily Cases'},
@@ -1070,31 +1035,41 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         {'label':'Death Toll Trajectories', 'value':'Death Toll Trajectories'},
                                     ]
                                   ),                                  
-                                  html.Div(id='tabs-content-plots'),
-                              ]),
-                     html.Div(style={'width': '49.6%',
-                                     'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'},
-                              children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                               children='Cases Summary by Location'),
-                                  dcc.Tabs(
-                                      id="tabs-table",
+                                  html.Div(id='tabs-content-plots',
+                                           style={'backgroundColor': '#ffffff',}
+                                    ),
+                               ]
+                         ),
+                      ]
+                  ),
+        html.Div(
+            id='dcc-table',
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%',
+                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                   'justify-content':'center',
+                },
+                 children=[
+                     html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                    'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                             children='Cases Summary by Location'),
+                     dcc.Tabs(
+                          id="tabs-table",
+                          value='Worldwide',
+                          parent_className='custom-tabs',
+                          className='custom-tabs-container',
+                          children=[
+                              dcc.Tab(label='Worldwide',
                                       value='Worldwide',
-                                      parent_className='custom-tabs',
-                                      className='custom-tabs-container',
+                                      className='custom-tab',
+                                      selected_className='custom-tab--selected',
                                       children=[
-                                          dcc.Tab(label='Worldwide',
-                                              value='Worldwide',
-                                              className='custom-tab',
-                                              selected_className='custom-tab--selected',
-                                              children=[
-                                                  dash_table.DataTable(
+                                          dash_table.DataTable(
                                                       id='datatable-interact-location',
                                                       # Don't show coordinates
-                                                      columns=[{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
-                                                               if i == 'Death rate' else {"name": i, "id": i}
-                                                               for i in dfSum.columns[0:7]],
+                                                      columns=[{"name": 'Country/Region', "id": 'Country/Region'}] +
+                                                              [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                                                               if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                                                  for i in dfSum.columns[1:10]],
                                                       # But still store coordinates in the table for interactivity
                                                       data=dfSum.to_dict(
                                                           "rows"),
@@ -1102,57 +1077,59 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                       sort_action="native",
                                                       style_as_list_view=True,
                                                       style_cell={'font_family': 'Arial',
-                                                                  'font_size': '1.2rem',
+                                                                  'font_size': '1.3rem',
                                                                   'padding': '.1rem',
                                                                   'backgroundColor': '#ffffff', },
                                                       fixed_rows={
                                                           'headers': True, 'data': 0},
-                                                      style_table={'minHeight': '820px',
-                                                                   'height': '820px',
-                                                                   'maxHeight': '820px',
+                                                      style_table={'minHeight': '400px',
+                                                                   'height': '400px',
+                                                                   'maxHeight': '400px',
                                                                    'overflowX': 'auto',
                                                                    },
                                                       style_header={'backgroundColor': '#ffffff',
                                                                     'fontWeight': 'bold'},
-                                                      style_cell_conditional=[{'if': {
-                                                                                  'column_id': 'Country/Regions'}, 'width': '20%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Active'}, 'width': '11%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Confirmed'}, 'width': '13.3%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Recovered'}, 'width': '13.3%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Deaths'}, 'width': '11%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Death rate'}, 'width': '13.3%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Confirmed/100k'}, 'width': '17.9%'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Active'}, 'color':'#e36209'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Confirmed'}, 'color': '#d7191c'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Recovered'}, 'color': '#1a9622'},
-                                                                              {'if': {
-                                                                                  'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                                      style_cell_conditional=[{'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
+                                                                              {'if': {'column_id': 'Active'}, 'width': '8%'},
+                                                                              {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
+                                                                              {'if': {'column_id': 'Recovered'}, 'width': '8%'},
+                                                                              {'if': {'column_id': 'Deaths'}, 'width': '8%'},
+                                                                              {'if': {'column_id': 'Death rate'}, 'width': '8%'},
+                                                                              {'if': {'column_id': 'Tests'}, 'width': '8%'},
+                                                                              {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
+                                                                              {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
+                                                                              {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
+                                                                              {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                                                              {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                                                              {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                                                              {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
                                                                               {'textAlign': 'center'}],
                                                   )
-                                            ]),
-                                          make_dcc_country_tab(
+                                            ]
+                                  ),
+                              make_dcc_country_tab(
+                                              'Africa', table_dict['AfricaTable']),
+                              make_dcc_country_tab(
+                                              'Asia', table_dict['AsiaTable']),                              
+                              make_dcc_country_tab(
+                                              'Europe', table_dict['EuropeTable']),
+                              make_dcc_country_tab(
+                                              'North America', table_dict['NorthAmericaTable']),
+                              make_dcc_country_tab(
+                                              'Oceania', table_dict['OceaniaTable']),
+                              make_dcc_country_tab(
+                                              'South America', table_dict['SouthAmericaTable']),
+                              make_dcc_country_tab(
                                               'Australia', AUSTable),
-                                          make_dcc_country_tab(
+                              make_dcc_country_tab(
                                               'Canada', CANTable),
-                                          make_dcc_country_tab(
-                                               'Europe', EuroTable),
-                                          make_dcc_country_tab(
+                              make_dcc_country_tab(
                                               'Mainland China', CNTable),
-                                          make_dcc_country_tab(
+                              make_dcc_country_tab(
                                               'United States', USTable),
-                                          ]
-                                       )
-                                    ]),
-                                  dbc.Tooltip(
+                            ]
+                       ),
+                      dbc.Tooltip(
                                     target='tab-datatable-interact-location-Australia',
                                     style={"font-size":"1.8em"},
                                     children=dcc.Markdown(
@@ -1168,19 +1145,81 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         )
                                       )                                              
                                     ),
-                                  dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
+                      dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
                                               target='tab-datatable-interact-location-Canada',
                                               style={"font-size":"1.8em"},
-                                             ),
-                                  dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
+                                      ),
+                      dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
                                               target='tab-datatable-interact-location-US',
                                               style={"font-size":"1.8em"},
-                                             ),
-                                  dbc.Tooltip("This list comprises 44 European countries according to United Nation.",
-                                              target='tab-datatable-interact-location-Europe',
-                                              style={"font-size":"1.8em"},
-                                             ),
-                              ]),
+                                      ),
+                  ]
+              ),
+        html.Div(
+            id='sunburst-chart',
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%','backgroundColor': '#ffffff',
+                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                   'display':'flex', 'flex-wrap':'row wrap', 'justify-content':'center',
+                  },
+            children=[
+                  html.Div(
+                      style={'width': '49.18%',
+                             'marginRight': '.8%', 
+                             #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                           },
+                      children=[html.Div(
+                                    style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
+                                    children=[
+                                         html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                                        'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                                                 children='Sunburst Chart | Worldwide'),
+                                         html.P(children='(Click to unfold segment)')
+                                           ]
+                                 ),
+                                dcc.Dropdown(id="sunburst-dropdown",
+                                             placeholder="Select a metric",
+                                             value='Confirmed',
+                                             searchable=False,
+                                             clearable=False,
+                                             options=[{'label':'Active cases', 'value':'Remaining'},
+                                                      {'label':'Confirmed cases', 'value':'Confirmed'},
+                                                      {'label':'Recovered cases', 'value':'Recovered'},
+                                                      {'label':'Deaths', 'value':'Deaths'},
+                                                    ]
+                                          ),                                  
+                                dcc.Graph(id='dropdown-sunburst-plots',
+                                          style={'height': '500px'},
+                                      ),
+                             ]
+                    ),
+                  html.Div(
+                       style={'width': '49.18%',
+                             #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                           },
+                       children=[html.Div(
+                                     style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
+                                     children=[
+                                          html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                                         'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                                                  children='Ternary Chart | Worldwide'),
+                                          html.P(children='(Double click the chart to reset view after zoom in)')
+                                             ]
+                                    ),
+                                 dcc.Dropdown(id="ternary-dropdown",
+                                              placeholder="Select/type a location name",
+                                              value='All',
+                                              #searchable=False,
+                                              #clearable=False,
+                                              options=optionList,
+                                        ),                 
+                                 dcc.Graph(
+                                        id='ternary-dropdown-chart',
+                                        style={'height': '540px'}, 
+                                      ),
+                              ]
+                      )
+               ]
+          ),
         html.Div(
           id='my-footer',
           style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '1%', 'marginTop': '.5%'},
@@ -1191,7 +1230,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                       html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
                                       html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
                                       html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank'), ' | ',
-                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_13.pdf', target='_blank'),
+                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_14.pdf', target='_blank'),
 
                             ]
                       ),
@@ -1253,19 +1292,19 @@ def toggle_modal(n1, n2, is_open):
 def render_content(tab):
     if tab == 'Cumulative Cases':
         return dcc.Graph(id='datatable-interact-lineplot',
-                         style={'height': '320px'},
+                         style={'height': '364px'},
                          figure=fig_cumulative_tab,)
     elif tab == 'Daily Cases':
         return dcc.Graph(id='datatable-interact-dailyplot',
-                         style={'height': '320px'},
+                         style={'height': '364px'},
                          figure=fig_daily_tab,)
     elif tab == 'Confirmed Case Trajectories':
         return dcc.Graph(id='datatable-interact-logplot',
-                         style={'height': '320px'},
+                         style={'height': '364px'},
                          figure=fig_curve_tab,)
     elif tab == 'Death Toll Trajectories':
         return dcc.Graph(id='datatable-interact-deathplot',
-                         style={'height': '320px'},
+                         style={'height': '364px'},
                          figure=fig_death_curve_tab,)
 
 @app.callback(Output('combined-line-plot', 'figure'),
@@ -1454,24 +1493,39 @@ def render_ternary_plot(value):
     [Input('tabs-table', 'value'),
      Input('datatable-interact-location', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Asia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Asia', 'selected_row_ids'),
+     Input('datatable-interact-location-Oceania', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Oceania', 'selected_row_ids'),
+     Input('datatable-interact-location-North America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-North America', 'selected_row_ids'),
+     Input('datatable-interact-location-South America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-South America', 'selected_row_ids'),
+     Input('datatable-interact-location-Africa', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Africa', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
-     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-United States', 'selected_row_ids'),
      ]
 )
-def update_figures(value, derived_virtual_selected_rows, selected_row_ids, 
+def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
+  Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
+  Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
+  NA_derived_virtual_selected_rows,NA_selected_row_ids,
+  SA_derived_virtual_selected_rows,SA_selected_row_ids,
+  AF_derived_virtual_selected_rows,AF_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
-  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
-  US_derived_virtual_selected_rows, US_selected_row_ids
+  US_derived_virtual_selected_rows, US_selected_row_ids,  
   ):
     # When the table is first rendered, `derived_virtual_data` and
     # `derived_virtual_selected_rows` will be `None`. This is due to an
@@ -1491,9 +1545,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 14.056159 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lat
       longitude = 6.395626 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lon
       zoom = 1.02 if len(derived_virtual_selected_rows) == 0 else 4
-      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
-                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
-
+      
     elif value == 'Australia':
       if Australia_derived_virtual_selected_rows is None:
         Australia_derived_virtual_selected_rows = []
@@ -1502,9 +1554,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = -25.931850 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lat
       longitude = 134.024931 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lon
       zoom = 3 if len(Australia_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
-                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
-
+      
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
         Canada_derived_virtual_selected_rows = []
@@ -1513,9 +1563,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 55.474012 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lat
       longitude = -97.344913 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lon
       zoom = 3 if len(Canada_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
-                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
-
+      
     elif value == 'Mainland China':
       if CHN_derived_virtual_selected_rows is None:
         CHN_derived_virtual_selected_rows = []
@@ -1524,9 +1572,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 33.471197 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lat
       longitude = 106.206780 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lon
       zoom = 2.5 if len(CHN_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
-                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
-
+      
     elif value == 'United States':
       if US_derived_virtual_selected_rows is None:
         US_derived_virtual_selected_rows = []
@@ -1535,18 +1581,62 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
       longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
       zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
-                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
-
+      
     elif value == 'Europe':
       if Europe_derived_virtual_selected_rows is None:
         Europe_derived_virtual_selected_rows = []
 
-      dff = EuroTable
+      dff = table_dict['EuropeTable']
       latitude = 52.405175 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lat
       longitude = 11.403996 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lon
-      zoom = 2.5 if len(Europe_derived_virtual_selected_rows) == 0 else 5
-      hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
+      zoom = 1.5 if len(Europe_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'Asia':
+      if Asia_derived_virtual_selected_rows is None:
+        Asia_derived_virtual_selected_rows = []
+
+      dff = table_dict['AsiaTable']
+      latitude = 23.066523 if len(Asia_derived_virtual_selected_rows) == 0 else dff.loc[Asia_selected_row_ids[0]].lat
+      longitude = 104.937341 if len(Asia_derived_virtual_selected_rows) == 0 else dff.loc[Asia_selected_row_ids[0]].lon
+      zoom = 1 if len(Asia_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'North America':
+      if NA_derived_virtual_selected_rows is None:
+        NA_derived_virtual_selected_rows = []
+
+      dff = table_dict['NorthAmericaTable']
+      latitude = 40.022092 if len(NA_derived_virtual_selected_rows) == 0 else dff.loc[NA_selected_row_ids[0]].lat
+      longitude = -98.828101 if len(NA_derived_virtual_selected_rows) == 0 else dff.loc[NA_selected_row_ids[0]].lon
+      zoom = 1 if len(NA_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'South America':
+      if SA_derived_virtual_selected_rows is None:
+        SA_derived_virtual_selected_rows = []
+
+      dff = table_dict['SouthAmericaTable']
+      latitude = -6.171080 if len(SA_derived_virtual_selected_rows) == 0 else dff.loc[SA_selected_row_ids[0]].lat
+      longitude = -62.361203 if len(SA_derived_virtual_selected_rows) == 0 else dff.loc[SA_selected_row_ids[0]].lon
+      zoom = 1 if len(SA_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'Oceania':
+      if Oceania_derived_virtual_selected_rows is None:
+        Oceania_derived_virtual_selected_rows = []
+
+      dff = table_dict['OceaniaTable']
+      latitude = -25.931850 if len(Oceania_derived_virtual_selected_rows) == 0 else dff.loc[Oceania_selected_row_ids[0]].lat
+      longitude = 134.024931 if len(Oceania_derived_virtual_selected_rows) == 0 else dff.loc[Oceania_selected_row_ids[0]].lon
+      zoom = 2 if len(Oceania_derived_virtual_selected_rows) == 0 else 5
+
+    elif value == 'Africa':
+      if AF_derived_virtual_selected_rows is None:
+        AF_derived_virtual_selected_rows = []
+
+      dff = table_dict['AfricaTable']
+      latitude = 5.986935 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lat
+      longitude = 22.252163 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lon
+      zoom = 1 if len(AF_derived_virtual_selected_rows) == 0 else 5
+      
+    hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
                           for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
 
     mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
@@ -1626,24 +1716,39 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
     [Input('tabs-table', 'value'),
      Input('datatable-interact-location', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Asia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Asia', 'selected_row_ids'),
+     Input('datatable-interact-location-Oceania', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Oceania', 'selected_row_ids'),
+     Input('datatable-interact-location-North America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-North America', 'selected_row_ids'),
+     Input('datatable-interact-location-South America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-South America', 'selected_row_ids'),
+     Input('datatable-interact-location-Africa', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Africa', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
-     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-United States', 'selected_row_ids'),
      ]
 )
-def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids, 
+def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
+  Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
+  Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
+  NA_derived_virtual_selected_rows,NA_selected_row_ids,
+  SA_derived_virtual_selected_rows,SA_selected_row_ids,
+  AF_derived_virtual_selected_rows,AF_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
-  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
-  US_derived_virtual_selected_rows, US_selected_row_ids
+  US_derived_virtual_selected_rows, US_selected_row_ids,  
   ):
 
     if value == 'Worldwide':
@@ -1704,11 +1809,65 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
       if Europe_derived_virtual_selected_rows is None:
         Europe_derived_virtual_selected_rows = []
 
-      dff = EuroTable
+      dff = table_dict['EuropeTable']
       if Europe_selected_row_ids:
         Region = Europe_selected_row_ids[0]
       else:
         Region = 'Europe' # Display the Europe total case number 
+
+    elif value == 'Asia':
+      if Asia_derived_virtual_selected_rows is None:
+        Asia_derived_virtual_selected_rows = []
+
+      dff = table_dict['AsiaTable']
+
+      if Asia_selected_row_ids:
+        if Asia_selected_row_ids[0] == 'Mainland China':
+          Region = 'China'
+        else:
+          Region = Asia_selected_row_ids[0]
+      else:
+        Region = 'Asia'
+
+    elif value == 'North America':
+      if NA_derived_virtual_selected_rows is None:
+        NA_derived_virtual_selected_rows = []
+
+      dff = table_dict['NorthAmericaTable']
+      if NA_selected_row_ids:
+        Region = NA_selected_row_ids[0]
+      else:
+        Region = 'North America'
+
+    elif value == 'South America':
+      if SA_derived_virtual_selected_rows is None:
+        SA_derived_virtual_selected_rows = []
+
+      dff = table_dict['SouthAmericaTable']
+      if SA_selected_row_ids:
+        Region = SA_selected_row_ids[0]
+      else:
+        Region = 'South America'
+
+    elif value == 'Oceania':
+      if Oceania_derived_virtual_selected_rows is None:
+        Oceania_derived_virtual_selected_rows = []
+
+      dff = table_dict['OceaniaTable']
+      if Oceania_selected_row_ids:
+        Region = Oceania_selected_row_ids[0]
+      else:
+        Region = 'Oceania'
+
+    elif value == 'Africa':
+      if AF_derived_virtual_selected_rows is None:
+        AF_derived_virtual_selected_rows = []
+
+      dff = table_dict['AfricaTable']
+      if AF_selected_row_ids:
+        Region = AF_selected_row_ids[0]
+      else:
+        Region = 'Africa'  
 
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
@@ -1927,24 +2086,40 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
     [Input('tabs-table', 'value'),
      Input('datatable-interact-location', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Asia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Asia', 'selected_row_ids'),
+     Input('datatable-interact-location-Oceania', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Oceania', 'selected_row_ids'),
+     Input('datatable-interact-location-North America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-North America', 'selected_row_ids'),
+     Input('datatable-interact-location-South America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-South America', 'selected_row_ids'),
+     Input('datatable-interact-location-Africa', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Africa', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
-     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-United States', 'selected_row_ids'),
      ]
 )
-def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids, 
+
+def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
+  Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
+  Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
+  NA_derived_virtual_selected_rows,NA_selected_row_ids,
+  SA_derived_virtual_selected_rows,SA_selected_row_ids,
+  AF_derived_virtual_selected_rows,AF_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
-  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
-  US_derived_virtual_selected_rows, US_selected_row_ids
+  US_derived_virtual_selected_rows, US_selected_row_ids,  
   ):
 
     if value == 'Worldwide':
@@ -2005,11 +2180,64 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
       if Europe_derived_virtual_selected_rows is None:
         Europe_derived_virtual_selected_rows = []
 
-      dff = EuroTable
+      dff = table_dict['EuropeTable']
       if Europe_selected_row_ids:
         Region = Europe_selected_row_ids[0]
       else:
-        Region = 'Europe' # Display the Europe total case number 
+        Region = 'Europe' # Display the Europe total case number
+
+    elif value == 'Asia':
+      if Asia_derived_virtual_selected_rows is None:
+        Asia_derived_virtual_selected_rows = []
+
+      dff = table_dict['AsiaTable']
+      if Asia_selected_row_ids:
+        if Asia_selected_row_ids[0] == 'Mainland China':
+          Region = 'China'
+        else:
+          Region = Asia_selected_row_ids[0]
+      else:
+        Region = 'Asia'
+
+    elif value == 'North America':
+      if NA_derived_virtual_selected_rows is None:
+        NA_derived_virtual_selected_rows = []
+
+      dff = table_dict['NorthAmericaTable']
+      if NA_selected_row_ids:
+        Region = NA_selected_row_ids[0]
+      else:
+        Region = 'North America'
+
+    elif value == 'South America':
+      if SA_derived_virtual_selected_rows is None:
+        SA_derived_virtual_selected_rows = []
+
+      dff = table_dict['SouthAmericaTable']
+      if SA_selected_row_ids:
+        Region = SA_selected_row_ids[0]
+      else:
+        Region = 'South America'
+
+    elif value == 'Oceania':
+      if Oceania_derived_virtual_selected_rows is None:
+        Oceania_derived_virtual_selected_rows = []
+
+      dff = table_dict['OceaniaTable']
+      if Oceania_selected_row_ids:
+        Region = Oceania_selected_row_ids[0]
+      else:
+        Region = 'Oceania'
+
+    elif value == 'Africa':
+      if AF_derived_virtual_selected_rows is None:
+        AF_derived_virtual_selected_rows = []
+
+      dff = table_dict['AfricaTable']
+      if AF_selected_row_ids:
+        Region = AF_selected_row_ids[0]
+      else:
+        Region = 'Africa' 
 
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
@@ -2226,12 +2454,22 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
     [Input('tabs-table', 'value'),
      Input('datatable-interact-location', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Asia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Asia', 'selected_row_ids'),
+     Input('datatable-interact-location-Oceania', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Oceania', 'selected_row_ids'),
+     Input('datatable-interact-location-North America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-North America', 'selected_row_ids'),
+     Input('datatable-interact-location-South America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-South America', 'selected_row_ids'),
+     Input('datatable-interact-location-Africa', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Africa', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
-     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
@@ -2239,11 +2477,16 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
      ]
 )
 def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
+  Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
+  Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
+  NA_derived_virtual_selected_rows,NA_selected_row_ids,
+  SA_derived_virtual_selected_rows,SA_selected_row_ids,
+  AF_derived_virtual_selected_rows,AF_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
-  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
-  US_derived_virtual_selected_rows, US_selected_row_ids
+  US_derived_virtual_selected_rows, US_selected_row_ids,  
   ):
    
     if value == 'Worldwide':
@@ -2302,6 +2545,54 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = Europe_selected_row_ids[0]
       else:
         Region = 'Europe'
+
+    elif value == 'Asia':
+      if Asia_derived_virtual_selected_rows is None:
+        Asia_derived_virtual_selected_rows = []
+
+      if Asia_selected_row_ids:
+        if Asia_selected_row_ids[0] == 'Mainland China':
+          Region = 'China'
+        else:
+          Region = Asia_selected_row_ids[0]
+      else:
+        Region = 'Asia'
+
+    elif value == 'North America':
+      if NA_derived_virtual_selected_rows is None:
+        NA_derived_virtual_selected_rows = []
+
+      if NA_selected_row_ids:
+        Region = NA_selected_row_ids[0]
+      else:
+        Region = 'North America'
+
+    elif value == 'South America':
+      if SA_derived_virtual_selected_rows is None:
+        SA_derived_virtual_selected_rows = []
+
+      if SA_selected_row_ids:
+        Region = SA_selected_row_ids[0]
+      else:
+        Region = 'South America'
+
+    elif value == 'Oceania':
+      if Oceania_derived_virtual_selected_rows is None:
+        Oceania_derived_virtual_selected_rows = []
+
+      if Oceania_selected_row_ids:
+        Region = Oceania_selected_row_ids[0]
+      else:
+        Region = 'Oceania'
+
+    elif value == 'Africa':
+      if AF_derived_virtual_selected_rows is None:
+        AF_derived_virtual_selected_rows = []
+
+      if AF_selected_row_ids:
+        Region = AF_selected_row_ids[0]
+      else:
+        Region = 'Africa'
 
     elapseDay = daysOutbreak
     # Create empty figure canvas
@@ -2508,12 +2799,22 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
     [Input('tabs-table', 'value'),
      Input('datatable-interact-location', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location', 'selected_row_ids'),
+     Input('datatable-interact-location-Asia', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Asia', 'selected_row_ids'),
+     Input('datatable-interact-location-Oceania', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Oceania', 'selected_row_ids'),
+     Input('datatable-interact-location-North America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-North America', 'selected_row_ids'),
+     Input('datatable-interact-location-South America', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-South America', 'selected_row_ids'),
+     Input('datatable-interact-location-Africa', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Africa', 'selected_row_ids'),
+     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
-     Input('datatable-interact-location-Europe', 'derived_virtual_selected_rows'),
-     Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Mainland China', 'selected_row_ids'),
      Input('datatable-interact-location-United States', 'derived_virtual_selected_rows'),
@@ -2521,11 +2822,16 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
      ]
 )
 def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
+  Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
+  Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
+  NA_derived_virtual_selected_rows,NA_selected_row_ids,
+  SA_derived_virtual_selected_rows,SA_selected_row_ids,
+  AF_derived_virtual_selected_rows,AF_selected_row_ids,
+  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
-  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
-  US_derived_virtual_selected_rows, US_selected_row_ids
+  US_derived_virtual_selected_rows, US_selected_row_ids,  
   ):
    
     if value == 'Worldwide':
@@ -2584,6 +2890,54 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = Europe_selected_row_ids[0]
       else:
         Region = 'Europe'
+
+    elif value == 'Asia':
+      if Asia_derived_virtual_selected_rows is None:
+        Asia_derived_virtual_selected_rows = []
+
+      if Asia_selected_row_ids:
+        if Asia_selected_row_ids[0] == 'Mainland China':
+          Region = 'China'
+        else:
+          Region = Asia_selected_row_ids[0]
+      else:
+        Region = 'Asia'
+
+    elif value == 'North America':
+      if NA_derived_virtual_selected_rows is None:
+        NA_derived_virtual_selected_rows = []
+
+      if NA_selected_row_ids:
+        Region = NA_selected_row_ids[0]
+      else:
+        Region = 'North America'
+
+    elif value == 'South America':
+      if SA_derived_virtual_selected_rows is None:
+        SA_derived_virtual_selected_rows = []
+
+      if SA_selected_row_ids:
+        Region = SA_selected_row_ids[0]
+      else:
+        Region = 'South America'
+
+    elif value == 'Oceania':
+      if Oceania_derived_virtual_selected_rows is None:
+        Oceania_derived_virtual_selected_rows = []
+
+      if Oceania_selected_row_ids:
+        Region = Oceania_selected_row_ids[0]
+      else:
+        Region = 'Oceania'
+
+    elif value == 'Africa':
+      if AF_derived_virtual_selected_rows is None:
+        AF_derived_virtual_selected_rows = []
+
+      if AF_selected_row_ids:
+        Region = AF_selected_row_ids[0]
+      else:
+        Region = 'Africa'
 
     elapseDay = daysOutbreak
     # Create empty figure canvas

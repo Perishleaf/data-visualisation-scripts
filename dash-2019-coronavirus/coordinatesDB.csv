@@ -8,7 +8,7 @@ Province/State,Country/Region,lat,lon,Continent,World
 ,Antigua and Barbuda,17.2234721,-61.9554608,North America,Worldwide
 ,Argentina,-34.9964963,-64.9672817,South America,Worldwide
 ,Armenia,40.7696272,44.6736646,Asia,Worldwide
-,Artania Cruise,-32.065715,115.677863,Asia,Worldwide
+,Artania Cruise,-32.065715,115.677863,Oceania,Worldwide
 ,Aruba,12.4902998,-69.9609842,North America,Worldwide
 Queensland,Australia,-27.4689682,153.0234991,Oceania,Worldwide
 New South Wales,Australia,-33.8548157,151.2164539,Oceania,Worldwide
@@ -169,6 +169,7 @@ Yokohama,Japan,35.444991,139.636768,Asia,Worldwide
 ,Luxembourg,49.8158683,6.1296751,Europe,Worldwide
 Macau,Macau,22.1757605,113.5514142,Asia,Worldwide
 ,Madagascar,-18.9249604,46.4416422,Africa,Worldwide
+,Mainland China,33.471197,106.20678,Asia,Worldwide
 ,Malawi,-13.26872,33.930196,Africa,Worldwide
 ,Malaysia,4.5693754,102.2656823,Asia,Worldwide
 ,Maldives,4.7064352,73.3287853,Asia,Worldwide
@@ -312,7 +313,6 @@ Puerto Rico,US,18.2214149,-66.4132818,North America,Worldwide
 US Virgin Islands,US,17.789187,-64.7080574,North America,Worldwide
 Guam,US,13.4501257,144.757551,North America,Worldwide
 West Virginia,US,38.4758406,-80.8408415,North America,Worldwide
-,US,39.7837304,-100.4458825,North America,Worldwide
 ,US,39.7837304,-100.4458825,North America,Worldwide
 Navajo Nation,US,36.3089731,-109.325688,North America,Worldwide
 ,Uzbekistan,41.32373,63.9528098,Asia,Worldwide
