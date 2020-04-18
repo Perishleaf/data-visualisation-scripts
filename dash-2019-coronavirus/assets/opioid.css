@@ -921,12 +921,13 @@ hr {
 
     .number-plate h3 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        /*font-weight: bold;*/
+        font-weight: bold;
         font-size: 4.5rem;
     }
 
     .number-plate p {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: bold;
         font-size: 2.1rem;
     }
 
@@ -997,12 +998,13 @@ hr {
 
     .number-plate h3 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        /*font-weight: bold;*/
+        font-weight: bold;
         font-size: 4rem;
     }
 
     .number-plate p {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: bold;
         font-size: 1.8rem;
     }
 
@@ -1092,17 +1094,17 @@ hr {
     .number-plate h3 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         /*font-weight: bold;*/
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .number-plate p {
     	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .number-plate h5 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     #my-footer p {

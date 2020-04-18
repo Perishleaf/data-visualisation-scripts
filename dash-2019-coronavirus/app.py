@@ -25,38 +25,35 @@ from dash.dependencies import Input, Output, State
 ###################################
 
 def make_country_table(countryName):
-  '''This is the function for building df for Province/State of a given country'''
-  countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
+    '''This is the function for building df for Province/State of a given country'''
+    countryTable = df_latest.loc[df_latest['Country/Region'] == countryName]
 
-  if countryName == 'Australia':
+    if countryName == 'Australia':
+        # Suppress SettingWithCopyWarning
+        pd.options.mode.chained_assignment = None
+        countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+        countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
+        countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
+        countryTable['Positive rate'] = countryTable['Confirmed']/countryTable['Tests']
+        countryTable['Tests/100k'] = ((countryTable['Tests']/countryTable['Population'])*100000).round()
 
-    # Suppress SettingWithCopyWarning
-    pd.options.mode.chained_assignment = None
-    countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
-    countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
-    countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
-    countryTable['Positive rate'] = countryTable['Confirmed']/countryTable['Tests']
-    countryTable['Tests/100k'] = ((countryTable['Tests']/countryTable['Population'])*100000).round()
+        countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Tests','Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
+    else:
+        # Suppress SettingWithCopyWarning
+        pd.options.mode.chained_assignment = None
+        countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+        countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
+        countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
 
-    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Tests','Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
-  else:
+        countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
+    countryTable = countryTable.sort_values(by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
+    # Set row ids pass to selected_row_ids
+    countryTable['id'] = countryTable['Province/State']
+    countryTable.set_index('id', inplace=True, drop=False)
+    # Turn on SettingWithCopyWarning
+    pd.options.mode.chained_assignment = 'warn'
 
-    # Suppress SettingWithCopyWarning
-    pd.options.mode.chained_assignment = None
-    countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
-    countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
-    countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
-
-    countryTable = countryTable[['Province/State', 'Active', 'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon']]
-  countryTable = countryTable.sort_values(
-        by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
-  # Set row ids pass to selected_row_ids
-  countryTable['id'] = countryTable['Province/State']
-  countryTable.set_index('id', inplace=True, drop=False)
-  # Turn on SettingWithCopyWarning
-  pd.options.mode.chained_assignment = 'warn'
-
-  return countryTable
+    return countryTable
 
 def make_continent_table(continent_list):
     '''This is the function for building df for Europe countries'''
@@ -65,111 +62,165 @@ def make_continent_table(continent_list):
 
 def make_dcc_country_tab(countryName, dataframe):
     '''This is for generating tab component for country table'''
-
-    if countryName in ['Australia','Asia', 'Oceania', 'North America', 'Europe', 'South America', 'Africa']:
-      return dcc.Tab(
-               id='tab-datatable-interact-location-{}'.format(countryName),
-               label=countryName,
-               value=countryName,
-               className='custom-tab',
-               selected_className='custom-tab--selected',
-               children=[dash_table.DataTable(
-                    id='datatable-interact-location-{}'.format(countryName),
-                    # Don't show coordinates
-                    columns=[{"name": 'Province/State', "id": 'Province/State'}
-                             if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
-                               for i in dataframe.columns[0:1]] +
-                            [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
-                             if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
-                                for i in dataframe.columns[1:10]],
-                    # But still store coordinates in the table for interactivity
-                    data=dataframe.to_dict("rows"),
-                    row_selectable="single",
-                    sort_action="native",
-                    style_as_list_view=True,
-                    style_cell={'font_family': 'Arial',
-                                'font_size': '1.3rem',
-                                'padding': '.1rem',
-                                'backgroundColor': '#ffffff', },
-                    fixed_rows={'headers': True, 'data': 0},
-                    style_table={'minHeight': '400px',
-                                 'height': '400px',
-                                 'maxHeight': '400px',
-                                 'overflowX': 'auto',
-                                 },
-                    style_header={'backgroundColor': '#ffffff',
-                                  'fontWeight': 'bold'},
-                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '22%'},
-                                            {'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
-                                            {'if': {'column_id': 'Active'}, 'width': '8%'},
-                                            {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
-                                            {'if': {'column_id': 'Recovered'}, 'width': '8%'},
-                                            {'if': {'column_id': 'Deaths'}, 'width': '8%'},
-                                            {'if': {'column_id': 'Death rate'}, 'width': '8%'},
-                                            {'if': {'column_id': 'Tests'}, 'width': '8%'},
-                                            {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
-                                            {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
-                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
-                                            {'if': {'column_id': 'Active'}, 'color':'#e36209'},
-                                            {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
-                                            {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
-                                            {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
-                                            {'textAlign': 'center'}
-                                  ],
-                           ),
-                     ]
-                )
+    if countryName == 'Australia':
+        return dcc.Tab(
+                id='tab-datatable-interact-location-{}'.format(countryName),
+                label=countryName,
+                value=countryName,
+                className='custom-tab',
+                selected_className='custom-tab--selected',
+                children=[
+                    dash_table.DataTable(
+                        id='datatable-interact-location-{}'.format(countryName),
+                        # Don't show coordinates
+                        columns=[{"name": 'Province/State', "id": 'Province/State'}
+                                    if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
+                                        for i in dataframe.columns[0:1]] +
+                                [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                                    if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                        for i in dataframe.columns[1:10]],
+                        # But still store coordinates in the table for interactivity
+                        data=dataframe.to_dict("rows"),
+                        row_selectable="single",
+                        sort_action="native",
+                        style_as_list_view=True,
+                        style_cell={'font_family': 'Arial',
+                                    'font_size': '1.3rem',
+                                    'padding': '.1rem',
+                                    'backgroundColor': '#ffffff', },
+                        fixed_rows={'headers': True, 'data': 0},
+                        style_table={'minHeight': '400px',
+                                     'height': '400px',
+                                     'maxHeight': '400px',
+                                     'overflowX': 'auto',
+                        },
+                        style_header={'backgroundColor': '#ffffff',
+                                      'fontWeight': 'bold'},
+                        style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '22%'},
+                                                {'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
+                                                {'if': {'column_id': 'Active'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Recovered'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Deaths'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Death rate'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Tests'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
+                                                {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
+                                                {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
+                                                {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                                {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                                {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                                {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                                {'textAlign': 'center'}
+                        ],
+                    ),
+                ]
+            )
+    elif countryName in ['Asia', 'Oceania', 'North America', 'Europe', 'South America', 'Africa']:
+        return dcc.Tab(
+                id='tab-datatable-interact-location-{}'.format(countryName),
+                label=countryName,
+                value=countryName,
+                className='custom-tab',
+                selected_className='custom-tab--selected',
+                children=[
+                    dash_table.DataTable(
+                        id='datatable-interact-location-{}'.format(countryName),
+                        # Don't show coordinates
+                        columns=[{"name": 'Province/State', "id": 'Province/State'}
+                                    if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
+                                        for i in dataframe.columns[0:1]] +
+                                [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                                    if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                        for i in dataframe.columns[1:11]],
+                        # But still store coordinates in the table for interactivity
+                        data=dataframe.to_dict("rows"),
+                        row_selectable="single",
+                        sort_action="native",
+                        style_as_list_view=True,
+                        style_cell={'font_family': 'Arial',
+                                    'font_size': '1.3rem',
+                                    'padding': '.1rem',
+                                    'backgroundColor': '#ffffff', },
+                        fixed_rows={'headers': True, 'data': 0},
+                        style_table={'minHeight': '400px',
+                                     'height': '400px',
+                                     'maxHeight': '400px',
+                                     'overflowX': 'auto',
+                        },
+                        style_header={'backgroundColor': '#ffffff',
+                                      'fontWeight': 'bold'},
+                        style_cell_conditional=[{'if': {'column_id': 'Country/Regions'}, 'width': '17%'},
+                                                {'if': {'column_id': 'Active'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Recovered'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Deaths'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Critical'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Death rate'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Tests'}, 'width': '8%'},
+                                                {'if': {'column_id': 'Positive rate'}, 'width': '9%'},
+                                                {'if': {'column_id': 'Tests/100k'}, 'width': '9%'},    
+                                                {'if': {'column_id': 'Confirmed/100k'}, 'width': '9%'},
+                                                {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                                {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                                {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                                {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                                {'textAlign': 'center'}
+                        ],
+                    ),
+                ]
+            )
     else:
-      return dcc.Tab(
-               id='tab-datatable-interact-location-{}'.format(countryName) if countryName != 'United States' else 'tab-datatable-interact-location-US',
-               label=countryName,
-               value=countryName,
-               className='custom-tab',
-               selected_className='custom-tab--selected',
-               children=[dash_table.DataTable(
-                    id='datatable-interact-location-{}'.format(countryName),
-                    # Don't show coordinates
-                    columns=[{"name": 'Province/State', "id": 'Province/State'}
-                             if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
-                               for i in dataframe.columns[0:1]] +
-                            [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
-                             if i == 'Death rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
-                                for i in dataframe.columns[1:7]],
-                    # But still store coordinates in the table for interactivity
-                    data=dataframe.to_dict("rows"),
-                    row_selectable="single",
-                    sort_action="native",
-                    style_as_list_view=True,
-                    style_cell={'font_family': 'Arial',
-                                  'font_size': '1.3rem',
-                                  'padding': '.1rem',
-                                  'backgroundColor': '#ffffff', },
-                    fixed_rows={'headers': True, 'data': 0},
-                    style_table={'minHeight': '400px',
-                                 'height': '400px',
-                                 'maxHeight': '400px',
-                                 'overflowX': 'auto',
-                                 },
-                    style_header={'backgroundColor': '#ffffff',
-                                    'fontWeight': 'bold'},
-                    style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
-                                            {'if': {'column_id': 'Country/Region'}, 'width': '26%'},
-                                            {'if': {'column_id': 'Active'}, 'width': '10%'},
-                                            {'if': {'column_id': 'Confirmed'}, 'width': '12.3%'},
-                                            {'if': {'column_id': 'Recovered'}, 'width': '12.3%'},
-                                            {'if': {'column_id': 'Deaths'}, 'width': '10%'},
-                                            {'if': {'column_id': 'Death rate'}, 'width': '12.3%'},
-                                            {'if': {'column_id': 'Confirmed/100k'}, 'width': '17%'},
-                                            {'if': {'column_id': 'Active'}, 'color':'#e36209'},
-                                            {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
-                                            {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
-                                            {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
-                                            {'textAlign': 'center'}],
-                        ),
-            ]
-          )
-
-
+        return dcc.Tab(
+                id='tab-datatable-interact-location-{}'.format(countryName) if countryName != 'United States' else 'tab-datatable-interact-location-US',
+                label=countryName,
+                value=countryName,
+                className='custom-tab',
+                selected_className='custom-tab--selected',
+                children=[
+                    dash_table.DataTable(
+                        id='datatable-interact-location-{}'.format(countryName),
+                        # Don't show coordinates
+                        columns=[{"name": 'Province/State', "id": 'Province/State'}
+                                    if i == 'Province/State' else {"name": 'Country/Region', "id": 'Country/Region'}
+                                        for i in dataframe.columns[0:1]] +
+                                [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                                    if i == 'Death rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                        for i in dataframe.columns[1:7]],
+                        # But still store coordinates in the table for interactivity
+                        data=dataframe.to_dict("rows"),
+                        row_selectable="single",
+                        sort_action="native",
+                        style_as_list_view=True,
+                        style_cell={'font_family': 'Arial',
+                                    'font_size': '1.3rem',
+                                    'padding': '.1rem',
+                                    'backgroundColor': '#ffffff', },
+                        fixed_rows={'headers': True, 'data': 0},
+                        style_table={'minHeight': '400px',
+                                     'height': '400px',
+                                     'maxHeight': '400px',
+                                     'overflowX': 'auto',
+                        },
+                        style_header={'backgroundColor': '#ffffff',
+                                      'fontWeight': 'bold'},
+                        style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '26%'},
+                                                {'if': {'column_id': 'Country/Region'}, 'width': '26%'},
+                                                {'if': {'column_id': 'Active'}, 'width': '10%'},
+                                                {'if': {'column_id': 'Confirmed'}, 'width': '12.3%'},
+                                                {'if': {'column_id': 'Recovered'}, 'width': '12.3%'},
+                                                {'if': {'column_id': 'Deaths'}, 'width': '10%'},
+                                                {'if': {'column_id': 'Death rate'}, 'width': '12.3%'},
+                                                {'if': {'column_id': 'Confirmed/100k'}, 'width': '17%'},
+                                                {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                                {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                                {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                                {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                                {'textAlign': 'center'}
+                        ],
+                    ),
+                ]
+            )
 
 ################################################################################
 # Data processing
@@ -241,7 +292,7 @@ dfSum['Positive rate'] = dfSum['Confirmed']/dfSum['Tests']
 dfSum['Tests/100k'] = ((dfSum['Tests']/dfSum['Population'])*100000).round()
 # Rearrange columns to correspond to the number plate order
 dfSum = dfSum[['Country/Region', 'Active',
-    'Confirmed', 'Recovered', 'Deaths', 'Death rate', 'Tests', 'Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
+    'Confirmed', 'Recovered', 'Deaths', 'Critical', 'Death rate', 'Tests', 'Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
 # Sort value based on Active cases and then Confirmed cases
 dfSum = dfSum.sort_values(
     by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
@@ -258,14 +309,17 @@ AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
 
-# Remove dummy row of test number in USTable
+# Remove dummy row of test/critical number in USTable
 USTable = USTable.dropna(subset=['Province/State'])
 
-# Remove dummy row of test number in USTable
+# Remove dummy row of test/critical number in USTable
 CANTable = CANTable.dropna(subset=['Province/State'])
 
-# Remove dummy row of recovered case number in AUSTable
-#AUSTable = AUSTable.dropna(subset=['Province/State'])
+# Remove dummy row of test/critical number in AUSTable
+AUSTable = AUSTable.dropna(subset=['Province/State'])
+
+# Remove dummy row of test/critical number in CNTable
+CNTable = CNTable.dropna(subset=['Province/State'])
 
 # Generate country lists for different continents
 list_dict = {}
@@ -304,7 +358,7 @@ dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
 
 # Generate data for SUnburst plot
 df_sunburst = df_latest
-# Remove tests row for US and Canada
+# Remove tests/critical row for US and Canada
 df_sunburst = df_sunburst.drop(df_sunburst[df_sunburst['Confirmed'] == 0].index, axis=0)
 # Since child node cannot be mixture of None and string, so replace 'Yokohoma' as 'Diamond Princess' and 
 # All as 'other'
@@ -823,7 +877,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                            'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#2674f6 solid .2rem',},
                     children=[
                         html.H3(style={'textAlign': 'center',
-                                       'fontWeight': 'bold', 'color': '#2674f6'},
+                                       'color': '#2674f6'},
                                 children=[
                                     html.P(
                                         style={'color': '#ffffff', 'padding': '.5rem'},
@@ -845,7 +899,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     children=[
                         html.H3(
                         	style={'textAlign': 'center',
-                                   'fontWeight': 'bold', 'color': '#e36209'},
+                                   'color': '#e36209'},
                             children=[
                                 html.P(
                                 	style={'padding': '.5rem'},
@@ -868,7 +922,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         html.H3(
                         	style={
                         	    'textAlign': 'center',
-                                'fontWeight': 'bold', 'color': '#d7191c'
+                                'color': '#d7191c'
                             },
                             children=[
                                 html.P(style={'padding': '.5rem'},
@@ -890,7 +944,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     children=[
                         html.H3(
                         	style={'textAlign': 'center',
-                                   'fontWeight': 'bold', 'color': '#1a9622'},
+                                   'color': '#1a9622'},
                             children=[
                                 html.P(
                                     style={'padding': '.5rem'},
@@ -912,7 +966,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     children=[
                         html.H3(
                         	style={'textAlign': 'center',
-                                   'fontWeight': 'bold', 'color': '#6c6c6c'},
+                                   'color': '#6c6c6c'},
                             children=[
                                 html.P(
                                     style={'padding': '.5rem'},
@@ -1077,7 +1131,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                     columns=[{"name": 'Country/Region', "id": 'Country/Region'}] +
                                             [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
                                                 if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
-                                                    for i in dfSum.columns[1:10]],
+                                                    for i in dfSum.columns[1:11]],
                                     # But still store coordinates in the table for interactivity
                                     data=dfSum.to_dict("rows"),
                                     row_selectable="single",
@@ -1102,16 +1156,17 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                         'fontWeight': 'bold'
                                     },
                                     style_cell_conditional=[
-                                        {'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
+                                        {'if': {'column_id': 'Country/Regions'}, 'width': '17%'},
                                         {'if': {'column_id': 'Active'}, 'width': '8%'},
                                         {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
                                         {'if': {'column_id': 'Recovered'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Critical'}, 'width': '8%'},
                                         {'if': {'column_id': 'Deaths'}, 'width': '8%'},
                                         {'if': {'column_id': 'Death rate'}, 'width': '8%'},
                                         {'if': {'column_id': 'Tests'}, 'width': '8%'},
-                                        {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
-                                        {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
-                                        {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
+                                        {'if': {'column_id': 'Positive rate'}, 'width': '9%'},
+                                        {'if': {'column_id': 'Tests/100k'}, 'width': '9%'},    
+                                        {'if': {'column_id': 'Confirmed/100k'}, 'width': '9%'},
                                         {'if': {'column_id': 'Active'}, 'color':'#e36209'},
                                         {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
                                         {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
@@ -1239,7 +1294,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         ),
                         dcc.Dropdown(
                         	id="ternary-dropdown",
-                            placeholder="Select/type a location name",
+                            placeholder="Select or search a location name",
                             value='All',
                             #searchable=False,
                             #clearable=False,
