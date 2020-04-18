@@ -31,7 +31,7 @@ __To-do list:__
 - [x] Code optimisation for generating overview lineplot/reduce response time 2020/03/18
 - [x] Clicking table tab now triggers corresponding changes in the plots 2020/03/24
 - [x] Adding support for plots of Province/States 2020/03/24
-- [ ] Layout and design
+- [x] Responsive layout and design 2020/04/18 
 
 ![App screenshot](./app_screenshot.gif)
 

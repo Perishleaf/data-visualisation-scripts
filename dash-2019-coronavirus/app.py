@@ -570,18 +570,6 @@ fig_curve_tab.update_layout(
             t=5,
             pad=0
             ),
-        #annotations=[dict(
-        #    x=.5,
-        #    y=.4,
-        #    xref="paper",
-        #    yref="paper",
-        #    text=dfSum['Country/Region'][0] if dfSum['Country/Region'][0] in set(dfs_curve['Region']) else "Not over 100 cases",
-        #    opacity=0.5,
-        #    font=dict(family='Arial, sans-serif',
-        #              size=60,
-        #              color="grey"),
-        #            )
-        #],
         yaxis_type="log",
         yaxis=dict(
             showline=False, 
@@ -803,479 +791,570 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 html.P(
                     id="description",
                     children=dcc.Markdown(
-                      children=(
-                        '''
-                        On Dec 31, 2019, the World Health Organization (WHO) was informed 
-                        an outbreak of “pneumonia of unknown cause” detected in Wuhan, Hubei Province, China. 
-                        The virus that caused the outbreak of COVID-19 was lately known as _severe acute respiratory syndrome coronavirus 2_ (SARS-CoV-2). 
-                        The WHO declared the outbreak to be a Public Health Emergency of International Concern on 
-                        Jan 30, 2020 and recognized it as a pandemic on Mar 11, 2020. As of {}, there are {:,d} confirmed cases globally.
+                        children=(
+                            '''
+                            On Dec 31, 2019, the World Health Organization (WHO) was informed 
+                            an outbreak of “pneumonia of unknown cause” detected in Wuhan, Hubei Province, China. 
+                            The virus that caused the outbreak of COVID-19 was lately known as _severe acute respiratory syndrome coronavirus 2_ (SARS-CoV-2). 
+                            The WHO declared the outbreak to be a Public Health Emergency of International Concern on 
+                            Jan 30, 2020 and recognized it as a pandemic on Mar 11, 2020. As of {}, there are {:,d} confirmed cases globally.
                         
-                        This dashboard is developed to visualise and track the recent reported 
-                        cases on a hourly timescale.'''.format(latestDate, confirmedCases),
-                      )
+                            This dashboard is developed to visualise and track the recent reported 
+                            cases on a hourly timescale.'''.format(latestDate, confirmedCases),
+                        )
                     )
                 ),
- #              html.P(
- #                id="note",
- #                children=['⚠️ Source from ',
- #                html.A('The National Health Commission of China', href='http://www.nhc.gov.cn/yjb/s7860/202002/553ff43ca29d4fe88f3837d49d6b6ef1.shtml'),
- #                ': in its February 14 official report, deducted \
- #                 108 previously reported deaths and 1,043 previously reported cases from the total in Hubei Province due to "repeated counting." \
- #                Data have been corrected for these changes.']
- #               ),
- #              html.P(
- #                id="note",
- #                children=['⚠️ Source from ',
- #                html.A('读卖新闻', href='https://www.yomiuri.co.jp/national/20200216-OYT1T50089/'),
- #                ': Diamond Princess cruise confirmed 70 new infections, bringing the total infected cases to 355.']
- #               ),
- #                html.P(
- #                 id="note",
- #                 children=['⚠️ Source from ',
- #                           html.A('anews', href='http://www.anews.com.tr/world/2020/02/21/iran-says-two-more-deaths-among-13-new-coronavirus-cases'),
- #                           ': Iran\'s health ministry Friday reported two more deaths among 13 new cases of coronavirus in the Islamic republic, bringing the total number of deaths to four and infections to 18.']
- #               ),
- #               html.P(
- #                 id="note",
- #                 children=['⚠️ Source from ',
- #                           html.A('The New York Times', href='https://www.nytimes.com/2020/03/01/world/coronavirus-news.html'),
- #                           ': New York State Reports First Case.']
- #                ),
                 html.P(
-                  id='time-stamp',
-                  # style={'fontWeight':'bold'},
-                       children="Last update: {}. (Hover over items for additional information)".format(latestDate)
-                       ),
-                html.Hr(style={'marginTop': '.5%'},),
+                    className='time-stamp',
+                    children="Last update: {}. (Hover over items for additional information)".format(latestDate)
+                ),
+                html.Hr(style={'marginTop': '.5%'},
+                ),
+            ]
+        ),
+        html.Div(
+            className="number-plate",
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%'},
+            children=[
+                #html.Hr(),
+                html.Div(
+                    style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                           'marginRight': '.8%', 'verticalAlign': 'top', 
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#2674f6 solid .2rem',},
+                    children=[
+                        html.H3(style={'textAlign': 'center',
+                                       'fontWeight': 'bold', 'color': '#2674f6'},
+                                children=[
+                                    html.P(
+                                        style={'color': '#ffffff', 'padding': '.5rem'},
+                                        children='xxxx xx xxx xxxx xxx xxxxx'
+                                    ),
+                                    '{}'.format(daysOutbreak),
+                                ]
+                        ),
+                        html.H5(
+                        	style={'textAlign': 'center', 'color': '#2674f6', 'padding': '.1rem'},
+                            children="days since outbreak"
+                        )
                     ]
                 ),
-        html.Div(
-            id="number-plate",
-            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%'},
-                 children=[
-                     #html.Hr(),
-                     html.Div(
-                         style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#2674f6 solid .2rem',},
-                              children=[
-                                  html.H3(style={'textAlign': 'center',
-                                                 'fontWeight': 'bold', 'color': '#2674f6'},
-                                               children=[
-                                                   html.P(style={'color': '#ffffff', 'padding': '.5rem'},
-                                                              children='xxxx xx xxx xxxx xxx xxxxx'),
-                                                   '{}'.format(daysOutbreak),
-                                               ]),
-                                  html.H5(style={'textAlign': 'center', 'color': '#2674f6', 'padding': '.1rem'},
-                                               children="days since outbreak")
-                                       ]),
-                     html.Div(
-                         style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#e36209 solid .2rem',},
-                              children=[
-                                  html.H3(style={'textAlign': 'center',
-                                                 'fontWeight': 'bold', 'color': '#e36209'},
-                                                children=[
-                                                    html.P(style={'padding': '.5rem'},
-                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusRemainNum, plusRemainNum3)),
-                                                    '{:,d}'.format(
-                                                        remainCases)
-                                                         ]),
-                                  html.H5(style={'textAlign': 'center', 'color': '#e36209', 'padding': '.1rem'},
-                                               children="active cases")
-                                       ]),
-                     html.Div(
-                         style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#d7191c solid .2rem',},
-                              children=[
-                                  html.H3(style={'textAlign': 'center',
-                                                 'fontWeight': 'bold', 'color': '#d7191c'},
-                                                children=[
-                                                    html.P(style={'padding': '.5rem'},
-                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)),
-                                                    '{:,d}'.format(
-                                                        confirmedCases)
-                                                         ]),
-                                  html.H5(style={'textAlign': 'center', 'color': '#d7191c', 'padding': '.1rem'},
-                                               children="confirmed cases")
-                                       ]),
-                     html.Div(
-                         style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'marginRight': '.8%', 'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#1a9622 solid .2rem',},
-                              children=[
-                                  html.H3(style={'textAlign': 'center',
-                                                       'fontWeight': 'bold', 'color': '#1a9622'},
-                                               children=[
-                                                   html.P(style={'padding': '.5rem'},
-                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)),
-                                                   '{:,d}'.format(
-                                                       recoveredCases),
-                                               ]),
-                                  html.H5(style={'textAlign': 'center', 'color': '#1a9622', 'padding': '.1rem'},
-                                               children="recovered cases")
-                                       ]),
-                     html.Div(
-                         style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                'verticalAlign': 'top', 
-                                'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#6c6c6c solid .2rem',},
-                              children=[
-                                  html.H3(style={'textAlign': 'center',
-                                                       'fontWeight': 'bold', 'color': '#6c6c6c'},
-                                                children=[
-                                                    html.P(style={'padding': '.5rem'},
-                                                              children='+ {:,d} in the past 24h ({:.1%})'.format(plusDeathNum, plusPercentNum3)),
-                                                    '{:,d}'.format(deathsCases)
-                                                ]),
-                                  html.H5(style={'textAlign': 'center', 'color': '#6c6c6c', 'padding': '.1rem'},
-                                               children="death cases")
-                                       ])
-                          ]),
-        html.Div(
-            id='dcc-plot',
-            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'backgroundColor': '#ffffff',
-                   'marginBottom': '.8%', 'marginTop': '.5%',
-                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
-                   'display':'flex', 'flex-wrap':'row wrap', 'justify-content':'center'
-                },
-                 children=[
-                     html.Div(
-                         style={'width': '49.18%',
-                                'marginRight': '.8%', 
-                                #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
-                                },
-                         children=[
-                                  html.Div(
-                                    style={'display':'flex', 'justifyContent': 'center', 'alignItems':'center'},
-                                    children=[
-                                        html.H5(
-                                            style={'textAlign': 'center', 'backgroundColor': '#ffffff', 'display': 'inline-block',
-                                                   'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
-                                            children='Case Timeline'),
-                                        daq.PowerButton(
-                                            id='log-button',
-                                            style={'display': 'inline-block','padding': '1rem',},
-                                            size=22,
-                                            #theme='dark',
-                                            color="#2674f6",
-                                            on=False,
-                                            ),
-                                        dbc.Tooltip("Switch between linear and logarithmic y-axis",
-                                              target='log-button',
-                                              style={"font-size":"1.8em"},
-                                             ),
-                                          ],
-                                    ),
-                                  dcc.Graph(
-                                    id='combined-line-plot',
-                                    style={'height': '300px'}, 
-                                    ),
-                                  ]),
-                     html.Div(
-                         style={'width': '49.18%',
-                                #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
-                                },
-                         children=[                                  
-                                  html.H5(
-                                        id='dcc-death-graph-head',
-                                        style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                               'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
-                                        children='Recovery/Death Rate (%) Timeline'),
-                                    
-                                  dcc.Graph(
-                                    style={'height': '300px'}, 
-                                    figure=fig_rate),
-                                  dbc.Tooltip(
-                                    '''
-                                    The death rate is calculated using the formula: deaths/confirmed cases.
-                                    Note that this is only a conservative estimation. The real death rate can only be 
-                                    revealed as all cases are resolved. 
-                                    ''',
-                                              target='dcc-death-graph-head',
-                                              style={"font-size":"1.8em"},
-                                             ),
-                                  ]),
-                     ]),
-        html.Div(
-            id='dcc-map',
-            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%',
-                   'display':'flex', 'flex-wrap':'row wrap', 'justify-content':'center',
-                },
-                 children=[
-                     html.Div(style={'width': '49.6%', 'marginRight': '.8%',
-                                     'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
-                                     },
-                              children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                               children='Latest Coronavirus Outbreak Map'),
-                                  dcc.Graph(
-                                      id='datatable-interact-map',
-                                      style={'height': '400px'},),
-                              ]
-                          ),
-                     html.Div(style={'width': '49.6%',
-                                     'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
-                                     },
-                              children=[
-                                  html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                 'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                               children='Summary Graph'),
-                                  dcc.Dropdown(
-                                    id="dcc-dropdown",
-                                    placeholder="Select a graph type",
-                                    value='Daily Cases',
-                                    options=[
-                                        {'label':'Cumulative Cases', 'value':'Cumulative Cases'},
-                                        {'label':'Daily Cases', 'value':'Daily Cases'},
-                                        {'label':'Confirmed Case Trajectories', 'value':'Confirmed Case Trajectories'},
-                                        {'label':'Death Toll Trajectories', 'value':'Death Toll Trajectories'},
-                                    ]
-                                  ),                                  
-                                  html.Div(id='tabs-content-plots',
-                                           style={'backgroundColor': '#ffffff',}
-                                    ),
-                               ]
-                         ),
-                      ]
-                  ),
-        html.Div(
-            id='dcc-table',
-            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%',
-                   'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
-                   'justify-content':'center',
-                },
-                 children=[
-                     html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                    'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                             children='Cases Summary by Location'),
-                     dcc.Tabs(
-                          id="tabs-table",
-                          value='Worldwide',
-                          parent_className='custom-tabs',
-                          className='custom-tabs-container',
-                          children=[
-                              dcc.Tab(label='Worldwide',
-                                      value='Worldwide',
-                                      className='custom-tab',
-                                      selected_className='custom-tab--selected',
-                                      children=[
-                                          dash_table.DataTable(
-                                                      id='datatable-interact-location',
-                                                      # Don't show coordinates
-                                                      columns=[{"name": 'Country/Region', "id": 'Country/Region'}] +
-                                                              [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
-                                                               if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
-                                                                  for i in dfSum.columns[1:10]],
-                                                      # But still store coordinates in the table for interactivity
-                                                      data=dfSum.to_dict(
-                                                          "rows"),
-                                                      row_selectable="single",
-                                                      sort_action="native",
-                                                      style_as_list_view=True,
-                                                      style_cell={'font_family': 'Arial',
-                                                                  'font_size': '1.3rem',
-                                                                  'padding': '.1rem',
-                                                                  'backgroundColor': '#ffffff', },
-                                                      fixed_rows={
-                                                          'headers': True, 'data': 0},
-                                                      style_table={'minHeight': '400px',
-                                                                   'height': '400px',
-                                                                   'maxHeight': '400px',
-                                                                   'overflowX': 'auto',
-                                                                   },
-                                                      style_header={'backgroundColor': '#ffffff',
-                                                                    'fontWeight': 'bold'},
-                                                      style_cell_conditional=[{'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
-                                                                              {'if': {'column_id': 'Active'}, 'width': '8%'},
-                                                                              {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
-                                                                              {'if': {'column_id': 'Recovered'}, 'width': '8%'},
-                                                                              {'if': {'column_id': 'Deaths'}, 'width': '8%'},
-                                                                              {'if': {'column_id': 'Death rate'}, 'width': '8%'},
-                                                                              {'if': {'column_id': 'Tests'}, 'width': '8%'},
-                                                                              {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
-                                                                              {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
-                                                                              {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
-                                                                              {'if': {'column_id': 'Active'}, 'color':'#e36209'},
-                                                                              {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
-                                                                              {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
-                                                                              {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
-                                                                              {'textAlign': 'center'}],
-                                                  )
-                                            ]
-                                  ),
-                              make_dcc_country_tab(
-                                              'Africa', table_dict['AfricaTable']),
-                              make_dcc_country_tab(
-                                              'Asia', table_dict['AsiaTable']),                              
-                              make_dcc_country_tab(
-                                              'Europe', table_dict['EuropeTable']),
-                              make_dcc_country_tab(
-                                              'North America', table_dict['NorthAmericaTable']),
-                              make_dcc_country_tab(
-                                              'Oceania', table_dict['OceaniaTable']),
-                              make_dcc_country_tab(
-                                              'South America', table_dict['SouthAmericaTable']),
-                              make_dcc_country_tab(
-                                              'Australia', AUSTable),
-                              make_dcc_country_tab(
-                                              'Canada', CANTable),
-                              make_dcc_country_tab(
-                                              'Mainland China', CNTable),
-                              make_dcc_country_tab(
-                                              'United States', USTable),
+                html.Div(
+                    style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                           'marginRight': '.8%', 'verticalAlign': 'top', 
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#e36209 solid .2rem',},
+                    children=[
+                        html.H3(
+                        	style={'textAlign': 'center',
+                                   'fontWeight': 'bold', 'color': '#e36209'},
+                            children=[
+                                html.P(
+                                	style={'padding': '.5rem'},
+                                    children='+ {:,d} in the past 24h ({:.1%})'.format(plusRemainNum, plusRemainNum3)
+                                ),
+                                '{:,d}'.format(remainCases)
                             ]
-                       ),
-                      dbc.Tooltip(
-                                    target='tab-datatable-interact-location-Australia',
+                        ),
+                        html.H5(
+                        	style={'textAlign': 'center', 'color': '#e36209', 'padding': '.1rem'},
+                            children="active cases"
+                        )
+                    ]
+                ),
+                html.Div(
+                    style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                           'marginRight': '.8%', 'verticalAlign': 'top', 
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#d7191c solid .2rem',},
+                    children=[
+                        html.H3(
+                        	style={
+                        	    'textAlign': 'center',
+                                'fontWeight': 'bold', 'color': '#d7191c'
+                            },
+                            children=[
+                                html.P(style={'padding': '.5rem'},
+                                       children='+ {:,d} in the past 24h ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)
+                                ),
+                                '{:,d}'.format(confirmedCases)
+                            ]
+                        ),
+                        html.H5(
+                        	style={'textAlign': 'center', 'color': '#d7191c', 'padding': '.1rem'},
+                            children="confirmed cases"
+                        )
+                    ]
+                ),
+                html.Div(
+                    style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                           'marginRight': '.8%', 'verticalAlign': 'top', 
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#1a9622 solid .2rem',},
+                    children=[
+                        html.H3(
+                        	style={'textAlign': 'center',
+                                   'fontWeight': 'bold', 'color': '#1a9622'},
+                            children=[
+                                html.P(
+                                    style={'padding': '.5rem'},
+                                    children='+ {:,d} in the past 24h ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)
+                                ),
+                                '{:,d}'.format(recoveredCases),
+                            ]
+                        ),
+                        html.H5(
+                        	style={'textAlign': 'center', 'color': '#1a9622', 'padding': '.1rem'},
+                            children="recovered cases"
+                        )
+                    ]
+                ),
+                html.Div(
+                    style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                           'verticalAlign': 'top', 
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#6c6c6c solid .2rem',},
+                    children=[
+                        html.H3(
+                        	style={'textAlign': 'center',
+                                   'fontWeight': 'bold', 'color': '#6c6c6c'},
+                            children=[
+                                html.P(
+                                    style={'padding': '.5rem'},
+                                    children='+ {:,d} in the past 24h ({:.1%})'.format(plusDeathNum, plusPercentNum3)
+                                ),
+                                '{:,d}'.format(deathsCases)
+                            ]
+                        ),
+                        html.H5(
+                        	style={'textAlign': 'center', 'color': '#6c6c6c', 'padding': '.1rem'},
+                            children="death cases"
+                        )
+                    ]
+                )
+            ]
+        ),
+        html.Div(
+            className='row dcc-plot',
+            children=[
+                html.Div(
+                	className='dcc-sub-plot',
+                    style={
+                           'marginRight': '.8%', 
+                          #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                    },
+                    children=[
+                        html.Div(
+                            style={'display':'flex', 'justifyContent': 'center', 'alignItems':'center'},
+                            children=[
+                                html.H5(
+                                    style={'textAlign': 'center', 'backgroundColor': '#ffffff', 'display': 'inline-block',
+                                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
+                                    children='Case Timeline | Worldwide'
+                                ),
+                                daq.PowerButton(
+                                    id='log-button',
+                                    style={'display': 'inline-block','padding': '1rem',},
+                                    size=22,
+                                    #theme='dark',
+                                    color="#2674f6",
+                                    on=False,
+                                ),
+                                dbc.Tooltip(
+                                	"Switch between linear and logarithmic y-axis",
+                                    target='log-button',
                                     style={"font-size":"1.8em"},
-                                    children=dcc.Markdown(
-                                      children=(
-                                        '''
-                                        Note that under _National Notifiable Diseases Surveillance
-                                        System_ reporting requirements, cases are reported based on their Australian
-                                        jurisdiction of residence rather than where they were detected.
+                                ),
+                            ],
+                        ),
+                        dcc.Graph(
+                            id='combined-line-plot',
+                            style={'height': '300px'},
+                            config={"displayModeBar": False, "scrollZoom": False}, 
+                        ),
+                    ]
+                ),
+                html.Div(
+                	className='dcc-sub-plot',
+                    style={
+                          #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                    },
+                    children=[                                  
+                        html.H5(
+                            id='dcc-death-graph-head',
+                            style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                   'color': '#292929', 'padding': '1rem', 'marginBottom': '0','marginTop': '0'},
+                            children='Recovery/Death Rate (%) Timeline | Worldwide'
+                        ),
+                        dcc.Graph(
+                            style={'height': '302px'}, 
+                            figure=fig_rate,
+                            config={"displayModeBar": False, "scrollZoom": False},
+                        ),
+                        dbc.Tooltip(
+                            '''
+                            The death rate is calculated using the formula: deaths/confirmed cases.
+                            Note that this is only a conservative estimation. The real death rate can only be 
+                            revealed as all cases are resolved. 
+                            ''',
+                            target='dcc-death-graph-head',
+                            style={"font-size":"1.8em"},
+                        ),
+                    ]
+                ),
+            ]
+        ),
+        html.Div(
+            className='row dcc-map',
+            children=[
+                html.Div(
+                	className='dcc-sub-plot',
+                	style={'marginRight': '.8%',
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                    },
+                    children=[
+                        html.H5(
+                        	style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                   'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                            children='Latest Coronavirus Outbreak Map'
+                        ),
+                        dcc.Graph(
+                            id='datatable-interact-map',
+                            style={'height': '400px'},
+                            config={"displayModeBar": False, "scrollZoom": True},
+                        ),
+                    ]
+                ),
+                html.Div(
+                	className='dcc-sub-plot',
+                	style={
+                           'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
+                    },
+                    children=[
+                        html.H5(
+                        	style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                   'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'
+                            },
+                            children='Summary Graph'
+                        ),
+                        dcc.Dropdown(
+                            id="dcc-dropdown",
+                            placeholder="Select a graph type",
+                            value='Daily Cases',
+                            options=[
+                                {'label':'Cumulative Cases', 'value':'Cumulative Cases'},
+                                {'label':'Daily Cases', 'value':'Daily Cases'},
+                                {'label':'Confirmed Case Trajectories', 'value':'Confirmed Case Trajectories'},
+                                {'label':'Death Toll Trajectories', 'value':'Death Toll Trajectories'},
+                            ]
+                        ),                                  
+                        html.Div(
+                        	id='tabs-content-plots',
+                            style={'backgroundColor': '#ffffff',}
+                        ),
+                    ]
+                ),
+            ]
+        ),
+        html.Div(
+            className='dcc-table',
+            children=[
+                html.H5(
+                	style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                    children='Cases Summary by Location'
+                ),
+                dcc.Tabs(
+                    id="tabs-table",
+                    value='Worldwide',
+                    parent_className='custom-tabs',
+                    className='custom-tabs-container',
+                    children=[
+                        dcc.Tab(
+                        	label='Worldwide',
+                            value='Worldwide',
+                            className='custom-tab',
+                            selected_className='custom-tab--selected',
+                            children=[
+                                dash_table.DataTable(
+                                    id='datatable-interact-location',
+                                    # Don't show coordinates
+                                    columns=[{"name": 'Country/Region', "id": 'Country/Region'}] +
+                                            [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                                                if i == 'Death rate' or i == 'Positive rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                                    for i in dfSum.columns[1:10]],
+                                    # But still store coordinates in the table for interactivity
+                                    data=dfSum.to_dict("rows"),
+                                    row_selectable="single",
+                                    sort_action="native",
+                                    style_as_list_view=True,
+                                    style_cell={
+                                        'font_family': 'Arial',
+                                        'font_size': '1.3rem',
+                                        'padding': '.1rem',
+                                        'backgroundColor': '#ffffff', 
+                                    },
+                                    fixed_rows={
+                                        'headers': True, 'data': 0},
+                                    style_table={
+                                        'minHeight': '400px',
+                                        'height': '400px',
+                                        'maxHeight': '400px',
+                                        'overflowX': 'auto',
+                                    },
+                                    style_header={
+                                        'backgroundColor': '#ffffff',
+                                        'fontWeight': 'bold'
+                                    },
+                                    style_cell_conditional=[
+                                        {'if': {'column_id': 'Country/Regions'}, 'width': '22%'},
+                                        {'if': {'column_id': 'Active'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Confirmed'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Recovered'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Deaths'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Death rate'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Tests'}, 'width': '8%'},
+                                        {'if': {'column_id': 'Positive rate'}, 'width': '10%'},
+                                        {'if': {'column_id': 'Tests/100k'}, 'width': '10%'},    
+                                        {'if': {'column_id': 'Confirmed/100k'}, 'width': '10%'},
+                                        {'if': {'column_id': 'Active'}, 'color':'#e36209'},
+                                        {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                        {'if': {'column_id': 'Recovered'}, 'color': '#1a9622'},
+                                        {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                        {'textAlign': 'center'}
+                                    ],
+                                )
+                            ]
+                        ),
+                        make_dcc_country_tab(
+                            'Africa', table_dict['AfricaTable']),
+                        make_dcc_country_tab(
+                            'Asia', table_dict['AsiaTable']),                              
+                        make_dcc_country_tab(
+                            'Europe', table_dict['EuropeTable']),
+                        make_dcc_country_tab(
+                            'North America', table_dict['NorthAmericaTable']),
+                        make_dcc_country_tab(
+                            'Oceania', table_dict['OceaniaTable']),
+                        make_dcc_country_tab(
+                            'South America', table_dict['SouthAmericaTable']),
+                        make_dcc_country_tab(
+                            'Australia', AUSTable),
+                        make_dcc_country_tab(
+                            'Canada', CANTable),
+                        make_dcc_country_tab(
+                            'Mainland China', CNTable),
+                        make_dcc_country_tab(
+                            'United States', USTable),
+                    ]
+                ),
+                dbc.Tooltip(
+                    target='tab-datatable-interact-location-Australia',
+                    style={"font-size":"1.8em"},
+                    children=
+                        dcc.Markdown(
+                            children=(
+                                '''
+                                Note that under _National Notifiable Diseases Surveillance
+                                System_ reporting requirements, cases are reported based on their Australian
+                                jurisdiction of residence rather than where they were detected.
 
-                                        The recovered cases in NSW is calculated based on federal and other states'
-                                        recovered number. 
-                                        '''
-                                        )
-                                      )                                              
-                                    ),
-                      dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
-                                              target='tab-datatable-interact-location-Canada',
-                                              style={"font-size":"1.8em"},
-                                      ),
-                      dbc.Tooltip("Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
-                                              target='tab-datatable-interact-location-US',
-                                              style={"font-size":"1.8em"},
-                                      ),
-                  ]
-              ),
+                                The recovered cases in NSW is calculated based on federal and other states'
+                                recovered number. 
+                                '''
+                            )
+                        )                                              
+                ),
+                dbc.Tooltip(
+                	target='tab-datatable-interact-location-Canada',
+                    style={"font-size":"1.8em"},
+                	children="Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
+                ),
+                dbc.Tooltip(
+                	target='tab-datatable-interact-location-US',
+                    style={"font-size":"1.8em"},
+                	children="Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
+                ),
+            ]
+        ),
         html.Div(
             id='sunburst-chart',
             style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '.8%','backgroundColor': '#ffffff',
                    'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee',
                    'display':'flex', 'flex-wrap':'row wrap', 'justify-content':'center',
-                  },
+            },
             children=[
-                  html.Div(
-                      style={'width': '49.18%',
-                             'marginRight': '.8%', 
-                             #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
-                           },
-                      children=[html.Div(
-                                    style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
-                                    children=[
-                                         html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                        'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                                 children='Sunburst Chart | Worldwide'),
-                                         html.P(children='(Click to unfold segment)')
-                                           ]
-                                 ),
-                                dcc.Dropdown(id="sunburst-dropdown",
-                                             placeholder="Select a metric",
-                                             value='Confirmed',
-                                             searchable=False,
-                                             clearable=False,
-                                             options=[{'label':'Active cases', 'value':'Remaining'},
-                                                      {'label':'Confirmed cases', 'value':'Confirmed'},
-                                                      {'label':'Recovered cases', 'value':'Recovered'},
-                                                      {'label':'Deaths', 'value':'Deaths'},
-                                                    ]
-                                          ),                                  
-                                dcc.Graph(id='dropdown-sunburst-plots',
-                                          style={'height': '500px'},
-                                      ),
-                             ]
-                    ),
-                  html.Div(
-                       style={'width': '49.18%',
-                             #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
-                           },
-                       children=[html.Div(
-                                     style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
-                                     children=[
-                                          html.H5(style={'textAlign': 'center', 'backgroundColor': '#ffffff',
-                                                         'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
-                                                  children='Ternary Chart | Worldwide'),
-                                          html.P(children='(Double click the chart to reset view after zoom in)')
-                                             ]
-                                    ),
-                                 dcc.Dropdown(id="ternary-dropdown",
-                                              placeholder="Select/type a location name",
-                                              value='All',
-                                              #searchable=False,
-                                              #clearable=False,
-                                              options=optionList,
-                                        ),                 
-                                 dcc.Graph(
-                                        id='ternary-dropdown-chart',
-                                        style={'height': '540px'}, 
-                                      ),
-                              ]
-                      )
-               ]
-          ),
-        html.Div(
-          id='my-footer',
-          style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '1%', 'marginTop': '.5%'},
-                 children=[
-                     html.Hr(style={'marginBottom': '.5%'},),
-                     html.P(style={'textAlign': 'center', 'margin': 'auto'},
-                            children=['Keep calm and stay home | ',
-                                      html.A('Developed by Jun with ❤️ in Sydney', href='https://junye0798.com/', target='_blank'), ' | ',
-                                      html.A('About this dashboard', href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',target='_blank'), " | ",
-                                      html.A('Report a bug', href='https://twitter.com/perishleaf', target='_blank'), ' | ',
-                                      html.A('COVID-19 infographic in Australia', href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_14.pdf', target='_blank'),
-
+                html.Div(
+                    style={'width': '49.18%',
+                           'marginRight': '.8%', 
+                          #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                    },
+                    className='sunburst-ternary-plot',
+                    children=[
+                        html.Div(
+                            style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
+                            children=[
+                                html.H5(
+                                	style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                                    children='Sunburst Chart | Worldwide'
+                                ),
+                                html.P(
+                                	children='(Click to unfold segment)'
+                                )
                             ]
-                      ),
-                     html.P(style={'textAlign': 'center', 'margin': 'auto', 'marginTop': '.5%'},
-                            children=['Proudly supported by']
-                      ),
-                     html.P(style={'textAlign': 'center', 'margin': 'auto', 'marginTop': '.5%'},
-                            children=[html.A(html.Img(style={'height' : '10%', 'width' : '10%',}, src=app.get_asset_url('TypeHuman.png')),
-                            href='https://www.typehuman.com/', target='_blank')]
-                      ),
-                     html.Div(
-                            style={'textAlign': 'center', 'margin': 'auto','marginTop': '.5%'},
-                            children=[dbc.Button("Disclaimer", id="open", color="info", className="mr-1", 
-                                                 style={'font-size': '1rem', 'background-color':'#20b6e6', 'font-weight':'bold'}),
-                                      dbc.Modal(id='modal',
-                                                children=[dbc.ModalHeader("Disclaimer"),
-                                                          dbc.ModalBody(
-                                                            '''
-                                                            This website and its contents herein, including all data, 
-                                                            mapping, and analysis, is provided to the public strictly 
-                                                            for general information purposes only. All the information was 
-                                                            collected from multiple publicly available data sources that do 
-                                                            not always agree. While I will try my best to keep the information up 
-                                                            to date and correct, I make no representations or warranties of any kind, 
-                                                            express or implied, about the completeness, accuracy, reliability, with 
-                                                            respect to the website or the information. I do not bear any legal responsibility 
-                                                            for any consequence caused by the use of the information provided. Reliance on 
-                                                            the website for medical guidance or use of the website in commerce is strongly 
-                                                            not recommended. Any action you take upon the information on this website is 
-                                                            strictly at your own risk. and I will not be liable for any losses and damages 
-                                                            in connection with the use of this website. Screenshots of the website are 
-                                                            permissible so long as you provide appropriate credit.
-                                                            '''),
-                                                          dbc.ModalFooter(children=dbc.Button("Close", id="close", className="ml-auto",
-                                                                                              style={'background-color':'#20b6e6', 'font-weight':'bold'}
-                                                                                              )            
-                                                                           ),
-                                                           ],
-                                                  ),
-                                        ]
-                             ),
-                  ]
-              ),
-        ])
-
+                        ),
+                        dcc.Dropdown(
+                        	id="sunburst-dropdown",
+                            placeholder="Select a metric",
+                            value='Confirmed',
+                            searchable=False,
+                            clearable=False,
+                            options=[{'label':'Active cases', 'value':'Remaining'},
+                                     {'label':'Confirmed cases', 'value':'Confirmed'},
+                                     {'label':'Recovered cases', 'value':'Recovered'},
+                                     {'label':'Deaths', 'value':'Deaths'},
+                            ]
+                        ),                                  
+                        dcc.Graph(
+                        	id='dropdown-sunburst-plots',
+                            style={'height': '500px'},
+                            config={"displayModeBar": False, "scrollZoom": False},
+                        ),
+                    ]
+                ),
+                html.Div(
+                    style={'width': '49.18%',
+                          #'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee'
+                    },
+                    className='sunburst-ternary-plot',
+                    children=[
+                        html.Div(
+                            style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
+                            children=[
+                                html.H5(
+                                	style={'textAlign': 'center', 'backgroundColor': '#ffffff',
+                                           'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
+                                    children='Ternary Chart | Worldwide'
+                                ),
+                                html.P(
+                                	children='(Double click the chart to reset view after zoom in)'
+                                )
+                            ]
+                        ),
+                        dcc.Dropdown(
+                        	id="ternary-dropdown",
+                            placeholder="Select/type a location name",
+                            value='All',
+                            #searchable=False,
+                            #clearable=False,
+                            options=optionList,
+                        ),                 
+                        dcc.Graph(
+                            id='ternary-dropdown-chart',
+                            style={'height': '540px'},
+                            config={"displayModeBar": False, "scrollZoom": False}, 
+                        ),
+                    ]
+                )
+            ]
+        ),
+        html.Div(
+            id='my-footer',
+            style={'marginLeft': '1.5%', 'marginRight': '1.5%', 'marginBottom': '1%', 'marginTop': '.5%'},
+            children=[
+                html.Hr(style={'marginBottom': '.5%'},),
+                html.P(
+                	style={'textAlign': 'center', 'margin': 'auto'},
+                    children=[
+                        'Keep calm and stay home | ',
+                        html.A(
+                            'Developed by Jun with ❤️ in Sydney', 
+                            href='https://junye0798.com/', 
+                            target='_blank'
+                        ), 
+                        ' | ',
+                        html.A(
+                            'About this dashboard', 
+                            href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',
+                            target='_blank'
+                        ), 
+                        ' | ',
+                        html.A(
+                            'Report a bug', 
+                            href='https://twitter.com/perishleaf', 
+                            target='_blank'
+                        ), 
+                        ' | ',
+                        html.A(
+                            'COVID-19 infographic in Australia', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_15.pdf', 
+                            target='_blank'
+                        ),
+                    ]
+                ),
+                html.P(
+                	style={'textAlign': 'center', 'margin': 'auto', 'marginTop': '.5%'},
+                    children=['Proudly supported by']
+                ),
+                html.P(
+                	style={'textAlign': 'center', 'margin': 'auto', 'marginTop': '.5%'},
+                    children=[
+                        html.A(
+                    	    html.Img(
+                    	    	style={'height' : '10%', 'width' : '10%',}, 
+                    	    	src=app.get_asset_url('TypeHuman.png')
+                    	    ),
+                            href='https://www.typehuman.com/', 
+                            target='_blank'
+                        )
+                    ]
+                ),
+                html.Div(
+                    style={'textAlign': 'center', 'margin': 'auto','marginTop': '.5%'},
+                    children=[
+                        dbc.Button(
+                        	"Disclaimer", 
+                        	id="open", 
+                        	color="info", 
+                        	className="mr-1", 
+                            style={'font-size': '1rem', 'background-color':'#20b6e6', 'font-weight':'bold'}
+                        ),
+                        dbc.Modal(
+                        	id='modal',
+                        	style={'width':'100%', 'height':'100%', 'overflow': 'auto',},
+                            children=[
+                                dbc.ModalHeader("Disclaimer"),
+                                dbc.ModalBody(
+                                    '''
+                                    This website and its contents herein, including all data, 
+                                    mapping, and analysis, is provided to the public strictly 
+                                    for general information purposes only. All the information was 
+                                    collected from multiple publicly available data sources that do 
+                                    not always agree. While I will try my best to keep the information up 
+                                    to date and correct, I make no representations or warranties of any kind, 
+                                    express or implied, about the completeness, accuracy, reliability, with 
+                                    respect to the website or the information. I do not bear any legal responsibility 
+                                    for any consequence caused by the use of the information provided. Reliance on 
+                                    the website for medical guidance or use of the website in commerce is strongly 
+                                    not recommended. Any action you take upon the information on this website is 
+                                    strictly at your own risk. and I will not be liable for any losses and damages 
+                                    in connection with the use of this website. Screenshots of the website are 
+                                    permissible so long as you provide appropriate credit.
+                                    '''
+                                ),
+                                dbc.ModalFooter(
+                                	children=
+                                	    dbc.Button(
+                                		    "Close", 
+                                		    id="close", 
+                                		    className="ml-auto",
+                                            style={'background-color':'#20b6e6', 'font-weight':'bold'}
+                                        )            
+                                ),
+                            ],
+                        ),
+                    ]
+                ),
+            ]
+        ),
+    ]
+)
 
 @app.callback(
     Output("modal", "is_open"),
@@ -1288,24 +1367,33 @@ def toggle_modal(n1, n2, is_open):
     return is_open
 
 @app.callback(Output('tabs-content-plots', 'children'),
-              [Input('dcc-dropdown', 'value')])
+              [Input('dcc-dropdown', 'value')]
+)
 def render_content(tab):
     if tab == 'Cumulative Cases':
         return dcc.Graph(id='datatable-interact-lineplot',
                          style={'height': '364px'},
-                         figure=fig_cumulative_tab,)
+                         figure=fig_cumulative_tab,
+                         config={"displayModeBar": False, "scrollZoom": False},
+                )
     elif tab == 'Daily Cases':
         return dcc.Graph(id='datatable-interact-dailyplot',
                          style={'height': '364px'},
-                         figure=fig_daily_tab,)
+                         figure=fig_daily_tab,
+                         config={"displayModeBar": False, "scrollZoom": False},
+                )
     elif tab == 'Confirmed Case Trajectories':
         return dcc.Graph(id='datatable-interact-logplot',
                          style={'height': '364px'},
-                         figure=fig_curve_tab,)
+                         figure=fig_curve_tab,
+                         config={"displayModeBar": False, "scrollZoom": False},
+                )
     elif tab == 'Death Toll Trajectories':
         return dcc.Graph(id='datatable-interact-deathplot',
                          style={'height': '364px'},
-                         figure=fig_death_curve_tab,)
+                         figure=fig_death_curve_tab,
+                         config={"displayModeBar": False, "scrollZoom": False},
+                )
 
 @app.callback(Output('combined-line-plot', 'figure'),
               [Input('log-button', 'on')])
@@ -1425,7 +1513,7 @@ def render_sunburst_plot(metric):
   colorTheme=px.colors.qualitative.Safe
 
   if metric == 'Confirmed':
-    hovertemplate = '<b>%{label} </b> <br>Confirmed: %{value} cases'
+    hovertemplate = '<b>%{label} </b> <br><br>Confirmed: %{value} cases'
   elif metric == 'Recovered':
     hovertemplate = '<b>%{label} </b> <br>Recovered: %{value} cases'
   elif metric == 'Deaths':
@@ -1440,7 +1528,9 @@ def render_sunburst_plot(metric):
                               color_discrete_sequence=colorTheme,           
                            )
 
-  fig_sunburst.update_traces(hovertemplate=hovertemplate)
+  fig_sunburst.update_traces(
+    textinfo='label+percent root',
+  	hovertemplate=hovertemplate)
 
   return fig_sunburst
 
@@ -1636,8 +1726,14 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
       longitude = 22.252163 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lon
       zoom = 1 if len(AF_derived_virtual_selected_rows) == 0 else 5
       
-    hovertext_value = ['Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(i, j, k, t, q) 
-                          for i, j, k, t, q in zip( df_latest['Confirmed'],  df_latest['Recovered'],  df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], df_latest['Confirmed']*100000/df_latest['Population'])]
+    hovertext_value = ['Active: {:,d}<br>Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(h, i, j, k, t, q) 
+                          for h, i, j, k, t, q in zip(
+                          	df_latest['Confirmed']-df_latest['Recovered']-df_latest['Deaths'],
+                            df_latest['Confirmed'],  df_latest['Recovered'],
+                            df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], 
+                            df_latest['Confirmed']*100000/df_latest['Population']
+                            )
+    ]
 
     mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
 
@@ -1655,7 +1751,6 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
 
     # Generate a list for color gradient display
     colorList = []
-
     for comfirmed, recovered, deaths in zip(df_latest['Confirmed'], df_latest['Recovered'], df_latest['Deaths']):
         remaining = comfirmed - deaths - recovered
         colorList.append(remaining)
@@ -1941,7 +2036,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                 text=Region,
                 opacity=0.5,
                 font=dict(family='Arial, sans-serif',
-                          size=60,
+                          size=50,
                           color="grey"),
             )
         ],
@@ -2044,7 +2139,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                 text=Region,
                 opacity=0.5,
                 font=dict(family='Arial, sans-serif',
-                          size=60,
+                          size=50,
                           color="grey"),
             )
         ],
@@ -2309,7 +2404,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                 text=Region,
                 opacity=0.5,
                 font=dict(family='Roboto, Helvetica, Arial, sans-serif',
-                          size=60,
+                          size=50,
                           color="grey"),
             )
         ],
@@ -2412,7 +2507,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                 text=Region,
                 opacity=0.5,
                 font=dict(family='Roboto, Helvetica, Arial, sans-serif',
-                          size=60,
+                          size=50,
                           color="grey"),
             )
         ],
@@ -2764,7 +2859,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
             text=Region if Region in set(dfs_curve['Region']) else "Not over 100 cases",
             opacity=0.5,
             font=dict(family='Arial, sans-serif',
-                      size=60,
+                      size=50,
                       color="grey"),
                     )
         ],
@@ -3109,7 +3204,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
             text=Region if Region in set(dfs_curve['Region']) else "Not over 3 death cases",
             opacity=0.5,
             font=dict(family='Arial, sans-serif',
-                      size=60,
+                      size=50,
                       color="grey"),
                     )
         ],
