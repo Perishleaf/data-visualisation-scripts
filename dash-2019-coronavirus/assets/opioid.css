@@ -819,8 +819,8 @@ hr {
 .custom-tabs-container {
     /*height: 36.5px;*/
     width: 100%;
-    /*display: flex;
-    flex-wrap: row wrap;*/
+    display: flex;
+    flex-wrap: row wrap;
 }
 
 /*.custom-tabs {
@@ -843,7 +843,8 @@ hr {
     background-color: #fafbfd;
     padding: 0.8rem !important;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    display: flex !important;    
+    display: flex !important;
+    flex-wrap: row wrap;    
     /*align-items: center;*/
     justify-content: center;
 }
@@ -874,17 +875,19 @@ hr {
 .dcc-plot {
     margin-left: 1.5%;
     margin-right: 1.5%;
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     margin-bottom: .8%;
     margin-top: .5%;
-    box-shadow:0px 0px 10px #ededee;
-    border: 1px solid #ededee;
+    /*box-shadow:0px 0px 10px #ededee;
+    border: 1px solid #ededee;*/
     /*display:flex; 
     flex-wrap: row wrap;
     justify-content: center;*/
 }
 
 .dcc-sub-plot {
+    box-shadow:0px 0px 10px #ededee;
+    border: 1px solid #ededee;
     width: 49.6%;
     float: left;
 }
@@ -906,6 +909,10 @@ hr {
     box-shadow:0px 0px 10px #ededee;
     border: 1px solid #ededee;
     justify-content: center;
+}
+
+[id^="dash-datatable"] {
+    font-size: 1.3rem;
 }
 
 @media (min-width: 1251px) {
@@ -1149,6 +1156,10 @@ hr {
 
     #selected-data .gtitle{
         font-size: 1.7rem !important;
+    }
+
+    [id^="dash-datatable"] {
+        font-size: .8rem;
     }
 }
 
