@@ -281,20 +281,20 @@ body {
 /* Track */
 ::-webkit-scrollbar-track {
   background: #ffffff;
-  border: .5px solid #b2b2b270;
+  border: .1px solid #b2b2b270;
   border-radius: 0px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #b5b5b5;
+  background: #b5b5b570;
   border-radius: 5px;
   padding: 3px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5b5b570;
+  background: #b5b5b5;
 }
 
 
@@ -649,6 +649,12 @@ table {
   margin-left:0px
 }
 
+.dash-spreadsheet .sort
+{
+padding-left: 1em !important;
+float: right !important;
+}
+
 th,
 td {
     padding: 12px 15px;
@@ -912,7 +918,7 @@ hr {
 }
 
 [id^="dash-datatable"] {
-    font-size: 1.3rem;
+    font-size: .3rem;
 }
 
 @media (min-width: 1251px) {

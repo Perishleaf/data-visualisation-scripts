@@ -81,6 +81,7 @@ def make_dcc_country_tab(countryName, dataframe):
                                         for i in dataframe.columns[1:10]],
                         # But still store coordinates in the table for interactivity
                         data=dataframe.to_dict("rows"),
+                        css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                         row_selectable="single",
                         sort_action="native",
                         style_as_list_view=True,
@@ -134,6 +135,7 @@ def make_dcc_country_tab(countryName, dataframe):
                                         for i in dataframe.columns[1:11]],
                         # But still store coordinates in the table for interactivity
                         data=dataframe.to_dict("rows"),
+                        css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                         row_selectable="single",
                         sort_action="native",
                         style_as_list_view=True,
@@ -187,6 +189,7 @@ def make_dcc_country_tab(countryName, dataframe):
                                         for i in dataframe.columns[1:7]],
                         # But still store coordinates in the table for interactivity
                         data=dataframe.to_dict("rows"),
+                        css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                         row_selectable="single",
                         sort_action="native",
                         style_as_list_view=True,
@@ -329,6 +332,17 @@ for i in df_latest.Continent.unique():
     list_dict['{}'.format(i)] = list(df_latest[df_latest['Continent'] == i]['Country/Region'].unique())
 
   table_dict['{}Table'.format(i.replace(' ', ''))] = make_continent_table(list_dict[i])
+
+# Use full country names
+# Use full country names
+dfSum = dfSum.replace({'Country/Region': 'US'}, 'United States')
+dfSum = dfSum.replace({'Country/Region': 'UK'}, 'United Kingdom')
+dfSum = dfSum.replace({'Country/Region': 'DRC'}, 'Dem. Rep. Congo')
+dfSum = dfSum.replace({'Country/Region': 'CAR'}, 'Central African Rep.')
+table_dict['AfricaTable'] = table_dict['AfricaTable'].replace({'Country/Region': 'CAR'}, 'Central African Rep.')
+table_dict['AfricaTable'] = table_dict['AfricaTable'].replace({'Country/Region': 'DRC'}, 'Dem. Rep. Congo')
+table_dict['EuropeTable'] = table_dict['EuropeTable'].replace({'Country/Region': 'UK'}, 'United Kingdom')
+table_dict['NorthAmericaTable'] = table_dict['NorthAmericaTable'].replace({'Country/Region': 'US'}, 'United States')
 
 # Save numbers into variables to use in the app
 latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M GMT+10')
@@ -890,6 +904,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     ]
                 ),
                 html.Div(
+                    id='number-plate-active',
                     style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                            'marginRight': '.8%', 'verticalAlign': 'top', 
                            'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#e36209 solid .2rem',},
@@ -912,6 +927,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     ]
                 ),
                 html.Div(
+                    id='number-plate-confirm',
                     style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                            'marginRight': '.8%', 'verticalAlign': 'top', 
                            'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#d7191c solid .2rem',},
@@ -935,6 +951,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     ]
                 ),
                 html.Div(
+                    id='number-plate-recover',
                     style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                            'marginRight': '.8%', 'verticalAlign': 'top', 
                            'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#1a9622 solid .2rem',},
@@ -957,6 +974,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     ]
                 ),
                 html.Div(
+                    id='number-plate-death',
                     style={'width': '19.35%', 'backgroundColor': '#ffffff', 'display': 'inline-block',
                            'verticalAlign': 'top', 
                            'box-shadow':'0px 0px 10px #ededee', 'border': '1px solid #ededee','border-top': '#6c6c6c solid .2rem',},
@@ -977,7 +995,59 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                             children="death cases"
                         )
                     ]
-                )
+                ),
+                dbc.Tooltip(
+                    target='number-plate-active',
+                    style={"fontSize":"1.8em", 'textAlign':'right', 'padding':'10px',},
+                    children=
+                        dcc.Markdown(
+                            '''
+                            1 day ago: **{:,d}**
+
+                            2 days ago: **{:,d}** 
+
+                            '''.format(df_confirmed['Total'][1] - df_deaths['Total'][1] - df_recovered['Total'][1], df_confirmed['Total'][2]- df_deaths['Total'][2] - df_recovered['Total'][2]),
+                        ) 
+                ),
+                dbc.Tooltip(
+                    target='number-plate-confirm',
+                    style={"fontSize":"1.8em", 'textAlign':'right', 'padding':'10px',},
+                    children=
+                        dcc.Markdown(
+                            '''
+                            1 day ago: **{:,d}**
+
+                            2 days ago: **{:,d}** 
+
+                            '''.format(df_confirmed['Total'][1], df_confirmed['Total'][2]),
+                        ) 
+                ),
+                dbc.Tooltip(
+                    target='number-plate-recover',
+                    style={"fontSize":"1.8em", 'textAlign':'right', 'padding':'10px',},
+                    children=
+                        dcc.Markdown(
+                            '''
+                            1 day ago: **{:,d}**
+
+                            2 days ago: **{:,d}** 
+
+                            '''.format(df_recovered['Total'][1], df_recovered['Total'][2]),
+                        ) 
+                ),
+                dbc.Tooltip(
+                    target='number-plate-death',
+                    style={"fontSize":"1.8em", 'textAlign':'right', 'padding':'10px',},
+                    children=
+                        dcc.Markdown(
+                            '''
+                            1 day ago: **{:,d}**
+
+                            2 days ago: **{:,d}** 
+
+                            '''.format(df_deaths['Total'][1], df_deaths['Total'][2]),
+                        ) 
+                ),
             ]
         ),
         html.Div(
@@ -1038,13 +1108,19 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                             config={"displayModeBar": False, "scrollZoom": False},
                         ),
                         dbc.Tooltip(
-                            '''
-                            The death rate is calculated using the formula: deaths/confirmed cases.
-                            Note that this is only a conservative estimation. The real death rate can only be 
-                            revealed as all cases are resolved. 
-                            ''',
                             target='dcc-death-graph-head',
-                            style={"font-size":"1.8em"},
+                            style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px',},
+                            children=
+                                dcc.Markdown(
+                                    '''
+                                    Death rate is calculated using the formula: 
+
+                                    **deaths/confirmed cases**
+                                    
+                                    Note that this is only a conservative estimation. The real death rate can only be 
+                                    revealed as all cases are resolved. 
+                                    ''',
+                                ) 
                         ),
                     ]
                 ),
@@ -1131,11 +1207,12 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                     for i in dfSum.columns[1:11]],
                                     # But still store coordinates in the table for interactivity
                                     data=dfSum.to_dict("rows"),
+                                    css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                                     row_selectable="single",
                                     sort_action="native",
                                     style_as_list_view=True,
                                     style_cell={
-                                        'font_family': 'Roboto',
+                                        'fontFamily': 'Roboto',
                                         'backgroundColor': '#ffffff', 
                                     },
                                     fixed_rows={
@@ -1195,7 +1272,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 ),
                 dbc.Tooltip(
                     target='tab-datatable-interact-location-Australia',
-                    style={"font-size":"1.8em"},
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
                     children=
                         dcc.Markdown(
                             children=(
@@ -1212,13 +1289,29 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 ),
                 dbc.Tooltip(
                 	target='tab-datatable-interact-location-Canada',
-                    style={"font-size":"1.8em"},
-                	children="Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
+                	children=
+                        dcc.Markdown(
+                            children=(
+                                '''
+                                Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en
+
+                                '''
+                            )
+                        )
                 ),
                 dbc.Tooltip(
                 	target='tab-datatable-interact-location-US',
-                    style={"font-size":"1.8em"},
-                	children="Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en",
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
+                	children=
+                        dcc.Markdown(
+                            children=(
+                                '''
+                                Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en
+
+                                '''
+                            )
+                        )
                 ),
             ]
         ),
@@ -1275,6 +1368,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                     className='sunburst-ternary-plot',
                     children=[
                         html.Div(
+                            id='ternary-plot',
                             style={'backgroundColor': '#ffffff','display':'flex', 'justifyContent': 'center', 'alignItems':'baseline'},
                             children=[
                                 html.H5(
@@ -1301,7 +1395,22 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                             config={"displayModeBar": False, "scrollZoom": False}, 
                         ),
                     ]
-                )
+                ),
+                dbc.Tooltip(
+                    target='ternary-plot',
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
+                    children=
+                        dcc.Markdown(
+                            children=(
+                                '''
+                                The ternary diagram displays the proportion of **active**, **recovered** and **deaths** cases in confirmed cases.
+
+                                Point size represents population. 
+
+                                '''
+                            )
+                        )
+                ),
             ]
         ),
         html.Div(
@@ -1333,7 +1442,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_16.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_17.pdf', 
                             target='_blank'
                         ),
                     ]
