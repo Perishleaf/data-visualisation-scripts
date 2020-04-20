@@ -1109,7 +1109,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         ),
                         dbc.Tooltip(
                             target='dcc-death-graph-head',
-                            style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px',},
+                            style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px','width':'auto', 'maxWidth':'450px'},
                             children=
                                 dcc.Markdown(
                                     '''
@@ -1182,6 +1182,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
             className='dcc-table',
             children=[
                 html.H5(
+                    id='dcc-table-header',
                 	style={'textAlign': 'center', 'backgroundColor': '#ffffff',
                            'color': '#292929', 'padding': '1rem', 'marginBottom': '0', 'marginTop': '0'},
                     children='Cases Summary by Location'
@@ -1272,7 +1273,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 ),
                 dbc.Tooltip(
                     target='tab-datatable-interact-location-Australia',
-                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px','width':'auto', 'maxWidth':'450px'},
                     children=
                         dcc.Markdown(
                             children=(
@@ -1281,33 +1282,29 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                 System_ reporting requirements, cases are reported based on their Australian
                                 jurisdiction of residence rather than where they were detected.
 
-                                The recovered cases in NSW is calculated based on federal and other states'
+                                The number of recovered cases in NSW is calculated based on federal and other states'
                                 recovered number. 
                                 '''
                             )
                         )                                              
                 ),
                 dbc.Tooltip(
-                	target='tab-datatable-interact-location-Canada',
-                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
-                	children=
+                    target='dcc-table-header',
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px', 'width':'auto', 'maxWidth':'450px'},
+                    children=
                         dcc.Markdown(
                             children=(
                                 '''
-                                Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en
+                                Data is collected from multiple sources.
 
-                                '''
-                            )
-                        )
-                ),
-                dbc.Tooltip(
-                	target='tab-datatable-interact-location-US',
-                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px'},
-                	children=
-                        dcc.Markdown(
-                            children=(
-                                '''
-                                Case data of Canada and the United States now provided by https://coronavirus.1point3acres.com/en
+                                * [Worldometers](https://www.worldometers.info/coronavirus/)
+                                * [Johns Hopkins Dashboard](https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#)
+                                * [Australia Government Department of Health](https://www.health.gov.au/news/coronavirus-update-at-a-glance)
+                                * [2020 coronavirus pandemic in Australia](https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Australia)
+                                * [National Health Commission of the People's Republic of China](http://www.nhc.gov.cn/)
+                                * [DX Doctor](https://ncov.dxy.cn/ncovh5/view/en_pneumonia?from=dxy&source=&link=&share=)
+                                * [Tencent News](https://news.qq.com//zt2020/page/feiyan.htm#charts)
+                                * [COVID-19 in US and Canada by 1Point3Acres](https://coronavirus.1point3acres.com/en)
 
                                 '''
                             )

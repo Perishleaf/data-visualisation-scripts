@@ -1574,7 +1574,7 @@ DayElapsed_death,Deaths,Region
 3,3,Manitoba
 2,3,Manitoba
 1,3,Manitoba
-37,28,New South Wales
+37,30,New South Wales
 36,28,New South Wales
 35,26,New South Wales
 34,25,New South Wales
@@ -3281,7 +3281,7 @@ DayElapsed_death,Deaths,Region
 3,3,Kazakhstan
 2,3,Kazakhstan
 1,3,Kazakhstan
-29,74,Slovenia
+29,77,Slovenia
 28,74,Slovenia
 27,66,Slovenia
 26,66,Slovenia
@@ -3311,7 +3311,7 @@ DayElapsed_death,Deaths,Region
 2,3,Slovenia
 1,3,Slovenia
 1,3,Palestine
-42,1393,Switzerland
+42,1406,Switzerland
 41,1368,Switzerland
 40,1344,Switzerland
 39,1288,Switzerland
@@ -3634,7 +3634,7 @@ DayElapsed_death,Deaths,Region
 3,5,Uruguay
 2,4,Uruguay
 1,4,Uruguay
-33,2462,Brazil
+33,2484,Brazil
 32,2372,Brazil
 31,2171,Brazil
 30,1952,Brazil
@@ -4172,7 +4172,7 @@ DayElapsed_death,Deaths,Region
 3,6,Egypt
 2,6,Egypt
 1,4,Egypt
-26,51,North Macedonia
+26,54,North Macedonia
 25,51,North Macedonia
 24,49,North Macedonia
 23,46,North Macedonia
@@ -4546,7 +4546,7 @@ DayElapsed_death,Deaths,Region
 3,14,Georgia
 2,10,Georgia
 1,4,Georgia
-7,7,Kuwait
+7,9,Kuwait
 6,7,Kuwait
 5,6,Kuwait
 4,5,Kuwait
@@ -4578,7 +4578,7 @@ DayElapsed_death,Deaths,Region
 3,4,Afghanistan
 2,4,Afghanistan
 1,4,Afghanistan
-3,4,Senegal
+3,5,Senegal
 2,3,Senegal
 1,3,Senegal
 9,4,Mayotte
@@ -4617,7 +4617,7 @@ DayElapsed_death,Deaths,Region
 3,4,Ghana
 2,4,Ghana
 1,3,Ghana
-60,5118,Iran
+60,5209,Iran
 59,5118,Iran
 58,5031,Iran
 57,4958,Iran
@@ -4693,7 +4693,7 @@ DayElapsed_death,Deaths,Region
 3,5,Congo
 2,5,Congo
 1,5,Congo
-38,582,Indonesia
+38,590,Indonesia
 37,582,Indonesia
 36,535,Indonesia
 35,520,Indonesia
@@ -4811,7 +4811,7 @@ DayElapsed_death,Deaths,Region
 3,5,Poland
 2,3,Poland
 1,3,Poland
-29,451,Romania
+29,460,Romania
 28,434,Romania
 27,417,Romania
 26,400,Romania
@@ -5324,7 +5324,7 @@ DayElapsed_death,Deaths,Region
 3,3,Malta
 2,3,Malta
 1,3,Malta
-27,48,Bosnia and Herzegovina
+27,49,Bosnia and Herzegovina
 26,48,Bosnia and Herzegovina
 25,47,Bosnia and Herzegovina
 24,46,Bosnia and Herzegovina
@@ -5352,7 +5352,7 @@ DayElapsed_death,Deaths,Region
 2,3,Bosnia and Herzegovina
 1,3,Bosnia and Herzegovina
 1,3,Zambia
-35,452,Austria
+35,470,Austria
 34,443,Austria
 33,443,Austria
 32,410,Austria
@@ -5431,7 +5431,7 @@ DayElapsed_death,Deaths,Region
 3,3,El Salvador
 2,3,El Salvador
 1,3,El Salvador
-20,67,Moldova
+20,68,Moldova
 19,61,Moldova
 18,56,Moldova
 17,54,Moldova
@@ -5589,7 +5589,7 @@ DayElapsed_death,Deaths,Region
 3,8,Germany
 2,6,Germany
 1,3,Germany
-32,141,Morocco
+32,143,Morocco
 31,138,Morocco
 30,137,Morocco
 29,133,Morocco
@@ -5693,7 +5693,7 @@ DayElapsed_death,Deaths,Region
 3,3,Andorra
 2,3,Andorra
 1,3,Andorra
-47,20453,Spain
+47,20852,Spain
 46,20453,Spain
 45,20043,Spain
 44,19315,Spain
@@ -5972,7 +5972,7 @@ DayElapsed_death,Deaths,Region
 3,3,Argentina
 2,3,Argentina
 1,3,Argentina
-29,91,Bangladesh
+29,101,Bangladesh
 28,91,Bangladesh
 27,84,Bangladesh
 26,75,Bangladesh
@@ -6029,7 +6029,7 @@ DayElapsed_death,Deaths,Region
 3,6,Mexico
 2,5,Mexico
 1,4,Mexico
-18,8,Qatar
+18,9,Qatar
 17,8,Qatar
 16,8,Qatar
 15,7,Qatar
@@ -6266,7 +6266,7 @@ DayElapsed_death,Deaths,Region
 3,3,Japan
 2,3,Japan
 1,3,Japan
-44,71,Australia
+44,73,Australia
 43,71,Australia
 42,68,Australia
 41,65,Australia
@@ -6443,7 +6443,7 @@ DayElapsed_death,Deaths,Region
 3,5,San Marino
 2,5,San Marino
 1,3,San Marino
-40,5683,Belgium
+40,5828,Belgium
 39,5683,Belgium
 38,5453,Belgium
 37,5163,Belgium
@@ -6502,7 +6502,7 @@ DayElapsed_death,Deaths,Region
 3,3,Mali
 2,3,Mali
 1,3,Mali
-91,14823,Asia
+91,14935,Asia
 90,14588,Asia
 89,14199,Asia
 88,13891,Asia
@@ -6593,7 +6593,7 @@ DayElapsed_death,Deaths,Region
 3,18,Asia
 2,17,Asia
 1,6,Asia
-44,85,Oceania
+44,87,Oceania
 43,85,Oceania
 42,81,Oceania
 41,78,Oceania
@@ -6686,7 +6686,7 @@ DayElapsed_death,Deaths,Region
 3,11,North America
 2,9,North America
 1,6,North America
-59,101919,Europe
+59,102511,Europe
 58,100072,Europe
 57,96724,Europe
 56,92720,Europe
@@ -6745,7 +6745,7 @@ DayElapsed_death,Deaths,Region
 3,5,Europe
 2,3,Europe
 1,3,Europe
-38,3850,South America
+38,3872,South America
 37,3665,South America
 36,3354,South America
 35,3064,South America
@@ -6783,7 +6783,7 @@ DayElapsed_death,Deaths,Region
 3,5,South America
 2,5,South America
 1,4,South America
-40,1128,Africa
+40,1131,Africa
 39,1083,Africa
 38,1029,Africa
 37,974,Africa
@@ -6823,7 +6823,7 @@ DayElapsed_death,Deaths,Region
 3,7,Africa
 2,5,Africa
 1,3,Africa
-91,165467,Worldwide
+91,166198,Worldwide
 90,161429,Worldwide
 89,155002,Worldwide
 88,143737,Worldwide
