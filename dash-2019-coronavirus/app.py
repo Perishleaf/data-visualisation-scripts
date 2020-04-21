@@ -334,7 +334,6 @@ for i in df_latest.Continent.unique():
   table_dict['{}Table'.format(i.replace(' ', ''))] = make_continent_table(list_dict[i])
 
 # Use full country names
-# Use full country names
 dfSum = dfSum.replace({'Country/Region': 'US'}, 'United States')
 dfSum = dfSum.replace({'Country/Region': 'UK'}, 'United Kingdom')
 dfSum = dfSum.replace({'Country/Region': 'DRC'}, 'Dem. Rep. Congo')
@@ -349,8 +348,10 @@ latestDate = datetime.strftime(df_confirmed['Date'][0], '%b %d, %Y %H:%M GMT+10'
 secondLastDate = datetime.strftime(df_confirmed['Date'][1], '%b %d')
 daysOutbreak = (df_confirmed['Date'][0] - datetime.strptime('12/31/2019', '%m/%d/%Y')).days
 
-# Read cumulative data of a given region from ./cumulative_data folder
+# # Read confirmed growth data from ./lineplot_data folder
 dfs_curve = pd.read_csv('./lineplot_data/dfs_curve.csv')
+# Read death growth data from ./lineplot_data folder
+dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
 
 # Pseduo data for logplot
 pseduoDay = np.arange(1, daysOutbreak+1)
@@ -364,13 +365,14 @@ z2 = 3*(1.35)**(pseduoDay-1)  # 35% growth rate
 z3 = 3*(1.15)**(pseduoDay-1)  # 15% growth rate
 z4 = 3*(1.05)**(pseduoDay-1)  # 5% growth rate
 
-# Read death growth data of a given region from ./cumulative_data folder
-dfs_curve_death = pd.read_csv('./lineplot_data/dfs_curve_death.csv')
+
+
+# Remove tests/critical row for US and Canada and Australian and China
+df_latest = df_latest.drop(df_latest[df_latest['Confirmed'] == 0].index, axis=0)
 
 # Generate data for SUnburst plot
 df_sunburst = df_latest
-# Remove tests/critical row for US and Canada
-df_sunburst = df_sunburst.drop(df_sunburst[df_sunburst['Confirmed'] == 0].index, axis=0)
+
 # Since child node cannot be mixture of None and string, so replace 'Yokohoma' as 'Diamond Princess' and 
 # All as 'other'
 df_sunburst.at[df_sunburst.loc[df_sunburst['Country/Region'] == 'Japan',].index[0], 'Province/State'] = 'Other'
@@ -389,6 +391,8 @@ for i in dfSum['Country/Region']:
 optionList = sorted(optionList, key = lambda i: i['value'])
 # Add 'All' at the beginning of the list
 optionList = [{'label':'All', 'value':'All'}] + optionList
+
+
 #############################################################################################
 # Start to make plots
 #############################################################################################
@@ -1115,7 +1119,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                     '''
                                     Death rate is calculated using the formula: 
 
-                                    **deaths/confirmed cases**
+                                    **Death rate = (Deaths/Confirmed cases) x 100%**
                                     
                                     Note that this is only a conservative estimation. The real death rate can only be 
                                     revealed as all cases are resolved. 
@@ -1439,7 +1443,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_17.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_18.pdf', 
                             target='_blank'
                         ),
                     ]
@@ -1934,7 +1938,7 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
         paper_bgcolor='#ffffff',
         margin=go.layout.Margin(l=10, r=10, b=10, t=0, pad=40),
         hovermode='closest',
-        transition={'duration': 50},
+        transition={'duration': 500},
         annotations=[
         dict(
             x=.5,
@@ -2123,7 +2127,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
     df_region = df_region.astype(
-      {'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
+      {'date_day': 'datetime64'})
 
     if dff is USTable or dff is CANTable:
       # Create empty figure canvas
@@ -2200,14 +2204,9 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         yaxis=dict(
             showline=False, linecolor='#272e3e',
             zeroline=False,
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth=.1,
             tickmode='array',
-            # Set tick range based on the maximum number
-            # tickvals=tickList,
-            # Set tick label accordingly
-            # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
         xaxis_title="Select a location from the table (Toggle the legend to see specific curves)",
         xaxis=dict(
@@ -2218,7 +2217,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
             zeroline=False
         ),
         xaxis_tickformat='%b %d',
-        # transition = {'duration':500},
+        #transition = {'duration':500},
         hovermode='x unified',
         legend_orientation="h",
         legend=dict(x=.02, y=1.15, bgcolor="rgba(0,0,0,0)",),
@@ -2299,20 +2298,15 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                           color="grey"),
             )
         ],
-        yaxis_title="Cumulative cases numbers",
+        yaxis_title="Cumulative case numbers",
         yaxis=dict(
             showline=False, linecolor='#272e3e',
             zeroline=False,
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth=.1,
             tickmode='array',
-            # Set tick range based on the maximum number
-            # tickvals=tickList,
-            # Set tick label accordingly
-            # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
-        xaxis_title="Select a location from the table (Toggle the legend to see specific curves)",
+        xaxis_title="Select a location from the table (Toggle the legend to see specific curve)",
         xaxis=dict(
             showline=False, linecolor='#272e3e',
             showgrid=False,
@@ -2321,7 +2315,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
             zeroline=False
         ),
         xaxis_tickformat='%b %d',
-        # transition = {'duration':500},
+        #transition = {'duration':500},
         hovermode='x unified',
         legend_orientation="h",
         legend=dict(x=.02, y=1.15, bgcolor="rgba(0,0,0,0)",),
@@ -2493,7 +2487,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
     # Read cumulative data of a given region from ./cumulative_data folder
     df_region = pd.read_csv('./cumulative_data/{}.csv'.format(Region))
     df_region = df_region.astype(
-      {'Date_last_updated_AEDT': 'datetime64', 'date_day': 'datetime64'})
+      {'date_day': 'datetime64'})
 
     if dff is USTable or dff is CANTable:
       # Create empty figure canvas
@@ -2503,7 +2497,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 y=df_region['New'],
                                 fill='tozeroy',
                                 mode='lines',
-                                line_shape='spline',
+                                #line_shape='spline',
                                 name='Daily confirmed case',
                                 line=dict(color='rgba(215, 25, 28, 1)', width=2),
                                 text=[datetime.strftime(d, '%b %d %Y GMT+10')
@@ -2517,7 +2511,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 y=df_region['New_recover'],
                                 fill='tozeroy',
                                 mode='lines',
-                                line_shape='spline',
+                                #line_shape='spline',
                                 name='Daily recovered case',
                                 line=dict(color='rgba(26, 150, 34, 1)', width=2),
                                 text=[datetime.strftime(d, '%b %d %Y GMT+10')
@@ -2531,7 +2525,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 y=df_region['New_death'],
                                 fill='tozeroy',
                                 mode='lines',
-                                line_shape='spline',
+                                #line_shape='spline',
                                 name='Daily death case',
                                 line=dict(color='rgba(98, 98, 98, 1)', width=2),
                                 text=[datetime.strftime(d, '%b %d %Y GMT+10')
@@ -2568,14 +2562,9 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
         yaxis=dict(
             showline=False, linecolor='#272e3e',
             zeroline=False,
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth=.1,
             tickmode='array',
-            # Set tick range based on the maximum number
-            # tickvals=tickList,
-            # Set tick label accordingly
-            # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
         xaxis_title="Select a location from the table (Toggle the legend to see specific curve)",
         xaxis=dict(
@@ -2586,7 +2575,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
             zeroline=False
         ),
         xaxis_tickformat='%b %d',
-        # transition = {'duration':500},
+        #transition = {'duration':500},
         hovermode='x unified',
         legend_orientation="h",
         legend=dict(x=.02, y=1.15, bgcolor="rgba(0,0,0,0)",),
@@ -2604,7 +2593,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 y=df_region['New'],
                                 fill='tozeroy',
                                 mode='lines',
-                                line_shape='spline',
+                                #line_shape='spline',
                                 name='Daily confirmed case',
                                 line=dict(color='rgba(215, 25, 28, 1)', width=2),
                                 # marker=dict(size=4, color='#f4f4f2',
@@ -2620,7 +2609,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 y=df_region['New_recover'],
                                 fill='tozeroy',
                                 mode='lines',
-                                line_shape='spline',
+                                #line_shape='spline',
                                 name='Daily recovered case',
                                 line=dict(color='rgba(26, 150, 34, 1)', width=2),
                                 text=[datetime.strftime(d, '%b %d %Y GMT+10')
@@ -2634,7 +2623,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                                 y=df_region['New_death'],
                                 fill='tozeroy',
                                 mode='lines',
-                                line_shape='spline',
+                                #line_shape='spline',
                                 name='Daily death case',
                                 line=dict(color='rgba(98, 98, 98, 1)', width=2),
                                 text=[datetime.strftime(d, '%b %d %Y GMT+10')
@@ -2667,18 +2656,13 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                           color="grey"),
             )
         ],
-        yaxis_title="Daily cases numbers",
+        yaxis_title="Daily case numbers",
         yaxis=dict(
             showline=False, linecolor='#272e3e',
             zeroline=False,
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth=.1,
             tickmode='array',
-            # Set tick range based on the maximum number
-            # tickvals=tickList,
-            # Set tick label accordingly
-            # ticktext=["{:.0f}k".format(i/1000) for i in tickList]
         ),
         xaxis_title="Select a location from the table (Toggle the legend to see specific curve)",
         xaxis=dict(
@@ -2689,7 +2673,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
             zeroline=False
         ),
         xaxis_tickformat='%b %d',
-        # transition = {'duration':500},
+        #transition = {'duration':500},
         hovermode='x unified',
         legend_orientation="h",
         legend=dict(x=.02, y=1.15, bgcolor="rgba(0,0,0,0)",),
@@ -3024,20 +3008,19 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
             showline=False, 
             linecolor='#272e3e',
             zeroline=False,
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth = .1,
         ),
         xaxis=dict(
             showline=False, 
             linecolor='#272e3e',
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth = .1,
             zeroline=False
         ),
         showlegend=False,
         # hovermode = 'x unified',
+        transition = {'duration':500},
         plot_bgcolor='#ffffff',
         paper_bgcolor='#ffffff',
         font=dict(color='#292929', size=10)
@@ -3369,20 +3352,19 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
             showline=False, 
             linecolor='#272e3e',
             zeroline=False,
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth = .1,
         ),
         xaxis=dict(
             showline=False, 
             linecolor='#272e3e',
-            # showgrid=False,
             gridcolor='rgba(203, 210, 211,.3)',
             gridwidth = .1,
             zeroline=False
         ),
         showlegend=False,
         # hovermode = 'x unified',
+        transition = {'duration':500},
         plot_bgcolor='#ffffff',
         paper_bgcolor='#ffffff',
         font=dict(color='#292929', size=10)
