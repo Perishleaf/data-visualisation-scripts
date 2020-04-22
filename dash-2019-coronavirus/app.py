@@ -55,10 +55,79 @@ def make_country_table(countryName):
 
     return countryTable
 
+def make_Brazil_table(countryName):
+
+    # Suppress SettingWithCopyWarning
+    pd.options.mode.chained_assignment = None
+    countryTable = df_brazil
+    #countryTable['Active'] = countryTable['Confirmed'] - countryTable['Recovered'] - countryTable['Deaths']
+    countryTable['Death rate'] = countryTable['Deaths']/countryTable['Confirmed']
+    countryTable['Confirmed/100k'] = ((countryTable['Confirmed']/countryTable['Population'])*100000).round()
+    #countryTable['Positive rate'] = countryTable['Confirmed']/countryTable['Tests']
+    #countryTable['Tests/100k'] = ((countryTable['Tests']/countryTable['Population'])*100000).round()
+
+    countryTable = countryTable[['Province/State', 'Confirmed', 'Deaths', 'Death rate', 'Confirmed/100k', 'lat', 'lon','Population']]
+
+    countryTable = countryTable.sort_values(by=['Confirmed'], ascending=False).reset_index(drop=True)
+    # Set row ids pass to selected_row_ids
+    countryTable['id'] = countryTable['Province/State']
+    countryTable.set_index('id', inplace=True, drop=False)
+    # Turn on SettingWithCopyWarning
+    pd.options.mode.chained_assignment = 'warn'
+
+    return countryTable
+
 def make_continent_table(continent_list):
     '''This is the function for building df for Europe countries'''
     continent_table = dfSum.loc[dfSum['Country/Region'].isin(continent_list)]
     return continent_table
+
+def make_dcc_Brazil_tab(countryName, dataframe):
+    '''This is for generating tab component for country table'''
+    return dcc.Tab(
+        id='tab-datatable-interact-location-{}'.format(countryName),
+        label=countryName,
+        value=countryName,
+        className='custom-tab',
+        selected_className='custom-tab--selected',
+        children=[
+            dash_table.DataTable(
+                id='datatable-interact-location-{}'.format(countryName),
+                # Don't show coordinates
+                columns=[{"name": 'Province/State', "id": 'Province/State'}
+                            for i in dataframe.columns[0:1]] +
+                        [{"name": i, "id": i, "type": "numeric","format": FormatTemplate.percentage(2)}
+                            if i == 'Death rate' else {"name": i, "id": i, 'type': 'numeric', 'format': Format(group=',')}
+                                for i in dataframe.columns[1:5]],
+                # But still store coordinates in the table for interactivity
+                data=dataframe.to_dict("rows"),
+                #css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
+                row_selectable="single",
+                sort_action="native",
+                style_as_list_view=True,
+                style_cell={'font_family': 'Roboto',
+                            'backgroundColor': '#ffffff', 
+                },
+                fixed_rows={'headers': True, 'data': 0},
+                style_table={'minHeight': '400px',
+                             'height': '400px',
+                             'maxHeight': '400px',
+                             'overflowX': 'auto',
+                },
+                style_header={'backgroundColor': '#ffffff',
+                              'fontWeight': 'bold'},
+                style_cell_conditional=[{'if': {'column_id': 'Province/State'}, 'width': '20%'},
+                                        {'if': {'column_id': 'Confirmed'}, 'width': '20%'},
+                                        {'if': {'column_id': 'Deaths'}, 'width': '20%'},
+                                        {'if': {'column_id': 'Death rate'}, 'width': '20%'},
+                                        {'if': {'column_id': 'Confirmed/100k'}, 'width': '20%'},
+                                        {'if': {'column_id': 'Confirmed'}, 'color': '#d7191c'},
+                                        {'if': {'column_id': 'Deaths'}, 'color': '#6c6c6c'},
+                                        {'textAlign': 'center'}
+                ],
+            ),
+        ]
+    )
 
 def make_dcc_country_tab(countryName, dataframe):
     '''This is for generating tab component for country table'''
@@ -81,7 +150,7 @@ def make_dcc_country_tab(countryName, dataframe):
                                         for i in dataframe.columns[1:10]],
                         # But still store coordinates in the table for interactivity
                         data=dataframe.to_dict("rows"),
-                        css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
+                        #css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                         row_selectable="single",
                         sort_action="native",
                         style_as_list_view=True,
@@ -135,7 +204,7 @@ def make_dcc_country_tab(countryName, dataframe):
                                         for i in dataframe.columns[1:11]],
                         # But still store coordinates in the table for interactivity
                         data=dataframe.to_dict("rows"),
-                        css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
+                        #css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                         row_selectable="single",
                         sort_action="native",
                         style_as_list_view=True,
@@ -189,7 +258,7 @@ def make_dcc_country_tab(countryName, dataframe):
                                         for i in dataframe.columns[1:7]],
                         # But still store coordinates in the table for interactivity
                         data=dataframe.to_dict("rows"),
-                        css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
+                        #css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                         row_selectable="single",
                         sort_action="native",
                         style_as_list_view=True,
@@ -233,11 +302,17 @@ sheet_name = [i.replace('.csv', '')
                         for i in filename if 'data' not in i and i.endswith('.csv')]
 sheet_name.sort(reverse=True)
 
+brazil_file_name = [i for i in os.listdir('./') if i.endswith('Brazil_data.csv')]
+
 # Add coordinates for each area in the list for the latest table sheet
 # To save time, coordinates calling was done seperately
 # Import the data with coordinates
 df_latest = pd.read_csv('{}_data.csv'.format(sheet_name[0]))
 df_latest = df_latest.astype({'Date_last_updated_AEDT': 'datetime64'})
+
+# Import Brazil data
+df_brazil = pd.read_csv('{}'.format(brazil_file_name[0]))
+df_brazil = df_brazil.astype({'Date_last_updated_AEDT': 'datetime64'})
 
 # Save numbers into variables to use in the app
 confirmedCases = df_latest['Confirmed'].sum()
@@ -300,14 +375,15 @@ dfSum = dfSum.sort_values(
 dfSum['id'] = dfSum['Country/Region']
 dfSum.set_index('id', inplace=True, drop=False)
 
-# Replace 0s in 'Tests' column as 'N/A'
-dfSum = dfSum.replace({'Tests': 0, 'Positive rate':0, 'Tests/100k':0}, 'N/A')
+# Replace 0s in 'Tests' column as ''
+dfSum = dfSum.replace({'Tests': 0, 'Positive rate':0, 'Tests/100k':0}, '')
 
 # Create tables for tabs
 CNTable = make_country_table('China')
 AUSTable = make_country_table('Australia')
 USTable = make_country_table('US')
 CANTable = make_country_table('Canada')
+BRATable = make_Brazil_table('Brazil')
 
 # Remove dummy row of test/critical number in USTable
 USTable = USTable.dropna(subset=['Province/State'])
@@ -364,8 +440,6 @@ z1 = 3*(1.85)**(pseduoDay-1)  # 85% growth rate
 z2 = 3*(1.35)**(pseduoDay-1)  # 35% growth rate
 z3 = 3*(1.15)**(pseduoDay-1)  # 15% growth rate
 z4 = 3*(1.05)**(pseduoDay-1)  # 5% growth rate
-
-
 
 # Remove tests/critical row for US and Canada and Australian and China
 df_latest = df_latest.drop(df_latest[df_latest['Confirmed'] == 0].index, axis=0)
@@ -856,6 +930,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
             id="header",
             children=[
                 html.H4(
+                    id='herder-title',
                     children="Coronavirus (COVID-19) Outbreak Global Cases Monitor"),
                 html.P(
                     id="description",
@@ -879,6 +954,26 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                 ),
                 html.Hr(style={'marginTop': '.5%'},
                 ),
+                dbc.Tooltip(
+                    target='description',
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px','width':'auto', 'maxWidth':'450px'},
+                    children=
+                        dcc.Markdown(
+                            '''
+                            **What's new?**
+
+                            _April 22, 2020_
+                            * Add Brazil data by states
+
+                            **Upcoming**
+
+                            * Add Germany data by states
+                            * Add Russia data by states
+                            
+                            '''
+                        ) 
+                ),
+
             ]
         ),
         html.Div(
@@ -1212,7 +1307,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                                                     for i in dfSum.columns[1:11]],
                                     # But still store coordinates in the table for interactivity
                                     data=dfSum.to_dict("rows"),
-                                    css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
+                                    #css= [{'selector': 'tr:hover', 'rule': 'background-color: #2674f6;'}],
                                     row_selectable="single",
                                     sort_action="native",
                                     style_as_list_view=True,
@@ -1267,12 +1362,15 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                             'South America', table_dict['SouthAmericaTable']),
                         make_dcc_country_tab(
                             'Australia', AUSTable),
+                        make_dcc_Brazil_tab(
+                            'Brazil', BRATable),
                         make_dcc_country_tab(
                             'Canada', CANTable),
                         make_dcc_country_tab(
                             'Mainland China', CNTable),
                         make_dcc_country_tab(
                             'United States', USTable),
+
                     ]
                 ),
                 dbc.Tooltip(
@@ -1443,7 +1541,7 @@ app.layout = html.Div(style={'backgroundColor': '#fafbfd'},
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_18.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-22-april-2020.pdf', 
                             target='_blank'
                         ),
                     ]
@@ -1757,6 +1855,8 @@ def render_ternary_plot(value):
      Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Brazil', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Brazil', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
@@ -1766,17 +1866,18 @@ def render_ternary_plot(value):
      ]
 )
 def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
-  Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
-  Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
-  NA_derived_virtual_selected_rows,NA_selected_row_ids,
-  SA_derived_virtual_selected_rows,SA_selected_row_ids,
-  AF_derived_virtual_selected_rows,AF_selected_row_ids,
-  Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
-  Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
-  Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
-  CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
-  US_derived_virtual_selected_rows, US_selected_row_ids,  
-  ):
+    Asia_derived_virtual_selected_rows,Asia_selected_row_ids,
+    Oceania_derived_virtual_selected_rows,Oceania_selected_row_ids,
+    NA_derived_virtual_selected_rows,NA_selected_row_ids,
+    SA_derived_virtual_selected_rows,SA_selected_row_ids,
+    AF_derived_virtual_selected_rows,AF_selected_row_ids,
+    Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
+    Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+    Brazil_derived_virtual_selected_rows, Brazil_selected_row_ids,
+    Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
+    CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
+    US_derived_virtual_selected_rows, US_selected_row_ids,):
+
     # When the table is first rendered, `derived_virtual_data` and
     # `derived_virtual_selected_rows` will be `None`. This is due to an
     # idiosyncracy in Dash (unsupplied properties are always None and Dash
@@ -1787,184 +1888,264 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
     # `derived_virtual_data=df.to_rows('dict')` when you initialize
     # the component.
 
-    if value == 'Worldwide':
-      if derived_virtual_selected_rows is None:
-        derived_virtual_selected_rows = []
+    if value != 'Brazil':
 
-      dff = dfSum
-      latitude = 14.056159 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lat
-      longitude = 6.395626 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lon
-      zoom = 1.02 if len(derived_virtual_selected_rows) == 0 else 4
+        if value == 'Worldwide':
+            if derived_virtual_selected_rows is None:
+                derived_virtual_selected_rows = []
+            dff = dfSum
+            latitude = 14.056159 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lat
+            longitude = 6.395626 if len(derived_virtual_selected_rows) == 0 else dff.loc[selected_row_ids[0]].lon
+            zoom = 1.02 if len(derived_virtual_selected_rows) == 0 else 4
       
-    elif value == 'Australia':
-      if Australia_derived_virtual_selected_rows is None:
-        Australia_derived_virtual_selected_rows = []
+        elif value == 'Australia':
+            if Australia_derived_virtual_selected_rows is None:
+                Australia_derived_virtual_selected_rows = []
 
-      dff = AUSTable
-      latitude = -25.931850 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lat
-      longitude = 134.024931 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lon
-      zoom = 3 if len(Australia_derived_virtual_selected_rows) == 0 else 5
+            dff = AUSTable
+            latitude = -25.931850 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lat
+            longitude = 134.024931 if len(Australia_derived_virtual_selected_rows) == 0 else dff.loc[Australia_selected_row_ids[0]].lon
+            zoom = 3 if len(Australia_derived_virtual_selected_rows) == 0 else 5
       
-    elif value == 'Canada':
-      if Canada_derived_virtual_selected_rows is None:
-        Canada_derived_virtual_selected_rows = []
+        elif value == 'Canada':
+            if Canada_derived_virtual_selected_rows is None:
+                Canada_derived_virtual_selected_rows = []
 
-      dff = CANTable
-      latitude = 55.474012 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lat
-      longitude = -97.344913 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lon
-      zoom = 3 if len(Canada_derived_virtual_selected_rows) == 0 else 5
+            dff = CANTable
+            latitude = 55.474012 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lat
+            longitude = -97.344913 if len(Canada_derived_virtual_selected_rows) == 0 else dff.loc[Canada_selected_row_ids[0]].lon
+            zoom = 3 if len(Canada_derived_virtual_selected_rows) == 0 else 5
       
-    elif value == 'Mainland China':
-      if CHN_derived_virtual_selected_rows is None:
-        CHN_derived_virtual_selected_rows = []
+        elif value == 'Mainland China':
+            if CHN_derived_virtual_selected_rows is None:
+                CHN_derived_virtual_selected_rows = []
 
-      dff = CNTable
-      latitude = 33.471197 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lat
-      longitude = 106.206780 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lon
-      zoom = 2.5 if len(CHN_derived_virtual_selected_rows) == 0 else 5
+            dff = CNTable
+            latitude = 33.471197 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lat
+            longitude = 106.206780 if len(CHN_derived_virtual_selected_rows) == 0 else dff.loc[CHN_selected_row_ids[0]].lon
+            zoom = 2.5 if len(CHN_derived_virtual_selected_rows) == 0 else 5
       
-    elif value == 'United States':
-      if US_derived_virtual_selected_rows is None:
-        US_derived_virtual_selected_rows = []
+        elif value == 'United States':
+            if US_derived_virtual_selected_rows is None:
+                US_derived_virtual_selected_rows = []
 
-      dff = USTable
-      latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
-      longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
-      zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
+            dff = USTable
+            latitude = 40.022092 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lat
+            longitude = -98.828101 if len(US_derived_virtual_selected_rows) == 0 else dff.loc[US_selected_row_ids[0]].lon
+            zoom = 3 if len(US_derived_virtual_selected_rows) == 0 else 5
       
-    elif value == 'Europe':
-      if Europe_derived_virtual_selected_rows is None:
-        Europe_derived_virtual_selected_rows = []
+        elif value == 'Europe':
+            if Europe_derived_virtual_selected_rows is None:
+                Europe_derived_virtual_selected_rows = []
 
-      dff = table_dict['EuropeTable']
-      latitude = 52.405175 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lat
-      longitude = 11.403996 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lon
-      zoom = 1.5 if len(Europe_derived_virtual_selected_rows) == 0 else 5
+            dff = table_dict['EuropeTable']
+            latitude = 52.405175 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lat
+            longitude = 11.403996 if len(Europe_derived_virtual_selected_rows) == 0 else dff.loc[Europe_selected_row_ids[0]].lon
+            zoom = 1.5 if len(Europe_derived_virtual_selected_rows) == 0 else 5
 
-    elif value == 'Asia':
-      if Asia_derived_virtual_selected_rows is None:
-        Asia_derived_virtual_selected_rows = []
+        elif value == 'Asia':
+            if Asia_derived_virtual_selected_rows is None:
+                Asia_derived_virtual_selected_rows = []
 
-      dff = table_dict['AsiaTable']
-      latitude = 23.066523 if len(Asia_derived_virtual_selected_rows) == 0 else dff.loc[Asia_selected_row_ids[0]].lat
-      longitude = 104.937341 if len(Asia_derived_virtual_selected_rows) == 0 else dff.loc[Asia_selected_row_ids[0]].lon
-      zoom = 1 if len(Asia_derived_virtual_selected_rows) == 0 else 5
+            dff = table_dict['AsiaTable']
+            latitude = 23.066523 if len(Asia_derived_virtual_selected_rows) == 0 else dff.loc[Asia_selected_row_ids[0]].lat
+            longitude = 104.937341 if len(Asia_derived_virtual_selected_rows) == 0 else dff.loc[Asia_selected_row_ids[0]].lon
+            zoom = 1 if len(Asia_derived_virtual_selected_rows) == 0 else 5
 
-    elif value == 'North America':
-      if NA_derived_virtual_selected_rows is None:
-        NA_derived_virtual_selected_rows = []
+        elif value == 'North America':
+            if NA_derived_virtual_selected_rows is None:
+                NA_derived_virtual_selected_rows = []
 
-      dff = table_dict['NorthAmericaTable']
-      latitude = 40.022092 if len(NA_derived_virtual_selected_rows) == 0 else dff.loc[NA_selected_row_ids[0]].lat
-      longitude = -98.828101 if len(NA_derived_virtual_selected_rows) == 0 else dff.loc[NA_selected_row_ids[0]].lon
-      zoom = 1 if len(NA_derived_virtual_selected_rows) == 0 else 5
+            dff = table_dict['NorthAmericaTable']
+            latitude = 40.022092 if len(NA_derived_virtual_selected_rows) == 0 else dff.loc[NA_selected_row_ids[0]].lat
+            longitude = -98.828101 if len(NA_derived_virtual_selected_rows) == 0 else dff.loc[NA_selected_row_ids[0]].lon
+            zoom = 1 if len(NA_derived_virtual_selected_rows) == 0 else 5
 
-    elif value == 'South America':
-      if SA_derived_virtual_selected_rows is None:
-        SA_derived_virtual_selected_rows = []
+        elif value == 'South America':
+            if SA_derived_virtual_selected_rows is None:
+                SA_derived_virtual_selected_rows = []
 
-      dff = table_dict['SouthAmericaTable']
-      latitude = -6.171080 if len(SA_derived_virtual_selected_rows) == 0 else dff.loc[SA_selected_row_ids[0]].lat
-      longitude = -62.361203 if len(SA_derived_virtual_selected_rows) == 0 else dff.loc[SA_selected_row_ids[0]].lon
-      zoom = 1 if len(SA_derived_virtual_selected_rows) == 0 else 5
+            dff = table_dict['SouthAmericaTable']
+            latitude = -6.171080 if len(SA_derived_virtual_selected_rows) == 0 else dff.loc[SA_selected_row_ids[0]].lat
+            longitude = -62.361203 if len(SA_derived_virtual_selected_rows) == 0 else dff.loc[SA_selected_row_ids[0]].lon
+            zoom = 1 if len(SA_derived_virtual_selected_rows) == 0 else 5
 
-    elif value == 'Oceania':
-      if Oceania_derived_virtual_selected_rows is None:
-        Oceania_derived_virtual_selected_rows = []
+        elif value == 'Oceania':
+            if Oceania_derived_virtual_selected_rows is None:
+                Oceania_derived_virtual_selected_rows = []
 
-      dff = table_dict['OceaniaTable']
-      latitude = -25.931850 if len(Oceania_derived_virtual_selected_rows) == 0 else dff.loc[Oceania_selected_row_ids[0]].lat
-      longitude = 134.024931 if len(Oceania_derived_virtual_selected_rows) == 0 else dff.loc[Oceania_selected_row_ids[0]].lon
-      zoom = 2 if len(Oceania_derived_virtual_selected_rows) == 0 else 5
+            dff = table_dict['OceaniaTable']
+            latitude = -25.931850 if len(Oceania_derived_virtual_selected_rows) == 0 else dff.loc[Oceania_selected_row_ids[0]].lat
+            longitude = 134.024931 if len(Oceania_derived_virtual_selected_rows) == 0 else dff.loc[Oceania_selected_row_ids[0]].lon
+            zoom = 2 if len(Oceania_derived_virtual_selected_rows) == 0 else 5
 
-    elif value == 'Africa':
-      if AF_derived_virtual_selected_rows is None:
-        AF_derived_virtual_selected_rows = []
+        elif value == 'Africa':
+            if AF_derived_virtual_selected_rows is None:
+                AF_derived_virtual_selected_rows = []
 
-      dff = table_dict['AfricaTable']
-      latitude = 5.986935 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lat
-      longitude = 22.252163 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lon
-      zoom = 1 if len(AF_derived_virtual_selected_rows) == 0 else 5
+            dff = table_dict['AfricaTable']
+            latitude = 5.986935 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lat
+            longitude = 22.252163 if len(AF_derived_virtual_selected_rows) == 0 else dff.loc[AF_selected_row_ids[0]].lon
+            zoom = 1 if len(AF_derived_virtual_selected_rows) == 0 else 5
       
-    hovertext_value = ['Active: {:,d}<br>Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(h, i, j, k, t, q) 
-                          for h, i, j, k, t, q in zip(
-                          	df_latest['Confirmed']-df_latest['Recovered']-df_latest['Deaths'],
-                            df_latest['Confirmed'],  df_latest['Recovered'],
-                            df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], 
-                            df_latest['Confirmed']*100000/df_latest['Population']
+        hovertext_value = ['Active: {:,d}<br>Confirmed: {:,d}<br>Recovered: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(h, i, j, k, t, q) 
+                            for h, i, j, k, t, q in zip(
+                                df_latest['Confirmed']-df_latest['Recovered']-df_latest['Deaths'],
+                                df_latest['Confirmed'],  df_latest['Recovered'],
+                                df_latest['Deaths'], df_latest['Deaths']/df_latest['Confirmed'], 
+                                df_latest['Confirmed']*100000/df_latest['Population']
                             )
-    ]
+        ]
 
-    mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
+        mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
 
-    # Generate a list for hover text display
-    textList = []
-    for area, region in zip(df_latest['Province/State'], df_latest['Country/Region']):
+        # Generate a list for hover text display
+        textList = []
+        for area, region in zip(df_latest['Province/State'], df_latest['Country/Region']):
 
-        if type(area) is str:
-            if region == "Hong Kong" or region == "Macau" or region == "Taiwan":
-                textList.append(area)
+            if type(area) is str:
+                if region == "Hong Kong" or region == "Macau" or region == "Taiwan":
+                    textList.append(area)
+                else:
+                    textList.append(area+', '+region)
             else:
-                textList.append(area+', '+region)
-        else:
-            textList.append(region)
+                textList.append(region)
 
-    # Generate a list for color gradient display
-    colorList = []
-    for comfirmed, recovered, deaths in zip(df_latest['Confirmed'], df_latest['Recovered'], df_latest['Deaths']):
-        remaining = comfirmed - deaths - recovered
-        colorList.append(remaining)
+        # Generate a list for color gradient display
+        colorList = []
+        for comfirmed, recovered, deaths in zip(df_latest['Confirmed'], df_latest['Recovered'], df_latest['Deaths']):
+            remaining = comfirmed - deaths - recovered
+            colorList.append(remaining)
 
-    fig2 = go.Figure(go.Scattermapbox(
-        lat=df_latest['lat'],
-        lon=df_latest['lon'],
-        mode='markers',
-        marker=go.scattermapbox.Marker(
-            color=['#d7191c' if i > 0 else '#1a9622' for i in colorList],
-            size=[i**(1/3) for i in df_latest['Confirmed']],
-            sizemin=1,
-            sizemode='area',
-            sizeref=2.*max([math.sqrt(i)
-                           for i in df_latest['Confirmed']])/(100.**2),
-        ),
-        text=textList,
-        hovertext=hovertext_value,
-        hovertemplate="<b>%{text}</b><br><br>" +
-                        "%{hovertext}<br>" +
-                        "<extra></extra>")
-    )
-    fig2.update_layout(
-        plot_bgcolor='#ffffff',
-        paper_bgcolor='#ffffff',
-        margin=go.layout.Margin(l=10, r=10, b=10, t=0, pad=40),
-        hovermode='closest',
-        transition={'duration': 500},
-        annotations=[
-        dict(
-            x=.5,
-            y=-.0,
-            align='center',
-            showarrow=False,
-            text="Points are placed based on data geolocation levels.<br>Province/State level - Australia, China, Canada, and United States; Country level- other countries.",
-            xref="paper",
-            yref="paper",
-            font=dict(size=10, color='#292929'),
-        )],
-        mapbox=go.layout.Mapbox(
-            accesstoken=mapbox_access_token,
-            style="light",
-            # The direction you're facing, measured clockwise as an angle from true north on a compass
-            bearing=0,
-            center=go.layout.mapbox.Center(
-                lat=latitude,
-                lon=longitude
+        fig2 = go.Figure(go.Scattermapbox(
+            lat=df_latest['lat'],
+            lon=df_latest['lon'],
+            mode='markers',
+            marker=go.scattermapbox.Marker(
+                color=['#d7191c' if i > 0 else '#1a9622' for i in colorList],
+                size=[i**(1/3) for i in df_latest['Confirmed']],
+                sizemin=1,
+                sizemode='area',
+                sizeref=2.*max([math.sqrt(i)
+                    for i in df_latest['Confirmed']])/(100.**2),
             ),
-            pitch=0,
-            zoom=zoom
+            text=textList,
+            hovertext=hovertext_value,
+            hovertemplate="<b>%{text}</b><br><br>" +
+                          "%{hovertext}<br>" +
+                          "<extra></extra>")
         )
-    )
+        fig2.update_layout(
+            plot_bgcolor='#ffffff',
+            paper_bgcolor='#ffffff',
+            margin=go.layout.Margin(l=10, r=10, b=10, t=0, pad=40),
+            hovermode='closest',
+            transition={'duration': 500},
+            annotations=[
+                dict(x=.5,
+                    y=-.0,
+                    align='center',
+                    showarrow=False,
+                    text="Points are placed based on data geolocation levels.<br>Province/State level - Australia, China, Canada, and United States; Country level- other countries.",
+                    xref="paper",
+                    yref="paper",
+                    font=dict(size=10, color='#292929'),
+                )
+            ],
+            mapbox=go.layout.Mapbox(
+                accesstoken=mapbox_access_token,
+                style="light",
+                # The direction you're facing, measured clockwise as an angle from true north on a compass
+                bearing=0,
+                center=go.layout.mapbox.Center(
+                    lat=latitude,
+                    lon=longitude
+                ),
+                pitch=0,
+                zoom=zoom
+            )
+        )
 
-    return fig2
+        return fig2
+    elif value == 'Brazil':
+        if Brazil_derived_virtual_selected_rows is None:
+            Brazil_derived_virtual_selected_rows = []
+
+        dff = BRATable
+        latitude = -12.423067 if len(Brazil_derived_virtual_selected_rows) == 0 else dff.loc[Brazil_selected_row_ids[0]].lat
+        longitude = -58.627803 if len(Brazil_derived_virtual_selected_rows) == 0 else dff.loc[Brazil_selected_row_ids[0]].lon
+        zoom = 3 if len(Brazil_derived_virtual_selected_rows) == 0 else 5
+
+        hovertext_value = ['Confirmed: {:,d}<br>Death: {:,d}<br>Death rate: {:.2%}<br>Confirmed cases/100k population: {:.0f}'.format(h, i, j, k) 
+                            for h, i, j, k in zip(
+                                df_brazil['Confirmed'],
+                                df_brazil['Deaths'], 
+                                df_brazil['Deaths']/df_brazil['Confirmed'], 
+                                df_brazil['Confirmed']*100000/df_brazil['Population']
+                            )
+        ]
+
+        mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
+
+        # Generate a list for hover text display
+        textList = []
+        for area, region in zip(df_brazil['Province/State'], df_brazil['Country/Region']):
+
+            if type(area) is str:
+                textList.append(area+', '+region)
+            else:
+                textList.append(region)
+
+        fig2 = go.Figure(go.Scattermapbox(
+            lat=df_brazil['lat'],
+            lon=df_brazil['lon'],
+            mode='markers',
+            marker=go.scattermapbox.Marker(
+                color='#d7191c',
+                size=[i**(1/3) for i in df_brazil['Confirmed']],
+                sizemin=1,
+                sizemode='area',
+                sizeref=2.*max([math.sqrt(i)
+                    for i in df_brazil['Confirmed']])/(100.**2),
+            ),
+            text=textList,
+            hovertext=hovertext_value,
+            hovertemplate="<b>%{text}</b><br><br>" +
+                          "%{hovertext}<br>" +
+                          "<extra></extra>")
+        )
+        fig2.update_layout(
+            plot_bgcolor='#ffffff',
+            paper_bgcolor='#ffffff',
+            margin=go.layout.Margin(l=10, r=10, b=10, t=0, pad=40),
+            hovermode='closest',
+            transition={'duration': 500},
+            annotations=[
+                dict(x=.5,
+                    y=-.0,
+                    align='center',
+                    showarrow=False,
+                    text="Points are placed based on data geolocation levels.<br>Province/State level - Australia, China, Canada, and United States; Country level- other countries.",
+                    xref="paper",
+                    yref="paper",
+                    font=dict(size=10, color='#292929'),
+                )
+            ],
+            mapbox=go.layout.Mapbox(
+                accesstoken=mapbox_access_token,
+                style="light",
+                # The direction you're facing, measured clockwise as an angle from true north on a compass
+                bearing=0,
+                center=go.layout.mapbox.Center(
+                    lat=latitude,
+                    lon=longitude
+                ),
+                pitch=0,
+                zoom=zoom
+            )
+        )
+
+        return fig2
 
 @app.callback(
     Output('datatable-interact-lineplot', 'figure'),
@@ -1985,6 +2166,8 @@ def update_figures(value, derived_virtual_selected_rows, selected_row_ids,
      Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Brazil', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Brazil', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
@@ -2001,6 +2184,7 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
   AF_derived_virtual_selected_rows,AF_selected_row_ids,
   Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Brazil_derived_virtual_selected_rows, Brazil_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids,  
@@ -2029,6 +2213,16 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = Australia_selected_row_ids[0]
       else:
         Region = 'Australia'
+
+    elif value == 'Brazil':
+      if Brazil_derived_virtual_selected_rows is None:
+        Brazil_derived_virtual_selected_rows = []
+
+      dff = BRATable
+      if Brazil_selected_row_ids:
+        Region = Brazil_selected_row_ids[0]
+      else:
+        Region = 'Brazil'
 
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
@@ -2345,6 +2539,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
      Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Brazil', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Brazil', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
@@ -2362,6 +2558,7 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
   AF_derived_virtual_selected_rows,AF_selected_row_ids,
   Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Brazil_derived_virtual_selected_rows, Brazil_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids,  
@@ -2390,6 +2587,16 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = Australia_selected_row_ids[0]
       else:
         Region = 'Australia'
+
+    elif value == 'Brazil':
+      if Brazil_derived_virtual_selected_rows is None:
+        Brazil_derived_virtual_selected_rows = []
+
+      dff = BRATable
+      if Brazil_selected_row_ids:
+        Region = Brazil_selected_row_ids[0]
+      else:
+        Region = 'Brazil'
 
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
@@ -2703,6 +2910,8 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
      Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Brazil', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Brazil', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
@@ -2719,6 +2928,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
   AF_derived_virtual_selected_rows,AF_selected_row_ids,
   Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Brazil_derived_virtual_selected_rows, Brazil_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids,  
@@ -2744,6 +2954,15 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = Australia_selected_row_ids[0]
       else:
         Region = 'Australia'
+
+    elif value == 'Brazil':
+      if Brazil_derived_virtual_selected_rows is None:
+        Brazil_derived_virtual_selected_rows = []
+
+      if Brazil_selected_row_ids:
+        Region = Brazil_selected_row_ids[0]
+      else:
+        Region = 'Brazil'
 
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
@@ -3047,6 +3266,8 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
      Input('datatable-interact-location-Europe', 'selected_row_ids'),
      Input('datatable-interact-location-Australia', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Australia', 'selected_row_ids'),
+     Input('datatable-interact-location-Brazil', 'derived_virtual_selected_rows'),
+     Input('datatable-interact-location-Brazil', 'selected_row_ids'),
      Input('datatable-interact-location-Canada', 'derived_virtual_selected_rows'),
      Input('datatable-interact-location-Canada', 'selected_row_ids'),
      Input('datatable-interact-location-Mainland China', 'derived_virtual_selected_rows'),
@@ -3063,6 +3284,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
   AF_derived_virtual_selected_rows,AF_selected_row_ids,
   Europe_derived_virtual_selected_rows, Europe_selected_row_ids,
   Australia_derived_virtual_selected_rows, Australia_selected_row_ids,
+  Brazil_derived_virtual_selected_rows, Brazil_selected_row_ids,
   Canada_derived_virtual_selected_rows, Canada_selected_row_ids,
   CHN_derived_virtual_selected_rows, CHN_selected_row_ids,
   US_derived_virtual_selected_rows, US_selected_row_ids,  
@@ -3088,6 +3310,15 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         Region = Australia_selected_row_ids[0]
       else:
         Region = 'Australia'
+
+    elif value == 'Brazil':
+      if Brazil_derived_virtual_selected_rows is None:
+        Brazil_derived_virtual_selected_rows = []
+
+      if Brazil_selected_row_ids:
+        Region = Brazil_selected_row_ids[0]
+      else:
+        Region = 'Brazil'
 
     elif value == 'Canada':
       if Canada_derived_virtual_selected_rows is None:
