@@ -739,7 +739,7 @@ hr {
 .container:after,
 .row:after,
 .u-cf {
-    content: "";
+    /*content: "";*/
     display: table;
     clear: both;
 }
@@ -851,7 +851,6 @@ hr {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     display: flex !important;
     flex-wrap: row wrap;    
-    /*align-items: center;*/
     justify-content: center;
 }
 
@@ -878,37 +877,94 @@ hr {
     margin: 0;
 }
 
+.number-plate {
+   margin-left: 1.5%;
+   margin-right: 1.5%; 
+   margin-bottom: .8%;
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-between
+}
+
+.number-plate-single {
+    width: 19.35%; 
+    background-color: #ffffff;
+    vertical-align: top;
+    box-shadow: 0px 0px 10px #ededee;
+    border: 1px solid #ededee;
+}
+
+.number-plate-single h3 {
+    text-align: center;
+}
+
+.number-plate-single p {
+    padding: .5rem;
+}
+
+.number-plate-single h5 {
+    text-align: center;
+    padding: .1rem;
+}
+
 .dcc-plot {
     margin-left: 1.5%;
     margin-right: 1.5%;
-    /*background-color: #ffffff;*/
     margin-bottom: .8%;
-    margin-top: .5%;
-    /*box-shadow:0px 0px 10px #ededee;
-    border: 1px solid #ededee;*/
-    /*display:flex; 
-    flex-wrap: row wrap;
-    justify-content: center;*/
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between
 }
 
 .dcc-sub-plot {
+    background-color: #ffffff;
     box-shadow:0px 0px 10px #ededee;
     border: 1px solid #ededee;
     width: 49.6%;
-    float: left;
+    float: right;
 }
 
-.dcc-map {
-    margin-left: 1.5%; 
-    margin-right: 1.5%; 
-    margin-bottom: .8%;
-    display:flex; 
-    flex-wrap:row wrap; 
-    justify-content:center;
-
+.dcc-sub-plot h5 {
+    text-align: center;
+    background-color: #ffffff;
+    color: #292929;
+    padding: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
 }
+
+.dcc-sub-plot div {
+    background-color: #ffffff;
+}
+
+#case-timeline-log-button {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+}
+
+#case-timeline-log-button h5 {
+    text-align: center;
+    background-color: #ffffff;
+    display: inline-block;
+    color: #292929;
+    padding: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#combined-line-plot {
+    height: 300px;
+}
+
+#log-button {
+    display: inline-block;
+    padding: 1rem;
+} 
 
 .dcc-table {
+    background-color: #ffffff;
     margin-left: 1.5%;
     margin-right: 1.5%;
     margin-bottom: .8%;
@@ -917,8 +973,45 @@ hr {
     justify-content: center;
 }
 
-[id^="dash-datatable"] {
-    font-size: .3rem;
+.dcc-table h5 {
+    text-align: center;
+    background-color: #ffffff;
+    color: #292929;
+    padding: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.header-container {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.header-container h5 {
+    text-align: center;
+    background-color: #ffffff;
+    color: #292929;
+    padding: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.footer-container {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: .8%;
+}
+
+.footer-container hr {
+     margin-bottom: .8%;
+}
+
+.footer-container p {
+    text-align: center;
+    margin: auto;
+    margin-top: .5%;
 }
 
 @media (min-width: 1251px) {
@@ -1012,13 +1105,13 @@ hr {
     .number-plate h3 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         font-weight: bold;
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     .number-plate p {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         font-weight: bold;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .number-plate h5{
@@ -1243,6 +1336,7 @@ hr {
 
 #header {
     margin-left: 1.5%;
+    margin-right: 1.5%;
 }
 
 
