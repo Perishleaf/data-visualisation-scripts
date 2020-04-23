@@ -989,6 +989,13 @@ hr {
     align-items: baseline;
 }
 
+.header-container-dropdown {
+    display: flex;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+}
+
 .header-container h5 {
     text-align: center;
     background-color: #ffffff;

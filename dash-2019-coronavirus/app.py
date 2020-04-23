@@ -1448,6 +1448,7 @@ app.layout = html.Div(
                                 * [DX Doctor](https://ncov.dxy.cn/ncovh5/view/en_pneumonia?from=dxy&source=&link=&share=)
                                 * [Tencent News](https://news.qq.com//zt2020/page/feiyan.htm#charts)
                                 * [COVID-19 in US and Canada by 1Point3Acres](https://coronavirus.1point3acres.com/en)
+                                * [Robert Koch Institute](https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Fallzahlen.html)
 
                                 '''
                             )
@@ -1566,7 +1567,7 @@ app.layout = html.Div(
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-22-april-2020.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-23-april-2020.pdf', 
                             target='_blank'
                         ),
                     ]
