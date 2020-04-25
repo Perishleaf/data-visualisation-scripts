@@ -471,7 +471,7 @@ WorldwildTable = WorldwildTable[['Country/Region', 'Active',
     'Confirmed', 'Recovered', 'Deaths', 'Critical', 'Death rate', 'Tests', 'Positive rate', 'Tests/100k', 'Confirmed/100k', 'lat', 'lon','Population']]
 # Sort value based on Active cases and then Confirmed cases
 WorldwildTable = WorldwildTable.sort_values(
-    by=['Active', 'Confirmed'], ascending=False).reset_index(drop=True)
+    by=['Confirmed'], ascending=False).reset_index(drop=True)
 # Set row ids pass to selected_row_ids
 WorldwildTable['id'] = WorldwildTable['Country/Region']
 WorldwildTable.set_index('id', inplace=True, drop=False)
@@ -1579,7 +1579,7 @@ app.layout = html.Div(
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-24-april-2020.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-25-april-2020.pdf', 
                             target='_blank'
                         ),
                     ]
