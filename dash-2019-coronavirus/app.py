@@ -1432,6 +1432,18 @@ app.layout = html.Div(
                         )                                              
                 ),
                 dbc.Tooltip(
+                    target='tab-datatable-interact-location-US',
+                    style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px','width':'auto', 'maxWidth':'250px'},
+                    children=
+                        dcc.Markdown(
+                            children=(
+                                '''
+                                Add case data for US Military, Veteran Affair and Federal Bureau of Prisons on April 24 2020. 
+                                '''
+                            )
+                        )                                              
+                ),
+                dbc.Tooltip(
                     target='dcc-table-header',
                     style={"fontSize":"1.8em", 'textAlign':'left', 'padding':'10px', 'width':'auto', 'maxWidth':'450px'},
                     children=
@@ -1567,7 +1579,7 @@ app.layout = html.Div(
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-23-april-2020.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-24-april-2020.pdf', 
                             target='_blank'
                         ),
                     ]
