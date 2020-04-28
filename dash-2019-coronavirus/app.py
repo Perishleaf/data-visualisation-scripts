@@ -1027,7 +1027,7 @@ server = app.server
 app.config['suppress_callback_exceptions'] = True # This is to prevent app crash when loading since we have plot that only render when user clicks.
 
 app.layout = html.Div(
-    style={'backgroundColor': '#fafbfd'},
+    id='app-body',
     children=[
         html.Div(
             id="header",
@@ -1579,7 +1579,7 @@ app.layout = html.Div(
                         ' | ',
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-27-april-2020.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-28-april-2020.pdf', 
                             target='_blank'
                         ),
                     ]
