@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&family=Source+Serif+Pro:wght@700&display=swap');
+
 
 /* Table of contents
 ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -40,7 +40,7 @@
 .container {
     display: flex;
     border-radius: 5px;
-    box-shadow: 2px 2px 2px lightgrey;
+    box-shadow: none;
     position: relative;
     width: 100%;
     margin: 0 auto;
@@ -84,7 +84,7 @@
     .container {
         width: 100%;
         border-radius: 5px;
-        box-shadow: 2px 2px 2px lightgrey;
+        box-shadow: none;
     }
 
     .column,
@@ -251,7 +251,7 @@ body {
     font-size: 1.5rem; /* currently ems cause chrome bug misinterpreting rems on body element */
     line-height: 1.6;
     font-weight: 400;
-    font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #292929;
     margin: 0;
 }
@@ -309,14 +309,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 4.5rem;
     line-height: 1.2;
-    letter-spacing: -.1rem;
+    letter-spacing: 0;
     margin-bottom: 2rem;
 }
 
 h2 {
     font-size: 3.6rem;
     line-height: 1.25;
-    letter-spacing: -.1rem;
+    letter-spacing: 0;
     margin-bottom: 1.8rem;
     margin-top: 1.8rem;
 }
@@ -324,25 +324,25 @@ h2 {
 h3 {
     font-size: 3.0rem;
     line-height: 1.3;
-    letter-spacing: -.1rem;
+    letter-spacing: 0;
     margin-bottom: .5rem;
     margin-top: .5rem;
 }
 
 h4 {
-    font-family: "Playfair Display", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 5rem;
     line-height: 1.35;
-    letter-spacing: -.08rem;
+    letter-spacing: 0;
     margin-bottom: 1.2rem;
     padding-top: 1rem;
 }
 
 h5 {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 2rem;
     line-height: 1.5;
-    letter-spacing: -.05rem;
+    letter-spacing: 0;
     margin-bottom: 0.6rem;
     margin-top: 0.6rem;
 }
@@ -360,25 +360,44 @@ p {
 }
 
 #heatmap-title {
-    font-family: "Playfair Display", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 2rem;
+}
+
+#header {
+	padding-top: 100px;
+	padding-bottom: 65px;
+}
+
+#header h4 {
+	max-width: 650px;
+    margin: 0 auto;
+    font-family: 'Source Serif Pro', sans-serif;
+    font-weight: 700;
+    padding-bottom: 50px;
+    text-align: center;
+}
+#header hr {
+	margin-top: 85px;	
 }
 
 #description {
     font-size: 2rem;
-    border-left: #2674f6 solid .5rem;
-    padding-left: 1rem;
-    max-width: 150rem;
-    margin: 2rem 0 1rem 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    border-left: #2674f6 solid 0rem;
+    padding-left: 0rem;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 .time-stamp {
-    border-left: #d7191c solid .5rem;
-    padding-left: 1rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    border-left: #d7191c solid 0rem;
+    padding-left: 0rem;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
+    max-width:700px;
+    margin: 0 auto;
 }
 
 #note {
@@ -413,7 +432,7 @@ p {
     .time-stamp {
         border-left: #d7191c solid .5rem;
         padding-left: 1rem;
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: .5rem;
         font-weight: bold;
     }
@@ -452,67 +471,54 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    height: 2rem;
-    padding: 0 30px;
     text-align: center;
-    font-size: 4rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-family: Arial;
-    
-    
+    font-family: 'Roboto' sans-serif;   
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
-    border: 1px solid black;
+    border: none;
     cursor: pointer;
     box-sizing: border-box;
+    color: #292929;
 }
 
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
-input[type="button"]:hover,
-.button:focus,
-button:focus,
-input[type="submit"]:focus,
-input[type="reset"]:focus,
-input[type="button"]:focus {
-    color: #333;
-    border-color: #888;
-    outline: 0;
+input[type="button"]:hover {
+    color: #0FA0CE;
+    text-decoration: underline;
+    border-color: transparent;
+    background-color: transparent;
+    outline: transparent;
 }
 
-.button.button-primary,
-button.button-primary,
-input[type="submit"].button-primary,
-input[type="reset"].button-primary,
-input[type="button"].button-primary {
-    color: #FFF;
-    background-color: #33C3F0;
-    border-color: #33C3F0;
+.button:focus {
+    color: #0FA0CE;
+    border-color: transparent;
+    background-color: transparent;
+    outline: transparent;
 }
 
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
-    color: #FFF;
-    background-color: #1EAEDB;
-    border-color: #1EAEDB;
+.button:active {
+    color: #292929;
+    border-color: transparent;
+    background-color: transparent;
+    outline: transparent;
 }
 
-#modal {
+#modal, #modal-contributor{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    font-family: 'Roboto', sans-serif;
 }
 
 #header-button {
@@ -725,7 +731,7 @@ ol {
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 hr {
-    margin-top: 3rem;
+    margin-top: 85px;
     margin-bottom: 2.5rem;
     border-width: 0;
     border-top: 1px solid #E1E1E1;
@@ -848,7 +854,7 @@ hr {
     border-bottom: 0px !important;
     background-color: #fafbfd;
     padding: 0.8rem !important;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex !important;
     flex-wrap: row wrap;    
     justify-content: center;
@@ -861,7 +867,7 @@ hr {
 
 .custom-tab--selected {
     color: black;
-    box-shadow: 1px 1px 0px white;
+    box-shadow: none;
     border-left: 0px solid lightgrey !important;
     border-right: 0px solid lightgrey !important;
     border-top: .2rem solid #e36209 !important;
@@ -873,7 +879,7 @@ hr {
 
 
 #app-body {
-    background-color: rgb(250, 251, 253);
+    background-color: #ffffff;
 }
 
 #graph-container {
@@ -885,7 +891,7 @@ hr {
 .number-plate {
    margin-left: 1.5%;
    margin-right: 1.5%; 
-   margin-bottom: .8%;
+   margin-bottom: 85px;
    display: flex;
    flex-flow: row wrap;
    justify-content: space-between
@@ -895,8 +901,8 @@ hr {
     width: 19.35%; 
     background-color: #ffffff;
     vertical-align: top;
-    box-shadow: 0px 0px 10px #ededee;
-    border: 1px solid #ededee;
+    box-shadow: none;
+    border: 0px solid #ededee;
 }
 
 .number-plate-single h3 {
@@ -923,10 +929,11 @@ hr {
 
 .dcc-sub-plot {
     background-color: #ffffff;
-    box-shadow:0px 0px 10px #ededee;
-    border: 1px solid #ededee;
+    box-shadow:none;
+    border: 0px solid #ededee;
     width: 49.6%;
     float: right;
+    padding: 25px;
 }
 
 .dcc-sub-plot h5 {
@@ -946,7 +953,7 @@ hr {
     display: flex;
     background-color: #ffffff;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
 }
 
 #case-timeline-log-button h5 {
@@ -955,7 +962,7 @@ hr {
     display: inline-block;
     color: #292929;
     padding: 1rem;
-    margin-bottom: 0;
+    margin-bottom: 25px;
     margin-top: 0;
 }
 
@@ -973,8 +980,8 @@ hr {
     margin-left: 1.5%;
     margin-right: 1.5%;
     margin-bottom: .8%;
-    box-shadow:0px 0px 10px #ededee;
-    border: 1px solid #ededee;
+    box-shadow:none;
+    border: 0px solid #ededee;
     justify-content: center;
 }
 
@@ -1011,19 +1018,45 @@ hr {
 }
 
 .footer-container {
-    margin-left: 1.5%;
-    margin-right: 1.5%;
+    /*margin-left: 1.5%;
+    margin-right: 1.5%;*/
     margin-bottom: .8%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: baseline;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: auto;
 }
 
 .footer-container hr {
      margin-bottom: .8%;
 }
 
+.footer-container a {
+    color: #292929;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer-container a:hover {
+    color: #0FA0CE;
+    text-decoration: underline;
+}
+
 .footer-container p {
     text-align: center;
-    margin: auto;
-    margin-top: .5%;
+    margin: 3.5px;
+    /*margin-top: .5%;*/
+}
+
+#disclaimer-button, #contributor-button {
+    text-align: center;
+    padding: 1.5px 0px;
+    margin: 0px;
 }
 
 @media (min-width: 1251px) {
@@ -1034,58 +1067,41 @@ hr {
     }
 
     #header p {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .number-plate h3 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
-        font-size: 4.5rem;
+        font-family: 'Source Serif Pro', sans-serif;
+        font-weight: 700;
+        font-size: 6rem;
     }
 
     .number-plate p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
-        font-size: 2.1rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 2rem;
     }
 
     .number-plate h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2.3rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 3rem;
     }
 
     #my-footer p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 1.5rem;
         font-weight: bold;
     }
 
-    .dcc-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
+    .dcc-plot h5, .dcc-table h5, .dcc-map h5, #sunburst-chart h5 {
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 3rem;
         font-weight: bold;
-    }
-
-    .dcc-map h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    .dcc-table h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    #sunburst-chart h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
+        margin-bottom: 25px;
     }
 
     #dcc-table-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 2rem;
         font-weight: bold;
     }
@@ -1106,63 +1122,64 @@ hr {
 
 @media (max-width: 1250px) {
     /*For smaller screens*/
-    #header h4 {
-        text-align: center;
-    }
-
+	#header {
+		padding-top: 80px;
+		padding-bottom: 45px;
+	}
+	
+	#header h4 {
+		max-width: 650px;
+	    margin: 0 auto;
+	    font-family: 'Source Serif Pro', sans-serif;
+	    font-weight: 700;
+	    padding-bottom: 50px;
+	    text-align: center;
+	}
+	#header hr {
+		margin-top: 65px;	
+	}
+    
     #header p {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
+    
+    .number-plate {
+	   margin-bottom: 60px;
+	}
 
     .number-plate h3 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
-        font-size: 3rem;
+        font-family: 'Source Serif Pro', sans-serif;
+        font-weight: 700;
+        font-size: 4rem;
     }
 
     .number-plate p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
         font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 
-    .number-plate h5{
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    .number-plate h5 {
+        font-family: 'Roboto', sans-serif;
         font-size: 2rem;
     }
 
     #my-footer p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 1.5rem;
         font-weight: bold;
     }
 
-    .dcc-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    .dcc-plot h5, .dcc-table h5, .dcc-map h5, #sunburst-chart h5 {
+        font-family: 'Source Serif Pro', sans-serif;
         font-size: 2rem;
         font-weight: bold;
-    }
-
-    .dcc-map h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    .dcc-table h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    #sunburst-chart h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
+        margin-bottom: 25px;
     }
 
     #dcc-table-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 2rem;
         font-weight: bold;
     }
@@ -1180,6 +1197,42 @@ hr {
 @media only screen and (max-width: 600px) {
     /*For mobile screens*/
 
+    #header {
+		padding-top: 60px;
+		padding-bottom: 20px;
+	}
+	
+	#header h4 {
+	    font-family: 'Source Serif Pro', sans-serif;
+	    font-weight: 700;
+	    max-width: 350px;
+	    padding-bottom: 25px;
+        font-size: 2.5rem
+	}
+	#header hr {
+		margin-top: 30px;
+	}
+
+	.time-stamp {
+	    border-left: #d7191c solid 0rem;
+	    padding-left: 0rem;
+	    text-align: center;
+	    padding-bottom: 25px;
+	    font-family: 'Roboto', sans-serif;
+	    font-size: 1.5rem;
+	    font-weight: 400;
+	    max-width:250px;
+	    margin: 0 auto;
+	}
+	
+	.number-plate {
+	   margin-bottom: 25px;
+	}
+	.number-plate-single {
+		flex: 1 0 45%;
+		margin-bottom: 25px;
+	}
+
     .sunburst-ternary-plot {
         display: none;
     }
@@ -1192,71 +1245,47 @@ hr {
         width: 100%;
     }
 
-    #header h4 {
-        font-size: 2.5rem;
-    }
-
     #header p {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     #note p {
         font-size: 1rem;
     }
 
-    .numer-plate div{
-        display: flex;
-        flex-wrap: row wrap;
-    }
-
     .number-plate h3 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        /*font-weight: bold;*/
-        font-size: 1.5rem;
+        font-family: 'Source Serif Pro', sans-serif;
+        font-weight: 700;
+        font-size: 4rem;
     }
 
     .number-plate p {
-    	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 
     .number-plate h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 2rem;
     }
 
     #my-footer p {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1rem;
-        font-weight: bold;
-    }
-
-    .dcc-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 1.5rem;
         font-weight: bold;
     }
 
-    .dcc-map h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.5rem;
+    .dcc-plot h5, .dcc-table h5, .dcc-map h5, #sunburst-chart h5 {
+        font-family: 'Source Serif Pro', sans-serif;
+        font-size: 2rem;
         font-weight: bold;
-    }
-
-    .dcc-table h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-
-    #sunburst-chart h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        font-size: 1.5rem;
-        font-weight: bold;
+        margin-bottom: 15px;
     }
 
     #dcc-table-plot h5 {
-        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 1.5rem;
         font-weight: bold;
     }
@@ -1272,6 +1301,9 @@ hr {
     [id^="dash-datatable"] {
         font-size: .8rem;
     }
+    .footer-container p {
+    	max-width: 350px;
+    }
 }
 
 
@@ -1283,7 +1315,7 @@ hr {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .Select {
     color: black !important;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .Select div {
@@ -1358,4 +1390,35 @@ div, svg {
 
 ._dash-undo-redo {
     display: none;
+}
+
+.plotly svg text, .dash-table-container .dash-spreadsheet-container table {
+	font-family: "Roboto", Sans-Serif !important;
+	font-weight: 500;
+	font-size: 1.5rem;
+	letter-spacing: 0.1px;
+}
+
+#tabs-table {
+	font-weight: 500;
+	letter-spacing: 0.1px;
+}
+
+.column-header-name {
+	margin-left: 5px;
+}
+.dash-table-container input[type="radio"] {
+    margin-left: 10px;
+    margin-top: -5px;
+}
+
+#dcc-table-header {
+	margin-top: 50px;
+}
+.dcc-table {
+	margin-bottom: 50px;
+}
+
+#my-footer hr {
+	display: none;
 }

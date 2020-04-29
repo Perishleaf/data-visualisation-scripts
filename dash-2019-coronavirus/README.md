@@ -16,6 +16,7 @@ Data sourced from
 * [JCU-CSSE](https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/htmlview?usp=sharing&sle=true#)
 * [2020 coronavirus pandemic in Australia](https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Australia)
 * [COVID-19 in US and Canada by 1Point3Acres](https://coronavirus.1point3acres.com/en)
+* [Robert Koch Institute](https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Fallzahlen.html)
 
 Dashboard is deployed on Heroku and can be accessed from https://dash-coronavirus-2020.herokuapp.com/
 
@@ -31,7 +32,8 @@ __To-do list:__
 - [x] Code optimisation for generating overview lineplot/reduce response time 2020/03/18
 - [x] Clicking table tab now triggers corresponding changes in the plots 2020/03/24
 - [x] Adding support for plots of Province/States 2020/03/24
-- [x] Responsive layout and design 2020/04/18 
+- [x] Responsive layout and design 2020/04/18
+- [x] Redesign th layout by [Johannes Pistorius](https://www.johannespistorius.de/) 2020/04/29 
 
 ![App screenshot](./app_screenshot.gif)
 

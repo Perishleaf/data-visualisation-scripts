@@ -639,7 +639,7 @@ fig_rate.update_layout(
     hovermode='x unified',
     showlegend=True,
     legend_orientation="h",
-    # legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
+    legend=dict(x=.36, y=-0.1,),
     plot_bgcolor='#ffffff',
     paper_bgcolor='#ffffff',
     font=dict(color='#292929', size=10)
@@ -1055,7 +1055,7 @@ app.layout = html.Div(
                     className='time-stamp',
                     children="Last update: {}. (Hover over items for additional information)".format(latestDate)
                 ),
-                html.Hr(style={'marginTop': '.5%'},
+                html.Hr(
                 ),
             ]
         ),
@@ -1064,21 +1064,22 @@ app.layout = html.Div(
             children=[
                 html.Div(
                     className='number-plate-single',
-                    style={'border-top': '#2674f6 solid .2rem',},
+                    style={'border-top': '#292929 solid .2rem',},
                     children=[
-                        html.H3(style={'color': '#2674f6'},
+                        html.H5(
+                            style={'color': '#292929',},
+                            children="Days since outbreak"
+                        ),
+                        html.H3(style={'color': '#292929'},
                                 children=[
+                                    '{}'.format(daysOutbreak),
                                     html.P(
                                         style={'color': '#ffffff',},
                                         children='xxxx xx xxx xxxx xxx xxxxx'
-                                    ),
-                                    '{}'.format(daysOutbreak),
+                                    ), 
                                 ]
                         ),
-                        html.H5(
-                        	style={'color': '#2674f6',},
-                            children="days since outbreak"
-                        )
+                        
                     ]
                 ),
                 html.Div(
@@ -1086,19 +1087,21 @@ app.layout = html.Div(
                     id='number-plate-active',
                     style={'border-top': '#e36209 solid .2rem',},
                     children=[
+                        html.H5(
+                            style={'color': '#e36209'},
+                            children="Active cases"
+                        ),
                         html.H3(
                         	style={'color': '#e36209'},
                             children=[
+                                '{:,d}'.format(remainCases),
                                 html.P(
                                     children='+ {:,d} in the past 24h ({:.1%})'.format(plusRemainNum, plusRemainNum3)
                                 ),
-                                '{:,d}'.format(remainCases)
+                                
                             ]
                         ),
-                        html.H5(
-                        	style={'color': '#e36209'},
-                            children="active cases"
-                        )
+                        
                     ]
                 ),
                 html.Div(
@@ -1106,19 +1109,21 @@ app.layout = html.Div(
                     id='number-plate-confirm',
                     style={'border-top': '#d7191c solid .2rem',},
                     children=[
+                        html.H5(
+                            style={'color': '#d7191c'},
+                            children="Confirmed cases"
+                        ),
                         html.H3(
                             style={'color': '#d7191c'},
                             children=[
+                                '{:,d}'.format(confirmedCases),
                                 html.P(
                                     children='+ {:,d} in the past 24h ({:.1%})'.format(plusConfirmedNum, plusPercentNum1)
                                 ),
-                                '{:,d}'.format(confirmedCases)
+                                
                             ]
                         ),
-                        html.H5(
-                        	style={'color': '#d7191c'},
-                            children="confirmed cases"
-                        )
+                        
                     ]
                 ),
                 html.Div(
@@ -1126,19 +1131,21 @@ app.layout = html.Div(
                     id='number-plate-recover',
                     style={'border-top': '#1a9622 solid .2rem',},
                     children=[
+                        html.H5(
+                            style={'color': '#1a9622'},
+                            children="Recovered cases"
+                        ),
                         html.H3(
                             style={'color': '#1a9622'},
                             children=[
+                                '{:,d}'.format(recoveredCases),
                                 html.P(
                                     children='+ {:,d} in the past 24h ({:.1%})'.format(plusRecoveredNum, plusPercentNum2)
                                 ),
-                                '{:,d}'.format(recoveredCases),
+                                
                             ]
                         ),
-                        html.H5(
-                        	style={'color': '#1a9622'},
-                            children="recovered cases"
-                        )
+                        
                     ]
                 ),
                 html.Div(
@@ -1146,19 +1153,21 @@ app.layout = html.Div(
                     id='number-plate-death',
                     style={'border-top': '#6c6c6c solid .2rem',},
                     children=[
+                        html.H5(
+                            style={'color': '#6c6c6c'},
+                            children="Death cases"
+                        ),
                         html.H3(
                         	style={'color': '#6c6c6c'},
                             children=[
+                                '{:,d}'.format(deathsCases),
                                 html.P(
                                     children='+ {:,d} in the past 24h ({:.1%})'.format(plusDeathNum, plusPercentNum3)
                                 ),
-                                '{:,d}'.format(deathsCases)
+                                
                             ]
                         ),
-                        html.H5(
-                        	style={'color': '#6c6c6c'},
-                            children="death cases"
-                        )
+                        
                     ]
                 ),
                 dbc.Tooltip(
@@ -1425,8 +1434,6 @@ app.layout = html.Div(
                                 System_ reporting requirements, cases are reported based on their Australian
                                 jurisdiction of residence rather than where they were detected.
 
-                                The number of recovered cases in NSW is calculated based on federal and other states'
-                                recovered number. 
                                 '''
                             )
                         )                                              
@@ -1481,9 +1488,6 @@ app.layout = html.Div(
                                 html.H5(
                                     children='Sunburst Chart | Worldwide'
                                 ),
-                                html.P(
-                                	children='(Click to unfold segment)'
-                                )
                             ]
                         ),
                         dcc.Dropdown(
@@ -1515,9 +1519,6 @@ app.layout = html.Div(
                                 html.H5(
                                     children='Ternary Chart | Worldwide'
                                 ),
-                                html.P(
-                                	children='(Double click the chart to reset view after zoom in)'
-                                )
                             ]
                         ),
                         dcc.Dropdown(
@@ -1554,64 +1555,120 @@ app.layout = html.Div(
             className='footer-container',
             id='my-footer',
             children=[
-                html.Hr(),
                 html.P(
-                	style={'textAlign': 'center', 'margin': 'auto'},
+                    'Keep calm and stay home',
+                ),
+                html.P(
+                    ' | ',
+                ),
+                html.P(
                     children=[
-                        'Keep calm and stay home | ',
                         html.A(
                             'Developed by Jun with ❤️ in Sydney', 
                             href='https://junye0798.com/', 
                             target='_blank'
-                        ), 
-                        ' | ',
+                        ),
+                    ],
+                ),
+                html.P(
+                    ' | ',
+                ),
+                html.Div(
+                    id='contributor-button',
+                    children=[
+                        dbc.Button(
+                            "Contributor", 
+                            id="open-contributor", 
+                            className="button", 
+                        ),
+                        dbc.Modal(
+                            id='modal-contributor',
+                            children=[
+                                dbc.ModalHeader("Contributor"),
+                                dbc.ModalBody(
+                                    html.Div(
+                                        html.P(
+                                            children=[
+                                                html.A(
+                                                    'Johannes Pistorius', 
+                                                    href='https://www.johannespistorius.de/', 
+                                                    target='_blank'
+                                                ),
+                                                ': CSS Design, ',
+                                                html.A(
+                                                    'Nick Byrne',
+                                                    href='https://www.linkedin.com/in/nbyrne/?originalSubdomain=au',
+                                                    target='_blank'
+                                                ),
+                                                ': Strategic Support',
+                                            ],
+                                        ),
+                                    ),  
+                                ),
+                                dbc.ModalFooter(
+                                    children=[
+                                        dbc.Button(
+                                            "Close", 
+                                            id="close-contributor", 
+                                            className="ml-auto",
+                                            style={'background-color':'#20b6e6', 'font-weight':'bold'}
+                                        )
+                                    ],            
+                                ),
+                            ],
+                        ),
+                    ]
+                ),
+                html.P(
+                    ' | ',
+                ),
+                html.P(
+                    children=[
                         html.A(
                             'About this dashboard', 
                             href='https://github.com/Perishleaf/data-visualisation-scripts/tree/master/dash-2019-coronavirus',
                             target='_blank'
-                        ), 
-                        ' | ',
+                        ),
+                    ],
+                ),
+                html.P(
+                    ' | ',
+                ),           
+                html.P(
+                    children=[
                         html.A(
                             'Report a bug', 
                             href='https://twitter.com/perishleaf', 
                             target='_blank'
-                        ), 
-                        ' | ',
+                        ),
+                    ],
+                ),                
+                html.P(
+                    ' | ',
+                ),
+                html.P(
+                    children=[
                         html.A(
                             'COVID-19 infographic in Australia', 
                             href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-28-april-2020.pdf', 
                             target='_blank'
-                        ),
-                    ]
+                                ),
+                    ],
                 ),
                 html.P(
-                    children=['Proudly supported by']
-                ),
-                html.P(
-                    children=[
-                        html.A(
-                    	    html.Img(
-                    	    	style={'height' : '10%', 'width' : '10%',}, 
-                    	    	src=app.get_asset_url('TypeHuman.png')
-                    	    ),
-                            href='https://www.typehuman.com/', 
-                            target='_blank'
-                        )
-                    ]
-                ),
+                    ' | ',
+                ), 
                 html.Div(
-                    style={'textAlign': 'center', 'margin': 'auto','marginTop': '.5%'},
+                    id='disclaimer-button',
                     children=[
                         dbc.Button(
                         	"Disclaimer", 
                         	id="open", 
-                        	color="info", 
-                        	className="mr-1", 
-                            style={'fontSize': '1rem', 'backgroundColor':'#20b6e6', 'fontWeight':'bold'}
+                        	#color="info", 
+                        	className="button", 
                         ),
                         dbc.Modal(
                         	id='modal',
-                        	style={'width':'100%', 'height':'100%', 'overflow': 'auto',},
                             children=[
                                 dbc.ModalHeader("Disclaimer"),
                                 dbc.ModalBody(
@@ -1633,13 +1690,14 @@ app.layout = html.Div(
                                     '''
                                 ),
                                 dbc.ModalFooter(
-                                	children=
+                                	children=[
                                 	    dbc.Button(
                                 		    "Close", 
                                 		    id="close", 
                                 		    className="ml-auto",
                                             style={'background-color':'#20b6e6', 'font-weight':'bold'}
-                                        )            
+                                        )
+                                    ],            
                                 ),
                             ],
                         ),
@@ -1656,6 +1714,16 @@ app.layout = html.Div(
     [State("modal", "is_open")],
 )
 def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("modal-contributor", "is_open"),
+    [Input("open-contributor", "n_clicks"), Input("close-contributor", "n_clicks")],
+    [State("modal-contributor", "is_open")],
+)
+def toggle_modal_contributor(n1, n2, is_open):
     if n1 or n2:
         return not is_open
     return is_open
@@ -1791,7 +1859,7 @@ def render_combined_line_plot(log):
     xaxis_tickformat='%b %d',
     hovermode='x unified',
     legend_orientation="h",
-    # legend=dict(x=.02, y=.95, bgcolor="rgba(0,0,0,0)",),
+    legend=dict(x=.26, y=-.1,),
     plot_bgcolor='#ffffff',
     paper_bgcolor='#ffffff',
     font=dict(color='#292929', size=10)
@@ -1803,74 +1871,124 @@ def render_combined_line_plot(log):
               [Input('sunburst-dropdown', 'value')])
 
 def render_sunburst_plot(metric):
+    colorTheme=px.colors.qualitative.Safe
 
-  colorTheme=px.colors.qualitative.Safe
-
-  if metric == 'Confirmed':
-    hovertemplate = '<b>%{label} </b> <br><br>Confirmed: %{value} cases'
-  elif metric == 'Recovered':
-    hovertemplate = '<b>%{label} </b> <br>Recovered: %{value} cases'
-  elif metric == 'Deaths':
-    hovertemplate = '<b>%{label} </b> <br>Deaths: %{value} cases'
-  elif metric == 'Remaining':
-    hovertemplate = '<b>%{label} </b> <br>Active: %{value} cases'
+    if metric == 'Confirmed':
+        hovertemplate = '<b>%{label} </b> <br><br>Confirmed: %{value} cases'
+    elif metric == 'Recovered':
+        hovertemplate = '<b>%{label} </b> <br>Recovered: %{value} cases'
+    elif metric == 'Deaths':
+        hovertemplate = '<b>%{label} </b> <br>Deaths: %{value} cases'
+    elif metric == 'Remaining':
+        hovertemplate = '<b>%{label} </b> <br>Active: %{value} cases'
 
 
-  fig_sunburst = px.sunburst(df_sunburst, path=['Continent','Country/Region', 'Province/State'], 
-                              values=metric,
-                              hover_data=[metric],
-                              color_discrete_sequence=colorTheme,           
-                           )
+    fig_sunburst = px.sunburst(
+        df_sunburst, 
+        path=['Continent','Country/Region', 'Province/State'], 
+        values=metric,
+        hover_data=[metric],
+        color_discrete_sequence=colorTheme,           
+    )
 
-  fig_sunburst.update_traces(
-    textinfo='label+percent root',
-  	hovertemplate=hovertemplate)
+    fig_sunburst.update_traces(
+        textinfo='label+percent root',
+  	    hovertemplate=hovertemplate
+    )
+    fig_sunburst.update_layout(
+        annotations=[
+            dict(
+                x=0.5,
+                y=-0.2,
+                xref='paper',
+                yref='paper',
+                text='Click to unfold segment',
+                showarrow=False,
+                font=dict(
+                    family='Roboto, sans-serif',
+                    size=16,
+                    color="#292929"
+                ),
+            )
+        ]
+    )
 
-  return fig_sunburst
+    return fig_sunburst
 
 @app.callback(Output('ternary-dropdown-chart', 'figure'),
               [Input('ternary-dropdown', 'value')]
         )
 
 def render_ternary_plot(value):
-  # make ternary chart
-  if value == 'All':
-    fig_ternary = px.scatter_ternary(df_ternary, a="Recovered", b="Active", c="Deaths", template='plotly_white', 
-                                     size=[i**(1/3) for i in df_ternary['Population']],
-                                     color='Confirmed/100k',
-                                     color_continuous_scale=px.colors.sequential.Aggrnyl,
-                          )
-    fig_ternary.update_traces(
-        text=df_ternary['Country/Region'],
-        hovertemplate="<b>%{text}</b><br><br>" +
-                      "Recovery rate: %{a:.2f}<br>" +
-                      "Active rate: %{b: .2f}<br>" +
-                      "Death rate: %{c: .2f}<br>" +
-                      "Confirmed/100k: %{marker.color: .0f}"
-                   ,
-        marker=dict(line=dict(width=1, color='White')),               
-    )
+    # make ternary chart
+    if value == 'All':
+        fig_ternary = px.scatter_ternary(df_ternary, a="Recovered", b="Active", c="Deaths", template='plotly_white', 
+            size=[i**(1/3) for i in df_ternary['Population']],
+            color='Confirmed/100k',
+            color_continuous_scale=px.colors.sequential.Aggrnyl,
+        )
+        fig_ternary.update_traces(
+            text=df_ternary['Country/Region'],
+            hovertemplate="<b>%{text}</b><br><br>" +
+                          "Recovery rate: %{a:.2f}<br>" +
+                          "Active rate: %{b: .2f}<br>" +
+                          "Death rate: %{c: .2f}<br>" +
+                          "Confirmed/100k: %{marker.color: .0f}",
+            marker=dict(line=dict(width=1, color='White')),               
+        )
+        fig_ternary.update_layout(
+            annotations=[
+                dict(
+                    x=0.5,
+                    y=-0.2,
+                    xref='paper',
+                    yref='paper',
+                    text='Double click the chart to reset view after zoom in',
+                    showarrow=False,
+                    font=dict(
+                        family='Roboto, sans-serif',
+                        size=16,
+                        color="#292929"
+                    ),
+                )
+            ]
+        )
+        return fig_ternary 
+    else:
+        fig_ternary = px.scatter_ternary(df_ternary, a="Recovered", b="Active", c="Deaths", template='plotly_white', 
+            size=[i**(1/3) for i in df_ternary['Population']],
+            opacity=[1 if i == value else 0.1 for i in WorldwildTable['Country/Region']],
+            color='Confirmed/100k',
+            color_continuous_scale=px.colors.sequential.Aggrnyl,
+        )
+        fig_ternary.update_traces(
+            text=df_ternary['Country/Region'],
+            hovertemplate="<b>%{text}</b><br><br>" +
+                          "Recovery rate: %{a:.2f}<br>" +
+                          "Active rate: %{b: .2f}<br>" +
+                          "Death rate: %{c: .2f}<br>" +
+                          "Confirmed/100k: %{marker.color: .0f}",
+            marker=dict(line=dict(width=1, color='White')),               
+        )
+        fig_ternary.update_layout(
+            annotations=[
+                dict(
+                    x=0.5,
+                    y=-0.2,
+                    xref='paper',
+                    yref='paper',
+                    text='Double click the chart to reset view after zoom in',
+                    showarrow=False,
+                    font=dict(
+                        family='Roboto, sans-serif',
+                        size=16,
+                        color="#292929"
+                    ),
+                )
+            ]
+        )
 
-    return fig_ternary 
-  else:
-    fig_ternary = px.scatter_ternary(df_ternary, a="Recovered", b="Active", c="Deaths", template='plotly_white', 
-                                     size=[i**(1/3) for i in df_ternary['Population']],
-                                     opacity=[1 if i == value else 0.1 for i in WorldwildTable['Country/Region']],
-                                     color='Confirmed/100k',
-                                     color_continuous_scale=px.colors.sequential.Aggrnyl,
-                          )
-    fig_ternary.update_traces(
-        text=df_ternary['Country/Region'],
-        hovertemplate="<b>%{text}</b><br><br>" +
-                      "Recovery rate: %{a:.2f}<br>" +
-                      "Active rate: %{b: .2f}<br>" +
-                      "Death rate: %{c: .2f}<br>" +
-                      "Confirmed/100k: %{marker.color: .0f}"
-                   ,
-        marker=dict(line=dict(width=1, color='White')),               
-    )
-
-    return fig_ternary 
+        return fig_ternary 
 
 @app.callback(
     Output('datatable-interact-map', 'figure'),
@@ -2335,8 +2453,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                 yref="paper",
                 text=Region,
                 opacity=0.5,
-                font=dict(family='Arial, sans-serif',
-                          size=50,
+                font=dict(family='Roboto, sans-serif',
+                          size=40,
                           color="grey"),
             )
         ],
@@ -2433,8 +2551,8 @@ def update_lineplot(value, derived_virtual_selected_rows, selected_row_ids,
                 yref="paper",
                 text=Region,
                 opacity=0.5,
-                font=dict(family='Arial, sans-serif',
-                          size=50,
+                font=dict(family='Roboto, sans-serif',
+                          size=40,
                           color="grey"),
             )
         ],
@@ -2692,8 +2810,8 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                 yref="paper",
                 text=Region,
                 opacity=0.5,
-                font=dict(family='Roboto, Helvetica, Arial, sans-serif',
-                          size=50,
+                font=dict(family='Roboto, sans-serif',
+                          size=40,
                           color="grey"),
             )
         ],
@@ -2790,8 +2908,8 @@ def update_dailyplot(value, derived_virtual_selected_rows, selected_row_ids,
                 yref="paper",
                 text=Region,
                 opacity=0.5,
-                font=dict(family='Roboto, Helvetica, Arial, sans-serif',
-                          size=50,
+                font=dict(family='Roboto, sans-serif',
+                          size=40,
                           color="grey"),
             )
         ],
@@ -3127,17 +3245,18 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
             t=5,
             pad=0
             ),
-        annotations=[dict(
-            x=.5,
-            y=.4,
-            xref="paper",
-            yref="paper",
-            text=Region if Region in set(dfs_curve['Region']) else "Not over 100 cases",
-            opacity=0.5,
-            font=dict(family='Arial, sans-serif',
-                      size=50,
-                      color="grey"),
-                    )
+        annotations=[
+            dict(
+                x=.5,
+                y=.4,
+                xref="paper",
+                yref="paper",
+                text=Region if Region in set(dfs_curve['Region']) else "Not over 100 cases",
+                opacity=0.5,
+                font=dict(family='Roboto, sans-serif',
+                          size=40,
+                          color="grey"),
+            )
         ],
         yaxis_type="log",
         yaxis=dict(
@@ -3475,9 +3594,9 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
             yref="paper",
             text=Region if Region in set(dfs_curve['Region']) else "Not over 3 death cases",
             opacity=0.5,
-            font=dict(family='Arial, sans-serif',
-                      size=50,
-                      color="grey"),
+            font=dict(family='Roboto, sans-serif',
+                          size=40,
+                          color="grey"),
                     )
         ],
         yaxis_type="log",
