@@ -33,7 +33,7 @@ __To-do list:__
 - [x] Clicking table tab now triggers corresponding changes in the plots 2020/03/24
 - [x] Adding support for plots of Province/States 2020/03/24
 - [x] Responsive layout and design 2020/04/18
-- [x] Redesign th layout by [Johannes Pistorius](https://www.johannespistorius.de/) 2020/04/29 
+- [x] Redesign the layout by [Johannes Pistorius](https://www.johannespistorius.de/) 2020/04/29 
 
 ![App screenshot](./app_screenshot.gif)
 
