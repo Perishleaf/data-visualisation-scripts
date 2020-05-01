@@ -1,4 +1,5 @@
 Confirmed,Recovered,Deaths,Date_last_updated_AEDT,date_day,New,DayElapsed,New_death,DayElapsed_death,New_recover
+81,39,7,2020-05-01 22:00:00,2020-05-01,1,0,0,24,0
 80,39,7,2020-04-30 22:00:00,2020-04-30,0,0,1,23,0
 80,39,6,2020-04-29 22:00:00,2020-04-29,0,0,0,22,0
 80,39,6,2020-04-28 22:00:00,2020-04-28,1,0,0,21,0
