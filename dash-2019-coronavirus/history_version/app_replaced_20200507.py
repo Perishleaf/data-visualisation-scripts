@@ -1222,6 +1222,13 @@ app.layout = html.Div(
             ]
         ),
         html.Div(
+            className='section-line',
+            children=[
+                html.Hr(
+                ),
+            ]
+        ),
+        html.Div(
             className='row dcc-plot',
             children=[
                 html.Div(
@@ -1647,7 +1654,7 @@ app.layout = html.Div(
                     children=[
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/04/coronavirus-covid-19-at-a-glance-29-april-2020.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/05/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_4.pdf', 
                             target='_blank'
                                 ),
                     ],
