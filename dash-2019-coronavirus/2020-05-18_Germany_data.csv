@@ -1,0 +1,17 @@
+Province/State,Country/Region,Confirmed,Recovered,Tests,Critical,Remaining,Deaths,Date_last_updated_AEDT,Population,Continent,World,lat,lon
+Baden-Württemberg,Germany,34000,,,,,1652,2020-05-18,11072030,Europe,Worldwide,48.6296972,9.1949534
+Bavaria,Germany,45507,,,,,2287,2020-05-18,13068686,Europe,Worldwide,48.9467562,11.4038717
+Berlin,Germany,6458,,,,,180,2020-05-18,3740845,Europe,Worldwide,52.517036499999996,13.388859900000002
+Brandenburg,Germany,3172,,,,,149,2020-05-18,2514736,Europe,Worldwide,52.84554920000001,13.2461296
+Bremen,Germany,1171,,,,,38,2020-05-18,685714,Europe,Worldwide,53.14486899999999,8.6932343
+Hamburg,Germany,5037,,,,,232,2020-05-18,1843859,Europe,Worldwide,53.550341,10.000653999999999
+Hesse,Germany,9337,,,,,439,2020-05-18,6254237,Europe,Worldwide,50.611853700000005,9.1909725
+Lower Saxony,Germany,11167,,,,,545,2020-05-18,7962068,Europe,Worldwide,52.8398531,9.075961999999999
+Mecklenburg-Vorpommern,Germany,752,,,,,20,2020-05-18,1635000,Europe,Worldwide,53.773523399999995,12.5755746
+North Rhine-Westphalia,Germany,36365,,,,,1512,2020-05-18,17967261,Europe,Worldwide,51.478179600000004,7.5542336
+Rhineland-Palatinate,Germany,6490,,,,,217,2020-05-18,4082481,Europe,Worldwide,49.953159899999996,7.310646
+Saarland,Germany,2696,,,,,149,2020-05-18,990376,Europe,Worldwide,49.417398799999994,6.9805789
+Saxony,Germany,5125,,,,,196,2020-05-18,4069523,Europe,Worldwide,50.92957979999999,13.4585052
+Saxony-Anhalt,Germany,1678,,,,,54,2020-05-18,2214285,Europe,Worldwide,51.908526,11.4939134
+Schleswig-Holstein,Germany,3002,,,,,126,2020-05-18,2902325,Europe,Worldwide,54.1853998,9.8220089
+Thuringia,Germany,2740,,,,,139,2020-05-18,2151724,Europe,Worldwide,50.73331629999999,11.0747905
