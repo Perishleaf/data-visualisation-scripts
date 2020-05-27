@@ -762,7 +762,7 @@ fig_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                                                  '<extra></extra>'
                             )
 )
-for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
+for regionName in ['Worldwide', 'Japan', 'Brazil', 'India', 'US']:
 
   dotgrayx_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
   dotgrayy_tab = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -875,7 +875,7 @@ fig_death_curve_tab.add_trace(go.Scatter(x=pseduoDay,
                             )
 )
 
-for regionName in ['Worldwide', 'Japan', 'Italy', 'UK', 'US']:
+for regionName in ['Worldwide', 'Japan', 'Brazil', 'UK', 'US']:
 
   dotgrayx_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
   dotgrayy_tab_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
@@ -912,7 +912,7 @@ for regionName in ['Worldwide', 'Japan', 'Italy', 'UK', 'US']:
 
 # Customise layout
 fig_death_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
-fig_death_curve_tab.update_yaxes(range=[0.477, 5.5])
+fig_death_curve_tab.update_yaxes(range=[0.477, 5.8])
 fig_death_curve_tab.update_layout(
         xaxis_title="Number of days since 3 deaths recorded",
         yaxis_title="Death cases (Logarithmic)",
@@ -1650,7 +1650,7 @@ app.layout = html.Div(
                     children=[
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/05/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_24.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/05/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_25.pdf', 
                             target='_blank'
                                 ),
                     ],
@@ -3140,7 +3140,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'DayElapsed'])[0]]
         doty = [np.array(dfs_curve.loc[dfs_curve['Region'] == Region,'Confirmed'])[0]]
 
-        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Brazil', 'India', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -3203,7 +3203,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Brazil', 'India', 'US']:
 
           dotgrayx = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'DayElapsed'])[0]]
           dotgrayy = [np.array(dfs_curve.loc[dfs_curve['Region'] == regionName, 'Confirmed'])[0]]
@@ -3482,7 +3482,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         dotx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == Region,'DayElapsed_death'])[0]]
         doty_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == Region,'Deaths'])[0]]
 
-        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Brazil', 'India', 'US']:
 
           dotgrayx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
           dotgrayy_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
@@ -3545,7 +3545,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
         )
 
     else:
-        for regionName in ['Worldwide', 'Japan', 'Italy', 'India', 'US']:
+        for regionName in ['Worldwide', 'Japan', 'Brazil', 'India', 'US']:
 
           dotgrayx_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'DayElapsed_death'])[0]]
           dotgrayy_death = [np.array(dfs_curve_death.loc[dfs_curve_death['Region'] == regionName, 'Deaths'])[0]]
@@ -3582,7 +3582,7 @@ def update_deathplot(value, derived_virtual_selected_rows, selected_row_ids,
 
     # Customise layout
     fig_curve_death.update_xaxes(range=[0, elapseDay-19])
-    fig_curve_death.update_yaxes(range=[0.477, 5.5])
+    fig_curve_death.update_yaxes(range=[0.477, 5.8])
     fig_curve_death.update_layout(
         xaxis_title="Number of days since 3 deaths recorded",
         yaxis_title="Death cases (Logarithmic)",
