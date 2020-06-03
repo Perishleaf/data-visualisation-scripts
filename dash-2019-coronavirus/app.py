@@ -1091,7 +1091,7 @@ app.layout = html.Div(
                             children=[
                                 '{:,d}'.format(remainCases),
                                 html.P(
-                                    children='+ {:,d} in the past 24h ({:.1%})'.format(plusRemainNum, plusRemainNum3)
+                                    children='+ {:,d} in the past 24h ({:.1%})'.format(plusRemainNum, plusRemainNum3) if plusRemainNum > 0 else '{:,d} in the past 24h ({:.1%})'.format(plusRemainNum, plusRemainNum3)
                                 ),      
                             ]
                         ),
@@ -1650,7 +1650,7 @@ app.layout = html.Div(
                     children=[
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/06/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_0.pdf', 
+                            href='https://www.health.gov.au/sites/default/files/documents/2020/06/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_1.pdf', 
                             target='_blank'
                                 ),
                     ],
