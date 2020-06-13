@@ -1,4 +1,5 @@
 Confirmed,Recovered,Deaths,Date_last_updated_AEDT,date_day,New,DayElapsed,New_death,DayElapsed_death,New_recover
+72,64,6,2020-06-13 22:00:00,2020-06-13,0,0,0,56,0
 72,64,6,2020-06-12 22:00:00,2020-06-12,0,0,0,55,0
 72,64,6,2020-06-11 22:00:00,2020-06-11,1,0,0,54,1
 71,63,6,2020-06-10 22:00:00,2020-06-10,0,0,0,53,1
