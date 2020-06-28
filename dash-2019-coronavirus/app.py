@@ -799,7 +799,7 @@ for regionName in ['Worldwide', 'Japan', 'Brazil', 'India', 'US']:
 
 # Customise layout
 fig_curve_tab.update_xaxes(range=[0, daysOutbreak-19])
-fig_curve_tab.update_yaxes(range=[1.9, 7])
+fig_curve_tab.update_yaxes(range=[1.9, 7.5])
 fig_curve_tab.update_layout(
         xaxis_title="Number of day since 3rd death case",
         yaxis_title="Confirmed cases (Logarithmic)",
@@ -3240,7 +3240,7 @@ def update_logplot(value, derived_virtual_selected_rows, selected_row_ids,
 
     # Customise layout
     fig_curve.update_xaxes(range=[0, elapseDay-19])
-    fig_curve.update_yaxes(range=[1.9, 7])
+    fig_curve.update_yaxes(range=[1.9, 7.5])
     fig_curve.update_layout(
         xaxis_title="Number of day since 100th confirmed cases",
         yaxis_title="Confirmed cases (Logarithmic)",
