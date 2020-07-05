@@ -1650,7 +1650,7 @@ app.layout = html.Div(
                     children=[
                         html.A(
                             'COVID-19 infographic in Australia', 
-                            href='https://www.health.gov.au/sites/default/files/documents/2020/07/coronavirus-covid-19-at-a-glance-coronavirus-covid-19-at-a-glance-infographic_1.pdf', 
+                            href='https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers', 
                             target='_blank'
                                 ),
                     ],
