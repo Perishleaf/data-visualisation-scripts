@@ -960,7 +960,7 @@ app = dash.Dash(__name__,
                     {"name": "keywords", "content": "coronavirus dashboard, COVID-19, dashborad, global cases, coronavirus, monitor, real time, 世界，疫情, 冠状病毒, 肺炎, 新型肺炎, 最新疫情, 实时疫情, 疫情地图, 疫情"},
                     {"name": "description", "content": "The coronavirus COVID-19 dashboard/monitor provides up-to-date data, map, cumulative curve, growth trajectory for the global spread of coronavirus.\
                       As of {}, there are {:,d} confirmed cases globally.\
-                     In the meanwhile, please keep calm, stay home and wash your hand!".format(latestDate, confirmedCases)},
+                     Together we stop the spread!".format(latestDate, confirmedCases)},
                     {"property": "og:title",
                         "content": "Coronavirus COVID-19 Outbreak Global Cases Monitor Dashboard"},
                     {"property": "og:type", "content": "website"},
@@ -1556,7 +1556,7 @@ app.layout = html.Div(
             id='my-footer',
             children=[
                 html.P(
-                    'Keep calm and stay home',
+                    'Together we stop the spread',
                 ),
                 html.P(
                     ' | ',
