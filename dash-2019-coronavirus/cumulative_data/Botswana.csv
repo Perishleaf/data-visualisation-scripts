@@ -1,4 +1,5 @@
 Confirmed,Recovered,Deaths,Date_last_updated_AEDT,date_day,New,DayElapsed,New_death,DayElapsed_death,New_recover
+314,31,1,2020-07-08 22:00:00,2020-07-08,0,9,0,0,0
 314,31,1,2020-07-07 22:00:00,2020-07-07,37,8,0,0,2
 277,29,1,2020-07-06 22:00:00,2020-07-06,0,7,0,0,0
 277,29,1,2020-07-05 22:00:00,2020-07-05,0,6,0,0,0
